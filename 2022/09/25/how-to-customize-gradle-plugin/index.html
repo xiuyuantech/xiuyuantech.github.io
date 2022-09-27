@@ -175,9 +175,6 @@
                     
 
                         
-                    
-
-                        
                         <li>
                             <a href="/tags/">Tags</a>
                         </li>
@@ -185,12 +182,15 @@
                     
 
                         
-                        <li>
-                            <a href="/vnews/">vnews home</a>
-                        </li>
+                    
+
                         
                     
 
+                        
+                        <li>
+                            <a href="/vnews/">vnews home</a>
+                        </li>
                         
                     
 
@@ -370,8 +370,8 @@ module名称随意，只保留build.gradle文件和src/main目录，其余文件
 例如插件应用在 App 模块和 Library 模块会采用不同逻辑。此时，我们可以用在 Plugin#apply() 中采用以下判断：</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">project.afterEvaluate &#123;</span><br><span class="line">    <span class="comment">// 1. Check if apply the ‘com.android.application’ plugin</span></span><br><span class="line">    <span class="keyword">if</span> (!project.getPluginManager().hasPlugin(<span class="string">"com.android.application"</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1><span id="总结">总结</span></h1>
-<p>开发gradle插件掌握方式三<code>standalone project</code>就行了，关键是项目里面有相关的内容能看懂就行了，比如字节码插桩、编译优化等高级开发都会涉及AGP的内容。<br>
-参考链接： <a href="https://juejin.cn/post/7098383560746696718#heading-19" target="_blank" rel="noopener">Gradle插件系列</a>   <a href="https://www.milovetingting.cn/2020/02/25/Android/%E5%9C%A8Android%20Studio%E4%B8%AD%E8%B0%83%E8%AF%95Gradle%E6%8F%92%E4%BB%B6/#%E5%89%8D%E8%A8%80" target="_blank" rel="noopener">调试Gradle插件</a>   <a href="https://kt-learn.cn/2021/06/03/Android-gradle-customPlugin/" target="_blank" rel="noopener">自定义Gradle插件</a></p>
+<p>开发gradle插件掌握方式三<code>standalone project</code>就行了，关键是项目里面有相关的内容能看懂就行了。<br>
+其他比如字节码插桩、编译优化等高级开发都会涉及AGP的内容，参考链接： <a href="https://juejin.cn/post/7098383560746696718#heading-19" target="_blank" rel="noopener">Gradle插件系列</a>   <a href="https://www.milovetingting.cn/2020/02/25/Android/%E5%9C%A8Android%20Studio%E4%B8%AD%E8%B0%83%E8%AF%95Gradle%E6%8F%92%E4%BB%B6/#%E5%89%8D%E8%A8%80" target="_blank" rel="noopener">调试Gradle插件</a>   <a href="https://kt-learn.cn/2021/06/03/Android-gradle-customPlugin/" target="_blank" rel="noopener">自定义Gradle插件</a> 。</p>
 
                 
 
