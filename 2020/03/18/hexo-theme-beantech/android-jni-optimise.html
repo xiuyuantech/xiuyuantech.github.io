@@ -1,0 +1,127 @@
+<hr>
+<p>title: “[JNI] NDK SO Package Optimization”<br>
+catalog: true<br>
+date: 2024-06-19 14:51:24<br>
+subtitle: “”<br>
+header-img:<br>
+tags:</p>
+<ul>
+<li>JNI<br>
+catagories:</li>
+<li>JNI</li>
+</ul>
+<hr>
+<h1>STL的使用</h1>
+<p>对于C/C++的library，引用方式有2种：</p>
+<ul>
+<li>
+<p>静态方式(static)</p>
+</li>
+<li>
+<p>动态方式(shared)</p>
+</li>
+</ul>
+<p>其中，静态方式在编译时会将用到的相关代码直接复制到目的文件中；而动态方式则会将相关的代码打成so文件，以便多次引用。由于编译器在编译时并不能知道所有被引用的地方，所以同时会打入了很多不相关的代码。<br>
+如果项目中引用library的函数较多时，用动态方式可以避免多次拷贝，节省空间。相反，则直接使用静态方式会更节省空间。</p>
+<p>NDK开发中，可以通过gradle的设置来配置：</p>
+<pre><code class="language-java">defaultConfig{
+  externalNativeBuild{
+    cmake{
+      // gnustl_shared 动态  gnustl_static 静态
+      arguments &quot;-DANDROID_STL=gnustl_static&quot; 
+    }
+  }
+}
+</code></pre>
+<h1>不使用Exception和RTTI</h1>
+<p>C++的exception和RTTI功能在NDK中默认是关闭的，但是可以通过如下配置打开的：</p>
+<p>
+Android.mk:  APP_CPPFLAGS += -fexceptions -frtti
+<p>CMakeLists: set(CMAKE_CXX_FLAGS “${CMAKE_CXX_FLAGS} -fexceptions -frtti”)</p>
+</p>
+<ul>
+<li>
+<p>RTTI<br>
+通过RTTI，能够通过基类的指针或引用来检索其所指对象的实际类型，即运行时获取对象的实际类型。C++通过下面两个操作符提供RTTI。</p>
+<p>（1）typeid：返回指针或引用所指对象的实际类型。</p>
+<p>（2）dynamic_cast：将基类类型的指针或引用安全的转换为派生类型的指针或引用。</p>
+</li>
+<li>
+<p>Exception<br>
+使用C++的exception会增加包的大小，而目前JNI对C++的exception的支持是有bug的，比如下面这段代码就会引起程序的crash（对于低版本的android NDK）。</p>
+</li>
+</ul>
+<h1>使用strip配置</h1>
+<p>NDK toolchain不会自动的把方便调试的C++ 符号表(Symbol Table)中数据删除，而只会在打APK包的时候进行这一操作。这就导致了打成的AAR包中的SO体积明显偏大。</p>
+<p>详细描述可以参见这个ISSUE: <a href="https://code.google.com/p/android/issues/detail?id=222831">https://code.google.com/p/android/issues/detail?id=222831</a></p>
+<p>找到原因后这个问题就很好解决了，可以手动的在链接选项中加入 strip参数，配置如下所示</p>
+<pre><code class="language-c++">SET_TARGET_PROPERTIES(native-lib PROPERTIES LINK_FLAGS &quot;-Wl,--gc-sections,--icf=safe,-s&quot;)
+</code></pre>
+<p>也可以手动执行ndk提供的aarch64-linux-android-strip命令移除动态库中的调试信息。</p>
+<h1>设置编译器的优化flag</h1>
+<p>编译器有个优化flag可以设置，分别是-Os（体积最小），-O3(性能最优)等。这里将编译器的优化flag设置为-Os，以便减少体积。</p>
+<p>
+Android.mk:  
+```c++
+LOCAL_CPPFLAGS += -Os
+LOCAL_CFLAGS += -Os
+```
+<p>CMakeLists:</p>
+<pre><code class="language-c++">set(CMAKE_C_FLAGS &quot;${CMAKE_C_FLAGS} -Os&quot;)
+set(CMAKE_CXX_FLAGS &quot;${CMAKE_C_FLAGS}&quot;)
+</code></pre>
+</p>
+<h1>使用 gc-sections去除没有用到的函数</h1>
+<p>有些时候代码量比较大的时候我们没办法手动发现无用的函数，这个时候可以可以开启编译器的gc-sections选项，让编译器自动的帮你做到这一点。<br>
+配置如下：</p>
+<p>
+Android.mk:  
+```c++
+LOCAL_CPPFLAGS += -ffunction-sections -fdata-sections
+LOCAL_CFLAGS += -ffunction-sections -fdata-sections 
+LOCAL_LDFLAGS += -Wl,--gc-sections
+```
+<p>CMakeLists:</p>
+<pre><code class="language-c++"># 去除未使用函数与变量
+set(CMAKE_C_FLAGS &quot;${CMAKE_C_FLAGS} -ffunction-sections -fdata-sections&quot;)
+set(CMAKE_CXX_FLAGS &quot;${CMAKE_C_FLAGS}&quot;)
+# 设置去除未使用代码的链接flag
+SET_TARGET_PROPERTIES(native-lib PROPERTIES LINK_FLAGS &quot;-Wl,--gc-sections&quot;)
+</code></pre>
+</p>
+<h1>去除冗余代码</h1>
+<p>在NDK中，链接器还有一个选项 “-icf = safe”，可以用于去除代码中的冗余代码。但是要注意的是，这个选项也有可能去除定义好的inline函数，这里必须要做好权衡。<br>
+配置如下：</p>
+<p>
+Android.mk:  
+```c++
+LOCAL_LDFLAGS += -Wl,--gc-sections,--icf=safe
+```
+<p>CMakeLists:</p>
+<pre><code class="language-c++">SET_TARGET_PROPERTIES(native-lib PROPERTIES LINK_FLAGS &quot;-Wl,--gc-sections,--icf=safe&quot;)
+</code></pre>
+</p>
+<h1>设置编译器的 Visibility Feature</h1>
+<p>Visibility Feature就是用来控制在哪些函数可以在符号表中被输入，由于C++并不是完全面向对象的，非类的方法并没有public这种修饰符，因此，要用Visibility Feature来控制哪些函数可以被外部调用。<br>
+而JNI提供了一个宏-JNIEXPORT来控制这点。所以只要对函数加上这个宏，像这样：</p>
+<pre><code class="language-c++">// JNIEXPORT就是控制可见的宏
+// JNICALL在NDK这里没有什么意义，只是个标识宏
+JNIEXPORT void JNICALL Java_ClassName_MethodName(JNIEnv *env, jobject obj, jstring javaString)
+</code></pre>
+<p>然后在编译器的FLAGS选项开启 -fvisibility = hidden 就可以。这样，不仅可以控制函数的可见性，并且可以减少包体的大小。<br>
+CMakeLists:</p>
+<pre><code class="language-c++">set(CMAKE_C_FLAGS &quot;${CMAKE_C_FLAGS} -fvisibility=hidden&quot;)
+set(CMAKE_CXX_FLAGS &quot;${CMAKE_C_FLAGS}&quot;)
+</code></pre>
+<h1>去除C++代码中的iostream相关代码</h1>
+<p>使用STL中的iostream相关库会明显的增加包的体积，而Android本身是有预编译库(android/log.h)可以代替输入到控制台的工具的。在我们的SDK中由于之前是控制台程序所以用到了输入输出，编译的时候没有把这块排除出去，造成了一定的体积冗余。</p>
+<pre><code class="language-c++">/代替所有的iostream库里函数
+//cout &lt;&lt; obj-&gt;toString() &lt;&lt; endl;
+__android_log_print(ANDROID_LOG_VERBOSE,&quot;Yoga&quot;,&quot;Node is: %s&quot;,obj-&gt;toString().c_str());
+</code></pre>
+<h1>删除无用模块</h1>
+<p>删除用不到的模块是包体积优化空间最大最快的</p>
+<h1>平台能力替代第三方库</h1>
+<p>即使是平台JNI层不支持，也可以单独依赖一个特定功能的库，而不是庞大的三方库。对于整个包体积来说，第三方模块往往相对来说是比较大的。</p>
+<h1>总结</h1>
+<p>本文介绍了在NDK开发中，要缩减SO包体积，有助于动态库体积优化的方法。</p>

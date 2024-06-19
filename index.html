@@ -151,12 +151,6 @@
                     
 
                         
-                    
-
-                        
-                    
-
-                        
                         <li>
                             <a href="/archive/">Archives</a>
                         </li>
@@ -173,15 +167,21 @@
                     
 
                         
-                        <li>
-                            <a href="/vnews/">vnews home</a>
-                        </li>
-                        
                     
 
                         
                         <li>
                             <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/vnews/">vnews home</a>
                         </li>
                         
                     
@@ -245,6 +245,45 @@
             
                 <!-- Main Content -->
 
+
+<div class="post-preview">
+
+    <a href="/2024/06/19/hexo-theme-beantech/android-jni-optimise/">
+        <h2 class="post-title">
+            [JNI] NDK SO Package Optimization
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            STL的使用
+对于C/C++的library，引用方式有2种：
+
+
+静态方式(static)
+
+
+动态方式(shared)
+
+
+其中，静态方式在编译时会将用到的相关代码直接复制到目的文件中；而动态方式则会将相关的代码打成so文件，以便多次引用。由于编译器在编译时并不能知道所有被引用的地方，所以同时会打入了很多不相关的代码。
+如果项目中引用library的函数较多时，用动态方式可以避免多次拷贝......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by xiuyuantech on
+            2024-06-19
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#JNI" title="JNI">JNI</a>
+            
+        </div>
+    
+
+</div>
+<hr>
 
 <div class="post-preview">
 
@@ -590,44 +629,6 @@ Eve......
 </div>
 <hr>
 
-<div class="post-preview">
-
-    <a href="/2020/06/28/how-to-customize-view/">
-        <h2 class="post-title">
-            [Android] How to Customize View
-        </h2>
-        <h3 class="post-subtitle">
-            Customize View，Animation UI Development
-        </h3>
-        <div class="post-content-preview">
-            
-作为Android开发工程师一定会遇到一些特殊或者酷炫UI需求，当系统提供的View无法实现时，
-我们可以通过自定义View来实现。自定义View大概可以分为组合View、继承系统已有View组件
-(例如TextView)和继承View或者ViewGroup三大类。
-
-先看下实现的效果：
-
-想要实现自定义View需要了解哪些东西呢，请下面
-生命周期
-（1）Constructors()
-Vi......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by xiuyuantech on
-            2020-06-28
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Android" title="Android">Android</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
 
 
 <!-- Pager -->
@@ -668,7 +669,7 @@ Vi......
             
         
             
-            <a href="/tags/#JNI" title="JNI" rel="1">JNI</a>
+            <a href="/tags/#JNI" title="JNI" rel="2">JNI</a>
             
         
             
@@ -676,11 +677,11 @@ Vi......
             
         
             
-            <a href="/tags/#Blog" title="Blog" rel="1">Blog</a>
+            <a href="/tags/#VPS" title="VPS" rel="1">VPS</a>
             
         
             
-            <a href="/tags/#VPS" title="VPS" rel="1">VPS</a>
+            <a href="/tags/#Blog" title="Blog" rel="1">Blog</a>
             
         
             
@@ -759,6 +760,10 @@ Vi......
     <ul>
       
         <li>
+          <a href="/2024/06/19/hexo-theme-beantech/android-jni-optimise/">[JNI] NDK SO Package Optimization</a>
+        </li>
+      
+        <li>
           <a href="/2024/01/22/springboot3-kotlin-learn/">[SpringBoot] SpringBoot3 + Kotlin 踩坑指南</a>
         </li>
       
@@ -772,10 +777,6 @@ Vi......
       
         <li>
           <a href="/2022/05/15/android-okdownload/">[Android] Okdownload 下载框架学习</a>
-        </li>
-      
-        <li>
-          <a href="/2022/04/27/android-developing-guideline/">[Android] Android Developing Guideline</a>
         </li>
       
     </ul>
