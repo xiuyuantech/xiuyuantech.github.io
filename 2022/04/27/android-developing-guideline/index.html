@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="xiuyuantech">
+    <meta name="keyword" content>
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          [Android] Android Developing Guideline - xiuyuantech
+        
+    </title>
+
+    <link rel="canonical" href="https://xiuyuantech.github.io/2022/04/27/android-developing-guideline/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+
+    <!-- Google Adsense -->
+
+    
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-5651453694104340",
+             enable_page_level_ads: true
+             });
+    </script>
+    <!-- 获取ip <script async src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>  -->
+
+
+
+    
+
+</head>
+
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('')
+            /*post*/
+        
+    }
+    
+    #signature{
+        background-image: url('/img/signature/BeanTechSign-white.png');
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Android" title="Android">Android</a>
+                            
+                        </div>
+                        <h1>[Android] Android Developing Guideline</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by xiuyuantech on
+                            2022-04-27
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">XiuYuanTech</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/vnews/">vnews home</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <blockquote>
+<p>Google官方Java代码风格参考规范<a href="https://google.github.io/styleguide" target="_blank" rel="noopener">链接</a>， 中文翻译参考版<a href="https://hawstein.com/2014/01/20/google-java-style" target="_blank" rel="noopener">链接</a>。</p>
+</blockquote>
+<html lang="en"><head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Cache-Control" content="max-age=36000">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="xiuyuan">
+    <meta name="keyword" content="XiuYuan, XiuYuan Android博客, Android源码, Flutter博客，Flutter源码">
+    <meta name="description" content="XiuYuan, XiuYuan Android博客, Android源码, Flutter博客，Flutter源码">
+    <meta name="baidu-site-verification" content="LToTaY8RGk">
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <title>Android开发规范 - XiuYuan的技术博客</title>
+    <link rel="canonical" href="http://gityuan.com/2015/08/10/android-arch-coding-style/">
+     <!-- Bootstrap Core CSS -->
+        <style class="anchorjs"></style><link rel="stylesheet" href="/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+    <!-- Custom Fonts -->
+    <!-- change font-awesome CDN to qiniu -->
+    <link href="http://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- add highlight -->
+    <link rel="stylesheet" href="/css/androidstudio.css">
+		<script src="/js/jquery.nav.js"></script><script src="http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script><script src="https://hm.baidu.com/hm.js?3b1c71bfd9641a47009f87240c135d75"></script><script src="http://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js"></script><script type="text/javascript" src="/js/highlight.pack.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart>
+<!-- Post Content -->
+<article>
+    <div class="container" style="overflow:hidden">
+        <div class="row">
+<h2 id="命名规范">命名规范<a class="anchorjs-link " href="#命名规范" aria-label="Anchor link for: 命名规范" data-anchorjs-icon="#" style="opacity: 1; padding-left: 0.375em;"></a></h2>
+<h3 id="包命名">包命名<a class="anchorjs-link " href="#包命名" aria-label="Anchor link for: 1 包命名" data-anchorjs-icon="#" style="opacity: 1; padding-left: 0.375em;"></a></h3>
+<p>规则：包名全部小写，采用反域名命名规则，一级包名是顶级域名，通常为com, edu, gov, net, org等，二级包名，通过为公司名或部门名或者个人名，三级包名通常为项目名，四级包名为模块名或者层级名。以下是从层级包名来划分android项目中采用的包划分结构</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs objectivec">com.domain.xxx.activity  <span class="hljs-comment">//用户界面中所有的Activity类</span>
+com.domain.xxx.fragment  <span class="hljs-comment">//界面中所有的Fragment类</span>
+com.domain.xxx.adapter   <span class="hljs-comment">//界面中所有的Adapter类（适配器类）</span>
+com.domain.xxx.view      <span class="hljs-comment">//自定义的View类</span>
+com.domain.xxx.service   <span class="hljs-comment">//后台Service类</span>
+com.domain.xxx.util      <span class="hljs-comment">//项目中常用的公共工具类（网络, IO, 日志等）</span>
+com.domain.xxx.bean      <span class="hljs-comment">//实体模型类</span>
+com.domain.xxx.db        <span class="hljs-comment">//数据库操作相关的类</span>
+com.domain.xxx.config    <span class="hljs-comment">//所有的配置相关的类</span>
+com.domain.xxx.api       <span class="hljs-comment">//网络api接口相关de 类</span>
+</code></pre></div></div>
+<h3 id="类命名">类命名<a class="anchorjs-link " href="#类命名" aria-label="Anchor link for: 2 类命名" data-anchorjs-icon="#" style="opacity: 1; padding-left: 0.375em;"></a></h3>
+<p>规则：采用<strong>大驼峰式</strong>命名法，首字母大写，尽量避免缩写，除非该缩写是众所周知的，比如HTML，URL,如果类名称包含单词缩写，则单词缩写的每个字母均应大写。以下列举的是android中几种最为常用的类的命名。</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LoginActivity</span></span>;     <span class="hljs-comment">//activity类</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DiscoverFragment</span></span>;  <span class="hljs-comment">//fragment类</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AnalysisService</span></span>;   <span class="hljs-comment">//service类</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">WakeupRankAdapter</span></span>; <span class="hljs-comment">//adapter类</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">StringUtils</span></span>;       <span class="hljs-comment">//工具类</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserBean</span></span>;          <span class="hljs-comment">//模型类</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ApiImpl</span></span>;           <span class="hljs-comment">//接口实现类</span>
+</code></pre></div></div>
+<h3 id="接口命名">接口命名<a class="anchorjs-link " href="#接口命名" aria-label="Anchor link for: 3 接口命名" data-anchorjs-icon="#" style="opacity: 1; padding-left: 0.375em;"></a></h3>
+<p>规则：命名规则与类命名一样采用<strong>大驼峰式</strong>命名法，首字母大写，多以able, ible, er结尾</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Comparable</span></span>;
+<span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Accessible</span></span>;
+<span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">OnClickListener</span></span>;
+</code></pre></div></div>
+<h3 id="方法">方法<a class="anchorjs-link " href="#方法" aria-label="Anchor link for: 4 方法" data-anchorjs-icon="#" style="opacity: 1; padding-left: 0.375em;"></a></h3>
+<p>规则：采用<strong>小驼峰</strong>命名法，首字母小写，方法名采用动词或动名词结构。方法的命名应该与方法的真正行为具有对应关系，下面给出一些方法名的动词前缀标示的建议。</p>
+<div class="table-responsive"><table class="table">
+  <thead>
+    <tr>
+      <th>方法名</th>
+      <th style="text-align: left">描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>getXX()</td>
+      <td style="text-align: left">获取某个属性的返回值</td>
+    </tr>
+    <tr>
+      <td>setXX()</td>
+      <td style="text-align: left">设置某个属性值</td>
+    </tr>
+    <tr>
+      <td>initXX()</td>
+      <td style="text-align: left">初始化方法，如初始化布局initView()</td>
+    </tr>
+    <tr>
+      <td>isXX()</td>
+      <td style="text-align: left">判断是否true的方法；</td>
+    </tr>
+    <tr>
+      <td>checkXX()</td>
+      <td style="text-align: left">与isXX意义等价</td>
+    </tr>
+    <tr>
+      <td>processXX()</td>
+      <td style="text-align: left">处理数据</td>
+    </tr>
+    <tr>
+      <td>updateXX()</td>
+      <td style="text-align: left">更新数据</td>
+    </tr>
+    <tr>
+      <td>saveXX()</td>
+      <td style="text-align: left">保存数据</td>
+    </tr>
+    <tr>
+      <td>addXX()</td>
+      <td style="text-align: left">添加数据</td>
+    </tr>
+    <tr>
+      <td>deleteXX()</td>
+      <td style="text-align: left">删除数据</td>
+    </tr>
+    <tr>
+      <td>resetXX()</td>
+      <td style="text-align: left">重置数据</td>
+    </tr>
+    <tr>
+      <td>clearXX()</td>
+      <td style="text-align: left">清除数据</td>
+    </tr>
+    <tr>
+      <td>removeXX()</td>
+      <td style="text-align: left">移除数据或者视图等，如removeView();</td>
+    </tr>
+    <tr>
+      <td>drawXX()</td>
+      <td style="text-align: left">绘制数据或者视图</td>
+    </tr>
+  </tbody>
+</table></div>
+<h3 id="变量">变量<a class="anchorjs-link " href="#变量" aria-label="Anchor link for: 5 变量" data-anchorjs-icon="#" style="opacity: 1; padding-left: 0.375em;"></a></h3>
+<p>规则：采用<strong>小驼峰</strong>命名法，首字母小写。变量名应简短且能描述其用途，尽量避免拼音，无意义地缩写。除非是临时变量，否则不建议使用单个字符的变量名，如i, j, k。对于变量命名，还有一种风格是google的以字母m为前缀（m为member缩写），在android 源码中随处可见。</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> userName;  <span class="hljs-comment">//java的一般性风格</span>
+<span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> mUserName; <span class="hljs-comment">//google的成员变量风格，m为member的缩写</span>
+</code></pre></div></div>
+<h3 id="常量">常量<a class="anchorjs-link " href="#常量" aria-label="Anchor link for: 6 常量" data-anchorjs-icon="#" style="opacity: 1; padding-left: 0.375em;"></a></h3>
+<p>规则：常量使用<strong>全大写字母</strong>加下划线的方式命名。</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> TAG= <span class="hljs-string">"tag"</span>;
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> START_CLASS_NOT_FOUND = -<span class="hljs-number">2</span>;
+</code></pre></div></div>
+<hr>
+<p><strong>下面介绍的与android关系更加紧密：</strong></p>
+<h3 id="控件变量名">控件变量名<a class="anchorjs-link " href="#控件变量名" aria-label="Anchor link for: 7 控件变量名" data-anchorjs-icon="#" style="opacity: 1; padding-left: 0.375em;"></a></h3>
+<p>规则：首先需要满足第5条变量的规则，
+模式：逻辑名 + view缩写</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs nginx"><span class="hljs-attribute">Button</span> sendNewsBtn;
+<span class="hljs-attribute">TextView</span> passwordTxt;
+</code></pre></div></div>
+<h3 id="控件id">控件id<a class="anchorjs-link " href="#控件id" aria-label="Anchor link for: 8 控件id" data-anchorjs-icon="#" style="opacity: 1; padding-left: 0.375em;"></a></h3>
+<p>规则：view缩写_模块名_逻辑名</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs objectivec">android:<span class="hljs-keyword">id</span>=<span class="hljs-string">"@+id/btn_news_send"</span>  <span class="hljs-comment">//样例</span>
+</code></pre></div></div>
+<p>view缩写如下：</p>
+<div class="table-responsive"><table class="table">
+  <thead>
+    <tr>
+      <th>View</th>
+      <th style="text-align: left">缩写</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>TextView</td>
+      <td style="text-align: left">txt</td>
+    </tr>
+    <tr>
+      <td>EditText</td>
+      <td style="text-align: left">edit</td>
+    </tr>
+    <tr>
+      <td>Button</td>
+      <td style="text-align: left">btn</td>
+    </tr>
+    <tr>
+      <td>ImageButton</td>
+      <td style="text-align: left">ibtn</td>
+    </tr>
+    <tr>
+      <td>ImageView</td>
+      <td style="text-align: left">img</td>
+    </tr>
+    <tr>
+      <td>ListView</td>
+      <td style="text-align: left">lv</td>
+    </tr>
+    <tr>
+      <td>RadioGroup</td>
+      <td style="text-align: left">rgroup</td>
+    </tr>
+    <tr>
+      <td>RadioButton</td>
+      <td style="text-align: left">rbtn</td>
+    </tr>
+    <tr>
+      <td>ProgressBar</td>
+      <td style="text-align: left">rbar</td>
+    </tr>
+    <tr>
+      <td>SeekBar</td>
+      <td style="text-align: left">seek</td>
+    </tr>
+    <tr>
+      <td>CheckBox</td>
+      <td style="text-align: left">cb</td>
+    </tr>
+    <tr>
+      <td>Spinner</td>
+      <td style="text-align: left">spinner</td>
+    </tr>
+    <tr>
+      <td>TableLayout</td>
+      <td style="text-align: left">table</td>
+    </tr>
+    <tr>
+      <td>TableRow</td>
+      <td style="text-align: left">row</td>
+    </tr>
+    <tr>
+      <td>LinearLayout</td>
+      <td style="text-align: left">ll</td>
+    </tr>
+    <tr>
+      <td>RelativeLayout</td>
+      <td style="text-align: left">rl</td>
+    </tr>
+    <tr>
+      <td>ScrollView</td>
+      <td style="text-align: left">scroll</td>
+    </tr>
+    <tr>
+      <td>SearchView</td>
+      <td style="text-align: left">search</td>
+    </tr>
+    <tr>
+      <td>TabHost</td>
+      <td style="text-align: left">thost</td>
+    </tr>
+    <tr>
+      <td>TabWidget</td>
+      <td style="text-align: left">twidget</td>
+    </tr>
+  </tbody>
+</table></div>
+<h3 id="资源文件名">资源文件名<a class="anchorjs-link " href="#资源文件名" aria-label="Anchor link for: 9 资源文件名" data-anchorjs-icon="#" style="opacity: 1; padding-left: 0.375em;"></a></h3>
+<h4 id="layout的文件命名">layout的文件命名<a class="anchorjs-link " href="#layout的文件命名" aria-label="Anchor link for: 91 layout的文件命名" data-anchorjs-icon="#" style="opacity: 1; padding-left: 0.375em;"></a></h4>
+<p>规则：全部小写，采用下划线命名法。layout文件命名：组件类型_{模块_}功能.xml</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs objectivec">activity_news_title.xml <span class="hljs-comment">//样例</span>
+</code></pre></div></div>
+<div class="table-responsive"><table class="table">
+  <thead>
+    <tr>
+      <th>命名规范</th>
+      <th style="text-align: left">组件类型</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>activity_{模块_}功能</td>
+      <td style="text-align: left">Activity命名格式</td>
+    </tr>
+    <tr>
+      <td>fragment_{模块_}功能</td>
+      <td style="text-align: left">Fragment命名格式</td>
+    </tr>
+    <tr>
+      <td>dialog_{模块_}功能</td>
+      <td style="text-align: left">Dialog命名格式</td>
+    </tr>
+    <tr>
+      <td>popup_{模块_}功能</td>
+      <td style="text-align: left">PopupWindow命名格式</td>
+    </tr>
+    <tr>
+      <td>item_list_{模块_}功能</td>
+      <td style="text-align: left">ListView的item命名格式</td>
+    </tr>
+    <tr>
+      <td>item_grid_{模块_}功能</td>
+      <td style="text-align: left">GridView的item命名格式</td>
+    </tr>
+  </tbody>
+</table></div>
+<h4 id="drawable的文件命名">drawable的文件命名<a class="anchorjs-link " href="#drawable的文件命名" aria-label="Anchor link for: 92  drawable的文件命名" data-anchorjs-icon="#" style="opacity: 1; padding-left: 0.375em;"></a></h4>
+<p>模式：前缀{_控件}{_范围}{_后缀}，控件、范围、后缀可选</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs objectivec">bg_login_pressed.png <span class="hljs-comment">//样例</span>
+</code></pre></div></div>
+<div class="table-responsive"><table class="table">
+  <thead>
+    <tr>
+      <th>drawable</th>
+      <th style="text-align: left">命名细则</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>图标类</td>
+      <td style="text-align: left">添加ic前缀</td>
+    </tr>
+    <tr>
+      <td>背景类</td>
+      <td style="text-align: left">添加bg前缀</td>
+    </tr>
+    <tr>
+      <td>分隔类</td>
+      <td style="text-align: left">添加div前缀</td>
+    </tr>
+    <tr>
+      <td>默认类</td>
+      <td style="text-align: left">添加def前缀</td>
+    </tr>
+    <tr>
+      <td>区分状态时，默认状态</td>
+      <td style="text-align: left">添加normal后缀</td>
+    </tr>
+    <tr>
+      <td>区分状态时，按下时的状态</td>
+      <td style="text-align: left">添加pressed后缀</td>
+    </tr>
+    <tr>
+      <td>区分状态时，选中时的状态</td>
+      <td style="text-align: left">添加selected后缀</td>
+    </tr>
+    <tr>
+      <td>区分状态时，不可用时的状态</td>
+      <td style="text-align: left">添加disable后缀</td>
+    </tr>
+    <tr>
+      <td>多种状态的</td>
+      <td style="text-align: left">添加selector后缀</td>
+    </tr>
+  </tbody>
+</table></div>
+<h4 id="动画的文件命名">动画的文件命名<a class="anchorjs-link " href="#动画的文件命名" aria-label="Anchor link for: 93 动画的文件命名" data-anchorjs-icon="#" style="opacity: 1; padding-left: 0.375em;"></a></h4>
+<p>规则：{范围_}动画类型_动画方向。</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs objectivec">login_fade_in.xml <span class="hljs-comment">//样例</span>
+</code></pre></div></div>
+<div class="table-responsive"><table class="table">
+  <thead>
+    <tr>
+      <th>动画命名</th>
+      <th style="text-align: left">描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>fade_in</td>
+      <td style="text-align: left">淡入</td>
+    </tr>
+    <tr>
+      <td>fade_out</td>
+      <td style="text-align: left">淡出</td>
+    </tr>
+    <tr>
+      <td>push_down_in</td>
+      <td style="text-align: left">从下方推入</td>
+    </tr>
+    <tr>
+      <td>push_down_out</td>
+      <td style="text-align: left">从下方推出</td>
+    </tr>
+    <tr>
+      <td>slide_in_from_top</td>
+      <td style="text-align: left">从头部滑动进入</td>
+    </tr>
+    <tr>
+      <td>zoom_enter</td>
+      <td style="text-align: left">变形进入</td>
+    </tr>
+    <tr>
+      <td>shrink_to_middle</td>
+      <td style="text-align: left">中间缩小</td>
+    </tr>
+  </tbody>
+</table></div>
+<h3 id="资源内的name命名">资源内的name命名<a class="anchorjs-link " href="#资源内的name命名" aria-label="Anchor link for: 10 资源内的name命名" data-anchorjs-icon="#" style="opacity: 1; padding-left: 0.375em;"></a></h3>
+<h4 id="strings.xml">strings.xml<a class="anchorjs-link " href="#strings.xml" aria-label="Anchor link for: 101 strings.xml" data-anchorjs-icon="#" style="opacity: 1; padding-left: 0.375em;"></a></h4>
+<p>模式：activity名_{范围_}逻辑名</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs cpp">&lt;<span class="hljs-built_in">string</span> name=<span class="hljs-string">"login_username"</span>&gt;用户名&lt;/<span class="hljs-built_in">string</span>&gt; <span class="hljs-comment">//样例</span>
+</code></pre></div></div>
+<h4 id="colors.xml">colors.xml<a class="anchorjs-link " href="#colors.xml" aria-label="Anchor link for: 102 colors.xml" data-anchorjs-icon="#" style="opacity: 1; padding-left: 0.375em;"></a></h4>
+<p>模式：前缀{_控件}{_范围}{_后缀}， 控件、范围、后缀可选，</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">color</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"bg_login"</span>&gt;</span>#FFFFFF<span class="hljs-tag">&lt;/<span class="hljs-name">color</span>&gt;</span> //样例
+</code></pre></div></div>
+<div class="table-responsive"><table class="table">
+  <thead>
+    <tr>
+      <th>colors</th>
+      <th style="text-align: left">命名细则</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>背景颜色</td>
+      <td style="text-align: left">添加bg前缀</td>
+    </tr>
+    <tr>
+      <td>文本颜色</td>
+      <td style="text-align: left">添加text前缀</td>
+    </tr>
+    <tr>
+      <td>分割线颜色</td>
+      <td style="text-align: left">添加div前缀</td>
+    </tr>
+    <tr>
+      <td>区分状态时，默认状态的颜色</td>
+      <td style="text-align: left">添加normal后缀</td>
+    </tr>
+    <tr>
+      <td>区分状态时，按下时的颜色</td>
+      <td style="text-align: left">添加pressed后缀</td>
+    </tr>
+    <tr>
+      <td>区分状态时，选中时的颜色</td>
+      <td style="text-align: left">添加selected后缀</td>
+    </tr>
+    <tr>
+      <td>区分状态时，不可用时的颜色</td>
+      <td style="text-align: left">添加disable后缀</td>
+    </tr>
+  </tbody>
+</table></div>
+<hr>
+<h2 id="代码风格">代码风格<a class="anchorjs-link " href="#代码风格" aria-label="Anchor link for: 代码风格" data-anchorjs-icon="#" style="opacity: 1; padding-left: 0.375em;"></a></h2>
+<h3 id="原则">原则<a class="anchorjs-link " href="#原则" aria-label="Anchor link for: 原则" data-anchorjs-icon="#" style="opacity: 1; padding-left: 0.375em;"></a></h3>
+<ul>
+  <li>
+    <p>不要直接忽略Exceptions</p>
+    <p>例如下面的示例，永远不要这样做，无法预测未来可能的变化</p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs cs">  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setServerPort</span>(<span class="hljs-params">String <span class="hljs-keyword">value</span></span>) </span>{
+      <span class="hljs-keyword">try</span> {
+          serverPort = Integer.parseInt(<span class="hljs-keyword">value</span>);
+      } <span class="hljs-keyword">catch</span> (NumberFormatException e) { }
+}
+</code></pre></div>    </div>
+    <p>正确的做法应该如下：</p>
+     <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs cs">  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setServerPort</span>(<span class="hljs-params">String <span class="hljs-keyword">value</span></span>) throws ConfigurationException </span>{
+      <span class="hljs-keyword">try</span> {
+          serverPort = Integer.parseInt(<span class="hljs-keyword">value</span>);
+      } <span class="hljs-keyword">catch</span> (NumberFormatException e) {
+          <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ConfigurationException(<span class="hljs-string">"Port "</span> + <span class="hljs-keyword">value</span> + <span class="hljs-string">" is not valid."</span>);
+      }
+}
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>import采用完全限定名</p>
+    <p>不提倡：</p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs nginx">  <span class="hljs-attribute">import</span> <span class="hljs-regexp">foo.*</span>;
+</code></pre></div>    </div>
+    <p>正确做法：</p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs css">  <span class="hljs-selector-tag">import</span> <span class="hljs-selector-tag">foo</span><span class="hljs-selector-class">.Bar</span>;
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>括号风格：</p>
+    <p>不提倡：</p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs objectivec">  <span class="hljs-keyword">if</span> (condition)
+      body();
+</code></pre></div>    </div>
+    <p>正确做法：</p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs objectivec">  <span class="hljs-keyword">if</span> (condition) {
+      body();
+}
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>使用空格来缩进</p>
+    <p>使用4个空格缩进来代表块，而绝不使用tab键；
+使用8个空格来代表行包裹，包括函数调用。</p>
+  </li>
+</ul>
+<h3 id="注释">注释<a class="anchorjs-link " href="#注释" aria-label="Anchor link for: 注释" data-anchorjs-icon="#" style="opacity: 1; padding-left: 0.375em;"></a></h3>
+<ul>
+  <li>
+    <p>1.类注释，每个类完成后应该有作者姓名和联系方式的注释，对自己的代码负责</p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs php">  <span class="hljs-comment">/**
+    * 作者: xiuyuan
+    * 时间: 13-12-20 19：25
+    * 描述: 用户登录
+    * 联系方式: xiuyuan<span class="hljs-doctag">@gmail</span>.com
+  */</span>
+  <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Login</span></span>{
+  ...
+  }
+  </code></pre></div>    </div>
+  </li>
+  <li>
+    <p>2.方法注释，每一个成员方法（包括自定义成员方法、覆盖方法、属性方法）的方法头都必须做方法头注释</p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs objectivec">  <span class="hljs-comment">/*
+    * 方法名：
+    * 功    能：
+    * 参    数：
+    * 返回值：无
+  */</span>
+  </code></pre></div>    </div>
+  </li>
+  <li>
+    <p>3.快注释</p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs java">  <span class="hljs-keyword">private</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MessageObserver</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ContentObserver</span> </span>{
+      <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MessageObserver</span><span class="hljs-params">()</span> </span>{
+          <span class="hljs-keyword">super</span>(mainHandler);
+      }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onChange</span><span class="hljs-params">(<span class="hljs-keyword">boolean</span> hasChanged)</span> </span>{
+       <span class="hljs-comment">// 发送更新UI的消息</span>
+       mHandler.sendMessage(mHandler.obtainMessage(<span class="hljs-number">0x2</span>));
+      }
+}
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>4.资源文件注释</p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs xml">  <span class="hljs-comment">&lt;!--红色  --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">color</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"red"</span>&gt;</span>#FF0000<span class="hljs-tag">&lt;/<span class="hljs-name">color</span>&gt;</span>
+<span class="hljs-comment">&lt;!--深蓝色  --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">color</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"dark_blue"</span>&gt;</span>#0079FF<span class="hljs-tag">&lt;/<span class="hljs-name">color</span>&gt;</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+        </div>
+    </div>
+</article>
+</body></html>
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2022/05/15/android-okdownload/" data-toggle="tooltip" data-placement="top" title="[Android] Okdownload 下载框架学习">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2021/12/24/hexo_blog_migration/" data-toggle="tooltip" data-placement="top" title="[Hexo] Hux Blog 迁移至新电脑">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#命名规范"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">命名规范</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#包命名"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">包命名</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#类命名"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">类命名</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#接口命名"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">接口命名</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#方法"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">方法</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#变量"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">变量</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#常量"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">常量</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#控件变量名"><span class="toc-nav-number">1.7.</span> <span class="toc-nav-text">控件变量名</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#控件id"><span class="toc-nav-number">1.8.</span> <span class="toc-nav-text">控件id</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#资源文件名"><span class="toc-nav-number">1.9.</span> <span class="toc-nav-text">资源文件名</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#layout的文件命名"><span class="toc-nav-number">1.9.1.</span> <span class="toc-nav-text">layout的文件命名</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#drawable的文件命名"><span class="toc-nav-number">1.9.2.</span> <span class="toc-nav-text">drawable的文件命名</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#动画的文件命名"><span class="toc-nav-number">1.9.3.</span> <span class="toc-nav-text">动画的文件命名</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#资源内的name命名"><span class="toc-nav-number">1.10.</span> <span class="toc-nav-text">资源内的name命名</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#strings.xml"><span class="toc-nav-number">1.10.1.</span> <span class="toc-nav-text">strings.xml</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#colors.xml"><span class="toc-nav-number">1.10.2.</span> <span class="toc-nav-text">colors.xml</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#代码风格"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">代码风格</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#原则"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">原则</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#注释"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">注释</span></a></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Android" title="Android">Android</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://us.pingpongx.com/external/inviteReg.htm?inviteCode=7nEFBj032" target="_blank">Overseas Collection</a></li>
+                    
+                        <li><a href="https://www.vultr.com/?ref=8600728-6G" target="_blank">VPS Vutlr</a></li>
+                    
+                        <li><a href="/vnews/index.html" target="_blank">Vnews Blog</a></li>
+                    
+                        <li><a href="http://blog.kaijun.rocks" target="_blank">Kaijun&#39;s Blog</a></li>
+                    
+                        <li><a href="http://huangxuan.me" target="_blank">Hux Blog</a></li>
+                    
+                        <li><a href="#" target="_blank">It Helps SEO</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'right',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+     <div class="row" style="margin-top:-50px;float:right;font-size:10px;margin-left:30px;padding-right:30px;">
+            
+            <!-- 不蒜子统计 -->
+            <span id="busuanzi_container_site_pv">
+            总访问量：<span id="busuanzi_value_site_pv">0</span>次
+            </span>
+            <span>|</span>
+            <span id="busuanzi_container_site_uv">
+            访客数：<span id="busuanzi_value_site_uv">0</span>人
+            </span>
+            
+             <!-- 不蒜子统计 -->
+             <span>|</span>
+              <span id="busuanzi_container_page_pv" style='display:none'">
+              <i class="icon-smile icon"></i>本文阅读数：<span id="busuanzi_value_page_pv">0</span>次
+              </span>
+            
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            
+     </div>
+        <div class="row">
+           <!-- horizontal_ad/bottom_ad -->
+           <ul class="list-inline text-center">
+            
+                <ins class="adsbygoogle"  style="display:block" data-ad-client="ca-pub-5651453694104340"  data-ad-slot="3310538124"  data-ad-format="auto" data-full-width-responsive="true"></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+            
+            </ul>
+        </div>
+        <br><br>
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/xiuyuantech">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://www.linkedin.com/in/xiuyuantech">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                </br>
+                <ul class="list-inline text-center">
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/geekvideo_release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Clear" src="/img/ic_geekvideo_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/clear_googleplay_1.5.0_0530-1704_release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Clear" src="/img/ic_clear_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/videoeditor-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="VideoEditor" src="/img/ic_videoclip_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/screenrecoder-playstoreDonate-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="ScreenRecoder" src="/img/ic_recoder_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/vault-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Vault" src="/img/ic_vault_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/accountbook-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="AccountBook" src="/img/ic_book_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/starwars-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Star Wars" src="/img/ic_plane_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/cardsolitaire-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Solitaire" src="/img/ic_card_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; xiuyuantech 2025 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Ported by <a href="https://xiuyuantech.github.io">XiuYuanTech</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;margin-right: -36px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="/star_xiuyuantech_on_github.html?user=xiuyuantech&repo=&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://xiuyuantech.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-165334855-1';
+    var _gaDomain = 'xiuyuantech.github.io';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- async load function -->
+
+<script>
+
+    function async(u, c) {
+
+      var d = document, t = 'script',
+
+          o = d.createElement(t),
+
+          s = d.getElementsByTagName(t)[0];
+
+      o.src = u;
+
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+
+      s.parentNode.insertBefore(o, s);
+
+    }
+
+</script>
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="https://xiuyuantech.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+
+<script type="text/javascript">
+  function adLoaded() {
+      var in_article_contaner = document.getElementById('in-article-ad');
+      if(in_article_contaner) {
+            // here you can make the height, I delete it first, then I make it again
+            console.log("in_article_contaner");
+            //in_article_contaner.innerHTML=``;
+      }
+      var square_contaner = document.getElementById('square-ad');
+      if(square_contaner){
+         console.log("square_contaner");
+         //square_contaner.innerHTML=``;
+      }
+  };
+
+  $(document).ready(function () {
+                try{
+                  //adLoaded();
+                }catch(err){
+                  onError();
+                }});
+
+</script>
+
+<script>
+function isSameDay(timeA,timeB) {
+   let dateA = new Date(timeA);
+   let dateB = new Date(timeB);
+   return (dateA.setHours(0, 0, 0, 0) == dateB.setHours(0, 0, 0, 0));
+   }
+   function CheckIsNotNullOrEmpty(value) {
+                //正则表达式用于判斷字符串是否全部由空格或换行符组成
+                 var reg = /^\s*$/
+                 //返回值为true表示不是空字符串
+                 return (value != null && value != undefined && !reg.test(value));
+   }
+   <!-- js 异常时不显示 -->
+   function onError(){
+        $("ins.adsbygoogle[data-ad-slot]").each(function(index,element){
+           $(element).remove();
+           });
+   }
+    <!-- 单个点击事件 -->
+    function bindClick(element,countKeyPre) {
+        $(element).click(function(){
+          console.log("dayKey：" + countKeyPre);
+          var count =  window.localStorage.countKeyPre;
+          console.log("count get： "+count);
+          if(CheckIsNotNullOrEmpty(count)){
+             count++;
+             console.log("count++： "+count);
+             window.localStorage.countKeyPre = count;
+             if(count >= 4){
+              console.log("count： "+count);
+              $(element).remove();
+              onError();
+              }
+          } else {
+            window.localStorage.countKeyPre = 0;
+          }
+          });
+
+        }
+        <!-- js 初始化 Ad  -->
+        function initAd(ip){
+        if(CheckIsNotNullOrEmpty(ip)){
+                //alert("not null ip:  "+ ip);
+                $("ins.adsbygoogle[data-ad-slot]").each(function(index,element){
+                            /*var data_ad_slot = $(element).attr("data-ad-slot");
+                            console.log("data_ad_slot：" + data_ad_slot);
+                            var hasAd = CheckIsNotNullOrEmpty(data_ad_slot);
+                            console.log("hasAd：" + hasAd);*/
+                            //if（hasAd){
+                               //console.log("not null data_ad_slot：" + data_ad_slot);
+                               var dayKeyPre = ip +"_day";
+                               var countKeyPre = ip +"_count";
+                               console.log("dayKey：" + dayKeyPre);
+                               console.log("dayKeyPre：" + window.localStorage.dayKeyPre);
+                               bindClick(element,countKeyPre);
+                               console.log("countKeyPre：" + countKeyPre);
+                               console.log("countKeyPre：" + window.localStorage.countKeyPre);
+                               var nowStr =  new Date().toLocaleDateString();
+                               var notSame = CheckIsNotNullOrEmpty(window.localStorage.dayKeyPre) && !isSameDay(window.localStorage.dayKeyPre,nowStr);
+                               console.log("同一天：" +  !notSame);
+                               if(notSame){
+                                window.localStorage.dayKeyPre = nowStr;
+                                window.localStorage.countKeyPre = 0;
+                                console.log("重置成功");
+                                }
+                                   if( CheckIsNotNullOrEmpty(window.localStorage.dayKeyPre)){
+                                      if(window.localStorage.countKeyPre >= 4){
+                                         $(element).remove();
+                                      }
+                                   } else {
+                                      window.localStorage.dayKeyPre = nowStr;
+                                    }
+                              //}
+                            });
+                        return;
+                    }
+                        onError();
+                 }
+
+                          $(document).ready(function () {
+                          try{
+                            //$.getJSON("https://api.ipify.org/?format=json", function(e) {
+                            // var ip = e.ip;
+                            //initAd(ip);
+                             //});
+                          }catch(err){
+                            onError();
+                          }});
+</script>
+
+
+
+</body>
+
+</html>

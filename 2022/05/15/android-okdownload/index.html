@@ -1,0 +1,1578 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="xiuyuantech">
+    <meta name="keyword" content>
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          [Android] Okdownload 下载框架学习 - xiuyuantech
+        
+    </title>
+
+    <link rel="canonical" href="https://xiuyuantech.github.io/2022/05/15/android-okdownload/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+
+    <!-- Google Adsense -->
+
+    
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-5651453694104340",
+             enable_page_level_ads: true
+             });
+    </script>
+    <!-- 获取ip <script async src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>  -->
+
+
+
+    
+
+</head>
+
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('')
+            /*post*/
+        
+    }
+    
+    #signature{
+        background-image: url('/img/signature/BeanTechSign-white.png');
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Android" title="Android">Android</a>
+                            
+                        </div>
+                        <h1>[Android] Okdownload 下载框架学习</h1>
+                        <h2 class="subheading">learn opensource okdownload</h2>
+                        <span class="meta">
+                            Posted by xiuyuantech on
+                            2022-05-15
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">XiuYuanTech</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/vnews/">vnews home</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <blockquote>
+<p>OkDownload是一个android下载框架，是FileDownloader的升级版本，也称FileDownloader2；<br>
+是一个支持多线程，多任务，断点续传，可靠，灵活，高性能以及强大的下载引擎。</p>
+<p>对比FileDownloader的优势:</p>
+<ul>
+<li>单元测试覆盖率很高，从而保证框架的可靠性。</li>
+<li>简单的接口设计。</li>
+<li>支持任务优先级。</li>
+<li>Uri文件转存储输出流。</li>
+<li>核心类库更加单一和轻量级。</li>
+<li>更灵活的回调机制和侦听器。</li>
+<li>更灵活地扩展OkDownload的每个部分。</li>
+<li>在不降低性能的情况下，更少的线程可以执行相同的操作。</li>
+<li>文件IO线程池和网络IO线程池分开。</li>
+<li>如果无法从响应头中找到，从URL中获取自动文件名。</li>
+<li>取消和开始是非常有效的，特别是对于大量的任务，有大量的优化。</li>
+</ul>
+</blockquote>
+<div class="postBody">
+                <div id="cnblogs_post_body" class="blogpost-body blogpost-body-html">
+<div id="MathJax_Message" style="display: none"></div><div class="wiz-table-container" style="position: relative; padding: 0"><div class="wiz-table-body"><div class="table-wrapper"></div></div></div>
+<h1 id="基本使用" tid="tid-jFtHZ3">基本使用</h1>
+<p>引入</p>
+<pre highlighted="true" boxid="code-aPYwsm" class="hljs Java code-pre-line"><code-line class="line-numbers-rows"></code-line>implementation <span class="hljs-string">'com.liulishuo.okdownload:okdownload:1.0.5'</span> <span class="hljs-comment">//核心库</span>
+<code-line class="line-numbers-rows"></code-line>implementation <span class="hljs-string">'com.liulishuo.okdownload:sqlite:1.0.5'</span> <span class="hljs-comment">//存储断点信息的数据库</span>
+<code-line class="line-numbers-rows"></code-line>implementation <span class="hljs-string">'com.liulishuo.okdownload:okhttp:1.0.5'</span> <span class="hljs-comment">//提供okhttp连接，如果使用的话，需要引入okhttp网络请求库</span>
+<code-line class="line-numbers-rows"></code-line>implementation <span class="hljs-string">"com.squareup.okhttp3:okhttp:3.10.0"</span></pre></div>
+<p>具体详见官方文档 <a href="https://github.com/lingochamp/okdownload/wiki/Simple-Use-Guideline" rel="noopener" target="_blank">Simple-Use-Guideline</a> 和 <a href="https://github.com/lingochamp/okdownload/wiki/Advanced-Use-Guideline" rel="noopener" target="_blank">Advanced-Use-Guideline</a></p>
+<p>请通过<code>Util.enableConsoleLog()</code>在控制台打印上启用日志，也可以通过<code>Util.setLogger(Logger)</code>设置自己的日志记录器</p>
+<h2 id="开始一个任务" tid="tid-WHbmRr">开始一个任务</h2>
+<pre highlighted="true" boxid="code-tZd5Hp" class="hljs Java code-pre-line"><code-line class="line-numbers-rows"></code-line>DownloadTask task = <span class="hljs-keyword">new</span> DownloadTask.Builder(url, parentFile)
+<code-line class="line-numbers-rows"></code-line>         .setFilename(filename) 
+<code-line class="line-numbers-rows"></code-line>         .setMinIntervalMillisCallbackProcess(<span class="hljs-number">30</span>) <span class="hljs-comment">// 下载进度回调的间隔时间（毫秒）</span>
+<code-line class="line-numbers-rows"></code-line>         .setPassIfAlreadyCompleted(<span class="hljs-keyword">false</span>)<span class="hljs-comment">// 任务过去已完成是否要重新下载</span>
+<code-line class="line-numbers-rows"></code-line>         .setPriority(<span class="hljs-number">10</span>)
+<code-line class="line-numbers-rows"></code-line>         .build();
+<code-line class="line-numbers-rows"></code-line>task.enqueue(listener);<span class="hljs-comment">//异步执行任务</span>
+<code-line class="line-numbers-rows"></code-line>task.cancel();<span class="hljs-comment">// 取消任务</span>
+<code-line class="line-numbers-rows"></code-line>task.execute(listener);<span class="hljs-comment">// 同步执行任务</span>
+<code-line class="line-numbers-rows"></code-line>DownloadTask.enqueue(tasks, listener); <span class="hljs-comment">//同时异步执行多个任务</span></pre></div>
+<h2 id="配置 DownloadTask" tid="tid-RtGphS">配置下载任务</h2>
+<ul>
+<li>setPreAllocateLength(boolean preAllocateLength) //在获取资源长度后，设置是否需要为文件预分配长度</li>
+<li>setConnectionCount(@IntRange(from = 1) int connectionCount) //需要用几个线程来下载文件</li>
+<li>setFilenameFromResponse(@Nullable Boolean filenameFromResponse)//如果没有提供文件名，是否使用服务器地址作为的文件名</li>
+<li>setAutoCallbackToUIThread(boolean autoCallbackToUIThread) //是否在主线程通知调用者</li>
+<li>setMinIntervalMillisCallbackProcess(int minIntervalMillisCallbackProcess) //通知调用者的频率，避免anr</li>
+<li>setHeaderMapFields(Map&lt;String, List<string>&gt; headerMapFields)//设置请求头</string></li>
+<li>addHeader(String key, String value)//追加请求头</li>
+<li>setPriority(int priority)//设置优先级，默认值是0，值越大下载优先级越高</li>
+<li>setReadBufferSize(int readBufferSize)//设置读取缓存区大小，默认4096</li>
+<li>setFlushBufferSize(int flushBufferSize)//设置写入缓存区大小，默认16384</li>
+<li>setSyncBufferSize(int syncBufferSize)//写入到文件的缓冲区大小，默认65536</li>
+<li>setSyncBufferIntervalMillis(int syncBufferIntervalMillis)//写入文件的最小时间间隔</li>
+<li>setFilename(String filename)//设置下载文件名</li>
+<li>setPassIfAlreadyCompleted(boolean passIfAlreadyCompleted)//如果文件已经下载完成，再次发起下载请求时，是否忽略下载，还是从头开始下载</li>
+<li>setWifiRequired(boolean wifiRequired)//只允许wifi下载</li>
+</ul>
+<p>案例</p>
+<pre highlighted="true" boxid="code-FW6wBN" class="hljs Java code-pre-line"><code-line class="line-numbers-rows"></code-line><span class="hljs-function"><span class="hljs-keyword">private</span> DownloadTask <span class="hljs-title">createDownloadTask</span><span class="hljs-params">(ItemInfo itemInfo)</span> </span>{
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> DownloadTask.Builder(itemInfo.url, <span class="hljs-keyword">new</span> File(Utils.PARENT_PATH)) <span class="hljs-comment">//设置下载地址和下载目录，这两个是必须的参数</span>
+<code-line class="line-numbers-rows"></code-line>        .setFilename(itemInfo.pkgName)<span class="hljs-comment">//设置下载文件名，没提供的话先看 response header ，再看 url path(即启用下面那项配置)</span>
+<code-line class="line-numbers-rows"></code-line>        .setFilenameFromResponse(<span class="hljs-keyword">false</span>)<span class="hljs-comment">//是否使用 response header or url path 作为文件名，此时会忽略指定的文件名，默认false</span>
+<code-line class="line-numbers-rows"></code-line>        .setPassIfAlreadyCompleted(<span class="hljs-keyword">true</span>)<span class="hljs-comment">//如果文件已经下载完成，再次下载时，是否忽略下载，默认为true(忽略)，设为false会从头下载</span>
+<code-line class="line-numbers-rows"></code-line>        .setConnectionCount(<span class="hljs-number">1</span>)  <span class="hljs-comment">//需要用几个线程来下载文件，默认根据文件大小确定；如果文件已经 split block，则设置后无效</span>
+<code-line class="line-numbers-rows"></code-line>        .setPreAllocateLength(<span class="hljs-keyword">false</span>) <span class="hljs-comment">//在获取资源长度后，设置是否需要为文件预分配长度，默认false</span>
+<code-line class="line-numbers-rows"></code-line>        .setMinIntervalMillisCallbackProcess(<span class="hljs-number">100</span>) <span class="hljs-comment">//通知调用者的频率，避免anr，默认3000</span>
+<code-line class="line-numbers-rows"></code-line>        .setWifiRequired(<span class="hljs-keyword">false</span>)<span class="hljs-comment">//是否只允许wifi下载，默认为false</span>
+<code-line class="line-numbers-rows"></code-line>        .setAutoCallbackToUIThread(<span class="hljs-keyword">true</span>) <span class="hljs-comment">//是否在主线程通知调用者，默认为true</span>
+<code-line class="line-numbers-rows"></code-line>        <span class="hljs-comment">//.setHeaderMapFields(new HashMap&lt;String, List&lt;String&gt;&gt;())//设置请求头</span>
+<code-line class="line-numbers-rows"></code-line>        <span class="hljs-comment">//.addHeader(String key, String value)//追加请求头</span>
+<code-line class="line-numbers-rows"></code-line>        .setPriority(<span class="hljs-number">0</span>)<span class="hljs-comment">//设置优先级，默认值是0，值越大下载优先级越高</span>
+<code-line class="line-numbers-rows"></code-line>        .setReadBufferSize(<span class="hljs-number">4096</span>)<span class="hljs-comment">//设置读取缓存区大小，默认4096</span>
+<code-line class="line-numbers-rows"></code-line>        .setFlushBufferSize(<span class="hljs-number">16384</span>)<span class="hljs-comment">//设置写入缓存区大小，默认16384</span>
+<code-line class="line-numbers-rows"></code-line>        .setSyncBufferSize(<span class="hljs-number">65536</span>)<span class="hljs-comment">//写入到文件的缓冲区大小，默认65536</span>
+<code-line class="line-numbers-rows"></code-line>        .setSyncBufferIntervalMillis(<span class="hljs-number">2000</span>) <span class="hljs-comment">//写入文件的最小时间间隔，默认2000</span>
+<code-line class="line-numbers-rows"></code-line>        .build();
+<code-line class="line-numbers-rows"></code-line>}</pre>
+<h2 id="任务队列的构建、开始和停止" tid="tid-db3SZE">任务队列的构建、开始和停止</h2>
+<pre highlighted="true" boxid="code-MT5DBJ" class="hljs Java code-pre-line"><code-line class="line-numbers-rows"></code-line>DownloadContext.Builder builder = <span class="hljs-keyword">new</span> DownloadContext.QueueSet()
+<code-line class="line-numbers-rows"></code-line>        .setParentPathFile(parentFile)
+<code-line class="line-numbers-rows"></code-line>        .setMinIntervalMillisCallbackProcess(<span class="hljs-number">150</span>)
+<code-line class="line-numbers-rows"></code-line>        .commit();
+<code-line class="line-numbers-rows"></code-line>builder.bind(url1);
+<code-line class="line-numbers-rows"></code-line>builder.bind(url2).addTag(key, value);
+<code-line class="line-numbers-rows"></code-line>builder.bind(url3).setTag(tag);
+<code-line class="line-numbers-rows"></code-line>builder.setListener(contextListener);
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line>DownloadTask task = <span class="hljs-keyword">new</span> DownloadTask.Builder(url4, parentFile).build();
+<code-line class="line-numbers-rows"></code-line>builder.bindSetTask(task);
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line>DownloadContext context = builder.build();
+<code-line class="line-numbers-rows"></code-line>context.startOnParallel(listener);
+<code-line class="line-numbers-rows"></code-line>context.stop();</pre>
+<h2 id="获取任务状态" tid="tid-2fArtt">获取任务状态</h2>
+<pre highlighted="true" boxid="code-RTfPHB" class="hljs Java code-pre-line"><code-line class="line-numbers-rows"></code-line>Status status = StatusUtil.getStatus(task);
+<code-line class="line-numbers-rows"></code-line>Status status = StatusUtil.getStatus(url, parentPath, <span class="hljs-keyword">null</span>);
+<code-line class="line-numbers-rows"></code-line>Status status = StatusUtil.getStatus(url, parentPath, filename);
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line><span class="hljs-keyword">boolean</span> isCompleted = StatusUtil.isCompleted(task);
+<code-line class="line-numbers-rows"></code-line><span class="hljs-keyword">boolean</span> isCompleted = StatusUtil.isCompleted(url, parentPath, <span class="hljs-keyword">null</span>);
+<code-line class="line-numbers-rows"></code-line><span class="hljs-keyword">boolean</span> isCompleted = StatusUtil.isCompleted(url, parentPath, filename);
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line>Status completedOrUnknown = StatusUtil.isCompletedOrUnknown(task);</pre>
+<h2 id="获取断点信息" tid="tid-cs73pd">获取断点信息</h2>
+<pre highlighted="true" boxid="code-pw8Bma" class="hljs kotlin code-pre-line"><code-line class="line-numbers-rows"></code-line><span class="hljs-comment">// 注意:任务完成后，断点信息将会被删除</span>
+<code-line class="line-numbers-rows"></code-line>BreakpointInfo info = OkDownload.with().breakpointStore().<span class="hljs-keyword">get</span>(id);
+<code-line class="line-numbers-rows"></code-line>BreakpointInfo info = StatusUtil.getCurrentInfo(url, parentPath, <span class="hljs-literal">null</span>);
+<code-line class="line-numbers-rows"></code-line>BreakpointInfo info = StatusUtil.getCurrentInfo(url, parentPath, filename);
+<code-line class="line-numbers-rows"></code-line>BreakpointInfo info = task.getInfo(); <span class="hljs-comment">//断点信息将被缓存在任务对象中，即使任务已经完成了</span></pre>
+<h2 id="设置任务监听" tid="tid-B7Kmhj">设置任务监听</h2>
+<p>可以为任务设置五种不同类型的监听器，同时，也可以给任务和监听器建立1对1、1对多、多对1、多对多的关联。</p>
+<p>项目提供了六种监听供选择：DownloadListener、DownloadListener1、DownloadListener3、DownloadListener3、DownloadListener4、DownloadListener4WithSpeed <br>
+具体流程详见 <a href="https://github.com/lingochamp/okdownload/wiki/Simple-Use-Guideline" rel="noopener" target="_blank">官方文档</a></p>
+<h3 id="设置多个监听" tid="tid-FpQMJf">设置多个监听</h3>
+<p>Combine Several DownloadListeners</p>
+<pre highlighted="true" boxid="code-BBYwSM" class="hljs Java code-pre-line"><code-line class="line-numbers-rows"></code-line>DownloadListener listener1 = <span class="hljs-keyword">new</span> DownloadListener1();
+<code-line class="line-numbers-rows"></code-line>DownloadListener listener2 = <span class="hljs-keyword">new</span> DownloadListener2();
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line>DownloadListener combinedListener = <span class="hljs-keyword">new</span> DownloadListenerBunch.Builder()
+<code-line class="line-numbers-rows"></code-line>                   .append(listener1)
+<code-line class="line-numbers-rows"></code-line>                   .append(listener2)
+<code-line class="line-numbers-rows"></code-line>                   .build();
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line>DownloadTask task = <span class="hljs-keyword">new</span> DownloadTask.build(url, file).build();
+<code-line class="line-numbers-rows"></code-line>task.enqueue(combinedListener);</pre>
+<h3 id="动态更改任务的监听" tid="tid-DQ5cay">动态更改任务的监听</h3>
+<p>Dynamic Change Listener For tasks</p>
+<pre highlighted="true" boxid="code-dcaC2W" class="hljs Java code-pre-line"><code-line class="line-numbers-rows"></code-line>UnifiedListenerManager manager = <span class="hljs-keyword">new</span> UnifiedListenerManager();
+<code-line class="line-numbers-rows"></code-line>DownloadTask task = <span class="hljs-keyword">new</span> DownloadTask.build(url, file).build();
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line>DownloadListener listener1 = <span class="hljs-keyword">new</span> DownloadListener1();
+<code-line class="line-numbers-rows"></code-line>DownloadListener listener2 = <span class="hljs-keyword">new</span> DownloadListener2();
+<code-line class="line-numbers-rows"></code-line>DownloadListener listener3 = <span class="hljs-keyword">new</span> DownloadListener3();
+<code-line class="line-numbers-rows"></code-line>DownloadListener listener4 = <span class="hljs-keyword">new</span> DownloadListener4();
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line>manager.attachListener(task, listener1);
+<code-line class="line-numbers-rows"></code-line>manager.attachListener(task, listener2);
+<code-line class="line-numbers-rows"></code-line>manager.detachListener(task, listener2);
+<code-line class="line-numbers-rows"></code-line>manager.addAutoRemoveListenersWhenTaskEnd(task.getId());<span class="hljs-comment">// 当一个任务结束时，这个任务的所有监听器都被移除</span>
+<code-line class="line-numbers-rows"></code-line>manager.enqueueTaskWithUnifiedListener(task, listener3);<span class="hljs-comment">// enqueue task to start.</span>
+<code-line class="line-numbers-rows"></code-line>manager.attachListener(task, listener4);</pre>
+<h2 id="全局控制" tid="tid-CCEbZP">全局控制</h2>
+<p>Global Control</p>
+<pre highlighted="true" boxid="code-KeA3kZ" class="hljs Java code-pre-line"><code-line class="line-numbers-rows"></code-line>OkDownload.with().setMonitor(monitor);
+<code-line class="line-numbers-rows"></code-line>DownloadDispatcher.setMaxParallelRunningCount(<span class="hljs-number">3</span>); <span class="hljs-comment">//最大并行下载数</span>
+<code-line class="line-numbers-rows"></code-line>RemitStoreOnSQLite.setRemitToDBDelayMillis(<span class="hljs-number">3000</span>);
+<code-line class="line-numbers-rows"></code-line>OkDownload.with().downloadDispatcher().cancelAll();
+<code-line class="line-numbers-rows"></code-line>OkDownload.with().breakpointStore().remove(taskId);</pre>
+<h2 id="组件注入" tid="tid-PQQ2Ft">组件注入</h2>
+<p>Injection Component</p>
+<p>If you want to inject your components, please invoke following method before you using OkDownload:</p>
+<pre highlighted="true" boxid="code-jGhB2b" class="hljs Java code-pre-line"><code-line class="line-numbers-rows"></code-line>OkDownload.Builder builder = <span class="hljs-keyword">new</span> OkDownload.Builder(context)
+<code-line class="line-numbers-rows"></code-line>    .downloadStore(downloadStore)
+<code-line class="line-numbers-rows"></code-line>    .callbackDispatcher(callbackDispatcher)
+<code-line class="line-numbers-rows"></code-line>    .downloadDispatcher(downloadDispatcher)
+<code-line class="line-numbers-rows"></code-line>    .connectionFactory(connectionFactory)
+<code-line class="line-numbers-rows"></code-line>    .outputStreamFactory(outputStreamFactory)
+<code-line class="line-numbers-rows"></code-line>    .downloadStrategy(downloadStrategy)
+<code-line class="line-numbers-rows"></code-line>    .processFileStrategy(processFileStrategy)
+<code-line class="line-numbers-rows"></code-line>    .monitor(monitor);
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line>OkDownload.setSingletonInstance(builder.build());</pre>
+<h2 id="动态串行队列" tid="tid-E3pTC2">动态串行队列</h2>
+<p>Dynamic Serial Queue</p>
+<pre highlighted="true" boxid="code-5aSehZ" class="hljs Java code-pre-line"><code-line class="line-numbers-rows"></code-line>DownloadSerialQueue serialQueue = <span class="hljs-keyword">new</span> DownloadSerialQueue(commonListener);
+<code-line class="line-numbers-rows"></code-line>serialQueue.enqueue(task1);
+<code-line class="line-numbers-rows"></code-line>serialQueue.enqueue(task2);
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line>serialQueue.pause();
+<code-line class="line-numbers-rows"></code-line>serialQueue.resume();
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line><span class="hljs-keyword">int</span> workingTaskId = serialQueue.getWorkingTaskId();
+<code-line class="line-numbers-rows"></code-line><span class="hljs-keyword">int</span> waitingTaskCount = serialQueue.getWaitingTaskCount();
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line>DownloadTask[] discardTasks = serialQueue.shutdown();</pre>
+<h1 id="源码结构" tid="tid-GCMxNB">源码结构</h1>
+<pre highlighted="true" boxid="code-KxdScD" class="hljs Java code-pre-line"><code-line class="line-numbers-rows"></code-line>├── DownloadContext  <span class="hljs-comment">//多个下载任务串/并行下载，使用QueueSet来做设置</span>
+<code-line class="line-numbers-rows"></code-line>├── DownloadContextListener
+<code-line class="line-numbers-rows"></code-line>├── DownloadListener  <span class="hljs-comment">//下载状态回调接口定义</span>
+<code-line class="line-numbers-rows"></code-line>├── DownloadMonitor
+<code-line class="line-numbers-rows"></code-line>├── DownloadSerialQueue
+<code-line class="line-numbers-rows"></code-line>├── DownloadTask  <span class="hljs-comment">//单个下载任务</span>
+<code-line class="line-numbers-rows"></code-line>├── IRedirectHandler
+<code-line class="line-numbers-rows"></code-line>├── OkDownload <span class="hljs-comment">//入口类，负责下载任务装配</span>
+<code-line class="line-numbers-rows"></code-line>├── OkDownloadProvider <span class="hljs-comment">//单纯为了获取上下文Context</span>
+<code-line class="line-numbers-rows"></code-line>├── RedirectUtil
+<code-line class="line-numbers-rows"></code-line>├── SpeedCalculator <span class="hljs-comment">//下载速度计算</span>
+<code-line class="line-numbers-rows"></code-line>├── StatusUtil <span class="hljs-comment">//获取DownloadTask下载状态，检查下载文件是否已经下载完成等</span>
+<code-line class="line-numbers-rows"></code-line>├── UnifiedListenerManager <span class="hljs-comment">//多个listener管理</span>
+<code-line class="line-numbers-rows"></code-line>├── core
+<code-line class="line-numbers-rows"></code-line>│   ├── IdentifiedTask
+<code-line class="line-numbers-rows"></code-line>│   ├── NamedRunnable  <span class="hljs-comment">//可命名的线程实现</span>
+<code-line class="line-numbers-rows"></code-line>│   └── Util  <span class="hljs-comment">//工具类</span>
+<code-line class="line-numbers-rows"></code-line>├── breakpoint
+<code-line class="line-numbers-rows"></code-line>│   ├── BlockInfo <span class="hljs-comment">//下载分块信息，记录当前块的下载进度，第0个记录整个下载任务的进度</span>
+<code-line class="line-numbers-rows"></code-line>│   ├── BreakpointInfo <span class="hljs-comment">// BlockInfo聚合类，包含文件名、URL等信息</span>
+<code-line class="line-numbers-rows"></code-line>│   ├── BreakpointStore <span class="hljs-comment">//下载过程中断点信息存储接口定义</span>
+<code-line class="line-numbers-rows"></code-line>│   └── BreakpointStoreOnCache <span class="hljs-comment">//断点信息存储在缓存中的实现</span>
+<code-line class="line-numbers-rows"></code-line>│   ├── DownloadStore
+<code-line class="line-numbers-rows"></code-line>│   └── KeyToIdMap
+<code-line class="line-numbers-rows"></code-line>├── cause
+<code-line class="line-numbers-rows"></code-line>│   ├── EndCause <span class="hljs-comment">//结束状态</span>
+<code-line class="line-numbers-rows"></code-line>│   └── ResumeFailedCause <span class="hljs-comment">//下载异常原因</span>
+<code-line class="line-numbers-rows"></code-line>├── connection
+<code-line class="line-numbers-rows"></code-line>│   ├── DownloadConnection <span class="hljs-comment">// 下载链接接口定义</span>
+<code-line class="line-numbers-rows"></code-line>│   └── DownloadUrlConnection <span class="hljs-comment">//下载链接UrlConnection实现</span>
+<code-line class="line-numbers-rows"></code-line>├── dispatcher
+<code-line class="line-numbers-rows"></code-line>│   ├── CallbackDispatcher <span class="hljs-comment">//DownloadListener分发代理（是否回调到UI线程，默认为true）</span>
+<code-line class="line-numbers-rows"></code-line>│   └── DownloadDispatcher <span class="hljs-comment">//下载任务线程分配</span>
+<code-line class="line-numbers-rows"></code-line>├── download
+<code-line class="line-numbers-rows"></code-line>│   ├── BreakpointLocalCheck
+<code-line class="line-numbers-rows"></code-line>│   ├── BreakpointRemoteCheck
+<code-line class="line-numbers-rows"></code-line>│   ├── ConnectTrial
+<code-line class="line-numbers-rows"></code-line>│   ├── DownloadCache <span class="hljs-comment">//MultiPointOutputStream包裹类</span>
+<code-line class="line-numbers-rows"></code-line>│   ├── DownloadCall <span class="hljs-comment">//下载任务线程，包含DownloadTask、DownloadChain的list以及DownloadCache</span>
+<code-line class="line-numbers-rows"></code-line>│   ├── DownloadChain <span class="hljs-comment">//持有DownloadTask等对象，链式调用各connect及fetch的Interceptor，开启下载任务</span>
+<code-line class="line-numbers-rows"></code-line>│   └── DownloadStrategy <span class="hljs-comment">//下载策略，包括分包策略、下载文件命名策略以及response是否可用</span>
+<code-line class="line-numbers-rows"></code-line>├── exception <span class="hljs-comment">//各种异常</span>
+<code-line class="line-numbers-rows"></code-line>│   ├── DownloadSecurityException
+<code-line class="line-numbers-rows"></code-line>│   ├── FileBusyAfterRunException
+<code-line class="line-numbers-rows"></code-line>│   ├── InterruptException
+<code-line class="line-numbers-rows"></code-line>│   ├── NetworkPolicyException
+<code-line class="line-numbers-rows"></code-line>│   ├── PreAllocateException
+<code-line class="line-numbers-rows"></code-line>│   ├── ResumeFailedException
+<code-line class="line-numbers-rows"></code-line>│   ├── RetryException
+<code-line class="line-numbers-rows"></code-line>│   └── ServerCancelledException
+<code-line class="line-numbers-rows"></code-line>├── file
+<code-line class="line-numbers-rows"></code-line>│   ├── DownloadOutputStream <span class="hljs-comment">//输出流接口定义</span>
+<code-line class="line-numbers-rows"></code-line>│   ├── DownloadUriOutputStream <span class="hljs-comment">//Uri输出流实现</span>
+<code-line class="line-numbers-rows"></code-line>│   ├── FileLock
+<code-line class="line-numbers-rows"></code-line>│   ├── MultiPointOutputStream <span class="hljs-comment">//多block输出流管理</span>
+<code-line class="line-numbers-rows"></code-line>│   └── ProcessFileStrategy <span class="hljs-comment">//下载过程中文件处理逻辑</span>
+<code-line class="line-numbers-rows"></code-line>├── interceptor
+<code-line class="line-numbers-rows"></code-line>│   ├── BreakpointInterceptor <span class="hljs-comment">//connect时分块，fetch时循环调用FetchDataInterceptor获取数据</span>
+<code-line class="line-numbers-rows"></code-line>│   ├── FetchDataInterceptor <span class="hljs-comment">//fetch时读写流数据，记录增加bytes长度</span>
+<code-line class="line-numbers-rows"></code-line>│   ├── Interceptor
+<code-line class="line-numbers-rows"></code-line>│   ├── RetryInterceptor <span class="hljs-comment">//错误处理、connect时重试机制，fetch结束时同步输出流，确保写入数据完整</span>
+<code-line class="line-numbers-rows"></code-line>│   └── connect
+<code-line class="line-numbers-rows"></code-line>│       ├── CallServerInterceptor <span class="hljs-comment">//启动DownloadConnection</span>
+<code-line class="line-numbers-rows"></code-line>│       └── HeaderInterceptor <span class="hljs-comment">//添加头信息，调用connectStart、connectEnd</span>
+<code-line class="line-numbers-rows"></code-line>└── listener <span class="hljs-comment">//多种回调及辅助接口</span>
+<code-line class="line-numbers-rows"></code-line>│   ├── DownloadListener1
+<code-line class="line-numbers-rows"></code-line>│   ├── DownloadListener2
+<code-line class="line-numbers-rows"></code-line>│   ├── DownloadListener3
+<code-line class="line-numbers-rows"></code-line>│   ├── DownloadListener4
+<code-line class="line-numbers-rows"></code-line>│   ├── DownloadListener4WithSpeed
+<code-line class="line-numbers-rows"></code-line>│   ├── DownloadListenerBunch
+<code-line class="line-numbers-rows"></code-line>│   └── assist
+<code-line class="line-numbers-rows"></code-line>│       ├── Listener1Assist
+<code-line class="line-numbers-rows"></code-line>│       ├── Listener4Assist
+<code-line class="line-numbers-rows"></code-line>│       ├── Listener4SpeedAssistExtend
+<code-line class="line-numbers-rows"></code-line>│       ├── ListenerAssist
+<code-line class="line-numbers-rows"></code-line>│       └── ListenerModelHandler</pre>
+<h1 id="使用案例" tid="tid-esPTF3">使用案例</h1>
+<p>必要的配置</p>
+<ul>
+<li>1、申请两个权限：WRITE_EXTERNAL_STORAGE 和 REQUEST_INSTALL_PACKAGES </li>
+<li>2、配置 FileProvider</li>
+<li>3、添加依赖</li>
+</ul>
+<h2 id="Activity" tid="tid-F8ehZ8">Activity</h2>
+<pre highlighted="true" boxid="code-H4hs6Q" class="hljs Java code-pre-line"><code-line class="line-numbers-rows"></code-line><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DownloadActivity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ListActivity</span> </span>{
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String URL1 = <span class="hljs-string">"https://oatest.dgcb.com.cn:62443/mstep/installpkg/yidongyingxiao/90.0/DGMmarket_rtx.apk"</span>;
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String URL2 = <span class="hljs-string">"https://cdn.llscdn.com/yy/files/xs8qmxn8-lls-LLS-5.8-800-20171207-111607.apk"</span>;
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String URL3 = <span class="hljs-string">"https://downapp.baidu.com/appsearch/AndroidPhone/1.0.78.155/1/1012271b/20190404124002/appsearch_AndroidPhone_1-0-78-155_1012271b.apk"</span>;
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line>    ProgressBar progressBar;
+<code-line class="line-numbers-rows"></code-line>    List&lt;ItemInfo&gt; list;
+<code-line class="line-numbers-rows"></code-line>    HashMap&lt;String, DownloadTask&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(Bundle savedInstanceState)</span> </span>{
+<code-line class="line-numbers-rows"></code-line>        <span class="hljs-keyword">super</span>.onCreate(savedInstanceState);
+<code-line class="line-numbers-rows"></code-line>        String[] array = {<span class="hljs-string">"使用DownloadListener4WithSpeed"</span>,
+<code-line class="line-numbers-rows"></code-line>            <span class="hljs-string">"使用DownloadListener3"</span>,
+<code-line class="line-numbers-rows"></code-line>            <span class="hljs-string">"使用DownloadListener2"</span>,
+<code-line class="line-numbers-rows"></code-line>            <span class="hljs-string">"使用DownloadListener3"</span>,
+<code-line class="line-numbers-rows"></code-line>            <span class="hljs-string">"使用DownloadListener"</span>,
+<code-line class="line-numbers-rows"></code-line>            <span class="hljs-string">"=====删除下载的文件，并重新启动Activity====="</span>,
+<code-line class="line-numbers-rows"></code-line>            <span class="hljs-string">"查看任务1的状态"</span>,
+<code-line class="line-numbers-rows"></code-line>            <span class="hljs-string">"查看任务2的状态"</span>,
+<code-line class="line-numbers-rows"></code-line>            <span class="hljs-string">"查看任务3的状态"</span>,
+<code-line class="line-numbers-rows"></code-line>            <span class="hljs-string">"查看任务4的状态"</span>,
+<code-line class="line-numbers-rows"></code-line>            <span class="hljs-string">"查看任务5的状态"</span>,};
+<code-line class="line-numbers-rows"></code-line>        setListAdapter(<span class="hljs-keyword">new</span> ArrayAdapter&lt;&gt;(<span class="hljs-keyword">this</span>, android.R.layout.simple_list_item_1, array));
+<code-line class="line-numbers-rows"></code-line>        list = Arrays.asList(<span class="hljs-keyword">new</span> ItemInfo(URL1, <span class="hljs-string">"com.yitong.mmarket.dg"</span>),
+<code-line class="line-numbers-rows"></code-line>            <span class="hljs-keyword">new</span> ItemInfo(URL1, <span class="hljs-string">"哎"</span>),
+<code-line class="line-numbers-rows"></code-line>            <span class="hljs-keyword">new</span> ItemInfo(URL2, <span class="hljs-string">"英语流利说"</span>),
+<code-line class="line-numbers-rows"></code-line>            <span class="hljs-keyword">new</span> ItemInfo(URL2, <span class="hljs-string">"百度手机助手"</span>),
+<code-line class="line-numbers-rows"></code-line>            <span class="hljs-keyword">new</span> ItemInfo(URL3, <span class="hljs-string">"哎哎哎"</span>));
+<code-line class="line-numbers-rows"></code-line>        progressBar = <span class="hljs-keyword">new</span> ProgressBar(<span class="hljs-keyword">this</span>, <span class="hljs-keyword">null</span>, android.R.attr.progressBarStyleHorizontal);
+<code-line class="line-numbers-rows"></code-line>        progressBar.setIndeterminate(<span class="hljs-keyword">false</span>);
+<code-line class="line-numbers-rows"></code-line>        getListView().addFooterView(progressBar);
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line>        <span class="hljs-keyword">new</span> File(Utils.PARENT_PATH).mkdirs();
+<code-line class="line-numbers-rows"></code-line>        <span class="hljs-comment">//OkDownload.setSingletonInstance(Utils.buildOkDownload(getApplicationContext()));//注意只能执行一次，否则报错</span>
+<code-line class="line-numbers-rows"></code-line>    }
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-meta">@Override</span>
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onDestroy</span><span class="hljs-params">()</span> </span>{
+<code-line class="line-numbers-rows"></code-line>        <span class="hljs-keyword">super</span>.onDestroy();
+<code-line class="line-numbers-rows"></code-line>        <span class="hljs-comment">//OkDownload.with().downloadDispatcher().cancelAll();</span>
+<code-line class="line-numbers-rows"></code-line>        <span class="hljs-keyword">for</span> (String key : map.keySet()) {
+<code-line class="line-numbers-rows"></code-line>            DownloadTask task = map.get(key);
+<code-line class="line-numbers-rows"></code-line>            <span class="hljs-keyword">if</span> (task != <span class="hljs-keyword">null</span>) {
+<code-line class="line-numbers-rows"></code-line>                task.cancel();
+<code-line class="line-numbers-rows"></code-line>            }
+<code-line class="line-numbers-rows"></code-line>        }
+<code-line class="line-numbers-rows"></code-line>    }
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-meta">@Override</span>
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onListItemClick</span><span class="hljs-params">(ListView l, View v, <span class="hljs-keyword">int</span> position, <span class="hljs-keyword">long</span> id)</span> </span>{
+<code-line class="line-numbers-rows"></code-line>        <span class="hljs-keyword">switch</span> (position) {
+<code-line class="line-numbers-rows"></code-line>            <span class="hljs-keyword">case</span> <span class="hljs-number">0</span>:
+<code-line class="line-numbers-rows"></code-line>            <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:
+<code-line class="line-numbers-rows"></code-line>            <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:
+<code-line class="line-numbers-rows"></code-line>            <span class="hljs-keyword">case</span> <span class="hljs-number">3</span>:
+<code-line class="line-numbers-rows"></code-line>            <span class="hljs-keyword">case</span> <span class="hljs-number">4</span>:
+<code-line class="line-numbers-rows"></code-line>                download(position);
+<code-line class="line-numbers-rows"></code-line>                <span class="hljs-keyword">break</span>;
+<code-line class="line-numbers-rows"></code-line>            <span class="hljs-keyword">case</span> <span class="hljs-number">5</span>:
+<code-line class="line-numbers-rows"></code-line>                Utils.deleateFiles(<span class="hljs-keyword">new</span> File(Utils.PARENT_PATH), <span class="hljs-keyword">null</span>, <span class="hljs-keyword">false</span>);
+<code-line class="line-numbers-rows"></code-line>                recreate();
+<code-line class="line-numbers-rows"></code-line>                <span class="hljs-keyword">break</span>;
+<code-line class="line-numbers-rows"></code-line>            <span class="hljs-keyword">default</span>:
+<code-line class="line-numbers-rows"></code-line>                ItemInfo itemInfo = list.get(position - <span class="hljs-number">6</span>);
+<code-line class="line-numbers-rows"></code-line>                DownloadTask task = map.get(itemInfo.pkgName);
+<code-line class="line-numbers-rows"></code-line>                <span class="hljs-keyword">if</span> (task != <span class="hljs-keyword">null</span>) {
+<code-line class="line-numbers-rows"></code-line>                    Toast.makeText(<span class="hljs-keyword">this</span>, <span class="hljs-string">"状态为："</span> + StatusUtil.getStatus(task).name(), Toast.LENGTH_SHORT).show();
+<code-line class="line-numbers-rows"></code-line>                }
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line>                BreakpointInfo info = StatusUtil.getCurrentInfo(itemInfo.url, Utils.PARENT_PATH, itemInfo.pkgName);
+<code-line class="line-numbers-rows"></code-line>                <span class="hljs-comment">//BreakpointInfo info = StatusUtil.getCurrentInfo(task);</span>
+<code-line class="line-numbers-rows"></code-line>                <span class="hljs-keyword">if</span> (info != <span class="hljs-keyword">null</span>) {
+<code-line class="line-numbers-rows"></code-line>                    <span class="hljs-keyword">float</span> percent = (<span class="hljs-keyword">float</span>) info.getTotalOffset() / info.getTotalLength() * <span class="hljs-number">100</span>;
+<code-line class="line-numbers-rows"></code-line>                    Log.i(<span class="hljs-string">"bqt"</span>, <span class="hljs-string">"【当前进度】"</span> + percent + <span class="hljs-string">"%"</span>);
+<code-line class="line-numbers-rows"></code-line>                    progressBar.setMax((<span class="hljs-keyword">int</span>) info.getTotalLength());
+<code-line class="line-numbers-rows"></code-line>                    progressBar.setProgress((<span class="hljs-keyword">int</span>) info.getTotalOffset());
+<code-line class="line-numbers-rows"></code-line>                } <span class="hljs-keyword">else</span> {
+<code-line class="line-numbers-rows"></code-line>                    Log.i(<span class="hljs-string">"bqt"</span>, <span class="hljs-string">"【任务不存在】"</span>);
+<code-line class="line-numbers-rows"></code-line>                }
+<code-line class="line-numbers-rows"></code-line>                <span class="hljs-keyword">break</span>;
+<code-line class="line-numbers-rows"></code-line>        }
+<code-line class="line-numbers-rows"></code-line>    }
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">download</span><span class="hljs-params">(<span class="hljs-keyword">int</span> position)</span> </span>{
+<code-line class="line-numbers-rows"></code-line>        ItemInfo itemInfo = list.get(position);
+<code-line class="line-numbers-rows"></code-line>        DownloadTask task = map.get(itemInfo.pkgName);
+<code-line class="line-numbers-rows"></code-line>        <span class="hljs-comment">// 0：没有下载  1：下载中  2：暂停  3：完成</span>
+<code-line class="line-numbers-rows"></code-line>        <span class="hljs-keyword">if</span> (itemInfo.status == <span class="hljs-number">0</span>) {
+<code-line class="line-numbers-rows"></code-line>            <span class="hljs-keyword">if</span> (task == <span class="hljs-keyword">null</span>) {
+<code-line class="line-numbers-rows"></code-line>                task = createDownloadTask(itemInfo);
+<code-line class="line-numbers-rows"></code-line>                map.put(itemInfo.pkgName, task);
+<code-line class="line-numbers-rows"></code-line>            }
+<code-line class="line-numbers-rows"></code-line>            task.enqueue(createDownloadListener(position));
+<code-line class="line-numbers-rows"></code-line>            itemInfo.status = <span class="hljs-number">1</span>; <span class="hljs-comment">//更改状态</span>
+<code-line class="line-numbers-rows"></code-line>            Toast.makeText(<span class="hljs-keyword">this</span>, <span class="hljs-string">"开始下载"</span>, Toast.LENGTH_SHORT).show();
+<code-line class="line-numbers-rows"></code-line>        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (itemInfo.status == <span class="hljs-number">1</span>) {<span class="hljs-comment">//下载中</span>
+<code-line class="line-numbers-rows"></code-line>            <span class="hljs-keyword">if</span> (task != <span class="hljs-keyword">null</span>) {
+<code-line class="line-numbers-rows"></code-line>                task.cancel();
+<code-line class="line-numbers-rows"></code-line>            }
+<code-line class="line-numbers-rows"></code-line>            itemInfo.status = <span class="hljs-number">2</span>;
+<code-line class="line-numbers-rows"></code-line>            Toast.makeText(<span class="hljs-keyword">this</span>, <span class="hljs-string">"暂停下载"</span>, Toast.LENGTH_SHORT).show();
+<code-line class="line-numbers-rows"></code-line>        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (itemInfo.status == <span class="hljs-number">2</span>) {
+<code-line class="line-numbers-rows"></code-line>            <span class="hljs-keyword">if</span> (task != <span class="hljs-keyword">null</span>) {
+<code-line class="line-numbers-rows"></code-line>                task.enqueue(createDownloadListener(position));
+<code-line class="line-numbers-rows"></code-line>            }
+<code-line class="line-numbers-rows"></code-line>            itemInfo.status = <span class="hljs-number">1</span>;
+<code-line class="line-numbers-rows"></code-line>            Toast.makeText(<span class="hljs-keyword">this</span>, <span class="hljs-string">"继续下载"</span>, Toast.LENGTH_SHORT).show();
+<code-line class="line-numbers-rows"></code-line>        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (itemInfo.status == <span class="hljs-number">3</span>) {<span class="hljs-comment">//下载完成的，直接跳转安装APP</span>
+<code-line class="line-numbers-rows"></code-line>            Utils.launchOrInstallApp(<span class="hljs-keyword">this</span>, itemInfo.pkgName);
+<code-line class="line-numbers-rows"></code-line>            Toast.makeText(<span class="hljs-keyword">this</span>, <span class="hljs-string">"下载完成"</span>, Toast.LENGTH_SHORT).show();
+<code-line class="line-numbers-rows"></code-line>        }
+<code-line class="line-numbers-rows"></code-line>    }
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-function"><span class="hljs-keyword">private</span> DownloadTask <span class="hljs-title">createDownloadTask</span><span class="hljs-params">(ItemInfo itemInfo)</span> </span>{
+<code-line class="line-numbers-rows"></code-line>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> DownloadTask.Builder(itemInfo.url, <span class="hljs-keyword">new</span> File(Utils.PARENT_PATH)) <span class="hljs-comment">//设置下载地址和下载目录，这两个是必须的参数</span>
+<code-line class="line-numbers-rows"></code-line>            .setFilename(itemInfo.pkgName)<span class="hljs-comment">//设置下载文件名，没提供的话先看 response header ，再看 url path(即启用下面那项配置)</span>
+<code-line class="line-numbers-rows"></code-line>            .setFilenameFromResponse(<span class="hljs-keyword">false</span>)<span class="hljs-comment">//是否使用 response header or url path 作为文件名，此时会忽略指定的文件名，默认false</span>
+<code-line class="line-numbers-rows"></code-line>            .setPassIfAlreadyCompleted(<span class="hljs-keyword">true</span>)<span class="hljs-comment">//如果文件已经下载完成，再次下载时，是否忽略下载，默认为true(忽略)，设为false会从头下载</span>
+<code-line class="line-numbers-rows"></code-line>            .setConnectionCount(<span class="hljs-number">1</span>)  <span class="hljs-comment">//需要用几个线程来下载文件，默认根据文件大小确定；如果文件已经 split block，则设置后无效</span>
+<code-line class="line-numbers-rows"></code-line>            .setPreAllocateLength(<span class="hljs-keyword">false</span>) <span class="hljs-comment">//在获取资源长度后，设置是否需要为文件预分配长度，默认false</span>
+<code-line class="line-numbers-rows"></code-line>            .setMinIntervalMillisCallbackProcess(<span class="hljs-number">100</span>) <span class="hljs-comment">//通知调用者的频率，避免anr，默认3000</span>
+<code-line class="line-numbers-rows"></code-line>            .setWifiRequired(<span class="hljs-keyword">false</span>)<span class="hljs-comment">//是否只允许wifi下载，默认为false</span>
+<code-line class="line-numbers-rows"></code-line>            .setAutoCallbackToUIThread(<span class="hljs-keyword">true</span>) <span class="hljs-comment">//是否在主线程通知调用者，默认为true</span>
+<code-line class="line-numbers-rows"></code-line>            <span class="hljs-comment">//.setHeaderMapFields(new HashMap&lt;String, List&lt;String&gt;&gt;())//设置请求头</span>
+<code-line class="line-numbers-rows"></code-line>            <span class="hljs-comment">//.addHeader(String key, String value)//追加请求头</span>
+<code-line class="line-numbers-rows"></code-line>            .setPriority(<span class="hljs-number">0</span>)<span class="hljs-comment">//设置优先级，默认值是0，值越大下载优先级越高</span>
+<code-line class="line-numbers-rows"></code-line>            .setReadBufferSize(<span class="hljs-number">4096</span>)<span class="hljs-comment">//设置读取缓存区大小，默认4096</span>
+<code-line class="line-numbers-rows"></code-line>            .setFlushBufferSize(<span class="hljs-number">16384</span>)<span class="hljs-comment">//设置写入缓存区大小，默认16384</span>
+<code-line class="line-numbers-rows"></code-line>            .setSyncBufferSize(<span class="hljs-number">65536</span>)<span class="hljs-comment">//写入到文件的缓冲区大小，默认65536</span>
+<code-line class="line-numbers-rows"></code-line>            .setSyncBufferIntervalMillis(<span class="hljs-number">2000</span>) <span class="hljs-comment">//写入文件的最小时间间隔，默认2000</span>
+<code-line class="line-numbers-rows"></code-line>            .build();
+<code-line class="line-numbers-rows"></code-line>    }
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-function"><span class="hljs-keyword">private</span> DownloadListener <span class="hljs-title">createDownloadListener</span><span class="hljs-params">(<span class="hljs-keyword">int</span> position)</span> </span>{
+<code-line class="line-numbers-rows"></code-line>        <span class="hljs-keyword">switch</span> (position) {
+<code-line class="line-numbers-rows"></code-line>            <span class="hljs-keyword">case</span> <span class="hljs-number">0</span>:
+<code-line class="line-numbers-rows"></code-line>                <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> MyDownloadListener4WithSpeed(list.get(position), progressBar);
+<code-line class="line-numbers-rows"></code-line>            <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:
+<code-line class="line-numbers-rows"></code-line>                <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> MyDownloadListener3(list.get(position), progressBar);
+<code-line class="line-numbers-rows"></code-line>            <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:
+<code-line class="line-numbers-rows"></code-line>                <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> MyDownloadListener2(list.get(position), progressBar);
+<code-line class="line-numbers-rows"></code-line>            <span class="hljs-keyword">case</span> <span class="hljs-number">3</span>:
+<code-line class="line-numbers-rows"></code-line>                <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> MyDownloadListener1(list.get(position), progressBar);
+<code-line class="line-numbers-rows"></code-line>            <span class="hljs-keyword">default</span>:
+<code-line class="line-numbers-rows"></code-line>                <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> MyDownloadListener(list.get(position), progressBar);
+<code-line class="line-numbers-rows"></code-line>        }
+<code-line class="line-numbers-rows"></code-line>    }
+<code-line class="line-numbers-rows"></code-line>}</pre>
+<h2 id="辅助工具类" tid="tid-jQNYJW">辅助工具类</h2>
+<pre highlighted="true" boxid="code-56yb5z" class="hljs Java code-pre-line"><code-line class="line-numbers-rows"></code-line><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Utils</span> </span>{
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String PARENT_PATH = Environment.getExternalStorageDirectory().getAbsolutePath() + <span class="hljs-string">"/aatest"</span>;
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">launchOrInstallApp</span><span class="hljs-params">(Context context, String pkgName)</span> </span>{
+<code-line class="line-numbers-rows"></code-line>        <span class="hljs-keyword">if</span> (!TextUtils.isEmpty(pkgName)) {
+<code-line class="line-numbers-rows"></code-line>            Intent intent = context.getPackageManager().getLaunchIntentForPackage(pkgName);
+<code-line class="line-numbers-rows"></code-line>            <span class="hljs-keyword">if</span> (intent == <span class="hljs-keyword">null</span>) {<span class="hljs-comment">//如果未安装，则先安装</span>
+<code-line class="line-numbers-rows"></code-line>                installApk(context, <span class="hljs-keyword">new</span> File(PARENT_PATH, pkgName));
+<code-line class="line-numbers-rows"></code-line>            } <span class="hljs-keyword">else</span> {<span class="hljs-comment">//如果已安装，跳转到应用</span>
+<code-line class="line-numbers-rows"></code-line>                context.startActivity(intent);
+<code-line class="line-numbers-rows"></code-line>            }
+<code-line class="line-numbers-rows"></code-line>        } <span class="hljs-keyword">else</span> {
+<code-line class="line-numbers-rows"></code-line>            Toast.makeText(context, <span class="hljs-string">"包名为空！"</span>, Toast.LENGTH_SHORT).show();
+<code-line class="line-numbers-rows"></code-line>            installApk(context, <span class="hljs-keyword">new</span> File(PARENT_PATH, pkgName));
+<code-line class="line-numbers-rows"></code-line>        }
+<code-line class="line-numbers-rows"></code-line>    }
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-comment">//1、申请两个权限：WRITE_EXTERNAL_STORAGE 和 REQUEST_INSTALL_PACKAGES ；2、配置FileProvider</span>
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">installApk</span><span class="hljs-params">(Context context, File file)</span> </span>{
+<code-line class="line-numbers-rows"></code-line>        Intent intent = <span class="hljs-keyword">new</span> Intent(Intent.ACTION_VIEW);
+<code-line class="line-numbers-rows"></code-line>        Uri uri;
+<code-line class="line-numbers-rows"></code-line>        <span class="hljs-keyword">if</span> (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.N) {
+<code-line class="line-numbers-rows"></code-line>            intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+<code-line class="line-numbers-rows"></code-line>            uri = FileProvider.getUriForFile(context, context.getPackageName() + <span class="hljs-string">".fileprovider"</span>, file);
+<code-line class="line-numbers-rows"></code-line>            <span class="hljs-comment">//【content://{$authority}/external/temp.apk】或【content://{$authority}/files/bqt/temp2.apk】</span>
+<code-line class="line-numbers-rows"></code-line>        } <span class="hljs-keyword">else</span> {
+<code-line class="line-numbers-rows"></code-line>            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);<span class="hljs-comment">//【file:///storage/emulated/0/temp.apk】</span>
+<code-line class="line-numbers-rows"></code-line>            uri = Uri.fromFile(file);
+<code-line class="line-numbers-rows"></code-line>        }
+<code-line class="line-numbers-rows"></code-line>        Log.i(<span class="hljs-string">"bqt"</span>, <span class="hljs-string">"【Uri】"</span> + uri);
+<code-line class="line-numbers-rows"></code-line>        intent.setDataAndType(uri, <span class="hljs-string">"application/vnd.android.package-archive"</span>);
+<code-line class="line-numbers-rows"></code-line>        context.startActivity(intent);
+<code-line class="line-numbers-rows"></code-line>    }
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> OkDownload <span class="hljs-title">buildOkDownload</span><span class="hljs-params">(Context context)</span> </span>{
+<code-line class="line-numbers-rows"></code-line>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> OkDownload.Builder(context.getApplicationContext())
+<code-line class="line-numbers-rows"></code-line>            .downloadStore(Util.createDefaultDatabase(context)) <span class="hljs-comment">//断点信息存储的位置，默认是SQLite数据库</span>
+<code-line class="line-numbers-rows"></code-line>            .callbackDispatcher(<span class="hljs-keyword">new</span> CallbackDispatcher()) <span class="hljs-comment">//监听回调分发器，默认在主线程回调</span>
+<code-line class="line-numbers-rows"></code-line>            .downloadDispatcher(<span class="hljs-keyword">new</span> DownloadDispatcher()) <span class="hljs-comment">//下载管理机制，最大下载任务数、同步异步执行下载任务的处理</span>
+<code-line class="line-numbers-rows"></code-line>            .connectionFactory(Util.createDefaultConnectionFactory()) <span class="hljs-comment">//选择网络请求框架，默认是OkHttp</span>
+<code-line class="line-numbers-rows"></code-line>            .outputStreamFactory(<span class="hljs-keyword">new</span> DownloadUriOutputStream.Factory()) <span class="hljs-comment">//构建文件输出流DownloadOutputStream，是否支持随机位置写入</span>
+<code-line class="line-numbers-rows"></code-line>            .processFileStrategy(<span class="hljs-keyword">new</span> ProcessFileStrategy()) <span class="hljs-comment">//多文件写文件的方式，默认是根据每个线程写文件的不同位置，支持同时写入</span>
+<code-line class="line-numbers-rows"></code-line>            <span class="hljs-comment">//.monitor(monitor); //下载状态监听</span>
+<code-line class="line-numbers-rows"></code-line>            .downloadStrategy(<span class="hljs-keyword">new</span> DownloadStrategy())<span class="hljs-comment">//下载策略，文件分为几个线程下载</span>
+<code-line class="line-numbers-rows"></code-line>            .build();
+<code-line class="line-numbers-rows"></code-line>    }
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-comment">/**
+<code-line class="line-numbers-rows"></code-line>     * 删除一个文件，或删除一个目录下的所有文件
+<code-line class="line-numbers-rows"></code-line>     *
+<code-line class="line-numbers-rows"></code-line>     * <span class="hljs-doctag">@param</span> dirFile      要删除的目录，可以是一个文件
+<code-line class="line-numbers-rows"></code-line>     * <span class="hljs-doctag">@param</span> filter       对要删除的文件的匹配规则(不作用于目录)，如果要删除所有文件请设为 null
+<code-line class="line-numbers-rows"></code-line>     * <span class="hljs-doctag">@param</span> isDeleateDir 是否删除目录，false时只删除目录下的文件而不删除目录
+<code-line class="line-numbers-rows"></code-line>     */</span>
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">deleateFiles</span><span class="hljs-params">(File dirFile, FilenameFilter filter, <span class="hljs-keyword">boolean</span> isDeleateDir)</span> </span>{
+<code-line class="line-numbers-rows"></code-line>        <span class="hljs-keyword">if</span> (dirFile.isDirectory()) {<span class="hljs-comment">//是目录</span>
+<code-line class="line-numbers-rows"></code-line>            <span class="hljs-keyword">for</span> (File file : dirFile.listFiles()) {
+<code-line class="line-numbers-rows"></code-line>                deleateFiles(file, filter, isDeleateDir);<span class="hljs-comment">//递归</span>
+<code-line class="line-numbers-rows"></code-line>            }
+<code-line class="line-numbers-rows"></code-line>            <span class="hljs-keyword">if</span> (isDeleateDir) {
+<code-line class="line-numbers-rows"></code-line>                System.out.println(<span class="hljs-string">"目录【"</span> + dirFile.getAbsolutePath() + <span class="hljs-string">"】删除"</span> + (dirFile.delete() ? <span class="hljs-string">"成功"</span> : <span class="hljs-string">"失败"</span>));<span class="hljs-comment">//必须在删除文件后才能删除目录</span>
+<code-line class="line-numbers-rows"></code-line>            }
+<code-line class="line-numbers-rows"></code-line>        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (dirFile.isFile()) {<span class="hljs-comment">//是文件。注意 isDirectory 为 false 并非就等价于 isFile 为 true</span>
+<code-line class="line-numbers-rows"></code-line>            String symbol = isDeleateDir ? <span class="hljs-string">"\t"</span> : <span class="hljs-string">""</span>;
+<code-line class="line-numbers-rows"></code-line>            <span class="hljs-keyword">if</span> (filter == <span class="hljs-keyword">null</span> || filter.accept(dirFile.getParentFile(), dirFile.getName())) {<span class="hljs-comment">//是否满足匹配规则</span>
+<code-line class="line-numbers-rows"></code-line>                System.out.println(symbol + <span class="hljs-string">"- 文件【"</span> + dirFile.getAbsolutePath() + <span class="hljs-string">"】删除"</span> + (dirFile.delete() ? <span class="hljs-string">"成功"</span> : <span class="hljs-string">"失败"</span>));
+<code-line class="line-numbers-rows"></code-line>            } <span class="hljs-keyword">else</span> {
+<code-line class="line-numbers-rows"></code-line>                System.out.println(symbol + <span class="hljs-string">"+ 文件【"</span> + dirFile.getAbsolutePath() + <span class="hljs-string">"】不满足匹配规则，不删除"</span>);
+<code-line class="line-numbers-rows"></code-line>            }
+<code-line class="line-numbers-rows"></code-line>        } <span class="hljs-keyword">else</span> {
+<code-line class="line-numbers-rows"></code-line>            System.out.println(<span class="hljs-string">"文件不存在"</span>);
+<code-line class="line-numbers-rows"></code-line>        }
+<code-line class="line-numbers-rows"></code-line>    }
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">dealEnd</span><span class="hljs-params">(Context context, ItemInfo itemInfo, <span class="hljs-meta">@NonNull</span> EndCause cause)</span> </span>{
+<code-line class="line-numbers-rows"></code-line>        <span class="hljs-keyword">if</span> (cause == EndCause.COMPLETED) {
+<code-line class="line-numbers-rows"></code-line>            Toast.makeText(context, <span class="hljs-string">"任务完成"</span>, Toast.LENGTH_SHORT).show();
+<code-line class="line-numbers-rows"></code-line>            itemInfo.status = <span class="hljs-number">3</span>; <span class="hljs-comment">//修改状态</span>
+<code-line class="line-numbers-rows"></code-line>            Utils.launchOrInstallApp(context, itemInfo.pkgName);
+<code-line class="line-numbers-rows"></code-line>        } <span class="hljs-keyword">else</span> {
+<code-line class="line-numbers-rows"></code-line>            itemInfo.status = <span class="hljs-number">2</span>; <span class="hljs-comment">//修改状态</span>
+<code-line class="line-numbers-rows"></code-line>            <span class="hljs-keyword">if</span> (cause == EndCause.CANCELED) {
+<code-line class="line-numbers-rows"></code-line>                Toast.makeText(context, <span class="hljs-string">"任务取消"</span>, Toast.LENGTH_SHORT).show();
+<code-line class="line-numbers-rows"></code-line>            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (cause == EndCause.ERROR) {
+<code-line class="line-numbers-rows"></code-line>                Log.i(<span class="hljs-string">"bqt"</span>, <span class="hljs-string">"【任务出错】"</span>);
+<code-line class="line-numbers-rows"></code-line>            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (cause == EndCause.FILE_BUSY || cause == EndCause.SAME_TASK_BUSY || cause == EndCause.PRE_ALLOCATE_FAILED) {
+<code-line class="line-numbers-rows"></code-line>                Log.i(<span class="hljs-string">"bqt"</span>, <span class="hljs-string">"【taskEnd】"</span> + cause.name());
+<code-line class="line-numbers-rows"></code-line>            }
+<code-line class="line-numbers-rows"></code-line>        }
+<code-line class="line-numbers-rows"></code-line>    }
+<code-line class="line-numbers-rows"></code-line>}</pre>
+<h2 id="辅助Bean" tid="tid-PjxETr">辅助Bean</h2>
+<pre highlighted="true" boxid="code-r6EzEi" class="hljs JavaScript code-pre-line"><code-line class="line-numbers-rows"></code-line>public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ItemInfo</span> </span>{
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-built_in">String</span> url;
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-built_in">String</span> pkgName; <span class="hljs-comment">//包名</span>
+<code-line class="line-numbers-rows"></code-line>    int status;  <span class="hljs-comment">// 0：没有下载 1：下载中 2：暂停 3：完成</span>
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line>    public <span class="hljs-function"><span class="hljs-title">ItemInfo</span>(<span class="hljs-params"><span class="hljs-built_in">String</span> url, <span class="hljs-built_in">String</span> pkgName</span>)</span> {
+<code-line class="line-numbers-rows"></code-line>        <span class="hljs-built_in">this</span>.url = url;
+<code-line class="line-numbers-rows"></code-line>        <span class="hljs-built_in">this</span>.pkgName = pkgName;
+<code-line class="line-numbers-rows"></code-line>    }
+<code-line class="line-numbers-rows"></code-line>}</pre>
+<h2 id="DownloadListener4WithSpeed" tid="tid-ER83nM">DownloadListener4WithSpeed</h2>
+<pre highlighted="true" boxid="code-ixPPDQ" class="hljs Java code-pre-line"><code-line class="line-numbers-rows"></code-line><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyDownloadListener4WithSpeed</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">DownloadListener4WithSpeed</span> </span>{
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-keyword">private</span> ItemInfo itemInfo;
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">long</span> totalLength;
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-keyword">private</span> String readableTotalLength;
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-keyword">private</span> ProgressBar progressBar;<span class="hljs-comment">//谨防内存泄漏</span>
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-keyword">private</span> Context context;<span class="hljs-comment">//谨防内存泄漏</span>
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MyDownloadListener4WithSpeed</span><span class="hljs-params">(ItemInfo itemInfo, ProgressBar progressBar)</span> </span>{
+<code-line class="line-numbers-rows"></code-line>        <span class="hljs-keyword">this</span>.itemInfo = itemInfo;
+<code-line class="line-numbers-rows"></code-line>        <span class="hljs-keyword">this</span>.progressBar = progressBar;
+<code-line class="line-numbers-rows"></code-line>        context = progressBar.getContext();
+<code-line class="line-numbers-rows"></code-line>    }
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-meta">@Override</span>
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">taskStart</span><span class="hljs-params">(<span class="hljs-meta">@NonNull</span> DownloadTask task)</span> </span>{
+<code-line class="line-numbers-rows"></code-line>        Log.i(<span class="hljs-string">"bqt"</span>, <span class="hljs-string">"【1、taskStart】"</span>);
+<code-line class="line-numbers-rows"></code-line>    }
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-meta">@Override</span>
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">infoReady</span><span class="hljs-params">(<span class="hljs-meta">@NonNull</span> DownloadTask task, <span class="hljs-meta">@NonNull</span> BreakpointInfo info, <span class="hljs-keyword">boolean</span> fromBreakpoint, <span class="hljs-meta">@NonNull</span> Listener4SpeedAssistExtend.Listener4SpeedModel model)</span> </span>{
+<code-line class="line-numbers-rows"></code-line>        totalLength = info.getTotalLength();
+<code-line class="line-numbers-rows"></code-line>        readableTotalLength = Util.humanReadableBytes(totalLength, <span class="hljs-keyword">true</span>);
+<code-line class="line-numbers-rows"></code-line>        Log.i(<span class="hljs-string">"bqt"</span>, <span class="hljs-string">"【2、infoReady】当前进度"</span> + (<span class="hljs-keyword">float</span>) info.getTotalOffset() / totalLength * <span class="hljs-number">100</span> + <span class="hljs-string">"%"</span> + <span class="hljs-string">"，"</span> + info.toString());
+<code-line class="line-numbers-rows"></code-line>        progressBar.setMax((<span class="hljs-keyword">int</span>) totalLength);
+<code-line class="line-numbers-rows"></code-line>    }
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-meta">@Override</span>
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">connectStart</span><span class="hljs-params">(<span class="hljs-meta">@NonNull</span> DownloadTask task, <span class="hljs-keyword">int</span> blockIndex, <span class="hljs-meta">@NonNull</span> Map&lt;String, List&lt;String&gt;&gt; requestHeaders)</span> </span>{
+<code-line class="line-numbers-rows"></code-line>        Log.i(<span class="hljs-string">"bqt"</span>, <span class="hljs-string">"【3、connectStart】"</span> + blockIndex);
+<code-line class="line-numbers-rows"></code-line>    }
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-meta">@Override</span>
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">connectEnd</span><span class="hljs-params">(<span class="hljs-meta">@NonNull</span> DownloadTask task, <span class="hljs-keyword">int</span> blockIndex, <span class="hljs-keyword">int</span> responseCode, <span class="hljs-meta">@NonNull</span> Map&lt;String, List&lt;String&gt;&gt; responseHeaders)</span> </span>{
+<code-line class="line-numbers-rows"></code-line>        Log.i(<span class="hljs-string">"bqt"</span>, <span class="hljs-string">"【4、connectEnd】"</span> + blockIndex + <span class="hljs-string">"，"</span> + responseCode);
+<code-line class="line-numbers-rows"></code-line>    }
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-meta">@Override</span>
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">progressBlock</span><span class="hljs-params">(<span class="hljs-meta">@NonNull</span> DownloadTask task, <span class="hljs-keyword">int</span> blockIndex, <span class="hljs-keyword">long</span> currentBlockOffset, <span class="hljs-meta">@NonNull</span> SpeedCalculator blockSpeed)</span> </span>{
+<code-line class="line-numbers-rows"></code-line>        <span class="hljs-comment">//Log.i("bqt", "【5、progressBlock】" + blockIndex + "，" + currentBlockOffset);</span>
+<code-line class="line-numbers-rows"></code-line>    }
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-meta">@Override</span>
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">progress</span><span class="hljs-params">(<span class="hljs-meta">@NonNull</span> DownloadTask task, <span class="hljs-keyword">long</span> currentOffset, <span class="hljs-meta">@NonNull</span> SpeedCalculator taskSpeed)</span> </span>{
+<code-line class="line-numbers-rows"></code-line>        String readableOffset = Util.humanReadableBytes(currentOffset, <span class="hljs-keyword">true</span>);
+<code-line class="line-numbers-rows"></code-line>        String progressStatus = readableOffset + <span class="hljs-string">"/"</span> + readableTotalLength;
+<code-line class="line-numbers-rows"></code-line>        String speed = taskSpeed.speed();
+<code-line class="line-numbers-rows"></code-line>        <span class="hljs-keyword">float</span> percent = (<span class="hljs-keyword">float</span>) currentOffset / totalLength * <span class="hljs-number">100</span>;
+<code-line class="line-numbers-rows"></code-line>        Log.i(<span class="hljs-string">"bqt"</span>, <span class="hljs-string">"【6、progress】"</span> + currentOffset + <span class="hljs-string">"["</span> + progressStatus + <span class="hljs-string">"]，速度："</span> + speed + <span class="hljs-string">"，进度："</span> + percent + <span class="hljs-string">"%"</span>);
+<code-line class="line-numbers-rows"></code-line>        progressBar.setProgress((<span class="hljs-keyword">int</span>) currentOffset);
+<code-line class="line-numbers-rows"></code-line>    }
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-meta">@Override</span>
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">blockEnd</span><span class="hljs-params">(<span class="hljs-meta">@NonNull</span> DownloadTask task, <span class="hljs-keyword">int</span> blockIndex, BlockInfo info, <span class="hljs-meta">@NonNull</span> SpeedCalculator blockSpeed)</span> </span>{
+<code-line class="line-numbers-rows"></code-line>        Log.i(<span class="hljs-string">"bqt"</span>, <span class="hljs-string">"【7、blockEnd】"</span> + blockIndex);
+<code-line class="line-numbers-rows"></code-line>    }
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-meta">@Override</span>
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">taskEnd</span><span class="hljs-params">(<span class="hljs-meta">@NonNull</span> DownloadTask task, <span class="hljs-meta">@NonNull</span> EndCause cause, <span class="hljs-meta">@Nullable</span> Exception realCause, <span class="hljs-meta">@NonNull</span> SpeedCalculator taskSpeed)</span> </span>{
+<code-line class="line-numbers-rows"></code-line>        Log.i(<span class="hljs-string">"bqt"</span>, <span class="hljs-string">"【8、taskEnd】"</span> + cause.name() + <span class="hljs-string">"："</span> + (realCause != <span class="hljs-keyword">null</span> ? realCause.getMessage() : <span class="hljs-string">"无异常"</span>));
+<code-line class="line-numbers-rows"></code-line>        Utils.dealEnd(context, itemInfo, cause);
+<code-line class="line-numbers-rows"></code-line>    }
+<code-line class="line-numbers-rows"></code-line>}</pre>
+<h1 id="源码分析" tid="tid-mHsjYB">源码分析</h1>
+<p><a href="https://www.jianshu.com/p/dcfa121a1ac6" rel="noopener" target="_blank">详见这篇文章</a></p>
+<h2 id="OkDownload" tid="tid-knMJxG">OkDownload</h2>
+<p>首先看一下OkDownload这个类，这个类定义了所有的下载策略，我们可以自定义一些下载策略，可以通过OkDownload的Builder构造自定义的一个OkDownload实例，再通过<code>OkDownload.setSingletonInstance</code>进行设置：</p>
+<pre highlighted="true" boxid="code-R5k5HQ" class="hljs Java code-pre-line"><code-line class="line-numbers-rows"></code-line>OkDownload.Builder builder = <span class="hljs-keyword">new</span> OkDownload.Builder(context)
+<code-line class="line-numbers-rows"></code-line>    .downloadStore(downloadStore) <span class="hljs-comment">//断点信息存储的位置，默认是SQLite数据库 </span>
+<code-line class="line-numbers-rows"></code-line>    .callbackDispatcher(callbackDispatcher) <span class="hljs-comment">//监听回调分发器，默认在主线程回调 </span>
+<code-line class="line-numbers-rows"></code-line>    .downloadDispatcher(downloadDispatcher) <span class="hljs-comment">//下载管理机制，最大下载任务数、同步异步执行下载任务的处理</span>
+<code-line class="line-numbers-rows"></code-line>    .connectionFactory(connectionFactory) <span class="hljs-comment">//选择网络请求框架，默认是OkHttp </span>
+<code-line class="line-numbers-rows"></code-line>    .outputStreamFactory(outputStreamFactory) <span class="hljs-comment">//构建文件输出流DownloadOutputStream，是否支持随机位置写入</span>
+<code-line class="line-numbers-rows"></code-line>    .downloadStrategy(downloadStrategy) <span class="hljs-comment">//下载策略，文件分为几个线程下载</span>
+<code-line class="line-numbers-rows"></code-line>    .processFileStrategy(processFileStrategy) <span class="hljs-comment">//多文件写文件的方式，默认是根据每个线程写文件的不同位置，支持同时写入</span>
+<code-line class="line-numbers-rows"></code-line>    .monitor(monitor); <span class="hljs-comment">//下载状态监听 </span>
+<code-line class="line-numbers-rows"></code-line>OkDownload.setSingletonInstance(builder.build());</pre>
+<h2 id="DownloadTask" tid="tid-sGHtJp">DownloadTask</h2>
+<p>DownloadTask下载任务类，可通过它的Builder来构造一个下载任务，我们看它是如何执行的：</p>
+<pre highlighted="true" boxid="code-EHC48i" class="hljs Java code-pre-line"><code-line class="line-numbers-rows"></code-line><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">execute</span><span class="hljs-params">(DownloadListener listener)</span> </span>{
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-keyword">this</span>.listener = listener;
+<code-line class="line-numbers-rows"></code-line>    OkDownload.with().downloadDispatcher().execute(<span class="hljs-keyword">this</span>);
+<code-line class="line-numbers-rows"></code-line>}
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">enqueue</span><span class="hljs-params">(DownloadListener listener)</span> </span>{
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-keyword">this</span>.listener = listener;
+<code-line class="line-numbers-rows"></code-line>    OkDownload.with().downloadDispatcher().enqueue(<span class="hljs-keyword">this</span>);
+<code-line class="line-numbers-rows"></code-line>}</pre>
+<p>可以看到都是通过downloadDispatcher来执行下载任务的，默认的downloadDispatcher是一个<code>DownloadDispatcher</code>实例，我们以同步执行一个下载任务为例，看它是如何下载的：</p>
+<pre highlighted="true" boxid="code-byWG4Z" class="hljs Java code-pre-line"><code-line class="line-numbers-rows"></code-line><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">execute</span><span class="hljs-params">(DownloadTask task)</span> </span>{
+<code-line class="line-numbers-rows"></code-line>    Util.d(TAG, <span class="hljs-string">"execute: "</span> + task);
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-keyword">final</span> DownloadCall call;
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-keyword">synchronized</span> (<span class="hljs-keyword">this</span>) {
+<code-line class="line-numbers-rows"></code-line>        <span class="hljs-keyword">if</span> (inspectCompleted(task)) <span class="hljs-keyword">return</span>;
+<code-line class="line-numbers-rows"></code-line>        <span class="hljs-keyword">if</span> (inspectForConflict(task)) <span class="hljs-keyword">return</span>;
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line>        call = DownloadCall.create(task, <span class="hljs-keyword">false</span>, store); <span class="hljs-comment">//创建DownloadCall对象</span>
+<code-line class="line-numbers-rows"></code-line>        runningSyncCalls.add(call);
+<code-line class="line-numbers-rows"></code-line>    }
+<code-line class="line-numbers-rows"></code-line>    syncRunCall(call); <span class="hljs-comment">//调用DownloadCall的run()方法，最终调用了其execute()方法</span>
+<code-line class="line-numbers-rows"></code-line>}
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">syncRunCall</span><span class="hljs-params">(DownloadCall call)</span> </span>{
+<code-line class="line-numbers-rows"></code-line>    call.run();
+<code-line class="line-numbers-rows"></code-line>}</pre>
+<pre highlighted="true" boxid="code-F2pMkc" class="hljs Java code-pre-line"><code-line class="line-numbers-rows"></code-line><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NamedRunnable</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Runnable</span> </span>{
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-meta">@Override</span>
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>{
+<code-line class="line-numbers-rows"></code-line>        String oldName = Thread.currentThread().getName();
+<code-line class="line-numbers-rows"></code-line>        Thread.currentThread().setName(name);
+<code-line class="line-numbers-rows"></code-line>        <span class="hljs-keyword">try</span> {
+<code-line class="line-numbers-rows"></code-line>            execute();
+<code-line class="line-numbers-rows"></code-line>        } <span class="hljs-keyword">catch</span> (InterruptedException e) {
+<code-line class="line-numbers-rows"></code-line>            interrupted(e);
+<code-line class="line-numbers-rows"></code-line>        } <span class="hljs-keyword">finally</span> {
+<code-line class="line-numbers-rows"></code-line>            Thread.currentThread().setName(oldName);
+<code-line class="line-numbers-rows"></code-line>            finished();
+<code-line class="line-numbers-rows"></code-line>        }
+<code-line class="line-numbers-rows"></code-line>    }
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title">execute</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> InterruptedException</span>;
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-comment">//...</span>
+<code-line class="line-numbers-rows"></code-line>}</pre>
+<p>大致流程： <br>
+在execute方法里将一个DownloadTask实例又封装为了一个<code>DownloadCall</code>对象，然后在syncRunCall方法里执行了<code>DownloadCall</code>对象的run方法。通过看DownloadCall源码可以知道该类继承自<code>NamedRunnable</code>，而NamedRunnable实现了Runnable，在run方法里调用了<code>execute()</code>方法。</p>
+<p>调用enqueue执行任务最终则是调用 <code>getExecutorService().execute(call)</code>来异步执行的：</p>
+<pre highlighted="true" boxid="code-KsKAzt" class="hljs Java code-pre-line"><code-line class="line-numbers-rows"></code-line><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">void</span> <span class="hljs-title">enqueueIgnorePriority</span><span class="hljs-params">(DownloadTask task)</span> </span>{
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-keyword">final</span> DownloadCall call = DownloadCall.create(task, <span class="hljs-keyword">true</span>, store);
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-keyword">if</span> (runningAsyncSize() &lt; maxParallelRunningCount) {
+<code-line class="line-numbers-rows"></code-line>        runningAsyncCalls.add(call);
+<code-line class="line-numbers-rows"></code-line>        getExecutorService().execute(call);
+<code-line class="line-numbers-rows"></code-line>    } <span class="hljs-keyword">else</span> {
+<code-line class="line-numbers-rows"></code-line>        readyAsyncCalls.add(call);
+<code-line class="line-numbers-rows"></code-line>    }
+<code-line class="line-numbers-rows"></code-line>}</pre>
+<h2 id="DownloadCall" tid="tid-WrfzR6">DownloadCall</h2>
+<p>先看一下DownloadCall是如何实现<code>execute</code>方法的，该方法比较长，首先执行的是<code>inspectTaskStart()</code>方法：</p>
+<pre highlighted="true" boxid="code-fREDJn" class="hljs Java code-pre-line"><code-line class="line-numbers-rows"></code-line><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">inspectTaskStart</span><span class="hljs-params">()</span> </span>{
+<code-line class="line-numbers-rows"></code-line>    store.onTaskStart(task.getId());
+<code-line class="line-numbers-rows"></code-line>    OkDownload.with().callbackDispatcher().dispatch().taskStart(task);
+<code-line class="line-numbers-rows"></code-line>}</pre>
+<p>这里的store是调用<code>BreakpointStoreOnSQLite</code>的<code>createRemitSelf</code>方法生成的一个实例：</p>
+<pre highlighted="true" boxid="code-R5FMNj" class="hljs Java code-pre-line"><code-line class="line-numbers-rows"></code-line><span class="hljs-function"><span class="hljs-keyword">public</span> DownloadStore <span class="hljs-title">createRemitSelf</span><span class="hljs-params">()</span> </span>{
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> RemitStoreOnSQLite(<span class="hljs-keyword">this</span>);
+<code-line class="line-numbers-rows"></code-line>}</pre>
+<p>可以看到是<code>RemitStoreOnSQLite</code>的一个实例，其主要用来保存任务及断点信息至本地数据库。RemitStoreOnSQLite里持有BreakpointStoreOnSQLite对象，BreakpointStoreOnSQLite里面包含了BreakpointSQLiteHelper（用于操作数据）和BreakpointStoreOnCache（用于做数据操作之前的数据缓存）。</p>
+<p>最终会调用上述store的<code>syncCacheToDB</code>方法，先删除数据库中的任务信息，若缓存（创建BreakpointStoreOnCache对象时，会调用loadToCache方法将数据库中所有任务信息进行缓存）中有该任务，则检查任务信息是否合法，若合法则再次将该任务及断点信息保存在本地数据库中。</p>
+<pre highlighted="true" boxid="code-mWe68J" class="hljs Java code-pre-line"><code-line class="line-numbers-rows"></code-line><span class="hljs-meta">@Override</span> 
+<code-line class="line-numbers-rows"></code-line><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">syncCacheToDB</span><span class="hljs-params">(<span class="hljs-keyword">int</span> id)</span> <span class="hljs-keyword">throws</span> IOException </span>{
+<code-line class="line-numbers-rows"></code-line>    sqLiteHelper.removeInfo(id); <span class="hljs-comment">//先删除数据库中的任务信息</span>
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-keyword">final</span> BreakpointInfo info = sqliteCache.get(id);
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-keyword">if</span> (info == <span class="hljs-keyword">null</span> || info.getFilename() == <span class="hljs-keyword">null</span> || info.getTotalOffset() &lt;= <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span>; <span class="hljs-comment">//检查任务信息是否合法</span>
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line>    sqLiteHelper.insert(info); <span class="hljs-comment">//若合法则再次将该任务及断点信息保存在本地数据库中</span>
+<code-line class="line-numbers-rows"></code-line>}</pre>
+<p>inspectTaskStart方法结束后，会进入一个do-while循环，首先做一些下载前的准备工作：</p>
+<ul>
+<li>1.判断当前任务的下载链接长度是否大于0，否则就抛出异常；</li>
+<li>2.从缓存中获取任务的断点信息，若没有断点信息，则创建断点信息并保存至数据库；</li>
+<li>3.创建带缓存的下载输出流；</li>
+<li>4.访问下载链接判断断点信息是否合理；</li>
+<li>5.确定文件路径后等待文件锁释放；</li>
+<li>6.判断缓存中是否有相同的任务，若有则复用缓存中的任务的分块信息；</li>
+<li>7.检查断点信息是否是可恢复的，若不可恢复，则根据文件大小进行分块，重新下载，否则继续进行下一步；</li>
+<li>8.判断断点信息是否是脏数据（文件存在且断点信息正确且下载链接支持断点续传）；</li>
+<li>9.若是脏数据则根据文件大小进行分块，重新开始下载，否则从断点位置开始下载；</li>
+<li>10.开始下载。</li>
+</ul>
+<p>文件分成多少块进行下载由<code>DownloadStrategy</code>决定的：文件大小在0-1MB、1-5MB、5-50MB、50-100MB、100MB以上时分别开启1、2、3、4、5个线程进行下载。</p>
+<p>我们重点看一下下载部分的源码，也就是<code>start(cache，info)</code>方法：</p>
+<pre highlighted="true" boxid="code-NJiCfy" class="hljs Java code-pre-line"><code-line class="line-numbers-rows"></code-line><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">start</span><span class="hljs-params">(<span class="hljs-keyword">final</span> DownloadCache cache, BreakpointInfo info)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>{
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> blockCount = info.getBlockCount();
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-keyword">final</span> List&lt;DownloadChain&gt; blockChainList = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;(info.getBlockCount());
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-keyword">final</span> List&lt;Integer&gt; blockIndexList = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; blockCount; i++) {
+<code-line class="line-numbers-rows"></code-line>        <span class="hljs-keyword">final</span> BlockInfo blockInfo = info.getBlock(i);
+<code-line class="line-numbers-rows"></code-line>        <span class="hljs-keyword">if</span> (Util.isCorrectFull(blockInfo.getCurrentOffset(), blockInfo.getContentLength())) {
+<code-line class="line-numbers-rows"></code-line>            <span class="hljs-keyword">continue</span>;
+<code-line class="line-numbers-rows"></code-line>        }
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line>        Util.resetBlockIfDirty(blockInfo);
+<code-line class="line-numbers-rows"></code-line>        <span class="hljs-keyword">final</span> DownloadChain chain = DownloadChain.createChain(i, task, info, cache, store);
+<code-line class="line-numbers-rows"></code-line>        blockChainList.add(chain);
+<code-line class="line-numbers-rows"></code-line>        blockIndexList.add(chain.getBlockIndex());
+<code-line class="line-numbers-rows"></code-line>    }
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-keyword">if</span> (canceled) {
+<code-line class="line-numbers-rows"></code-line>        <span class="hljs-keyword">return</span>;
+<code-line class="line-numbers-rows"></code-line>    }
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line>    cache.getOutputStream().setRequireStreamBlocks(blockIndexList);
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line>    startBlocks(blockChainList);
+<code-line class="line-numbers-rows"></code-line>}</pre>
+<p>可以看到它是分块下载的，每一个分块都是一个<code>DownloadChain</code>实例，DownloadChain实现了Runnable接口。</p>
+<p>继续看DownloadCall的<code>startBlocks</code>方法:</p>
+<pre highlighted="true" boxid="code-F3ApEZ" class="hljs Java code-pre-line"><code-line class="line-numbers-rows"></code-line><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">startBlocks</span><span class="hljs-params">(List&lt;DownloadChain&gt; tasks)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>{
+<code-line class="line-numbers-rows"></code-line>    ArrayList&lt;Future&gt; futures = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;(tasks.size());
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-keyword">try</span> {
+<code-line class="line-numbers-rows"></code-line>        <span class="hljs-keyword">for</span> (DownloadChain chain : tasks) {
+<code-line class="line-numbers-rows"></code-line>            futures.add(submitChain(chain));
+<code-line class="line-numbers-rows"></code-line>        }
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-comment">//...</span>
+<code-line class="line-numbers-rows"></code-line>}</pre>
+<pre highlighted="true" boxid="code-6TP7Xc" class="hljs JavaScript code-pre-line"><code-line class="line-numbers-rows"></code-line>Future&lt;?&gt; <span class="hljs-function"><span class="hljs-title">submitChain</span>(<span class="hljs-params">DownloadChain chain</span>)</span> {
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-keyword">return</span> EXECUTOR.submit(chain);
+<code-line class="line-numbers-rows"></code-line>}</pre>
+<p>对于每一个分块任务，都调用了<code>submitChain</code>方法，即由一个线程池去处理每一个<code>DownloadChain</code>分块。</p>
+<h2 id="DownloadChain" tid="tid-Xk2TJ4">DownloadChain</h2>
+<p>我们看一下DownloadChain的<code>start</code>方法：</p>
+<pre highlighted="true" boxid="code-jrPime" class="hljs Java code-pre-line"><code-line class="line-numbers-rows"></code-line><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">start</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException </span>{
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-keyword">final</span> CallbackDispatcher dispatcher = OkDownload.with().callbackDispatcher();
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-comment">// 处理请求拦截链，connect chain</span>
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-keyword">final</span> RetryInterceptor retryInterceptor = <span class="hljs-keyword">new</span> RetryInterceptor();
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-keyword">final</span> BreakpointInterceptor breakpointInterceptor = <span class="hljs-keyword">new</span> BreakpointInterceptor();
+<code-line class="line-numbers-rows"></code-line>    connectInterceptorList.add(retryInterceptor);
+<code-line class="line-numbers-rows"></code-line>    connectInterceptorList.add(breakpointInterceptor);
+<code-line class="line-numbers-rows"></code-line>    connectInterceptorList.add(<span class="hljs-keyword">new</span> HeaderInterceptor());
+<code-line class="line-numbers-rows"></code-line>    connectInterceptorList.add(<span class="hljs-keyword">new</span> CallServerInterceptor());
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line>    connectIndex = <span class="hljs-number">0</span>;
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-keyword">final</span> DownloadConnection.Connected connected = processConnect();
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-keyword">if</span> (cache.isInterrupt()) {
+<code-line class="line-numbers-rows"></code-line>        <span class="hljs-keyword">throw</span> InterruptException.SIGNAL;
+<code-line class="line-numbers-rows"></code-line>    }
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line>    dispatcher.dispatch().fetchStart(task, blockIndex, getResponseContentLength());
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-comment">// 获取数据拦截链，fetch chain</span>
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-keyword">final</span> FetchDataInterceptor fetchDataInterceptor =
+<code-line class="line-numbers-rows"></code-line>            <span class="hljs-keyword">new</span> FetchDataInterceptor(blockIndex, connected.getInputStream(),
+<code-line class="line-numbers-rows"></code-line>                    getOutputStream(), task);
+<code-line class="line-numbers-rows"></code-line>    fetchInterceptorList.add(retryInterceptor);
+<code-line class="line-numbers-rows"></code-line>    fetchInterceptorList.add(breakpointInterceptor);
+<code-line class="line-numbers-rows"></code-line>    fetchInterceptorList.add(fetchDataInterceptor);
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line>    fetchIndex = <span class="hljs-number">0</span>;
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-keyword">final</span> <span class="hljs-keyword">long</span> totalFetchedBytes = processFetch();
+<code-line class="line-numbers-rows"></code-line>    dispatcher.dispatch().fetchEnd(task, blockIndex, totalFetchedBytes);
+<code-line class="line-numbers-rows"></code-line>}</pre>
+<p>可以看到它主要使用<code>责任链模式</code>进行了两个链式调用：<code>处理请求拦截链</code>和<code>获取数据拦截链</code>。</p>
+<ul>
+<li>处理请求拦截链包含了<code>RetryInterceptor</code>重试拦截器、<code>BreakpointInterceptor</code>断点拦截器、<code>RedirectInterceptor</code>重定向拦截器、<code>HeaderInterceptor</code>头部信息处理拦截器、<code>CallServerInterceptor</code>请求拦截器，该链式调用过程会逐个调用拦截器的<code>interceptConnect</code>方法。</li>
+<li>获取数据拦截链包含了<code>RetryInterceptor</code>重试拦截器、<code>BreakpointInterceptor</code>断点拦截器、<code>RedirectInterceptor</code>重定向拦截器、<code>HeaderInterceptor</code>头部信息处理拦截器、<code>FetchDataInterceptor</code>获取数据拦截器，该链式调用过程会逐个调用拦截器的<code>interceptFetch</code>方法。</li>
+</ul>
+<pre highlighted="true" boxid="code-G6TFdA" class="hljs Java code-pre-line"><code-line class="line-numbers-rows"></code-line><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RetryInterceptor</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Interceptor</span>.<span class="hljs-title">Connect</span>, <span class="hljs-title">Interceptor</span>.<span class="hljs-title">Fetch</span> </span>{
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-meta">@NonNull</span> <span class="hljs-meta">@Override</span>
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-keyword">public</span> DownloadConnection.<span class="hljs-function">Connected <span class="hljs-title">interceptConnect</span><span class="hljs-params">(DownloadChain chain)</span> <span class="hljs-keyword">throws</span> IOException </span>{
+<code-line class="line-numbers-rows"></code-line>        <span class="hljs-comment">//...</span>
+<code-line class="line-numbers-rows"></code-line>        <span class="hljs-keyword">return</span> chain.processConnect();
+<code-line class="line-numbers-rows"></code-line>    }
+<code-line class="line-numbers-rows"></code-line>
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-meta">@Override</span>
+<code-line class="line-numbers-rows"></code-line>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">long</span> <span class="hljs-title">interceptFetch</span><span class="hljs-params">(DownloadChain chain)</span> <span class="hljs-keyword">throws</span> IOException </span>{
+<code-line class="line-numbers-rows"></code-line>        <span class="hljs-comment">//...</span>
+<code-line class="line-numbers-rows"></code-line>        <span class="hljs-keyword">return</span> chain.processFetch();
+<code-line class="line-numbers-rows"></code-line>    }
+<code-line class="line-numbers-rows"></code-line>}</pre>
+<p><a data-fancybox="gallery" href="https://upload-images.jianshu.io/upload_images/2826461-165585dfc22b8cba.png?imageMogr2/auto-orient/" target="_blank" rel="noopener"><img src="https://upload-images.jianshu.io/upload_images/2826461-165585dfc22b8cba.png?imageMogr2/auto-orient/"></a></p>
+<p><a data-fancybox="gallery" href="https://upload-images.jianshu.io/upload_images/2826461-16a7cfabda460aa1.png?imageMogr2/auto-orient/" target="_blank" rel="noopener"><img src="https://upload-images.jianshu.io/upload_images/2826461-16a7cfabda460aa1.png?imageMogr2/auto-orient/"></a></p>
+<p>每一个DownloadChain都完成后，最终会调用<code>inspectTaskEnd</code>方法，从数据库中删除该任务，并回调通知任务完成。这样，一个完整的下载任务就完成了。</p>
+<h2 id="总体流程" tid="tid-4ZiJKf">总体流程</h2>
+<p>总体流程如下：</p>
+<p><a data-fancybox="gallery" href="https://upload-images.jianshu.io/upload_images/2826461-fb1e8ae5d344b2e9.png" target="_blank" rel="noopener"><img src="https://upload-images.jianshu.io/upload_images/2826461-fb1e8ae5d344b2e9.png"></a></p>
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2022/09/25/how-to-customize-gradle-plugin/" data-toggle="tooltip" data-placement="top" title="[Android] How to customise gradle plugin">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2022/04/27/android-developing-guideline/" data-toggle="tooltip" data-placement="top" title="[Android] Android Developing Guideline">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#基本使用"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">基本使用</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#开始一个任务"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">开始一个任务</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#配置 DownloadTask"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">配置下载任务</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#任务队列的构建、开始和停止"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">任务队列的构建、开始和停止</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#获取任务状态"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">获取任务状态</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#获取断点信息"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">获取断点信息</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#设置任务监听"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">设置任务监听</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#设置多个监听"><span class="toc-nav-number">1.6.1.</span> <span class="toc-nav-text">设置多个监听</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#动态更改任务的监听"><span class="toc-nav-number">1.6.2.</span> <span class="toc-nav-text">动态更改任务的监听</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#全局控制"><span class="toc-nav-number">1.7.</span> <span class="toc-nav-text">全局控制</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#组件注入"><span class="toc-nav-number">1.8.</span> <span class="toc-nav-text">组件注入</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#动态串行队列"><span class="toc-nav-number">1.9.</span> <span class="toc-nav-text">动态串行队列</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#源码结构"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">源码结构</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#使用案例"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">使用案例</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Activity"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">Activity</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#辅助工具类"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">辅助工具类</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#辅助Bean"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">辅助Bean</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#DownloadListener4WithSpeed"><span class="toc-nav-number">3.4.</span> <span class="toc-nav-text">DownloadListener4WithSpeed</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#源码分析"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">源码分析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#OkDownload"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">OkDownload</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#DownloadTask"><span class="toc-nav-number">4.2.</span> <span class="toc-nav-text">DownloadTask</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#DownloadCall"><span class="toc-nav-number">4.3.</span> <span class="toc-nav-text">DownloadCall</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#DownloadChain"><span class="toc-nav-number">4.4.</span> <span class="toc-nav-text">DownloadChain</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#总体流程"><span class="toc-nav-number">4.5.</span> <span class="toc-nav-text">总体流程</span></a></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Android" title="Android">Android</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://us.pingpongx.com/external/inviteReg.htm?inviteCode=7nEFBj032" target="_blank">Overseas Collection</a></li>
+                    
+                        <li><a href="https://www.vultr.com/?ref=8600728-6G" target="_blank">VPS Vutlr</a></li>
+                    
+                        <li><a href="/vnews/index.html" target="_blank">Vnews Blog</a></li>
+                    
+                        <li><a href="http://blog.kaijun.rocks" target="_blank">Kaijun&#39;s Blog</a></li>
+                    
+                        <li><a href="http://huangxuan.me" target="_blank">Hux Blog</a></li>
+                    
+                        <li><a href="#" target="_blank">It Helps SEO</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'right',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+     <div class="row" style="margin-top:-50px;float:right;font-size:10px;margin-left:30px;padding-right:30px;">
+            
+            <!-- 不蒜子统计 -->
+            <span id="busuanzi_container_site_pv">
+            总访问量：<span id="busuanzi_value_site_pv">0</span>次
+            </span>
+            <span>|</span>
+            <span id="busuanzi_container_site_uv">
+            访客数：<span id="busuanzi_value_site_uv">0</span>人
+            </span>
+            
+             <!-- 不蒜子统计 -->
+             <span>|</span>
+              <span id="busuanzi_container_page_pv" style='display:none'">
+              <i class="icon-smile icon"></i>本文阅读数：<span id="busuanzi_value_page_pv">0</span>次
+              </span>
+            
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            
+     </div>
+        <div class="row">
+           <!-- horizontal_ad/bottom_ad -->
+           <ul class="list-inline text-center">
+            
+                <ins class="adsbygoogle"  style="display:block" data-ad-client="ca-pub-5651453694104340"  data-ad-slot="3310538124"  data-ad-format="auto" data-full-width-responsive="true"></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+            
+            </ul>
+        </div>
+        <br><br>
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/xiuyuantech">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://www.linkedin.com/in/xiuyuantech">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                </br>
+                <ul class="list-inline text-center">
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/geekvideo_release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Clear" src="/img/ic_geekvideo_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/clear_googleplay_1.5.0_0530-1704_release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Clear" src="/img/ic_clear_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/videoeditor-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="VideoEditor" src="/img/ic_videoclip_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/screenrecoder-playstoreDonate-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="ScreenRecoder" src="/img/ic_recoder_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/vault-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Vault" src="/img/ic_vault_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/accountbook-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="AccountBook" src="/img/ic_book_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/starwars-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Star Wars" src="/img/ic_plane_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/cardsolitaire-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Solitaire" src="/img/ic_card_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; xiuyuantech 2025 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Ported by <a href="https://xiuyuantech.github.io">XiuYuanTech</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;margin-right: -36px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="/star_xiuyuantech_on_github.html?user=xiuyuantech&repo=&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://xiuyuantech.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-165334855-1';
+    var _gaDomain = 'xiuyuantech.github.io';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- async load function -->
+
+<script>
+
+    function async(u, c) {
+
+      var d = document, t = 'script',
+
+          o = d.createElement(t),
+
+          s = d.getElementsByTagName(t)[0];
+
+      o.src = u;
+
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+
+      s.parentNode.insertBefore(o, s);
+
+    }
+
+</script>
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="https://xiuyuantech.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+
+<script type="text/javascript">
+  function adLoaded() {
+      var in_article_contaner = document.getElementById('in-article-ad');
+      if(in_article_contaner) {
+            // here you can make the height, I delete it first, then I make it again
+            console.log("in_article_contaner");
+            //in_article_contaner.innerHTML=``;
+      }
+      var square_contaner = document.getElementById('square-ad');
+      if(square_contaner){
+         console.log("square_contaner");
+         //square_contaner.innerHTML=``;
+      }
+  };
+
+  $(document).ready(function () {
+                try{
+                  //adLoaded();
+                }catch(err){
+                  onError();
+                }});
+
+</script>
+
+<script>
+function isSameDay(timeA,timeB) {
+   let dateA = new Date(timeA);
+   let dateB = new Date(timeB);
+   return (dateA.setHours(0, 0, 0, 0) == dateB.setHours(0, 0, 0, 0));
+   }
+   function CheckIsNotNullOrEmpty(value) {
+                //正则表达式用于判斷字符串是否全部由空格或换行符组成
+                 var reg = /^\s*$/
+                 //返回值为true表示不是空字符串
+                 return (value != null && value != undefined && !reg.test(value));
+   }
+   <!-- js 异常时不显示 -->
+   function onError(){
+        $("ins.adsbygoogle[data-ad-slot]").each(function(index,element){
+           $(element).remove();
+           });
+   }
+    <!-- 单个点击事件 -->
+    function bindClick(element,countKeyPre) {
+        $(element).click(function(){
+          console.log("dayKey：" + countKeyPre);
+          var count =  window.localStorage.countKeyPre;
+          console.log("count get： "+count);
+          if(CheckIsNotNullOrEmpty(count)){
+             count++;
+             console.log("count++： "+count);
+             window.localStorage.countKeyPre = count;
+             if(count >= 4){
+              console.log("count： "+count);
+              $(element).remove();
+              onError();
+              }
+          } else {
+            window.localStorage.countKeyPre = 0;
+          }
+          });
+
+        }
+        <!-- js 初始化 Ad  -->
+        function initAd(ip){
+        if(CheckIsNotNullOrEmpty(ip)){
+                //alert("not null ip:  "+ ip);
+                $("ins.adsbygoogle[data-ad-slot]").each(function(index,element){
+                            /*var data_ad_slot = $(element).attr("data-ad-slot");
+                            console.log("data_ad_slot：" + data_ad_slot);
+                            var hasAd = CheckIsNotNullOrEmpty(data_ad_slot);
+                            console.log("hasAd：" + hasAd);*/
+                            //if（hasAd){
+                               //console.log("not null data_ad_slot：" + data_ad_slot);
+                               var dayKeyPre = ip +"_day";
+                               var countKeyPre = ip +"_count";
+                               console.log("dayKey：" + dayKeyPre);
+                               console.log("dayKeyPre：" + window.localStorage.dayKeyPre);
+                               bindClick(element,countKeyPre);
+                               console.log("countKeyPre：" + countKeyPre);
+                               console.log("countKeyPre：" + window.localStorage.countKeyPre);
+                               var nowStr =  new Date().toLocaleDateString();
+                               var notSame = CheckIsNotNullOrEmpty(window.localStorage.dayKeyPre) && !isSameDay(window.localStorage.dayKeyPre,nowStr);
+                               console.log("同一天：" +  !notSame);
+                               if(notSame){
+                                window.localStorage.dayKeyPre = nowStr;
+                                window.localStorage.countKeyPre = 0;
+                                console.log("重置成功");
+                                }
+                                   if( CheckIsNotNullOrEmpty(window.localStorage.dayKeyPre)){
+                                      if(window.localStorage.countKeyPre >= 4){
+                                         $(element).remove();
+                                      }
+                                   } else {
+                                      window.localStorage.dayKeyPre = nowStr;
+                                    }
+                              //}
+                            });
+                        return;
+                    }
+                        onError();
+                 }
+
+                          $(document).ready(function () {
+                          try{
+                            //$.getJSON("https://api.ipify.org/?format=json", function(e) {
+                            // var ip = e.ip;
+                            //initAd(ip);
+                             //});
+                          }catch(err){
+                            onError();
+                          }});
+</script>
+
+
+
+</body>
+
+</html>

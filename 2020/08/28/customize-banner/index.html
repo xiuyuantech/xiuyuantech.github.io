@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="xiuyuantech">
+    <meta name="keyword" content>
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          [Android] How to Customize Banner - xiuyuantech
+        
+    </title>
+
+    <link rel="canonical" href="https://xiuyuantech.github.io/2020/08/28/customize-banner/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+
+    <!-- Google Adsense -->
+
+    
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-5651453694104340",
+             enable_page_level_ads: true
+             });
+    </script>
+    <!-- 获取ip <script async src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>  -->
+
+
+
+    
+
+</head>
+
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('')
+            /*post*/
+        
+    }
+    
+    #signature{
+        background-image: url('/img/signature/BeanTechSign-white.png');
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Android" title="Android">Android</a>
+                            
+                        </div>
+                        <h1>[Android] How to Customize Banner</h1>
+                        <h2 class="subheading">Customize View，Animation UI Development</h2>
+                        <span class="meta">
+                            Posted by xiuyuantech on
+                            2020-08-28
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">XiuYuanTech</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/vnews/">vnews home</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <blockquote>
+<p>最近做项目的时候产品提出需要做出类似某金所首页头部消息的样式效果。<br>
+与Android系统自带控件不同的是消息不是上下滚动而是伸缩展示,根据文案动态改变View宽度。<br>
+经过调研目前系统中有类似的控件 <code>ViewFlipper</code>,<code>TextSwticher</code>,<code>ViewSwticher</code>,<code>ImageViewSwticher</code>等。<br>
+这些控件都可以实现类似某宝，某东首页消息滚动的效果，但是无法实现产品提出的效果。<br>
+最后通过自定义控件并继承<code>TextSwticher</code>,测量出文本长度来动态改变显示父View的宽。</p>
+</blockquote>
+<p>先看下实现的效果：</p>
+<p><img src="/img/gif/message_flipper.gif" alt="伸缩消息动画"></p>
+<h2 id="调研">调研</h2>
+<p>经查阅资料发现ViewFliper类似ViewPager适合处理复杂布局的消息滚动,不太好获取Child宽度及调整父View宽度;<br>
+ImageViewSwticher适合处理简单图片的滚动;</p>
+<p>TextSwticher适合处理简单文本的滚动,方便获取文本宽度及调整父View宽度;<br>
+TextSwticher通过ViewFactory构造出Child,showNext()展示下一个,<br>
+setInAnimation()设置进入动画,setOutAnimation设置退出动画;</p>
+<p>根据要求我们需要重写ViewFactory,自定义showNext,自定义动画。</p>
+<h2 id="setViewFactory">setViewFactory</h2>
+<p>自定义ViewFactory,根据需求实现makeView方法。</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> View <span class="title">makeView</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       TextView childTextView = <span class="keyword">new</span> TextView(getContext());</span><br><span class="line">       childTextView.setSingleLine(<span class="keyword">true</span>);</span><br><span class="line">       childTextView.setTextSize(<span class="number">16</span>);</span><br><span class="line">       childTextView.setFocusable(<span class="keyword">true</span>);</span><br><span class="line">       childTextView.setFocusableInTouchMode(<span class="keyword">true</span>);</span><br><span class="line">       childTextView.setTextColor(getContext().getResources().getColor(android.R.color.black));</span><br><span class="line">       <span class="keyword">return</span> childTextView;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="showNextText">showNextText</h2>
+<p>自定义方法实现兼容展示下一个</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">showNextText</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    setNextChild();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setNextChild</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (mCurrentIndex &gt; mContentList.size() - <span class="number">1</span>) &#123;</span><br><span class="line">        mCurrentIndex = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    TextView mNextView = (TextView) getNextView();</span><br><span class="line">    String mContent = mContentList.get(mCurrentIndex++);</span><br><span class="line">    mNextView.setText(HtmlCompat.fromHtml(mContent, HtmlCompat.FROM_HTML_MODE_LEGACY));</span><br><span class="line">    <span class="keyword">int</span> hash = mContent.hashCode();</span><br><span class="line">    Float measureWidth = mViewSizeCache.get(hash);</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">null</span> == measureWidth) &#123;</span><br><span class="line">        measureWidth = mNextView.getPaint().measureText(mContent)</span><br><span class="line">                + mNextView.getPaddingRight() + mNextView.getPaddingLeft();</span><br><span class="line">        mViewSizeCache.put(hash, measureWidth);</span><br><span class="line">    &#125;</span><br><span class="line">    MarginLayoutParams param = (MarginLayoutParams) mNextView.getLayoutParams();</span><br><span class="line">    <span class="keyword">if</span> (MAX_WIDTH &lt; measureWidth.intValue()) &#123;</span><br><span class="line">        param.width = MAX_WIDTH - getPaddingLeft() - getPaddingRight();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        param.width = measureWidth.intValue();</span><br><span class="line">    &#125;</span><br><span class="line">    mNextView.setLayoutParams(param);</span><br><span class="line">    showNext();</span><br><span class="line">    setCurrentViewMarginLeft(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">float</span> originalTextWidth = getCurrentViewWidth();</span><br><span class="line">    setCurrentWidth(originalTextWidth);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="动画">动画</h2>
+<p>去掉默认动画,通过ValueAnimator来实现进出动画。<br>
+设置AnimatorUpdateListener监听器,根据进度动态父View宽度</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> AnimatorUpdateListener mUpdateListener = <span class="keyword">new</span> AnimatorUpdateListener() &#123;</span><br><span class="line">      <span class="meta">@Override</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationUpdate</span><span class="params">(ValueAnimator animation)</span> </span>&#123;</span><br><span class="line">          <span class="keyword">float</span> mCurrentWidth = getCurrentViewWidth();</span><br><span class="line">          <span class="keyword">float</span> factor = (<span class="keyword">float</span>) animation.getAnimatedValue();</span><br><span class="line">          mCurrentWidth = Math.round(mCurrentWidth * factor);</span><br><span class="line">          setCurrentWidth(mCurrentWidth);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="完整源码">完整源码</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.dxmat.test.dxmtest;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.animation.Animator;</span><br><span class="line"><span class="keyword">import</span> android.animation.Animator.AnimatorListener;</span><br><span class="line"><span class="keyword">import</span> android.animation.ObjectAnimator;</span><br><span class="line"><span class="keyword">import</span> android.animation.ValueAnimator;</span><br><span class="line"><span class="keyword">import</span> android.animation.ValueAnimator.AnimatorUpdateListener;</span><br><span class="line"><span class="keyword">import</span> android.content.BroadcastReceiver;</span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.content.Intent;</span><br><span class="line"><span class="keyword">import</span> android.content.IntentFilter;</span><br><span class="line"><span class="keyword">import</span> android.text.TextUtils.TruncateAt;</span><br><span class="line"><span class="keyword">import</span> android.util.ArrayMap;</span><br><span class="line"><span class="keyword">import</span> android.util.AttributeSet;</span><br><span class="line"><span class="keyword">import</span> android.view.Gravity;</span><br><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"><span class="keyword">import</span> android.view.ViewGroup;</span><br><span class="line"><span class="keyword">import</span> android.view.animation.LinearInterpolator;</span><br><span class="line"><span class="keyword">import</span> android.widget.TextSwitcher;</span><br><span class="line"><span class="keyword">import</span> android.widget.TextView;</span><br><span class="line"><span class="keyword">import</span> android.widget.ViewSwitcher;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> androidx.core.text.HtmlCompat;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by <span class="doctag">@author</span>  on 2020/11/15</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@desc</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AutoSizeTextSwither</span> <span class="keyword">extends</span> <span class="title">TextSwitcher</span> <span class="keyword">implements</span> <span class="title">ViewSwitcher</span>.<span class="title">ViewFactory</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEFAULT_DURATION = <span class="number">500</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> MAX_WIDTH = <span class="number">800</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> mAutoStart = <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> mStarted = <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> mVisible = <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> mRunning = <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">long</span> mIntervalIn = DEFAULT_DURATION;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">long</span> mIntervalOut = DEFAULT_DURATION;</span><br><span class="line">    <span class="keyword">private</span> List&lt;String&gt; mContentList = <span class="keyword">new</span> ArrayList&lt;&gt;(<span class="number">3</span>);</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> mUserPresent = <span class="keyword">true</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">int</span> mCurrentIndex;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> ValueAnimator mAnimationIn = ObjectAnimator.ofFloat(<span class="number">0</span>, <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> ValueAnimator mAnimationOut = ObjectAnimator.ofFloat(<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> ValueAnimator marqueeAnimation = ObjectAnimator.ofFloat();</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> ArrayMap&lt;Integer, Float&gt; mViewSizeCache = <span class="keyword">new</span> ArrayMap&lt;&gt;(<span class="number">3</span>);</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> marqueeOffset;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">long</span> mInterval = DEFAULT_DURATION;</span><br><span class="line">    <span class="keyword">private</span> TruncateAt truncateAt = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">private</span> OnItemClickListener onItemClickListener;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">OnItemClickListener</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">onItemClick</span><span class="params">(View view, String text, <span class="keyword">int</span> position)</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> AnimatorListener mInListener = <span class="keyword">new</span> AnimatorListener() &#123;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationStart</span><span class="params">(Animator animation)</span> </span>&#123;</span><br><span class="line">            showNextText();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationEnd</span><span class="params">(Animator animation)</span> </span>&#123;</span><br><span class="line">            <span class="comment">// 跑马灯</span></span><br><span class="line">            <span class="keyword">float</span> mCurrentWidth = getCurrentViewWidth() + getPaddingEnd() + getPaddingStart();</span><br><span class="line">            <span class="keyword">if</span> (mCurrentWidth &gt;= MAX_WIDTH) &#123;</span><br><span class="line">                marqueeOffset = MAX_WIDTH - mCurrentWidth;</span><br><span class="line">                marqueeAnimation.setFloatValues(<span class="number">0</span>, marqueeOffset);</span><br><span class="line">                marqueeAnimation.start();</span><br><span class="line">                <span class="comment">/*if (TruncateAt.MARQUEE == truncateAt) &#123;</span></span><br><span class="line"><span class="comment">                    getCurrentView().setSelected(true);</span></span><br><span class="line"><span class="comment">                &#125;*/</span></span><br><span class="line">            &#125;</span><br><span class="line">            updateRunning();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationCancel</span><span class="params">(Animator animation)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationRepeat</span><span class="params">(Animator animation)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> AnimatorListener mOutListener = <span class="keyword">new</span> AnimatorListener() &#123;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationStart</span><span class="params">(Animator animation)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (TruncateAt.MARQUEE == truncateAt) &#123;</span><br><span class="line">                getCurrentView().setSelected(<span class="keyword">false</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationEnd</span><span class="params">(Animator animation)</span> </span>&#123;</span><br><span class="line">            mAnimationIn.start();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationCancel</span><span class="params">(Animator animation)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationRepeat</span><span class="params">(Animator animation)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> AnimatorUpdateListener mUpdateListener = <span class="keyword">new</span> AnimatorUpdateListener() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationUpdate</span><span class="params">(ValueAnimator animation)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">float</span> mCurrentWidth = getCurrentViewWidth();</span><br><span class="line">            <span class="keyword">float</span> factor = (<span class="keyword">float</span>) animation.getAnimatedValue();</span><br><span class="line">            mCurrentWidth = mCurrentWidth * factor;</span><br><span class="line">            setCurrentWidth(mCurrentWidth);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> AnimatorUpdateListener marqueeUpdateListener = <span class="keyword">new</span> AnimatorUpdateListener() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationUpdate</span><span class="params">(ValueAnimator animation)</span> </span>&#123;</span><br><span class="line">            setCurrentViewMarginLeft((Float) animation.getAnimatedValue());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> AnimatorListener marqueeAnimationListener = <span class="keyword">new</span> AnimatorListener() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationStart</span><span class="params">(Animator animation)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationEnd</span><span class="params">(Animator animation)</span> </span>&#123;</span><br><span class="line">            updateRunning();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationCancel</span><span class="params">(Animator animation)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationRepeat</span><span class="params">(Animator animation)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AutoSizeTextSwither</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>(context, <span class="keyword">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AutoSizeTextSwither</span><span class="params">(Context context, AttributeSet attrs)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context, attrs);</span><br><span class="line">        init();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        setFactory(<span class="keyword">this</span>);</span><br><span class="line">        setInAnimation(<span class="keyword">null</span>);</span><br><span class="line">        setOutAnimation(<span class="keyword">null</span>);</span><br><span class="line">        setClipToPadding(<span class="keyword">false</span>);</span><br><span class="line">        mAnimationIn.setDuration(DEFAULT_DURATION);</span><br><span class="line">        mAnimationIn.addListener(mInListener);</span><br><span class="line">        mAnimationIn.setInterpolator(<span class="keyword">new</span> LinearInterpolator());</span><br><span class="line">        mAnimationIn.addUpdateListener(mUpdateListener);</span><br><span class="line">        mAnimationOut.setDuration(DEFAULT_DURATION);</span><br><span class="line">        mAnimationOut.addListener(mOutListener);</span><br><span class="line">        mAnimationOut.setInterpolator(<span class="keyword">new</span> LinearInterpolator());</span><br><span class="line">        mAnimationOut.addUpdateListener(mUpdateListener);</span><br><span class="line">        marqueeAnimation.setDuration(DEFAULT_DURATION);</span><br><span class="line">        marqueeAnimation.setInterpolator(<span class="keyword">new</span> LinearInterpolator());</span><br><span class="line">        marqueeAnimation.addUpdateListener(marqueeUpdateListener);</span><br><span class="line">        marqueeAnimation.addListener(marqueeAnimationListener);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> View <span class="title">makeView</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        TextView childTextView = <span class="keyword">new</span> TextView(getContext());</span><br><span class="line">        childTextView.setGravity(Gravity.CENTER_VERTICAL);</span><br><span class="line">        childTextView.setSingleLine(<span class="keyword">true</span>);</span><br><span class="line">        childTextView.setTextSize(<span class="number">16</span>);</span><br><span class="line">        childTextView.setFocusable(<span class="keyword">true</span>);</span><br><span class="line">        childTextView.setFocusableInTouchMode(<span class="keyword">true</span>);</span><br><span class="line">        childTextView.setEllipsize(truncateAt);</span><br><span class="line">        childTextView.setTextColor(getContext().getResources().getColor(android.R.color.black));</span><br><span class="line">        <span class="keyword">return</span> childTextView;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> BroadcastReceiver mReceiver = <span class="keyword">new</span> BroadcastReceiver() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context, Intent intent)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">final</span> String action = intent.getAction();</span><br><span class="line">            <span class="keyword">if</span> (Intent.ACTION_SCREEN_OFF.equals(action)) &#123;</span><br><span class="line">                mUserPresent = <span class="keyword">false</span>;</span><br><span class="line">                updateRunning();</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (Intent.ACTION_USER_PRESENT.equals(action)) &#123;</span><br><span class="line">                mUserPresent = <span class="keyword">true</span>;</span><br><span class="line">                updateRunning(<span class="keyword">false</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onWindowVisibilityChanged</span><span class="params">(<span class="keyword">int</span> visibility)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onWindowVisibilityChanged(visibility);</span><br><span class="line">        mVisible = visibility == VISIBLE;</span><br><span class="line">        updateRunning(<span class="keyword">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onAttachedToWindow</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onAttachedToWindow();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Listen for broadcasts related to user-presence</span></span><br><span class="line">        <span class="keyword">final</span> IntentFilter filter = <span class="keyword">new</span> IntentFilter();</span><br><span class="line">        filter.addAction(Intent.ACTION_SCREEN_OFF);</span><br><span class="line">        filter.addAction(Intent.ACTION_USER_PRESENT);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// OK, this is gross but needed. This class is supported by the</span></span><br><span class="line">        <span class="comment">// remote views machanism and as a part of that the remote views</span></span><br><span class="line">        <span class="comment">// can be inflated by a context for another user without the app</span></span><br><span class="line">        <span class="comment">// having interact users permission - just for loading resources.</span></span><br><span class="line">        <span class="comment">// For exmaple, when adding widgets from a user profile to the</span></span><br><span class="line">        <span class="comment">// home screen. Therefore, we register the receiver as the current</span></span><br><span class="line">        <span class="comment">// user not the one the context is for.</span></span><br><span class="line">        getContext().registerReceiver(mReceiver, filter);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Automatically start when requested</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="number">0</span> != mContentList.size()) &#123;</span><br><span class="line">            showNextText();</span><br><span class="line">            <span class="keyword">if</span> (mAutoStart &amp;&amp; mContentList.size() &gt; <span class="number">1</span>) &#123;</span><br><span class="line">                startFlipping();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Runnable mFlipRunnable = <span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (mRunning) &#123;</span><br><span class="line">                mAnimationOut.start();</span><br><span class="line">                postDelayed(mFlipRunnable, mInterval);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDetachedFromWindow</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onDetachedFromWindow();</span><br><span class="line">        mVisible = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">        getContext().unregisterReceiver(mReceiver);</span><br><span class="line">        updateRunning();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">updateRunning</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        updateRunning(<span class="keyword">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Start a timer to cycle through child views</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startFlipping</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        mStarted = <span class="keyword">true</span>;</span><br><span class="line">        updateRunning();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * No more flips</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">stopFlipping</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        mStarted = <span class="keyword">false</span>;</span><br><span class="line">        updateRunning();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">updateRunning</span><span class="params">(<span class="keyword">boolean</span> flipNow)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">boolean</span> running = mVisible &amp;&amp; mStarted &amp;&amp; mUserPresent;</span><br><span class="line">        <span class="keyword">if</span> (running != mRunning) &#123;</span><br><span class="line">            <span class="keyword">if</span> (running) &#123;</span><br><span class="line">                postDelayed(mFlipRunnable, mInterval);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                removeCallbacks(mFlipRunnable);</span><br><span class="line">            &#125;</span><br><span class="line">            mRunning = running;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setCurrentWidth</span><span class="params">(<span class="keyword">float</span> currentWidth)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">float</span> mCurrentWidth = currentWidth + getPaddingStart() + getPaddingEnd();</span><br><span class="line">        <span class="keyword">if</span> (mCurrentWidth &gt; MAX_WIDTH) &#123;</span><br><span class="line">            mCurrentWidth = MAX_WIDTH;</span><br><span class="line">        &#125;</span><br><span class="line">        ViewGroup.LayoutParams layoutParam = getLayoutParams();</span><br><span class="line">        layoutParam.width = (<span class="keyword">int</span>) mCurrentWidth;</span><br><span class="line">        setLayoutParams(layoutParam);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">getCurrentViewWidth</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> width = <span class="number">0</span>;</span><br><span class="line">        TextView mCurrentView = (TextView) getCurrentView();</span><br><span class="line">        String text = mCurrentView.getText().toString();</span><br><span class="line">        <span class="keyword">int</span> hash = text.hashCode();</span><br><span class="line">        Float measureWidth = mViewSizeCache.get(hash);</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">null</span> == measureWidth) &#123;</span><br><span class="line">            measureWidth = mCurrentView.getPaint().measureText(text)</span><br><span class="line">                    + mCurrentView.getPaddingStart() + mCurrentView.getPaddingEnd();</span><br><span class="line">            mViewSizeCache.put(hash, measureWidth);</span><br><span class="line">        &#125;</span><br><span class="line">        width = measureWidth.intValue();</span><br><span class="line">        <span class="keyword">return</span> width;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setNextChild</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (mCurrentIndex &gt; mContentList.size() - <span class="number">1</span>) &#123;</span><br><span class="line">            mCurrentIndex = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        TextView mNextView = (TextView) getNextView();</span><br><span class="line">        <span class="keyword">final</span> String mContent = mContentList.get(mCurrentIndex++);</span><br><span class="line">        mNextView.setText(HtmlCompat.fromHtml(mContent, HtmlCompat.FROM_HTML_MODE_LEGACY));</span><br><span class="line">        <span class="keyword">int</span> hash = mContent.hashCode();</span><br><span class="line">        Float measureWidth = mViewSizeCache.get(hash);</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">null</span> == measureWidth) &#123;</span><br><span class="line">            measureWidth = mNextView.getPaint().measureText(mContent)</span><br><span class="line">                    + mNextView.getPaddingEnd() + mNextView.getPaddingStart();</span><br><span class="line">            mViewSizeCache.put(hash, measureWidth);</span><br><span class="line">        &#125;</span><br><span class="line">        MarginLayoutParams param = (MarginLayoutParams) mNextView.getLayoutParams();</span><br><span class="line">        <span class="keyword">if</span> (MAX_WIDTH &lt; measureWidth.intValue() &amp;&amp; TruncateAt.MARQUEE == truncateAt) &#123;</span><br><span class="line">            param.width = MAX_WIDTH - getPaddingStart() - getPaddingEnd();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            param.width = measureWidth.intValue();</span><br><span class="line">        &#125;</span><br><span class="line">        mNextView.setLayoutParams(param);</span><br><span class="line">        showNext();</span><br><span class="line">        setCurrentViewMarginLeft(<span class="number">0f</span>);</span><br><span class="line">        <span class="keyword">float</span> originalTextWidth = getCurrentViewWidth();</span><br><span class="line">        setCurrentWidth(originalTextWidth);</span><br><span class="line">        getCurrentView().setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="keyword">null</span> != onItemClickListener) &#123;</span><br><span class="line">                    onItemClickListener.onItemClick(view, mContent, getDisplayedChild());</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setCurrentViewMarginLeft</span><span class="params">(<span class="keyword">float</span> leftMargin)</span> </span>&#123;</span><br><span class="line">        View currentView = getCurrentView();</span><br><span class="line">        MarginLayoutParams marginLayoutParam = (MarginLayoutParams) currentView.getLayoutParams();</span><br><span class="line">        marginLayoutParam.leftMargin = (<span class="keyword">int</span>) leftMargin;</span><br><span class="line">        currentView.setLayoutParams(marginLayoutParam);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">dip2px</span><span class="params">(<span class="keyword">float</span> dpValue)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">float</span> scale = getContext().getResources().getDisplayMetrics().density;</span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">int</span>) (dpValue * scale + <span class="number">0.5f</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">showNextText</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        setNextChild();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">resetInterval</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (mInterval &lt; mIntervalIn + mIntervalOut) &#123;</span><br><span class="line">            mInterval = mIntervalIn + mIntervalOut + mInterval;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setIntervalIn</span><span class="params">(<span class="keyword">long</span> mIntervalIn)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.mIntervalIn = mIntervalIn;</span><br><span class="line">        resetInterval();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setIntervalOut</span><span class="params">(<span class="keyword">long</span> mIntervalOut)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.mIntervalOut = mIntervalOut;</span><br><span class="line">        resetInterval();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setInterval</span><span class="params">(<span class="keyword">long</span> mInterval)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.mInterval = mInterval;</span><br><span class="line">        resetInterval();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">getContentList</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mContentList;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setContentList</span><span class="params">(List&lt;String&gt; mContentList)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">null</span> == mContentList) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">this</span>.mContentList = mContentList;</span><br><span class="line">        mViewSizeCache.clear();</span><br><span class="line">        showNextText();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAutoStart</span><span class="params">(<span class="keyword">boolean</span> mAutoStart)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.mAutoStart = mAutoStart;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTruncateAt</span><span class="params">(TruncateAt truncateAt)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.truncateAt = truncateAt;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMaxWidth</span><span class="params">(<span class="keyword">int</span> maxWidth)</span> </span>&#123;</span><br><span class="line">        MAX_WIDTH = maxWidth;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setOnItemClickListener</span><span class="params">(OnItemClickListener onItemClickListener)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.onItemClickListener = onItemClickListener;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>注意设置高度用：layoutParam.height = ViewGroup.LayouParam.MATCH_PARENT</code></p>
+<h2 id="高级进阶">高级进阶</h2>
+<p>刚开始想通过ViewFlipper来实现,一时半会没有好的思路就先用上面的TextSwticher来显示。<br>
+后来通过自研,多次测试调优终于实现了ViewFlipper动态调整的效果。<br>
+代码如下,仅供参考学习。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.dxmat.test.dxmtest;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.animation.Animator;</span><br><span class="line"><span class="keyword">import</span> android.animation.Animator.AnimatorListener;</span><br><span class="line"><span class="keyword">import</span> android.animation.ObjectAnimator;</span><br><span class="line"><span class="keyword">import</span> android.animation.ValueAnimator;</span><br><span class="line"><span class="keyword">import</span> android.animation.ValueAnimator.AnimatorUpdateListener;</span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.graphics.Canvas;</span><br><span class="line"><span class="keyword">import</span> android.util.ArrayMap;</span><br><span class="line"><span class="keyword">import</span> android.util.AttributeSet;</span><br><span class="line"><span class="keyword">import</span> android.util.Log;</span><br><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"><span class="keyword">import</span> android.view.ViewGroup;</span><br><span class="line"><span class="keyword">import</span> android.view.animation.LinearInterpolator;</span><br><span class="line"><span class="keyword">import</span> android.widget.ViewFlipper;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by <span class="doctag">@author</span> on 2020/11/17</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@desc</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AutoSizeViewFlipper</span> <span class="keyword">extends</span> <span class="title">ViewFlipper</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEFAULT_DURATION = <span class="number">500</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> MAX_WIDTH = <span class="number">800</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> parentWidthMeasureSpec;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> parentHeightMeasureSpec;</span><br><span class="line">    <span class="keyword">private</span> ArrayMap&lt;Integer, Integer&gt; childWidthCache = <span class="keyword">new</span> ArrayMap&lt;&gt;(<span class="number">3</span>);</span><br><span class="line">    <span class="keyword">private</span> ValueAnimator outAnimator = ObjectAnimator.ofFloat(<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> ValueAnimator inAnimator = ObjectAnimator.ofFloat(<span class="number">0</span>, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> AnimatorUpdateListener updateWidthListener = <span class="keyword">new</span> AnimatorUpdateListener() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationUpdate</span><span class="params">(ValueAnimator animation)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">int</span> mCurrentWidth = getCurrentViewWidth();</span><br><span class="line">            <span class="keyword">float</span> factor = (<span class="keyword">float</span>) animation.getAnimatedValue();</span><br><span class="line">            mCurrentWidth = (<span class="keyword">int</span>) (mCurrentWidth * factor);</span><br><span class="line">            <span class="comment">//setCurrentWidth(mCurrentWidth);</span></span><br><span class="line">            adjustParentWidth(mCurrentWidth);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> AnimatorListener outListener = <span class="keyword">new</span> AnimatorListener() &#123;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationStart</span><span class="params">(Animator animation)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationEnd</span><span class="params">(Animator animation)</span> </span>&#123;</span><br><span class="line">            manualShowNext();</span><br><span class="line">            inAnimator.start();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationCancel</span><span class="params">(Animator animation)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationRepeat</span><span class="params">(Animator animation)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> AnimatorListener inListener = <span class="keyword">new</span> AnimatorListener() &#123;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationStart</span><span class="params">(Animator animation)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationEnd</span><span class="params">(Animator animation)</span> </span>&#123;</span><br><span class="line">            <span class="comment">// 跑马灯</span></span><br><span class="line">            <span class="keyword">float</span> mCurrentWidth = getCurrentViewWidth() + getPaddingEnd() + getPaddingStart();</span><br><span class="line">            <span class="keyword">if</span> (mCurrentWidth &gt;= MAX_WIDTH) &#123;</span><br><span class="line">                <span class="comment">/*marqueeOffset = MAX_WIDTH - mCurrentWidth;</span></span><br><span class="line"><span class="comment">                marqueeAnimation.setFloatValues(0, marqueeOffset);</span></span><br><span class="line"><span class="comment">                marqueeAnimation.start();*/</span></span><br><span class="line">                <span class="comment">/*if (TruncateAt.MARQUEE == truncateAt) &#123;</span></span><br><span class="line"><span class="comment">                    getCurrentView().setSelected(true);</span></span><br><span class="line"><span class="comment">                &#125;*/</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//outAnimator.start();</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationCancel</span><span class="params">(Animator animation)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationRepeat</span><span class="params">(Animator animation)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AutoSizeViewFlipper</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>(context, <span class="keyword">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AutoSizeViewFlipper</span><span class="params">(Context context, AttributeSet attrs)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context, attrs);</span><br><span class="line">        init();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        setInAnimation(<span class="keyword">null</span>);</span><br><span class="line">        setOutAnimation(<span class="keyword">null</span>);</span><br><span class="line">        inAnimator.setDuration(DEFAULT_DURATION);</span><br><span class="line">        inAnimator.addListener(inListener);</span><br><span class="line">        inAnimator.setInterpolator(<span class="keyword">new</span> LinearInterpolator());</span><br><span class="line">        inAnimator.addUpdateListener(updateWidthListener);</span><br><span class="line">        outAnimator.setDuration(DEFAULT_DURATION);</span><br><span class="line">        outAnimator.addListener(outListener);</span><br><span class="line">        outAnimator.setInterpolator(<span class="keyword">new</span> LinearInterpolator());</span><br><span class="line">        outAnimator.addUpdateListener(updateWidthListener);</span><br><span class="line">        post(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                View v = getCurrentView();</span><br><span class="line">                Integer w = childWidthCache.get(v.hashCode());</span><br><span class="line">                <span class="keyword">if</span> (w != <span class="keyword">null</span>) &#123;</span><br><span class="line">                    adjustParentWidth(w);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setFlipInterval</span><span class="params">(<span class="keyword">int</span> milliseconds)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (milliseconds &lt; <span class="number">3</span> * DEFAULT_DURATION) &#123;</span><br><span class="line">            <span class="keyword">int</span> flip = <span class="number">3</span> * DEFAULT_DURATION + milliseconds;</span><br><span class="line">            <span class="keyword">super</span>.setFlipInterval(flip);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">super</span>.setFlipInterval(milliseconds);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onMeasure</span><span class="params">(<span class="keyword">int</span> widthMeasureSpec, <span class="keyword">int</span> heightMeasureSpec)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onMeasure(widthMeasureSpec, heightMeasureSpec);</span><br><span class="line">        parentWidthMeasureSpec = widthMeasureSpec;</span><br><span class="line">        parentHeightMeasureSpec = heightMeasureSpec;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onAttachedToWindow</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onAttachedToWindow();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">measureChildWidth</span><span class="params">(View child)</span> </span>&#123;</span><br><span class="line">        Integer width = childWidthCache.get(child.hashCode());</span><br><span class="line">        child.measure(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">int</span> measuredWidth = child.getMeasuredWidth();</span><br><span class="line">        <span class="keyword">if</span> (width == <span class="keyword">null</span> || measuredWidth != width) &#123;</span><br><span class="line">            childWidthCache.put(child.hashCode(), width);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onViewAdded</span><span class="params">(View child)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onViewAdded(child);</span><br><span class="line">        Integer width = childWidthCache.get(child.hashCode());</span><br><span class="line">        child.measure(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">int</span> measuredWidth = child.getMeasuredWidth();</span><br><span class="line">        <span class="keyword">if</span> (width == <span class="keyword">null</span> || measuredWidth != width) &#123;</span><br><span class="line">            childWidthCache.put(child.hashCode(), measuredWidth);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onViewRemoved</span><span class="params">(View child)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onViewRemoved(child);</span><br><span class="line">        childWidthCache.remove(child.hashCode());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*@Override</span></span><br><span class="line"><span class="comment">    public void addView(View child, int index, ViewGroup.LayoutParams params) &#123;</span></span><br><span class="line"><span class="comment">        Integer width = childWidthCache.get(child.hashCode());</span></span><br><span class="line"><span class="comment">        child.measure(0, 0);</span></span><br><span class="line"><span class="comment">        int measuredWidth = child.getMeasuredWidth();</span></span><br><span class="line"><span class="comment">        if (width == null || measuredWidth != width) &#123;</span></span><br><span class="line"><span class="comment">            childWidthCache.put(child.hashCode(), measuredWidth);</span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment">        super.addView(child, index, params);</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    @Override</span></span><br><span class="line"><span class="comment">    protected boolean addViewInLayout(View child, int index, ViewGroup.LayoutParams params, boolean preventRequestLayout) &#123;</span></span><br><span class="line"><span class="comment">        Integer width = childWidthCache.get(child.hashCode());</span></span><br><span class="line"><span class="comment">        child.measure(0, 0);</span></span><br><span class="line"><span class="comment">        int measuredWidth = child.getMeasuredWidth();</span></span><br><span class="line"><span class="comment">        if (width == null || measuredWidth != width) &#123;</span></span><br><span class="line"><span class="comment">            childWidthCache.put(child.hashCode(), measuredWidth);</span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment">        return super.addViewInLayout(child, index, params, preventRequestLayout);</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    @Override</span></span><br><span class="line"><span class="comment">    public void removeAllViews() &#123;</span></span><br><span class="line"><span class="comment">        super.removeAllViews();</span></span><br><span class="line"><span class="comment">        childWidthCache.clear();</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    @Override</span></span><br><span class="line"><span class="comment">    public void removeViewAt(int index) &#123;</span></span><br><span class="line"><span class="comment">        super.removeViewAt(index);</span></span><br><span class="line"><span class="comment">        try &#123;</span></span><br><span class="line"><span class="comment">            childWidthCache.removeAt(index);</span></span><br><span class="line"><span class="comment">        &#125; catch (Exception ex) &#123;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    @Override</span></span><br><span class="line"><span class="comment">    public void removeViews(int start, int count) &#123;</span></span><br><span class="line"><span class="comment">        super.removeViews(start, count);</span></span><br><span class="line"><span class="comment">        int end = start + count;</span></span><br><span class="line"><span class="comment">        try &#123;</span></span><br><span class="line"><span class="comment">            for (int i = start; i &lt; end; i++) &#123;</span></span><br><span class="line"><span class="comment">                childWidthCache.removeAt(i);</span></span><br><span class="line"><span class="comment">            &#125;</span></span><br><span class="line"><span class="comment">        &#125; catch (Exception ex) &#123;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment">    &#125;*/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">manualShowNext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> index = getDisplayedChild();</span><br><span class="line">        setDisplayedChild(index + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">manualShowPrevious</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> index = getDisplayedChild();</span><br><span class="line">        setDisplayedChild(index - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showNext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//super.showNext();</span></span><br><span class="line">        <span class="comment">//adjustParentWidth(getCurrentViewWidth());</span></span><br><span class="line">        Log.e(<span class="string">"ViewFlipper"</span>, <span class="string">"cur width"</span> + getCurrentViewWidth());</span><br><span class="line">        outAnimator.start();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showPrevious</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//super.showPrevious();</span></span><br><span class="line">        outAnimator.start();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">getCurrentViewWidth</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        View currentView = getCurrentView();</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">null</span> == currentView) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        Integer width = childWidthCache.get(currentView.hashCode());</span><br><span class="line">        <span class="keyword">return</span> width == <span class="keyword">null</span> ? <span class="number">0</span> : width;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">adjustParentWidth</span><span class="params">(<span class="keyword">int</span> width)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> lastWidth = width + getPaddingEnd() + getPaddingStart();</span><br><span class="line">        <span class="keyword">if</span> (lastWidth &gt; MAX_WIDTH) &#123;</span><br><span class="line">            lastWidth = MAX_WIDTH;</span><br><span class="line">        &#125;</span><br><span class="line">        ViewGroup.LayoutParams param = getLayoutParams();</span><br><span class="line">        param.width = lastWidth;</span><br><span class="line">        setLayoutParams(param);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2020/10/24/optimise-frame-animation/" data-toggle="tooltip" data-placement="top" title="[Android] Optimise Frame Animation">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2020/06/28/how-to-customize-view/" data-toggle="tooltip" data-placement="top" title="[Android] How to Customize View">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#调研"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">调研</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#setViewFactory"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">setViewFactory</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#showNextText"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">showNextText</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#动画"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">动画</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#完整源码"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">完整源码</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#高级进阶"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">高级进阶</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Android" title="Android">Android</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://us.pingpongx.com/external/inviteReg.htm?inviteCode=7nEFBj032" target="_blank">Overseas Collection</a></li>
+                    
+                        <li><a href="https://www.vultr.com/?ref=8600728-6G" target="_blank">VPS Vutlr</a></li>
+                    
+                        <li><a href="/vnews/index.html" target="_blank">Vnews Blog</a></li>
+                    
+                        <li><a href="http://blog.kaijun.rocks" target="_blank">Kaijun&#39;s Blog</a></li>
+                    
+                        <li><a href="http://huangxuan.me" target="_blank">Hux Blog</a></li>
+                    
+                        <li><a href="#" target="_blank">It Helps SEO</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'right',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+     <div class="row" style="margin-top:-50px;float:right;font-size:10px;margin-left:30px;padding-right:30px;">
+            
+            <!-- 不蒜子统计 -->
+            <span id="busuanzi_container_site_pv">
+            总访问量：<span id="busuanzi_value_site_pv">0</span>次
+            </span>
+            <span>|</span>
+            <span id="busuanzi_container_site_uv">
+            访客数：<span id="busuanzi_value_site_uv">0</span>人
+            </span>
+            
+             <!-- 不蒜子统计 -->
+             <span>|</span>
+              <span id="busuanzi_container_page_pv" style='display:none'">
+              <i class="icon-smile icon"></i>本文阅读数：<span id="busuanzi_value_page_pv">0</span>次
+              </span>
+            
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            
+     </div>
+        <div class="row">
+           <!-- horizontal_ad/bottom_ad -->
+           <ul class="list-inline text-center">
+            
+                <ins class="adsbygoogle"  style="display:block" data-ad-client="ca-pub-5651453694104340"  data-ad-slot="3310538124"  data-ad-format="auto" data-full-width-responsive="true"></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+            
+            </ul>
+        </div>
+        <br><br>
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/xiuyuantech">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://www.linkedin.com/in/xiuyuantech">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                </br>
+                <ul class="list-inline text-center">
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/geekvideo_release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Clear" src="/img/ic_geekvideo_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/clear_googleplay_1.5.0_0530-1704_release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Clear" src="/img/ic_clear_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/videoeditor-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="VideoEditor" src="/img/ic_videoclip_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/screenrecoder-playstoreDonate-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="ScreenRecoder" src="/img/ic_recoder_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/vault-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Vault" src="/img/ic_vault_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/accountbook-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="AccountBook" src="/img/ic_book_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/starwars-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Star Wars" src="/img/ic_plane_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/cardsolitaire-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Solitaire" src="/img/ic_card_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; xiuyuantech 2025 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Ported by <a href="https://xiuyuantech.github.io">XiuYuanTech</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;margin-right: -36px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="/star_xiuyuantech_on_github.html?user=xiuyuantech&repo=&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://xiuyuantech.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-165334855-1';
+    var _gaDomain = 'xiuyuantech.github.io';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- async load function -->
+
+<script>
+
+    function async(u, c) {
+
+      var d = document, t = 'script',
+
+          o = d.createElement(t),
+
+          s = d.getElementsByTagName(t)[0];
+
+      o.src = u;
+
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+
+      s.parentNode.insertBefore(o, s);
+
+    }
+
+</script>
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="https://xiuyuantech.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+
+<script type="text/javascript">
+  function adLoaded() {
+      var in_article_contaner = document.getElementById('in-article-ad');
+      if(in_article_contaner) {
+            // here you can make the height, I delete it first, then I make it again
+            console.log("in_article_contaner");
+            //in_article_contaner.innerHTML=``;
+      }
+      var square_contaner = document.getElementById('square-ad');
+      if(square_contaner){
+         console.log("square_contaner");
+         //square_contaner.innerHTML=``;
+      }
+  };
+
+  $(document).ready(function () {
+                try{
+                  //adLoaded();
+                }catch(err){
+                  onError();
+                }});
+
+</script>
+
+<script>
+function isSameDay(timeA,timeB) {
+   let dateA = new Date(timeA);
+   let dateB = new Date(timeB);
+   return (dateA.setHours(0, 0, 0, 0) == dateB.setHours(0, 0, 0, 0));
+   }
+   function CheckIsNotNullOrEmpty(value) {
+                //正则表达式用于判斷字符串是否全部由空格或换行符组成
+                 var reg = /^\s*$/
+                 //返回值为true表示不是空字符串
+                 return (value != null && value != undefined && !reg.test(value));
+   }
+   <!-- js 异常时不显示 -->
+   function onError(){
+        $("ins.adsbygoogle[data-ad-slot]").each(function(index,element){
+           $(element).remove();
+           });
+   }
+    <!-- 单个点击事件 -->
+    function bindClick(element,countKeyPre) {
+        $(element).click(function(){
+          console.log("dayKey：" + countKeyPre);
+          var count =  window.localStorage.countKeyPre;
+          console.log("count get： "+count);
+          if(CheckIsNotNullOrEmpty(count)){
+             count++;
+             console.log("count++： "+count);
+             window.localStorage.countKeyPre = count;
+             if(count >= 4){
+              console.log("count： "+count);
+              $(element).remove();
+              onError();
+              }
+          } else {
+            window.localStorage.countKeyPre = 0;
+          }
+          });
+
+        }
+        <!-- js 初始化 Ad  -->
+        function initAd(ip){
+        if(CheckIsNotNullOrEmpty(ip)){
+                //alert("not null ip:  "+ ip);
+                $("ins.adsbygoogle[data-ad-slot]").each(function(index,element){
+                            /*var data_ad_slot = $(element).attr("data-ad-slot");
+                            console.log("data_ad_slot：" + data_ad_slot);
+                            var hasAd = CheckIsNotNullOrEmpty(data_ad_slot);
+                            console.log("hasAd：" + hasAd);*/
+                            //if（hasAd){
+                               //console.log("not null data_ad_slot：" + data_ad_slot);
+                               var dayKeyPre = ip +"_day";
+                               var countKeyPre = ip +"_count";
+                               console.log("dayKey：" + dayKeyPre);
+                               console.log("dayKeyPre：" + window.localStorage.dayKeyPre);
+                               bindClick(element,countKeyPre);
+                               console.log("countKeyPre：" + countKeyPre);
+                               console.log("countKeyPre：" + window.localStorage.countKeyPre);
+                               var nowStr =  new Date().toLocaleDateString();
+                               var notSame = CheckIsNotNullOrEmpty(window.localStorage.dayKeyPre) && !isSameDay(window.localStorage.dayKeyPre,nowStr);
+                               console.log("同一天：" +  !notSame);
+                               if(notSame){
+                                window.localStorage.dayKeyPre = nowStr;
+                                window.localStorage.countKeyPre = 0;
+                                console.log("重置成功");
+                                }
+                                   if( CheckIsNotNullOrEmpty(window.localStorage.dayKeyPre)){
+                                      if(window.localStorage.countKeyPre >= 4){
+                                         $(element).remove();
+                                      }
+                                   } else {
+                                      window.localStorage.dayKeyPre = nowStr;
+                                    }
+                              //}
+                            });
+                        return;
+                    }
+                        onError();
+                 }
+
+                          $(document).ready(function () {
+                          try{
+                            //$.getJSON("https://api.ipify.org/?format=json", function(e) {
+                            // var ip = e.ip;
+                            //initAd(ip);
+                             //});
+                          }catch(err){
+                            onError();
+                          }});
+</script>
+
+
+
+</body>
+
+</html>

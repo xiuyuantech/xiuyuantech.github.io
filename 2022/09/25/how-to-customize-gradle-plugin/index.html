@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="xiuyuantech">
+    <meta name="keyword" content>
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          [Android] How to customise gradle plugin - xiuyuantech
+        
+    </title>
+
+    <link rel="canonical" href="https://xiuyuantech.github.io/2022/09/25/how-to-customize-gradle-plugin/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+
+    <!-- Google Adsense -->
+
+    
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-5651453694104340",
+             enable_page_level_ads: true
+             });
+    </script>
+    <!-- 获取ip <script async src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>  -->
+
+
+
+    
+
+</head>
+
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('')
+            /*post*/
+        
+    }
+    
+    #signature{
+        background-image: url('/img/signature/BeanTechSign-white.png');
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Android" title="Android">Android</a>
+                            
+                        </div>
+                        <h1>[Android] How to customise gradle plugin</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by xiuyuantech on
+                            2022-09-25
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">XiuYuanTech</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/vnews/">vnews home</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <blockquote>
+<p>Gradle 和 Gradle 插件是两个概念，<br>
+Gradle 插件的本质就是抽取高度模块化的逻辑，以便更高效地进行复用。<br>
+Gradle 只是提供了一个构建流程。<br>
+而其他可复用的 Task（例如编译 Java 工程、编译 Android 工程等），<br>
+是通过应用 Gradle 插件来获取的。<br>
+Gradle： 构建工具，提供核心构建流程<br>
+Gradle 插件： 本质上是可复用的 task，依赖于 Gradle 环境</p>
+</blockquote>
+<h1>基础</h1>
+<p>gradle 插件比较主流的开发语言是 <code>groovy</code>，因为 gradle 就是用 groovy 写的。<br>
+除了 groovy 还可以用来开发 gradle 插件的语言有：<code>java</code>   <code>kotlin</code>   <code>其它基于 jvm 语言</code><br>
+因为 groovy 是基于 jvm 的，所以同样基于 jvm 的也可以用来写 gradle 插件。<br>
+但 java 和 kotlin 是静态语言，意味着需要不停地判断类型和强转，相比之下，groovy 作为动态语言就没有这个问题。<br>
+<code>通常，使用 java 或 kotlin（静态类型）实现的插件比使用 groovy 实施的插件性能更好。</code></p>
+<p>Gradle 基础 ：Wrapper、Groovy、生命周期、Project、Task、增量<br>
+Gradle 插件：Plugin、Extension 扩展、NamedDomainObjectContainer、调试<br>
+官方文档：   <a href="https://juejin.cn/post/7092367604211253256" target="_blank" rel="noopener">其他BLOG</a>   <a href="https://gradle.org/guides/" target="_blank" rel="noopener">Gradle Guides</a>   <a href="https://docs.gradle.org/nightly/userguide/custom_plugins.html#sec:writing_a_simple_plugin" target="_blank" rel="noopener">Developing Custom Gradle Plugins</a></p>
+<h1>Gradle插件</h1>
+<p>Gradle 插件的核心类是 Plugin，一般使用 Project 作为泛型实参。当使用方引入插件后，其实就是调用了 Plugin#apply() 方法，我们可以把 apply() 方法理解为插件的执行入口。例如：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyCustomGradlePlugin</span> <span class="keyword">implements</span> <span class="title">Plugin</span>&lt;<span class="title">Project</span>&gt; &#123;</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> apply(Project project) &#123;</span><br><span class="line">        println <span class="string">"Hello."</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Gradle 插件分为两大类：脚本插件 &amp; 对象插件。<br>
+1、脚本插件<br>
+脚本插件和一个普通的 build.gradle 文件没什么区别，虽然简单，但它是模块化的基础。<br>
+脚本可以存在本地，也可以存在网络上，只需要提供脚本的相对路径或者 URL，例如：<br>
+在 <code>build.gradle</code> 配置 <code>apply plugin: MyCustomGradlePlugin</code> 或者 <code>apply from: xxx.gradle</code></p>
+<p>2、对象插件<br>
+对象插件 / 二进制插件： 在一个单独的插件模块中定义，其他模块通过 Plugin ID 应用插件。<br>
+因为这种方式发布和复用更加友好，我们一般接触到的 Gradle 插件都是指二进制插件的形式<br>
+编写一个对象插件的最低要求是提供一个 <code>org.gradle.api.Plugin</code> 接口的实现类，<br>
+这个接口只要一个<code>Plugin#apply(Project)</code>方法。</p>
+<h1>应用插件</h1>
+<p>将插件添加到 classpath:</p>
+<ul>
+<li>本地依赖： 指直接依赖本地插件源码，一般在调试插件的阶段是使用本地依赖的方式。<br>
+例如：<code>根项目 build.gradle</code></li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">buildscript &#123;</span><br><span class="line">...</span><br><span class="line">dependencies &#123;</span><br><span class="line">   <span class="comment">// For Debug</span></span><br><span class="line">   classpath project(<span class="string">":MyCustomGradlePlugin"</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>远程依赖： 指依赖已发布到 Maven 仓库的插件，一般我们都是用这种方式依赖官方或第三方实现的 Gradle 插件。<br>
+例如：<code>根项目 build.gradle</code></li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">buildscript &#123;</span><br><span class="line">...</span><br><span class="line">dependencies &#123;</span><br><span class="line">   classpath <span class="string">'com.android.tools.build:gradle:3.5.3'</span></span><br><span class="line">   <span class="comment">// 或者使用另一种等价语法：</span></span><br><span class="line">   classpath <span class="string">group:</span> <span class="string">'com.android.tools.build '</span>, <span class="string">name:</span> <span class="string">'gradle '</span>, <span class="string">version:</span> <span class="string">'3.5.3'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用 apply 应用插件:<br>
+在 主项目 build.gradle 文件中，可以使用 apply 方法来应用插件，有两种语法：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">apply <span class="string">plugin:</span> <span class="string">'com.demo.MyCustomGradlePlugin'</span></span><br><span class="line"><span class="comment">//或者</span></span><br><span class="line">plugins &#123;</span><br><span class="line">   <span class="comment">// id «plugin id» [version «plugin version»] [apply «false»]</span></span><br><span class="line">   id <span class="string">'com.android.MyCustomGradlePlugin'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里的 <code>id</code> 是插件的简短名称，是在插件中<code>resources/META-INF/gradle-plugins/[id].properties</code>文件的文件名决定的。<br>
+<code>注意： 在一个 build.gradle 中不要同时使用这两种语法。</code></p>
+<h1>自定义插件</h1>
+<p>自定义插件三种方式：<br>
+<code>build script</code>：在build.gradle脚本中直接编写，只能在本文件内使用；<br>
+<code>buildSrc项目</code>：新建一个名为buildSrc的Module，只能在本项目中使用；<br>
+<code>独立的项目(standalone project)</code>：在独立的项目中编写插件，发布到本地或者远程maven仓库供其他项目使用。</p>
+<ul>
+<li>build script</li>
+</ul>
+<ol>
+<li>在<code>app module</code>下的<code>build.gradle</code>脚本文件编写插件。</li>
+</ol>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyCustomGradlePlugin</span> <span class="keyword">implements</span> <span class="title">Plugin</span>&lt;<span class="title">Project</span>&gt; &#123;</span></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="keyword">void</span> apply(Project project) &#123;</span><br><span class="line">      println <span class="string">"Hello."</span></span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//应用插件</span></span><br><span class="line">apply <span class="string">plugin:</span> MyCustomGradlePlugin</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>在<code>根目录</code>下创建<code>test.gralde</code>文件并添加脚本内容。</li>
+</ol>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyCustomGradlePlugin</span> <span class="keyword">implements</span> <span class="title">Plugin</span>&lt;<span class="title">Project</span>&gt; &#123;</span></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="keyword">void</span> apply(Project project) &#123;</span><br><span class="line">      println <span class="string">"Hello."</span></span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">apply <span class="string">plugin:</span> MyCustomGradlePlugin</span><br></pre></td></tr></table></figure>
+<p>在<code>app module</code>下的<code>build.gradle</code>中添加apply from: '…/test.gradle’即可应用test.gralde脚本。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apply <span class="string">from:</span> <span class="string">'../test.gradle'</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>buildSrc 项目<br>
+在工程中新建<code>buildSrc</code>目录，名称一定不能写错，在buildSrc目录下建立如下目录和文件：</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">src/</span><br><span class="line"> main/</span><br><span class="line">  groovy/</span><br><span class="line">build.gradle</span><br></pre></td></tr></table></figure>
+<p>编辑build.gradle文件，添加如下内容:</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">apply <span class="string">plugin:</span> <span class="string">'kotlin'</span></span><br><span class="line"><span class="comment">//或者</span></span><br><span class="line">apply <span class="string">plugin:</span> <span class="string">'java'</span></span><br><span class="line"><span class="comment">//或者</span></span><br><span class="line">apply <span class="string">plugin:</span> <span class="string">'groovy'</span></span><br><span class="line"></span><br><span class="line">buildscript &#123;</span><br><span class="line">   repositories &#123;</span><br><span class="line">      jcenter()</span><br><span class="line">      google()</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   dependencies &#123;</span><br><span class="line">      classpath <span class="string">"org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.20"</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">allprojects &#123;</span><br><span class="line">   repositories &#123;</span><br><span class="line">      jcenter()</span><br><span class="line">      google()</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">   implementation gradleApi()</span><br><span class="line">   implementation localGroovy()</span><br><span class="line">   implementation <span class="string">'com.android.tools.build:gradle:3.5.0'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>点击<code>sync</code>或者<code>buid project</code>（这一步必须），会生成build目录，groovy目录也会变成源文件目录，之后就可以创建包和源代码。</p>
+<blockquote>
+<p>踩坑：<br>
+buildSrc 模块会被自动识别为参与构建的模块，因此不需要在 settings.gradle 中使用 include 引入，就算引入了也会编译出错.<br>
+buildSrc 模块会自动被添加到构建脚本的 classpath 中，不需要手动添加.<br>
+buildSrc 模块的 build.gradle 执行时机早于其他 Project.</p>
+</blockquote>
+<ul>
+<li>standalone project<br>
+新建一个module（新建一个工程也可以，因为最后生成和使用都是jar包的形式），<br>
+module名称随意，只保留build.gradle文件和src/main目录，其余文件全部删掉。<br>
+修改build.gradle文件内容，如下：</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">apply <span class="string">plugin:</span> <span class="string">'maven'</span> <span class="comment">//要想发布到Maven，此插件必须使用</span></span><br><span class="line">apply <span class="string">plugin:</span> <span class="string">'groovy'</span></span><br><span class="line"></span><br><span class="line">buildscript &#123;</span><br><span class="line">   repositories &#123;</span><br><span class="line">      jcenter()</span><br><span class="line">      google()</span><br><span class="line">      mavenCentral() <span class="comment">//必须</span></span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   dependencies &#123;</span><br><span class="line">      classpath <span class="string">"org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.20"</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">allprojects &#123;</span><br><span class="line">   repositories &#123;</span><br><span class="line">      jcenter()</span><br><span class="line">      google()</span><br><span class="line">      mavenCentral() <span class="comment">//必须</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">   implementation gradleApi()</span><br><span class="line">   implementation localGroovy()</span><br><span class="line">   implementation <span class="string">'com.android.tools.build:gradle:3.5.0'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> group=<span class="string">'com.demo.plugin'</span> <span class="comment">//组</span></span><br><span class="line"><span class="keyword">def</span> artifactId=<span class="string">'MyCustomGradlePlugin'</span> <span class="comment">//唯一标示</span></span><br><span class="line"><span class="keyword">def</span> version=<span class="string">'1.0.0'</span> <span class="comment">//版本</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//本地地址：/Users/username(你电脑的名称)/.hhrepo</span></span><br><span class="line"><span class="keyword">def</span> uploadRepo = <span class="keyword">new</span> File(System.getProperty(<span class="string">"user.home"</span>) + <span class="string">"/.hhrepo"</span>)</span><br><span class="line"><span class="comment">//将插件打包上传到本地maven仓库</span></span><br><span class="line">uploadArchives &#123;</span><br><span class="line">   repositories &#123;</span><br><span class="line">      mavenDeployer &#123;</span><br><span class="line">         pom.groupId = group</span><br><span class="line">         pom.artifactId = artifactId</span><br><span class="line">         pom.version = version</span><br><span class="line">         <span class="comment">//指定本地maven的路径，在项目根目录下</span></span><br><span class="line">         repository(<span class="string">url:</span> uri(uploadRepo))</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>编写插件：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyCustomGradlePlugin</span> <span class="keyword">implements</span> <span class="title">Plugin</span>&lt;<span class="title">Project</span>&gt; &#123;</span></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="keyword">void</span> apply(Project project) &#123;</span><br><span class="line">      println <span class="string">"Hello."</span></span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>配置别名步骤：<br>
+在<code>main</code>目录下新建<code>resources/META-INF/gradle-plugins</code>目录，名称不能随意填写。<br>
+在<code>gradle-plugins</code>下新建<code>name(插件名).properties</code>文件，这个<code>name</code>就是后面要使用的插件名。<br>
+例如：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MyCustomGradlePlugin.properties <span class="comment">//别人引用即可直接写 apply plugin: MyCustomGradlePlugin</span></span><br><span class="line">implementation-<span class="class"><span class="keyword">class</span>=<span class="title">com</span>.<span class="title">demo</span>.<span class="title">plugin</span>.<span class="title">MyCustomGradlePlugin</span></span></span><br></pre></td></tr></table></figure>
+<p><code>提示： 你可以通过 sourceSets {} 闭包方法来设置 resources 文件夹的位置。</code></p>
+<p>发布：<br>
+在终端中执行./gradlew uploadArchives指令，或者展开Android Studio右侧的Gradle，<br>
+找到对应module-&gt;uploadArchivesTask，就可以将插件部署到相应的目录下。</p>
+<h1>插件调试</h1>
+<p><code>注意其中插图是引入他人的，不必较真，只是为了大家在UI上直观找到对应到自己项目中配置即可</code></p>
+<ul>
+<li>
+<p>方法 1(简单)<br>
+直接提供 Android Studio 中 Gradle 面板的调试功能，即可调试插件。如下图，我们选择与插件功能相关的 Task，并右键选择 Debug 执行。<br>
+<img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5185895b5336444cb2df8d51e31e7ed3~tplv-k3u1fbpfcp-zoom-in-crop-mark:4536:0:0:0.awebp?" alt="Debug"></p>
+</li>
+<li>
+<p>方法 2(通过配置 IDE Configuration 以支持调试命令行任务)<br>
+1、创建 Remote 类型 Configuration：<br>
+<img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1010b2abd6234911a1e8781ba8b21d40~tplv-k3u1fbpfcp-zoom-in-crop-mark:4536:0:0:0.awebp?" alt="Configuration"><br>
+2、执行命令： ./gradlew Task -Dorg.gradle.debug=true --no-daemon （开启 Debug &amp; 不使用守护进程），执行后命令行会进入等待状态：<br>
+<img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3231496522cb4b7b98b182c8b150dcdc~tplv-k3u1fbpfcp-zoom-in-crop-mark:4536:0:0:0.awebp?" alt="Order"><br>
+3、Attach Debug： 点击调试按钮，即可开始断点调试。<br>
+<img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b3cc3e35059d490fa61a456d40337121~tplv-k3u1fbpfcp-zoom-in-crop-mark:4536:0:0:0.awebp?" alt="Attach"></p>
+</li>
+</ul>
+<h1>插件开发技巧</h1>
+<p>判断是否当前是 App 模块还是 Library 模块： 当我们开发 Android 项目相关插件时，经常需要根据插件的使用环境区分不同逻辑。<br>
+例如插件应用在 App 模块和 Library 模块会采用不同逻辑。此时，我们可以用在 Plugin#apply() 中采用以下判断：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">project.afterEvaluate &#123;</span><br><span class="line">    <span class="comment">// 1. Check if apply the ‘com.android.application’ plugin</span></span><br><span class="line">    <span class="keyword">if</span> (!project.getPluginManager().hasPlugin(<span class="string">"com.android.application"</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1>总结</h1>
+<p>开发gradle插件掌握方式三<code>standalone project</code>就行了，关键是项目里面有相关的内容能看懂就行了。<br>
+其他比如字节码插桩、编译优化等高级开发都会涉及AGP的内容，参考链接： <a href="https://juejin.cn/post/7098383560746696718#heading-19" target="_blank" rel="noopener">Gradle插件系列</a>   <a href="https://www.milovetingting.cn/2020/02/25/Android/%E5%9C%A8Android%20Studio%E4%B8%AD%E8%B0%83%E8%AF%95Gradle%E6%8F%92%E4%BB%B6/#%E5%89%8D%E8%A8%80" target="_blank" rel="noopener">调试Gradle插件</a>   <a href="https://kt-learn.cn/2021/06/03/Android-gradle-customPlugin/" target="_blank" rel="noopener">自定义Gradle插件</a> 。</p>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2023/03/18/android_jetpack_learn/" data-toggle="tooltip" data-placement="top" title="[Android] Learn And Use Jetpack">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2022/05/15/android-okdownload/" data-toggle="tooltip" data-placement="top" title="[Android] Okdownload 下载框架学习">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">基础</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Gradle插件</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">应用插件</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">自定义插件</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">插件调试</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">插件开发技巧</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">总结</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Android" title="Android">Android</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://us.pingpongx.com/external/inviteReg.htm?inviteCode=7nEFBj032" target="_blank">Overseas Collection</a></li>
+                    
+                        <li><a href="https://www.vultr.com/?ref=8600728-6G" target="_blank">VPS Vutlr</a></li>
+                    
+                        <li><a href="/vnews/index.html" target="_blank">Vnews Blog</a></li>
+                    
+                        <li><a href="http://blog.kaijun.rocks" target="_blank">Kaijun&#39;s Blog</a></li>
+                    
+                        <li><a href="http://huangxuan.me" target="_blank">Hux Blog</a></li>
+                    
+                        <li><a href="#" target="_blank">It Helps SEO</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'right',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+     <div class="row" style="margin-top:-50px;float:right;font-size:10px;margin-left:30px;padding-right:30px;">
+            
+            <!-- 不蒜子统计 -->
+            <span id="busuanzi_container_site_pv">
+            总访问量：<span id="busuanzi_value_site_pv">0</span>次
+            </span>
+            <span>|</span>
+            <span id="busuanzi_container_site_uv">
+            访客数：<span id="busuanzi_value_site_uv">0</span>人
+            </span>
+            
+             <!-- 不蒜子统计 -->
+             <span>|</span>
+              <span id="busuanzi_container_page_pv" style='display:none'">
+              <i class="icon-smile icon"></i>本文阅读数：<span id="busuanzi_value_page_pv">0</span>次
+              </span>
+            
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            
+     </div>
+        <div class="row">
+           <!-- horizontal_ad/bottom_ad -->
+           <ul class="list-inline text-center">
+            
+                <ins class="adsbygoogle"  style="display:block" data-ad-client="ca-pub-5651453694104340"  data-ad-slot="3310538124"  data-ad-format="auto" data-full-width-responsive="true"></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+            
+            </ul>
+        </div>
+        <br><br>
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/xiuyuantech">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://www.linkedin.com/in/xiuyuantech">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                </br>
+                <ul class="list-inline text-center">
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/geekvideo_release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Clear" src="/img/ic_geekvideo_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/clear_googleplay_1.5.0_0530-1704_release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Clear" src="/img/ic_clear_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/videoeditor-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="VideoEditor" src="/img/ic_videoclip_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/screenrecoder-playstoreDonate-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="ScreenRecoder" src="/img/ic_recoder_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/vault-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Vault" src="/img/ic_vault_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/accountbook-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="AccountBook" src="/img/ic_book_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/starwars-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Star Wars" src="/img/ic_plane_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/cardsolitaire-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Solitaire" src="/img/ic_card_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; xiuyuantech 2025 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Ported by <a href="https://xiuyuantech.github.io">XiuYuanTech</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;margin-right: -36px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="/star_xiuyuantech_on_github.html?user=xiuyuantech&repo=&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://xiuyuantech.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-165334855-1';
+    var _gaDomain = 'xiuyuantech.github.io';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- async load function -->
+
+<script>
+
+    function async(u, c) {
+
+      var d = document, t = 'script',
+
+          o = d.createElement(t),
+
+          s = d.getElementsByTagName(t)[0];
+
+      o.src = u;
+
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+
+      s.parentNode.insertBefore(o, s);
+
+    }
+
+</script>
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="https://xiuyuantech.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+
+<script type="text/javascript">
+  function adLoaded() {
+      var in_article_contaner = document.getElementById('in-article-ad');
+      if(in_article_contaner) {
+            // here you can make the height, I delete it first, then I make it again
+            console.log("in_article_contaner");
+            //in_article_contaner.innerHTML=``;
+      }
+      var square_contaner = document.getElementById('square-ad');
+      if(square_contaner){
+         console.log("square_contaner");
+         //square_contaner.innerHTML=``;
+      }
+  };
+
+  $(document).ready(function () {
+                try{
+                  //adLoaded();
+                }catch(err){
+                  onError();
+                }});
+
+</script>
+
+<script>
+function isSameDay(timeA,timeB) {
+   let dateA = new Date(timeA);
+   let dateB = new Date(timeB);
+   return (dateA.setHours(0, 0, 0, 0) == dateB.setHours(0, 0, 0, 0));
+   }
+   function CheckIsNotNullOrEmpty(value) {
+                //正则表达式用于判斷字符串是否全部由空格或换行符组成
+                 var reg = /^\s*$/
+                 //返回值为true表示不是空字符串
+                 return (value != null && value != undefined && !reg.test(value));
+   }
+   <!-- js 异常时不显示 -->
+   function onError(){
+        $("ins.adsbygoogle[data-ad-slot]").each(function(index,element){
+           $(element).remove();
+           });
+   }
+    <!-- 单个点击事件 -->
+    function bindClick(element,countKeyPre) {
+        $(element).click(function(){
+          console.log("dayKey：" + countKeyPre);
+          var count =  window.localStorage.countKeyPre;
+          console.log("count get： "+count);
+          if(CheckIsNotNullOrEmpty(count)){
+             count++;
+             console.log("count++： "+count);
+             window.localStorage.countKeyPre = count;
+             if(count >= 4){
+              console.log("count： "+count);
+              $(element).remove();
+              onError();
+              }
+          } else {
+            window.localStorage.countKeyPre = 0;
+          }
+          });
+
+        }
+        <!-- js 初始化 Ad  -->
+        function initAd(ip){
+        if(CheckIsNotNullOrEmpty(ip)){
+                //alert("not null ip:  "+ ip);
+                $("ins.adsbygoogle[data-ad-slot]").each(function(index,element){
+                            /*var data_ad_slot = $(element).attr("data-ad-slot");
+                            console.log("data_ad_slot：" + data_ad_slot);
+                            var hasAd = CheckIsNotNullOrEmpty(data_ad_slot);
+                            console.log("hasAd：" + hasAd);*/
+                            //if（hasAd){
+                               //console.log("not null data_ad_slot：" + data_ad_slot);
+                               var dayKeyPre = ip +"_day";
+                               var countKeyPre = ip +"_count";
+                               console.log("dayKey：" + dayKeyPre);
+                               console.log("dayKeyPre：" + window.localStorage.dayKeyPre);
+                               bindClick(element,countKeyPre);
+                               console.log("countKeyPre：" + countKeyPre);
+                               console.log("countKeyPre：" + window.localStorage.countKeyPre);
+                               var nowStr =  new Date().toLocaleDateString();
+                               var notSame = CheckIsNotNullOrEmpty(window.localStorage.dayKeyPre) && !isSameDay(window.localStorage.dayKeyPre,nowStr);
+                               console.log("同一天：" +  !notSame);
+                               if(notSame){
+                                window.localStorage.dayKeyPre = nowStr;
+                                window.localStorage.countKeyPre = 0;
+                                console.log("重置成功");
+                                }
+                                   if( CheckIsNotNullOrEmpty(window.localStorage.dayKeyPre)){
+                                      if(window.localStorage.countKeyPre >= 4){
+                                         $(element).remove();
+                                      }
+                                   } else {
+                                      window.localStorage.dayKeyPre = nowStr;
+                                    }
+                              //}
+                            });
+                        return;
+                    }
+                        onError();
+                 }
+
+                          $(document).ready(function () {
+                          try{
+                            //$.getJSON("https://api.ipify.org/?format=json", function(e) {
+                            // var ip = e.ip;
+                            //initAd(ip);
+                             //});
+                          }catch(err){
+                            onError();
+                          }});
+</script>
+
+
+
+</body>
+
+</html>

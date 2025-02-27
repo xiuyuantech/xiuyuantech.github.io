@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="xiuyuantech">
+    <meta name="keyword" content>
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          [JNI] NDK Native Method Register - xiuyuantech
+        
+    </title>
+
+    <link rel="canonical" href="https://xiuyuantech.github.io/2020/06/24/android-jni-register/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+
+    <!-- Google Adsense -->
+
+    
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-5651453694104340",
+             enable_page_level_ads: true
+             });
+    </script>
+    <!-- 获取ip <script async src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>  -->
+
+
+
+    
+
+</head>
+
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('')
+            /*post*/
+        
+    }
+    
+    #signature{
+        background-image: url('/img/signature/BeanTechSign-white.png');
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#JNI" title="JNI">JNI</a>
+                            
+                        </div>
+                        <h1>[JNI] NDK Native Method Register</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by xiuyuantech on
+                            2020-06-24
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">XiuYuanTech</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/vnews/">vnews home</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <blockquote>
+<p><strong>JNI</strong>（Java Native Interface，Java本地接口），<br>
+用于打通Java层与Native(<code>C/C++</code>)层。<br>
+这不是Android系统所独有的，而是Java所有。<br>
+众所周知，Java语言是跨平台的语言，<br>
+而这跨平台的背后都是依靠Java虚拟机，<br>
+虚拟机采用<code>C/C++</code>编写，适配各个系统，<br>
+通过JNI为上层Java提供各种服务，保证跨平台性。<br>
+这样就产生了一个问题，<br>
+Java世界的代码要怎么使用Native世界的代码呢，<br>
+这就需要一个桥梁来将它们连接在一起，<br>
+而<code>JNI</code>就是这个桥梁。</p>
+</blockquote>
+<p>JNI方法注册分为静态注册和动态注册，其中静态注册多用于NDK开发，而动态注册多用于Framework开发。<br>
+Java世界对应的是.java类文件，也就是我们应用开发中直接调用的类。JNI层对应的是libxxx.so或者libxxx.a，so是动态库，a是静态库。这些库完成了实际的调用的功能。</p>
+<h1>静态库 和 动态库 区别</h1>
+<h2 id="静态库">静态库</h2>
+<ul>
+<li>
+<p>全称是静态链接库（Static Library），后缀是 .a，例如 libmedia.a</p>
+</li>
+<li>
+<p>调用静态库的程序在编译时会将静态库全部编译到目标代码中，运行环境中不再需要静态库，并且静态库文件体积较大</p>
+</li>
+<li>
+<p>调用静态库时，如果对静态库中的函数内容进行改变，不仅需要重新编译静态库，还需要对调用静态库的程序重新编译，将静态库编译到目标代码中。</p>
+</li>
+</ul>
+<h2 id="动态库">动态库</h2>
+<ul>
+<li>
+<p>全称是动态链接库（Shared Library），后缀是 .so，例如 libmedia<span>.so</span></p>
+</li>
+<li>
+<p>调用动态库的程序在编译时不能将动态库编译到目标代码中，程序执行到相关函数时才会链接该动态库对应的函数，所以运行环境中必须提供动态库，并且动态库文件体积较小</p>
+</li>
+<li>
+<p>调用动态库时，如果对动态库中的函数内容进行改变，只需要重新编译动态库，不需要对调用动态库的程序重新编译，即不需要干预目标代码，直接用新的动态库替换掉旧的动态库即可</p>
+</li>
+</ul>
+<h1>静态注册</h1>
+<p>java层：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        System.loadLibrary(<span class="string">"hello-jni"</span>);</span><br><span class="line">        init();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">native</span> String <span class="title">stringFromJNI</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">native</span> String <span class="title">init</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>native层：<br>
+头文件 com_example_MainActivity.h</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;jni.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __cplusplus</span></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> &#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line">JNIEXPORT <span class="keyword">void</span> JNICALL Java_com_example_MainActivity_init</span><br><span class="line">  (JNIEnv *, jclass);</span><br><span class="line"></span><br><span class="line">JNIEXPORT jstring JNICALL Java_com_example_MainActivity_stringFromJNI</span><br><span class="line">  (JNIEnv *, jobject);</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __cplusplus</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+<p><code>方法被声明格式为Java_包名_类名_方法名,其中JNIEnv * 是一个指向全部JNI方法的指针，该指针只在创建它的线程有效，不能跨线程传递。 jclass是JNI的数据类型，对应Java的java.lang.Class实例。jobject同样也是JNI的数据类型，对应于Java的Object。</code></p>
+<p>源文件 com_example_MainActivity.cpp</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;com_example_MainActivity.h&gt;</span></span></span><br><span class="line"></span><br><span class="line">JNIEXPORT <span class="keyword">void</span> JNICALL Java_com_example_MainActivity_init</span><br><span class="line">  (JNIEnv *, jclass)&#123;</span><br><span class="line">    <span class="comment">//TODO 初始化</span></span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">JNIEXPORT jsting JNICALL Java_com_example_MainActivity_stringFromJNI</span><br><span class="line">  (JNIEnv *, jobject)&#123;</span><br><span class="line">    <span class="keyword">return</span> env-&gt;NewStringUTF(<span class="string">"hello from JNI"</span>);</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
+<p>其中可以使用Java命令快速查看<br>
+javac xxx.java             用于生成java字节码文件<br>
+javah -classpath xxx.类名   用于生成C/C++头文件<br>
+javap -s xxx.类名           用于查看java方法名和对应的方法签名</p>
+<h1>动态注册</h1>
+<p>JNI中有一种结构用来记录Java的Native方法和JNI方法的关联关系，它就是JNINativeMethod，它在jni.h中被定义：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span>* name; <span class="comment">//Java方法的名字</span></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span>* signature; <span class="comment">//Java方法的签名信息</span></span><br><span class="line">    <span class="keyword">void</span>*       fnPtr; <span class="comment">//JNI中对应的方法指针</span></span><br><span class="line">&#125; JNINativeMethod;</span><br></pre></td></tr></table></figure>
+<h2 id="重写注册入口函数">重写注册入口函数</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">native_init</span><span class="params">(JNIEnv* env,jclass clazz)</span></span>&#123;</span><br><span class="line">    <span class="comment">//TODO 初始化</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> jstring <span class="title">native_stringFromJNI</span><span class="params">(JNIEnv* env,jobject obj)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> env-&gt;NewStringUTF(<span class="string">"hello from JNI"</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> JNINativeMethod method_table[] = &#123;</span><br><span class="line">        &#123;<span class="string">"stringFromJNI"</span>, <span class="string">"()Ljava/lang/String;"</span>, (<span class="keyword">void</span> *)native_stringFromJNI&#125;,</span><br><span class="line">        &#123;<span class="string">"init"</span>, <span class="string">"()V"</span>, (<span class="keyword">void</span> *)native_init&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">registerNativeMethods</span><span class="params">(JNIEnv* env, <span class="keyword">const</span> <span class="keyword">char</span>* className, JNINativeMethod* gMethods, <span class="keyword">int</span> numMethods)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    jclass clazz;</span><br><span class="line">    clazz = (*env)-&gt;FindClass(env, className);</span><br><span class="line">    <span class="keyword">if</span> (clazz == <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> JNI_FALSE;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> ((*env)-&gt;RegisterNatives(env, clazz, gMethods, numMethods) &lt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> JNI_FALSE;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> JNI_TRUE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">registerNatives</span><span class="params">(JNIEnv* env)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!registerNativeMethods(env, <span class="string">"com/example/MainActivity"</span>, method_table, <span class="keyword">sizeof</span>(method_table) / <span class="keyword">sizeof</span>(method_table[<span class="number">0</span>])))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> JNI_FALSE;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> JNI_TRUE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>类名路径不要用'.'而是'/' 。例如 com/example/MainActivity，否则虚拟机找不到会报错</code></p>
+<h2 id="重写JNI-OnLoad">重写JNI_OnLoad</h2>
+<p>so加载时会先调用JNI_OnLoad函数，重写该函数，在里面实现动态注册JNI方法。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">JNIEXPORT jint <span class="title">JNI_OnLoad</span><span class="params">(JavaVM* vm, <span class="keyword">void</span>* reserved)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    JNIEnv* env = <span class="literal">NULL</span>;</span><br><span class="line">    jint result = <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> ((*vm)-&gt;GetEnv(vm, (<span class="keyword">void</span> **)&amp;env, JNI_VERSION_1_4) != JNI_OK)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!registerNatives(env)) <span class="comment">//注册</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    result = JNI_VERSION_1_4;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>如果 java 方法是 static，则代表的是 class 对象</code></p>
+<h1>总结</h1>
+<p>静态注册<br>
+编写不方便，JNI 方法名字必须遵循规则且名字很长；<br>
+编写过程步骤多，不方便；<br>
+程序运行效率低，因为初次调用native函数时需要根据根据函数名在JNI层中搜索对应的本地函数，然后建立对应关系，这个过程比较耗时；</p>
+<p>动态注册<br>
+流程更加清晰可控；<br>
+编写方便，可动态配置；<br>
+效率更高</p>
+<p>JNI开发上手难度比较大一点，最好是学过C/C++，有一定基础的，否则你会遇到很多坑。<br>
+没有基础的同学先去学习下C/C++再来上手JNI开发。</p>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2020/06/26/how-to-build-vps/" data-toggle="tooltip" data-placement="top" title="[VPS] How to build VPS">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2020/06/20/how-to-learn-android/" data-toggle="tooltip" data-placement="top" title="[Android] How to learn Android">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">静态库 和 动态库 区别</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#静态库"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">静态库</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#动态库"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">动态库</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">静态注册</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">动态注册</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#重写注册入口函数"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">重写注册入口函数</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#重写JNI-OnLoad"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">重写JNI_OnLoad</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">总结</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#JNI" title="JNI">JNI</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://us.pingpongx.com/external/inviteReg.htm?inviteCode=7nEFBj032" target="_blank">Overseas Collection</a></li>
+                    
+                        <li><a href="https://www.vultr.com/?ref=8600728-6G" target="_blank">VPS Vutlr</a></li>
+                    
+                        <li><a href="/vnews/index.html" target="_blank">Vnews Blog</a></li>
+                    
+                        <li><a href="http://blog.kaijun.rocks" target="_blank">Kaijun&#39;s Blog</a></li>
+                    
+                        <li><a href="http://huangxuan.me" target="_blank">Hux Blog</a></li>
+                    
+                        <li><a href="#" target="_blank">It Helps SEO</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'right',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+     <div class="row" style="margin-top:-50px;float:right;font-size:10px;margin-left:30px;padding-right:30px;">
+            
+            <!-- 不蒜子统计 -->
+            <span id="busuanzi_container_site_pv">
+            总访问量：<span id="busuanzi_value_site_pv">0</span>次
+            </span>
+            <span>|</span>
+            <span id="busuanzi_container_site_uv">
+            访客数：<span id="busuanzi_value_site_uv">0</span>人
+            </span>
+            
+             <!-- 不蒜子统计 -->
+             <span>|</span>
+              <span id="busuanzi_container_page_pv" style='display:none'">
+              <i class="icon-smile icon"></i>本文阅读数：<span id="busuanzi_value_page_pv">0</span>次
+              </span>
+            
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            
+     </div>
+        <div class="row">
+           <!-- horizontal_ad/bottom_ad -->
+           <ul class="list-inline text-center">
+            
+                <ins class="adsbygoogle"  style="display:block" data-ad-client="ca-pub-5651453694104340"  data-ad-slot="3310538124"  data-ad-format="auto" data-full-width-responsive="true"></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+            
+            </ul>
+        </div>
+        <br><br>
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/xiuyuantech">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://www.linkedin.com/in/xiuyuantech">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                </br>
+                <ul class="list-inline text-center">
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/geekvideo_release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Clear" src="/img/ic_geekvideo_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/clear_googleplay_1.5.0_0530-1704_release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Clear" src="/img/ic_clear_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/videoeditor-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="VideoEditor" src="/img/ic_videoclip_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/screenrecoder-playstoreDonate-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="ScreenRecoder" src="/img/ic_recoder_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/vault-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Vault" src="/img/ic_vault_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/accountbook-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="AccountBook" src="/img/ic_book_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/starwars-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Star Wars" src="/img/ic_plane_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/cardsolitaire-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Solitaire" src="/img/ic_card_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; xiuyuantech 2025 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Ported by <a href="https://xiuyuantech.github.io">XiuYuanTech</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;margin-right: -36px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="/star_xiuyuantech_on_github.html?user=xiuyuantech&repo=&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://xiuyuantech.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-165334855-1';
+    var _gaDomain = 'xiuyuantech.github.io';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- async load function -->
+
+<script>
+
+    function async(u, c) {
+
+      var d = document, t = 'script',
+
+          o = d.createElement(t),
+
+          s = d.getElementsByTagName(t)[0];
+
+      o.src = u;
+
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+
+      s.parentNode.insertBefore(o, s);
+
+    }
+
+</script>
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="https://xiuyuantech.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+
+<script type="text/javascript">
+  function adLoaded() {
+      var in_article_contaner = document.getElementById('in-article-ad');
+      if(in_article_contaner) {
+            // here you can make the height, I delete it first, then I make it again
+            console.log("in_article_contaner");
+            //in_article_contaner.innerHTML=``;
+      }
+      var square_contaner = document.getElementById('square-ad');
+      if(square_contaner){
+         console.log("square_contaner");
+         //square_contaner.innerHTML=``;
+      }
+  };
+
+  $(document).ready(function () {
+                try{
+                  //adLoaded();
+                }catch(err){
+                  onError();
+                }});
+
+</script>
+
+<script>
+function isSameDay(timeA,timeB) {
+   let dateA = new Date(timeA);
+   let dateB = new Date(timeB);
+   return (dateA.setHours(0, 0, 0, 0) == dateB.setHours(0, 0, 0, 0));
+   }
+   function CheckIsNotNullOrEmpty(value) {
+                //正则表达式用于判斷字符串是否全部由空格或换行符组成
+                 var reg = /^\s*$/
+                 //返回值为true表示不是空字符串
+                 return (value != null && value != undefined && !reg.test(value));
+   }
+   <!-- js 异常时不显示 -->
+   function onError(){
+        $("ins.adsbygoogle[data-ad-slot]").each(function(index,element){
+           $(element).remove();
+           });
+   }
+    <!-- 单个点击事件 -->
+    function bindClick(element,countKeyPre) {
+        $(element).click(function(){
+          console.log("dayKey：" + countKeyPre);
+          var count =  window.localStorage.countKeyPre;
+          console.log("count get： "+count);
+          if(CheckIsNotNullOrEmpty(count)){
+             count++;
+             console.log("count++： "+count);
+             window.localStorage.countKeyPre = count;
+             if(count >= 4){
+              console.log("count： "+count);
+              $(element).remove();
+              onError();
+              }
+          } else {
+            window.localStorage.countKeyPre = 0;
+          }
+          });
+
+        }
+        <!-- js 初始化 Ad  -->
+        function initAd(ip){
+        if(CheckIsNotNullOrEmpty(ip)){
+                //alert("not null ip:  "+ ip);
+                $("ins.adsbygoogle[data-ad-slot]").each(function(index,element){
+                            /*var data_ad_slot = $(element).attr("data-ad-slot");
+                            console.log("data_ad_slot：" + data_ad_slot);
+                            var hasAd = CheckIsNotNullOrEmpty(data_ad_slot);
+                            console.log("hasAd：" + hasAd);*/
+                            //if（hasAd){
+                               //console.log("not null data_ad_slot：" + data_ad_slot);
+                               var dayKeyPre = ip +"_day";
+                               var countKeyPre = ip +"_count";
+                               console.log("dayKey：" + dayKeyPre);
+                               console.log("dayKeyPre：" + window.localStorage.dayKeyPre);
+                               bindClick(element,countKeyPre);
+                               console.log("countKeyPre：" + countKeyPre);
+                               console.log("countKeyPre：" + window.localStorage.countKeyPre);
+                               var nowStr =  new Date().toLocaleDateString();
+                               var notSame = CheckIsNotNullOrEmpty(window.localStorage.dayKeyPre) && !isSameDay(window.localStorage.dayKeyPre,nowStr);
+                               console.log("同一天：" +  !notSame);
+                               if(notSame){
+                                window.localStorage.dayKeyPre = nowStr;
+                                window.localStorage.countKeyPre = 0;
+                                console.log("重置成功");
+                                }
+                                   if( CheckIsNotNullOrEmpty(window.localStorage.dayKeyPre)){
+                                      if(window.localStorage.countKeyPre >= 4){
+                                         $(element).remove();
+                                      }
+                                   } else {
+                                      window.localStorage.dayKeyPre = nowStr;
+                                    }
+                              //}
+                            });
+                        return;
+                    }
+                        onError();
+                 }
+
+                          $(document).ready(function () {
+                          try{
+                            //$.getJSON("https://api.ipify.org/?format=json", function(e) {
+                            // var ip = e.ip;
+                            //initAd(ip);
+                             //});
+                          }catch(err){
+                            onError();
+                          }});
+</script>
+
+
+
+</body>
+
+</html>

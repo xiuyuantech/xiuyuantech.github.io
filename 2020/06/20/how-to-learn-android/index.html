@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="xiuyuantech">
+    <meta name="keyword" content>
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          [Android] How to learn Android - xiuyuantech
+        
+    </title>
+
+    <link rel="canonical" href="https://xiuyuantech.github.io/2020/06/20/how-to-learn-android/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+
+    <!-- Google Adsense -->
+
+    
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-5651453694104340",
+             enable_page_level_ads: true
+             });
+    </script>
+    <!-- 获取ip <script async src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>  -->
+
+
+
+    
+
+</head>
+
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('')
+            /*post*/
+        
+    }
+    
+    #signature{
+        background-image: url('/img/signature/BeanTechSign-white.png');
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Android" title="Android">Android</a>
+                            
+                        </div>
+                        <h1>[Android] How to learn Android</h1>
+                        <h2 class="subheading">learn Android from scratch，and get started quickly</h2>
+                        <span class="meta">
+                            Posted by xiuyuantech on
+                            2020-06-20
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">XiuYuanTech</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/vnews/">vnews home</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <blockquote>
+<p>如何学Android呢，这个话题也有不少人回答过了。<br>
+每个人有每个人的学习方法，学习的效率也不一样。<br>
+Android 发展这么多年了，变得越来越好了，同时需要大家<br>
+学习的东西就比较多。<br>
+从目前来看就有多种语言可以开发Android，例如 官方推荐的 JAVA、Kotlin、Flutter<br>
+本文主要从 <code>JAVA、Kotlin、Flutter</code> 三个方面来介绍如何学习<br>
+<code>学好一门语言再学其他的语言就会快些，不同语言的原理都差不多。所以本文主要讲JAVA相关的， Kotlin 和 Flutter 只作简单介绍，后续补充</code></p>
+</blockquote>
+<p>如下是Android官方系统架构图，从架构图中我们可以了解大概流程以便今后学习增加理解<br>
+<img src="/img/android-stack_2x.png" alt="Android架构图"></p>
+<p>如果你是刚刚入门，建议先打好基础，千万不要一上看源码，一来看得费劲，二来你可能在代码间来回跳转，可能会迷失在某一个环节，更可能是理解错误，记住一定要循序渐进。</p>
+<p><code>基础的东西，本文不作详细介绍，不常用的或者特殊的例外</code></p>
+<h1>JAVA</h1>
+<h2 id="基础">基础</h2>
+<h3 id="JDK-和-JRE-区别">JDK 和 JRE 区别</h3>
+<p>JDK 是 Java Development Kit，它是功能齐全的 Java SDK。它拥有 JRE 所拥有的一切，还有编译器（javac）和工具（如 javadoc 和 jdb）。它能够创建和编译程序。</p>
+<p>JRE 是 Java 运行时环境。它是运行已编译 Java 程序所需的所有内容的集合，包括 Java 虚拟机（JVM），Java 类库，java 命令和其他的一些基础构件。但是，它不能用于创建新程序。</p>
+<h3 id="数据类型">数据类型</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">基本类型</th>
+<th style="text-align:center">位数</th>
+<th style="text-align:center">字节</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">int</td>
+<td style="text-align:center">32</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">short</td>
+<td style="text-align:center">16</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">long</td>
+<td style="text-align:center">64</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">0L</td>
+</tr>
+<tr>
+<td style="text-align:center">byte</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">char</td>
+<td style="text-align:center">16</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">‘u0000’</td>
+</tr>
+<tr>
+<td style="text-align:center">float</td>
+<td style="text-align:center">32</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">0f</td>
+</tr>
+<tr>
+<td style="text-align:center">double</td>
+<td style="text-align:center">64</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">0d</td>
+</tr>
+<tr>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">false</td>
+</tr>
+</tbody>
+</table>
+<p><code>对于boolean，官方文档未明确定义，它依赖于 JVM 厂商的具体实现。逻辑上理解是占用 1位</code><br>
+<code>一个字节等于8位  1byte = 8bit</code></p>
+<p>自动装箱与拆箱<br>
+装箱：将基本类型用它们对应的引用类型包装起来；<br>
+拆箱：将包装类型转换为基本数据类型；<br>
+例如：<br>
+<code>int i = 128；Integer j = 128；但是 i!=j</code></p>
+<h3 id="和-equals-区别">== 和 equals 区别</h3>
+<p>== : 它的作用是判断两个对象的地址是不是相等。即判断两个对象是不是同一个对象。(基本数据类型==比较的是值，引用数据类型==比较的是内存地址)</p>
+<p>因为 Java 只有值传递，所以，对于 == 来说，不管是比较基本数据类型，还是引用数据类型的变量，其本质比较的都是值，只是引用类型变量存的值是对象的地址。</p>
+<p>equals() : 它的作用也是判断两个对象是否相等，它不能用于比较基本数据类型的变量。equals()方法存在于Object类中，而Object类是所有类的直接或间接父类。</p>
+<p><code>重写 equals 时必须重写 hashCode 方法</code></p>
+<h3 id="访问修饰符">访问修饰符</h3>
+<p>default：默认只能在本包内访问</p>
+<h3 id="Float-和-Double-精度">Float 和 Double 精度</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">double</span> d1 = <span class="number">1.4</span>;</span><br><span class="line"><span class="keyword">double</span> d2 = <span class="number">0.5</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">double</span> ch = d1-d2; <span class="comment">//0.8999999999999999</span></span><br></pre></td></tr></table></figure>
+<p>作运算的时候会丢失精度，建议使用BigDecimal进行运算，尽量使用参数类型为String的构造函数。</p>
+<h3 id="BigDecimal-注意事项-同上">BigDecimal 注意事项 <code>同上</code></h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">BigDecimal b1 = <span class="keyword">new</span> BigDecimal(<span class="number">1.21</span>);</span><br><span class="line">BigDecimal b2 = <span class="keyword">new</span> BigDecimal(<span class="string">"1.21"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">boolean</span> b1.toString() == b2.toString() <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+<p>注意：商业计算使用BigDecimal，为了防止精度丢失，推荐使用它的 BigDecimal(String) 构造方法来创建对象。</p>
+<h3 id="数组">数组</h3>
+<p>Arrays.asList() 创建的列表不可以进行add、remove，不然会报异常。</p>
+<p>Collection.toArray() 使用此方法推荐使用带参数的方法 toArray(T[] a)。</p>
+<p>remove 操作 推荐使用迭代器方式，使用遍历会将抛出一个ConcurrentModificationException。</p>
+<h2 id="面向对象">面向对象</h2>
+<h3 id="构造器">构造器</h3>
+<p>Constructor 不能被 override（重写）,但是可以 overload（重载）,所以你可以看到一个类中有多个构造函数的情况。</p>
+<h3 id="三大特征">三大特征</h3>
+<ol>
+<li>
+<p>封装是指把一个对象的状态信息（也就是属性）隐藏在对象内部，不允许外部对象直接访问对象的内部信息。但是可以提供一些可以被外界访问的方法来操作属性</p>
+</li>
+<li>
+<p>继承是使用已存在的类的定义作为基础建立新类的技术，新类的定义可以增加新的数据或新的功能，也可以用父类的功能，但不能选择性地继承父类。通过使用继承，可以快速地创建新的类，可以提高代码的重用，程序的可维护性，节省大量创建新类的时间 ，提高我们的开发效率。<br>
+特点：<br>
+1)子类拥有父类对象所有的属性和方法（包括私有属性和私有方法），但是父类中的私有属性和方法子类是无法访问，只是拥有。<br>
+2)子类可以拥有自己属性和方法，即子类可以对父类进行扩展。<br>
+3)子类可以用自己的方式实现父类的方法</p>
+</li>
+<li>
+<p>多态，顾名思义，表示一个对象具有多种的状态。具体表现为父类的引用指向子类的实例。<br>
+特点：<br>
+1)对象类型和引用类型之间具有继承（类）/实现（接口）的关系；<br>
+2)对象类型不可变，引用类型可变；<br>
+3)方法具有多态性，属性不具有多态性；<br>
+4)引用类型变量发出的方法调用的到底是哪个类中的方法，必须在程序运行期间才能确定；<br>
+5)多态不能调用“只在子类存在但在父类不存在”的方法；<br>
+6)如果子类重写了父类的方法，真正执行的是子类覆盖的方法，如果子类没有覆盖父类的方法，执行的是父类的方法。</p>
+</li>
+</ol>
+<h3 id="重载-和-重写">重载 和 重写</h3>
+<p>1、重载是一个编译期概念、重写是一个运行期间概念。</p>
+<p>2、重载遵循所谓“编译期绑定”，即在编译时根据参数变量的类型判断应该调用哪个方法。</p>
+<p>3、重写遵循所谓“运行期绑定”，即在运行的时候，根据引用变量所指向的实际对象的类型来调用方法</p>
+<p>4、因为在编译期已经确定调用哪个方法，所以重载并不是多态。而重写是多态。重载只是一种语言特性，是一种语法规则，与多态无关，与面向对象也无关。（注：严格来说，重载是编译时多态，即静态多态。但是，Java中提到的多态，在不特别说明的情况下都指动态多态）</p>
+<h3 id="基本原则">基本原则</h3>
+<p>单一职责原则（Single-Responsibility Principle）</p>
+<p>开放封闭原则（Open-Closed principle）</p>
+<p>Liskov替换原则（Liskov-Substitution Principle）</p>
+<p>依赖倒置原则（Dependecy-Inversion Principle）</p>
+<p>接口隔离原则（Interface-Segregation Principle）</p>
+<h2 id="高级">高级</h2>
+<h3 id="多线程-关键字">多线程 关键字</h3>
+<p>volatile，synchronized，ThreadLocal，ThreadPoolExecutor，Semaphore(信号量-允许多个线程同时访问)，CountDownLatch(倒计时器-允许多个线程阻塞在一个地方，只能使用一次)，CyclicBarrier(循环栅栏-与CountDownLatch类似，但是它可以重复使用)，Lock …</p>
+<h3 id="并发-和-并行-区别">并发 和 并行 区别</h3>
+<p>并发当有多个线程在操作时,如果系统只有一个CPU,则它根本不可能真正同时进行一个以上的线程，它只能把CPU运行时间划分成若干个时间段,再将时间 段分配给各个线程执行，在一个时间段的线程代码运行时，其它线程处于挂起状。.这种方式我们称之为并发(Concurrent)。<br>
+并行：当系统有一个以上CPU时,则线程的操作有可能非并发。当一个CPU执行一个线程时，另一个CPU可以执行另一个线程，两个线程互不抢占CPU资源，可以同时进行，这种方式我们称之为并行(Parallel)。</p>
+<p>区别：并发和并行是即相似又有区别的两个概念，并行是指两个或者多个事件在同一时刻发生；而并发是指两个或多个事件在同一时间间隔内发生。</p>
+<h3 id="volatile-和-synchronized-区别">volatile 和 synchronized 区别</h3>
+<p>一、volatile是变量修饰符，而synchronized则作用于一段代码或方法。</p>
+<p>二、volatile只是在线程内存和“主”内存间同步某个变量的值；而synchronized通过锁定和解锁某个监视器同步所有变量的值。显然synchronized要比volatile消耗更多资源。</p>
+<p>三、volatile 只有可见性，没有原子性，而 synchronized 都有。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">volatile</span> <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">i = <span class="number">2</span>; <span class="comment">//可见性</span></span><br><span class="line">       </span><br><span class="line">i++;<span class="comment">//原子性,不安全</span></span><br></pre></td></tr></table></figure>
+<h3 id="死锁的四个必要条件">死锁的四个必要条件</h3>
+<p>（1） 互斥条件：一个资源每次只能被一个进程使用。<br>
+（2） 请求与保持条件：一个进程因请求资源而阻塞时，对已获得的资源保持不放。<br>
+（3） 不剥夺条件:进程已获得的资源，在末使用完之前，不能强行剥夺。<br>
+（4） 循环等待条件:若干进程之间形成一种头尾相接的循环等待资源关系。<br>
+这四个条件是死锁的必要条件，只要系统发生死锁，这些条件必然成立，而只要上述条件之一不满足，就不会发生死锁。</p>
+<h3 id="并发容器">并发容器</h3>
+<ul>
+<li>ConcurrentHashMap: 线程安全的 HashMap</li>
+<li>CopyOnWriteArrayList: 线程安全的 List，在读多写少的场合性能非常好，远远好于 Vector.</li>
+<li>ConcurrentLinkedQueue: 高效的并发队列，使用链表实现。可以看做一个线程安全的 LinkedList，这是一个非阻塞队列。</li>
+<li>BlockingQueue: 这是一个接口，JDK 内部通过链表、数组等方式实现了这个接口。表示阻塞队列，非常适合用于作为数据共享的通道。</li>
+<li>ConcurrentSkipListMap: 跳表的实现。这是一个 Map，使用跳表的数据结构进行快速查找。</li>
+</ul>
+<h3 id="代理">代理</h3>
+<ol>
+<li>静态代理</li>
+</ol>
+<p>接口:IUser.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IUser</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">save</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>目标对象:User.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">implements</span> <span class="title">IUser</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">save</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"----已经保存数据!----"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>代理对象:UserProxy.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserProxy</span> <span class="keyword">implements</span> <span class="title">IUser</span></span>&#123;</span><br><span class="line">    <span class="comment">//接收保存目标对象</span></span><br><span class="line">    <span class="keyword">private</span> IUser target;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">UserProxy</span><span class="params">(IUser target)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.target=target;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">save</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"开始事务..."</span>);</span><br><span class="line">        target.save();<span class="comment">//执行目标对象的方法</span></span><br><span class="line">        System.out.println(<span class="string">"提交事务..."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>测试类:App.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//目标对象</span></span><br><span class="line">        User target = <span class="keyword">new</span> User();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//代理对象,把目标对象传给代理对象,建立代理关系</span></span><br><span class="line">        UserProxy proxy = <span class="keyword">new</span> UserProxy(target);</span><br><span class="line"></span><br><span class="line">        proxy.save();<span class="comment">//执行的是代理的方法</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>+可以做到在不修改目标对象的功能前提下,对目标功能扩展.<br>
++缺点:因为代理对象需要与目标对象实现一样的接口,所以会有很多代理类,类太多.同时,一旦接口增加方法,目标对象与代理对象都要维护.</p>
+<ol start="2">
+<li>动态代理<br>
+接口类IUser.java以及接口实现类,目标对象User是一样的,没有做修改.在这个基础上,增加一个代理工厂类(ProxyFactory.java),将代理类写在这个地方,然后在测试类(需要使用到代理的代码)中先建立目标对象和代理对象的联系,然后代用代理对象的中同名方法</li>
+</ol>
+<p>代理工厂类:ProxyFactory.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProxyFactory</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//维护一个目标对象</span></span><br><span class="line">    <span class="keyword">private</span> Object target;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ProxyFactory</span><span class="params">(Object target)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.target=target;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">//给目标对象生成代理对象</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">getProxyInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Proxy.newProxyInstance(</span><br><span class="line">                target.getClass().getClassLoader(),</span><br><span class="line">                target.getClass().getInterfaces(),</span><br><span class="line">                <span class="keyword">new</span> InvocationHandler() &#123;</span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">                        System.out.println(<span class="string">"开始事务2"</span>);</span><br><span class="line">                        <span class="comment">//执行目标对象方法</span></span><br><span class="line">                        Object returnValue = method.invoke(target, args);</span><br><span class="line">                        System.out.println(<span class="string">"提交事务2"</span>);</span><br><span class="line">                        <span class="keyword">return</span> returnValue;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>测试类:App.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 目标对象</span></span><br><span class="line">        IUser target = <span class="keyword">new</span> User();</span><br><span class="line">        <span class="comment">// 【原始的类型 class User】</span></span><br><span class="line">        System.out.println(target.getClass());</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 给目标对象，创建代理对象</span></span><br><span class="line">        IUser proxy = (IUser) <span class="keyword">new</span> ProxyFactory(target).getProxyInstance();</span><br><span class="line">        <span class="comment">// class $Proxy0   内存中动态生成的代理对象</span></span><br><span class="line">        System.out.println(proxy.getClass());</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 执行方法   【代理对象】</span></span><br><span class="line">        proxy.save();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>1).代理对象,不需要实现接口<br>
+2).代理对象的生成,是利用JDK的API,动态的在内存中构建代理对象(需要我们指定创建代理对象/目标对象实现的接口的类型)<br>
+3).动态代理也叫做:JDK代理,接口代理</p>
+<p><code>代理对象不需要实现接口,但是目标对象一定要实现接口,否则不能用动态代理</code></p>
+<ol start="3">
+<li>Cglib代理<br>
+静态代理和动态代理模式都是要求目标对象是实现一个接口的目标对象,但是有时候目标对象只是一个单独的对象,并没有实现任何的接口,这个时候就可以使用以目标对象子类的方式类实现代理,这种方法就叫做:Cglib代理</li>
+</ol>
+<p>Cglib代理,也叫作子类代理,它是在内存中构建一个子类对象从而实现对目标对象功能的扩展.</p>
+<p>目标对象类:User.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">save</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"----已经保存数据!----"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Cglib代理工厂:ProxyFactory.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProxyFactory</span> <span class="keyword">implements</span> <span class="title">MethodInterceptor</span></span>&#123;</span><br><span class="line">    <span class="comment">//维护目标对象</span></span><br><span class="line">    <span class="keyword">private</span> Object target;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ProxyFactory</span><span class="params">(Object target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.target = target;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//给目标对象创建一个代理对象</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">getProxyInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//1.工具类</span></span><br><span class="line">        Enhancer en = <span class="keyword">new</span> Enhancer();</span><br><span class="line">        <span class="comment">//2.设置父类</span></span><br><span class="line">        en.setSuperclass(target.getClass());</span><br><span class="line">        <span class="comment">//3.设置回调函数</span></span><br><span class="line">        en.setCallback(<span class="keyword">this</span>);</span><br><span class="line">        <span class="comment">//4.创建子类(代理对象)</span></span><br><span class="line">        <span class="keyword">return</span> en.create();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">intercept</span><span class="params">(Object obj, Method method, Object[] args, MethodProxy proxy)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"开始事务..."</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//执行目标对象的方法</span></span><br><span class="line">        Object returnValue = method.invoke(target, args);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"提交事务..."</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> returnValue;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>测试类:App.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//目标对象</span></span><br><span class="line">        User target = <span class="keyword">new</span> User();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//代理对象</span></span><br><span class="line">        User proxy = (User)<span class="keyword">new</span> ProxyFactory(target).getProxyInstance();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//执行代理对象的方法</span></span><br><span class="line">        proxy.save();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>代理的类不能为final,否则报错 目标对象的方法如果为final/static,那么就不会被拦截,即不会执行目标对象额外的业务方法</code></p>
+<h3 id="设计模式">设计模式</h3>
+<ul>
+<li>工厂模式</li>
+<li>适配器模式</li>
+<li>策略模式</li>
+<li>模板方法模式</li>
+<li>观察者模式</li>
+<li>外观模式</li>
+<li>代理模式</li>
+<li>单例模式</li>
+<li>责任链模式</li>
+</ul>
+<h3 id="总结">总结</h3>
+<p>JAVA需要学习的东西还有很多，大家要循序渐进，慢慢来。上面只是JAVA中的一部分，而这部分是大家易出问题，接触比较少的地方。其他部分请自行学习，下面为大家推荐一些资源和书。<br>
+《Java 从入门到精通》、《疯狂JAVA讲义》、《深入理解 Java 虚拟机》、《Effective java 》、《Java 编程思想》<br>
+github推荐：<a href="https://github.com/DuGuQiuBai/Java" target="_blank" rel="noopener">27天成为Java大神</a>、<a href="https://github.com/hollischuang/toBeTopJavaer" target="_blank" rel="noopener">Java工程师成神之路</a>、<a href="https://github.com/Snailclimb/JavaGuide" target="_blank" rel="noopener">Java学习+面试指南</a>、<a href="https://github.com/doocs/advanced-java" target="_blank" rel="noopener">进阶知识完全扫盲</a>、<br>
+<a href="https://github.com/AobingJava/JavaFamily" target="_blank" rel="noopener">JavaFamily面试+学习指南</a>、<a href="https://github.com/jobbole/awesome-java-cn" target="_blank" rel="noopener">Java资源大全中文版</a></p>
+<p>JAVA开发工程师发展线路：初级JAVA工程师-&gt;中级JAVA工程师-&gt;中高级JAVA工程师-&gt;高级JAVA工程师-&gt;资深JAVA工程师-&gt;JAVA架构师-&gt;JAVA专家</p>
+<h1>Kotlin</h1>
+<p>简介：Kotlin(<a href="https://www.kotlincn.net/" target="_blank" rel="noopener">中文官网</a>)是一种在 Java 虚拟机上运行的静态类型编程语言，被称之为 Android 世界的Swift，由 JetBrains 设计开发并开源。<br>
+Kotlin 可以编译成Java字节码，也可以编译成 JavaScript，方便在没有 JVM 的设备上运行。<br>
+在Google I/O 2017中，Google 宣布 Kotlin 成为 Android 官方开发语言。</p>
+<h2 id="基础-2">基础</h2>
+<h3 id="JvmField-和-JvmStatic">@JvmField 和 @JvmStatic</h3>
+<p>@JvmField消除了变量的getter与setter方法<br>
+@JvmField修饰的变量不能是private属性的<br>
+@JvmStatic只能在object类或者伴生对象companion object中使用，而@JvmField没有这些限制<br>
+@JvmStatic一般用于修饰方法，使方法变成真正的静态方法；如果修饰变量不会消除变量的getter与setter方法，但会使getter与setter方法和变量都变成静态</p>
+<h3 id="懒加载">懒加载</h3>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">companion</span> <span class="keyword">object</span> &#123;</span><br><span class="line">        <span class="keyword">val</span> a <span class="keyword">by</span> lazy &#123; A() &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>本质上是调用了 public actual fun <t> lazy(initializer: () -&gt; T): Lazy<t> = SynchronizedLazyImpl(initializer)<br>
+<code>by lazy是线程安全的</code></t></t></p>
+<h3 id="run、let、also、apply、with的用法和区别">run、let、also、apply、with的用法和区别</h3>
+<ul>
+<li>run 函数<br>
+第一种：直接使用run函数返回其结果（最后一行的结果）</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">runTest</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> a = run &#123;</span><br><span class="line">        <span class="string">"abc"</span></span><br><span class="line">        <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">val</span> b = run &#123;</span><br><span class="line">        <span class="number">1</span></span><br><span class="line">        <span class="number">2</span></span><br><span class="line">        <span class="string">"abc"</span></span><br><span class="line">    &#125;</span><br><span class="line">    println(a)</span><br><span class="line">    println(b)</span><br><span class="line">&#125;</span><br><span class="line">结果：</span><br><span class="line">    <span class="number">1</span></span><br><span class="line">    abc</span><br></pre></td></tr></table></figure>
+<p>第二种：调用某个对象(该对象作为接收者)的run函数并返回结果</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">runTestWithT</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> a = <span class="number">1</span>.run &#123;</span><br><span class="line">        <span class="string">"<span class="variable">$this</span> 和 abc"</span></span><br><span class="line">    &#125;</span><br><span class="line">    println(a)</span><br><span class="line">&#125;  </span><br><span class="line">结果：</span><br><span class="line">    <span class="number">1</span> 和 abc</span><br></pre></td></tr></table></figure>
+<ul>
+<li>let 函数<br>
+调用某个对象（该对象作为函数的参数）的let的函数并返回结果</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">letTest</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> let = <span class="string">"abc"</span>.let &#123;</span><br><span class="line">        println(it)</span><br><span class="line">        <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    println(let)</span><br><span class="line">&#125;</span><br><span class="line">结果：</span><br><span class="line">    abc</span><br><span class="line"></span><br><span class="line">    <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>also 函数<br>
+调用某一对象的also 函数（该对象作为函数参数）并返回改对象</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">alsoTest</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> also = <span class="string">"abc"</span>.also &#123;</span><br><span class="line">        println(it)</span><br><span class="line">    &#125;</span><br><span class="line">    println(also)</span><br><span class="line">&#125;</span><br><span class="line">结果：</span><br><span class="line">    abc</span><br><span class="line">    abc</span><br></pre></td></tr></table></figure>
+<ul>
+<li>apply 函数<br>
+调用对象（该对象作为接收者）的apply函数并返回该对象</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">applyTest</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">val</span> apply =<span class="string">"abc"</span>.apply &#123;</span><br><span class="line">        println(<span class="keyword">this</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    println(apply)</span><br><span class="line">&#125;</span><br><span class="line">结果：</span><br><span class="line">    abc</span><br><span class="line">    abc</span><br></pre></td></tr></table></figure>
+<ul>
+<li>with 函数<br>
+调用对象（该对象作为接收者）的apply函数并返回该对象</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">withTest</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> with = with(<span class="string">"abc"</span>) &#123;</span><br><span class="line">        println(<span class="keyword">this</span>)</span><br><span class="line">        <span class="number">1111</span></span><br><span class="line">    &#125;</span><br><span class="line">    println(with)</span><br><span class="line">&#125;</span><br><span class="line">结果：</span><br><span class="line">    abc</span><br><span class="line">    <span class="number">1111</span></span><br></pre></td></tr></table></figure>
+<p>从返回结果不同来看<br>
+返回其他结果 ：run ，let，with</p>
+<p>返回自身结果 ：also ，apply</p>
+<p>从对象调用的作用来看<br>
+调用者作为参数 ：let，also</p>
+<p>调用者作为接收者：run，with，apply</p>
+<h3 id="协程">协程</h3>
+<p>协程的三种启动方式<br>
+1.runBlocking:T<br>
+runBlocking启动的协程任务会阻断当前线程，直到该协程执行结束。<br>
+2.launch:Job<br>
+最常用的用于启动协程的方式，它最终返回一个Job类型的对象，这个Job类型的对象实际上是一个接口，它包涵了许多我们常用的方法。例如join()启动一个协程、cancel() 取消一个协程<br>
+<code>该方式启动的协程任务是不会阻塞线程的</code><br>
+3.async/await:Deferred<br>
+async和await是两个函数，这两个函数在我们使用过程中一般都是成对出现的。<br>
+async用于启动一个异步的协程任务，await用于去得到协程任务结束时返回的结果，结果是通过一个Deferred对象返回的。<br>
+协程是可以被取消的和超时控制，可以组合被挂起的函数，协程中运行环境的指定，也就是线程的切换，协程可以说是线程封装优化的版本。</p>
+<h1>Flutter</h1>
+<p>Flutter 是 Google 开源的 UI 工具包，帮助开发者通过一套代码库高效构建多平台精美应用，支持移动、Web、桌面和嵌入式平台。</p>
+<h2 id="基础-3">基础</h2>
+<h3 id="Flutter体系结构">Flutter体系结构</h3>
+<p>Flutter框架：框架层（Framework）和引擎层（Engine）。<br>
+<img src="/img/flutter-framework.webp" alt="框架层"><br>
+框架层是由Dart所编写的，包含：Material（Material Design风格的组件）、Cupertino（针对iOS风格的组件）、Widgets（组件）、Rendering（渲染）、Animation（动画）、Painting（绘制）、Gestures（手势）、Foundation（基础库）。通常开发者使用Framework层所提供的API去开发自己的项目。<br>
+引擎层（Engine）是由C++编写而成，里面包含Skia、Dart、Text三个部分。<br>
+kia：图形渲染引擎库，也是最核心的部分。<br>
+Dart：指的是Dart VM虚拟机，用于编译和运行Dart代码。<br>
+Text：文本渲染，不同平台采用的渲染方式不一样。</p>
+<h3 id="Flutter开发者帮助">Flutter开发者帮助</h3>
+<p><a href="https://flutterchina.club/" target="_blank" rel="noopener">Flutter 中文网</a><br>
+<a href="https://flutterchina.club/" target="_blank" rel="noopener">Flutter-Go</a><br>
+<a href="https://github.com/Solido/awesome-flutter" target="_blank" rel="noopener">awesome-flutter</a><br>
+<a href="https://book.flutterchina.club/" target="_blank" rel="noopener">Flutter实战</a><br>
+<a href="https://github.com/wendux/flutter_in_action_source_code" target="_blank" rel="noopener">Flutter实战源码</a><br>
+<a href="https://github.com/CarGuo/gsy_github_app_flutter" target="_blank" rel="noopener">Flutter完整开源项目</a></p>
+<h1>总结</h1>
+<p>如果想成为高级App开发工程师，那么阅读Android系统源码算是选修课，阅读一些优秀的开源框架库算是必修课。</p>
+<p>Android之路很长，建议先打好基础，千万不要一上来就看源码，一看得费劲，二你可能在代码间来回跳转，可能会迷失，理解错误，记住一定要循序渐进。</p>
+<p>遇到问题，一定要先尝试自己解决，实在解决不了再请教他人。可以有多种途径自行尝试解决：</p>
+<p>百度一下，不要过分依赖google，完全抛弃百度，毕竟中文资料对大多数人来说理解起来更快；<br>
+Google搜索，建议先用中文关键词google一下；<a href="http://stackoverflow.com" target="_blank" rel="noopener">stackoverflow.com</a>、知乎、掘金、简书等技术问答网站内直接搜索；</p>
+<p>如果有源码，尝试直接看源码；<br>
+多逛逛github，多看看Google官方文档；</p>
+<p>推荐资源：<br>
+《Android 从入门到精通》、《疯狂Android讲义》、《第一行代码》、《深入理解Android》、<br>
+《Android群英传》、《Android开发艺术探索》、《Android编程权威指南》、《Android进阶解密》…</p>
+<p><a href="https://www.androiddevtools.cn/" target="_blank" rel="noopener">AndroidDevTools.cn</a>、<a href="http://hukai.me/android-training-course-in-chinese/index.html" target="_blank" rel="noopener">Android培训文档</a>、<a href="https://android-arsenal.com/" target="_blank" rel="noopener">android-arsenal.com</a>、<br>
+<a href="https://www.codota.com/" target="_blank" rel="noopener">codota.com</a>、<a href="https://github.com/android" target="_blank" rel="noopener"> Android主页</a>、<a href="https://www.androidweekly.cn/" target="_blank" rel="noopener">androidweekly.cn</a></p>
+<p>当然还有很多优秀的<a href="/about">博客和网站</a>值得推荐，这里就不一一介绍。</p>
+<p>Android开发工程师发展线路：初级Android开发工程师-&gt;中级Android开发工程师-&gt;中高级Android开发工程师-&gt;高级Android开发工程师-&gt;资深Android开发工程师-&gt;Android架构师-&gt;Android专家</p>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2020/06/24/android-jni-register/" data-toggle="tooltip" data-placement="top" title="[JNI] NDK Native Method Register">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2020/05/23/android-navigationbar/" data-toggle="tooltip" data-placement="top" title="[Android] NavigationBar Height">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">JAVA</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#基础"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">基础</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#JDK-和-JRE-区别"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">JDK 和 JRE 区别</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#数据类型"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">数据类型</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#和-equals-区别"><span class="toc-nav-number">1.1.3.</span> <span class="toc-nav-text">== 和 equals 区别</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#访问修饰符"><span class="toc-nav-number">1.1.4.</span> <span class="toc-nav-text">访问修饰符</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Float-和-Double-精度"><span class="toc-nav-number">1.1.5.</span> <span class="toc-nav-text">Float 和 Double 精度</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#BigDecimal-注意事项-同上"><span class="toc-nav-number">1.1.6.</span> <span class="toc-nav-text">BigDecimal 注意事项 同上</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#数组"><span class="toc-nav-number">1.1.7.</span> <span class="toc-nav-text">数组</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#面向对象"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">面向对象</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#构造器"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">构造器</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#三大特征"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">三大特征</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#重载-和-重写"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">重载 和 重写</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#基本原则"><span class="toc-nav-number">1.2.4.</span> <span class="toc-nav-text">基本原则</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#高级"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">高级</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#多线程-关键字"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">多线程 关键字</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#并发-和-并行-区别"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">并发 和 并行 区别</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#volatile-和-synchronized-区别"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">volatile 和 synchronized 区别</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#死锁的四个必要条件"><span class="toc-nav-number">1.3.4.</span> <span class="toc-nav-text">死锁的四个必要条件</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#并发容器"><span class="toc-nav-number">1.3.5.</span> <span class="toc-nav-text">并发容器</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#代理"><span class="toc-nav-number">1.3.6.</span> <span class="toc-nav-text">代理</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#设计模式"><span class="toc-nav-number">1.3.7.</span> <span class="toc-nav-text">设计模式</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#总结"><span class="toc-nav-number">1.3.8.</span> <span class="toc-nav-text">总结</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Kotlin</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#基础-2"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">基础</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#JvmField-和-JvmStatic"><span class="toc-nav-number">2.1.1.</span> <span class="toc-nav-text">@JvmField 和 @JvmStatic</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#懒加载"><span class="toc-nav-number">2.1.2.</span> <span class="toc-nav-text">懒加载</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#run、let、also、apply、with的用法和区别"><span class="toc-nav-number">2.1.3.</span> <span class="toc-nav-text">run、let、also、apply、with的用法和区别</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#协程"><span class="toc-nav-number">2.1.4.</span> <span class="toc-nav-text">协程</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">Flutter</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#基础-3"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">基础</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Flutter体系结构"><span class="toc-nav-number">3.1.1.</span> <span class="toc-nav-text">Flutter体系结构</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Flutter开发者帮助"><span class="toc-nav-number">3.1.2.</span> <span class="toc-nav-text">Flutter开发者帮助</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">总结</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Android" title="Android">Android</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://us.pingpongx.com/external/inviteReg.htm?inviteCode=7nEFBj032" target="_blank">Overseas Collection</a></li>
+                    
+                        <li><a href="https://www.vultr.com/?ref=8600728-6G" target="_blank">VPS Vutlr</a></li>
+                    
+                        <li><a href="/vnews/index.html" target="_blank">Vnews Blog</a></li>
+                    
+                        <li><a href="http://blog.kaijun.rocks" target="_blank">Kaijun&#39;s Blog</a></li>
+                    
+                        <li><a href="http://huangxuan.me" target="_blank">Hux Blog</a></li>
+                    
+                        <li><a href="#" target="_blank">It Helps SEO</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'right',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+     <div class="row" style="margin-top:-50px;float:right;font-size:10px;margin-left:30px;padding-right:30px;">
+            
+            <!-- 不蒜子统计 -->
+            <span id="busuanzi_container_site_pv">
+            总访问量：<span id="busuanzi_value_site_pv">0</span>次
+            </span>
+            <span>|</span>
+            <span id="busuanzi_container_site_uv">
+            访客数：<span id="busuanzi_value_site_uv">0</span>人
+            </span>
+            
+             <!-- 不蒜子统计 -->
+             <span>|</span>
+              <span id="busuanzi_container_page_pv" style='display:none'">
+              <i class="icon-smile icon"></i>本文阅读数：<span id="busuanzi_value_page_pv">0</span>次
+              </span>
+            
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            
+     </div>
+        <div class="row">
+           <!-- horizontal_ad/bottom_ad -->
+           <ul class="list-inline text-center">
+            
+                <ins class="adsbygoogle"  style="display:block" data-ad-client="ca-pub-5651453694104340"  data-ad-slot="3310538124"  data-ad-format="auto" data-full-width-responsive="true"></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+            
+            </ul>
+        </div>
+        <br><br>
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/xiuyuantech">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://www.linkedin.com/in/xiuyuantech">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                </br>
+                <ul class="list-inline text-center">
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/geekvideo_release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Clear" src="/img/ic_geekvideo_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/clear_googleplay_1.5.0_0530-1704_release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Clear" src="/img/ic_clear_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/videoeditor-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="VideoEditor" src="/img/ic_videoclip_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/screenrecoder-playstoreDonate-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="ScreenRecoder" src="/img/ic_recoder_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/vault-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Vault" src="/img/ic_vault_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/accountbook-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="AccountBook" src="/img/ic_book_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/starwars-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Star Wars" src="/img/ic_plane_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/cardsolitaire-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Solitaire" src="/img/ic_card_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; xiuyuantech 2025 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Ported by <a href="https://xiuyuantech.github.io">XiuYuanTech</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;margin-right: -36px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="/star_xiuyuantech_on_github.html?user=xiuyuantech&repo=&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://xiuyuantech.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-165334855-1';
+    var _gaDomain = 'xiuyuantech.github.io';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- async load function -->
+
+<script>
+
+    function async(u, c) {
+
+      var d = document, t = 'script',
+
+          o = d.createElement(t),
+
+          s = d.getElementsByTagName(t)[0];
+
+      o.src = u;
+
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+
+      s.parentNode.insertBefore(o, s);
+
+    }
+
+</script>
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="https://xiuyuantech.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+
+<script type="text/javascript">
+  function adLoaded() {
+      var in_article_contaner = document.getElementById('in-article-ad');
+      if(in_article_contaner) {
+            // here you can make the height, I delete it first, then I make it again
+            console.log("in_article_contaner");
+            //in_article_contaner.innerHTML=``;
+      }
+      var square_contaner = document.getElementById('square-ad');
+      if(square_contaner){
+         console.log("square_contaner");
+         //square_contaner.innerHTML=``;
+      }
+  };
+
+  $(document).ready(function () {
+                try{
+                  //adLoaded();
+                }catch(err){
+                  onError();
+                }});
+
+</script>
+
+<script>
+function isSameDay(timeA,timeB) {
+   let dateA = new Date(timeA);
+   let dateB = new Date(timeB);
+   return (dateA.setHours(0, 0, 0, 0) == dateB.setHours(0, 0, 0, 0));
+   }
+   function CheckIsNotNullOrEmpty(value) {
+                //正则表达式用于判斷字符串是否全部由空格或换行符组成
+                 var reg = /^\s*$/
+                 //返回值为true表示不是空字符串
+                 return (value != null && value != undefined && !reg.test(value));
+   }
+   <!-- js 异常时不显示 -->
+   function onError(){
+        $("ins.adsbygoogle[data-ad-slot]").each(function(index,element){
+           $(element).remove();
+           });
+   }
+    <!-- 单个点击事件 -->
+    function bindClick(element,countKeyPre) {
+        $(element).click(function(){
+          console.log("dayKey：" + countKeyPre);
+          var count =  window.localStorage.countKeyPre;
+          console.log("count get： "+count);
+          if(CheckIsNotNullOrEmpty(count)){
+             count++;
+             console.log("count++： "+count);
+             window.localStorage.countKeyPre = count;
+             if(count >= 4){
+              console.log("count： "+count);
+              $(element).remove();
+              onError();
+              }
+          } else {
+            window.localStorage.countKeyPre = 0;
+          }
+          });
+
+        }
+        <!-- js 初始化 Ad  -->
+        function initAd(ip){
+        if(CheckIsNotNullOrEmpty(ip)){
+                //alert("not null ip:  "+ ip);
+                $("ins.adsbygoogle[data-ad-slot]").each(function(index,element){
+                            /*var data_ad_slot = $(element).attr("data-ad-slot");
+                            console.log("data_ad_slot：" + data_ad_slot);
+                            var hasAd = CheckIsNotNullOrEmpty(data_ad_slot);
+                            console.log("hasAd：" + hasAd);*/
+                            //if（hasAd){
+                               //console.log("not null data_ad_slot：" + data_ad_slot);
+                               var dayKeyPre = ip +"_day";
+                               var countKeyPre = ip +"_count";
+                               console.log("dayKey：" + dayKeyPre);
+                               console.log("dayKeyPre：" + window.localStorage.dayKeyPre);
+                               bindClick(element,countKeyPre);
+                               console.log("countKeyPre：" + countKeyPre);
+                               console.log("countKeyPre：" + window.localStorage.countKeyPre);
+                               var nowStr =  new Date().toLocaleDateString();
+                               var notSame = CheckIsNotNullOrEmpty(window.localStorage.dayKeyPre) && !isSameDay(window.localStorage.dayKeyPre,nowStr);
+                               console.log("同一天：" +  !notSame);
+                               if(notSame){
+                                window.localStorage.dayKeyPre = nowStr;
+                                window.localStorage.countKeyPre = 0;
+                                console.log("重置成功");
+                                }
+                                   if( CheckIsNotNullOrEmpty(window.localStorage.dayKeyPre)){
+                                      if(window.localStorage.countKeyPre >= 4){
+                                         $(element).remove();
+                                      }
+                                   } else {
+                                      window.localStorage.dayKeyPre = nowStr;
+                                    }
+                              //}
+                            });
+                        return;
+                    }
+                        onError();
+                 }
+
+                          $(document).ready(function () {
+                          try{
+                            //$.getJSON("https://api.ipify.org/?format=json", function(e) {
+                            // var ip = e.ip;
+                            //initAd(ip);
+                             //});
+                          }catch(err){
+                            onError();
+                          }});
+</script>
+
+
+
+</body>
+
+</html>

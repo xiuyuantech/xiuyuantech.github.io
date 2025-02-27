@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="xiuyuantech">
+    <meta name="keyword" content>
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          [Android] Learn And Use Jetpack - xiuyuantech
+        
+    </title>
+
+    <link rel="canonical" href="https://xiuyuantech.github.io/2023/03/18/android_jetpack_learn/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+
+    <!-- Google Adsense -->
+
+    
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-5651453694104340",
+             enable_page_level_ads: true
+             });
+    </script>
+    <!-- 获取ip <script async src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>  -->
+
+
+
+    
+
+</head>
+
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('')
+            /*post*/
+        
+    }
+    
+    #signature{
+        background-image: url('/img/signature/BeanTechSign-white.png');
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Android" title="Android">Android</a>
+                            
+                        </div>
+                        <h1>[Android] Learn And Use Jetpack</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by xiuyuantech on
+                            2023-03-18
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">XiuYuanTech</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/vnews/">vnews home</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <blockquote>
+<p>Jetpack 包含一系列 Android 库，它们都采用最佳做法并在 Android 应用中提供向后兼容性。<br>
+Jetpack 库可以单独使用，也可以组合使用，以满足应用的不同需求。<br>
+例如：<br>
+WorkManager - 满足您的后台调度需求。<br>
+Room - 实现数据存储持久性。<br>
+Navigation - 管理应用导航流程。<br>
+CameraX - 满足相机应用需求。</p>
+</blockquote>
+<h2 id="实现方式">实现方式</h2>
+<p>所有 Jetpack 组件都可在 <a href="https://maven.google.com/web/index.html?hl=zh-cn" target="_blank" rel="noopener">Google Maven</a> 代码库中找到。 在应用中使用<br>
+Jetpack 库：打开 settings.gradle 文件，将 google() 代码库添加到 dependencyResolutionManagement { repositories<br>
+{…}} 块中，如下所示：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dependencyResolutionManagement &#123;</span><br><span class="line">    repositoriesMode.<span class="keyword">set</span>(RepositoriesMode.FAIL_ON_PROJECT_REPOS)</span><br><span class="line">    repositories &#123;</span><br><span class="line">        google()</span><br><span class="line">        jcenter()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如需详细了解如何使用 Jetpack，请查看以下页面：</p>
+<p><a href="https://developer.android.google.cn/topic/libraries/architecture?hl=zh-cn" target="_blank" rel="noopener">Android 架构组件</a><br>
+<a href="https://developer.android.google.cn/jetpack/androidx/explorer?hl=zh-cn" target="_blank" rel="noopener">Jetpack 组件的完整列表</a><br>
+<img src="/img/jetpack_lib.png" alt="框架图"></p>
+<h2 id="从零到一搭建">从零到一搭建</h2>
+<p>我的Demo采用MVVM的设计模式，框架图如下：<br>
+<img src="/img/jetpack_demo_mvvm.png" alt="Demo框架图"></p>
+<p>Jetpack组件：</p>
+<ol>
+<li>Navigation：一个用于管理Fragment切换的工具类，可视化、可绑定控件、支持动画等是其优点。</li>
+<li>Data Binding：不用说，都知道，加速MVVM的创建。</li>
+<li></li>
+</ol>
+<p>Lifecycle：虽然我没有写文章介绍，但是不代表它的作用不够强大，他是我们能够处理Activity和Fragment的生命周期的重要原因，在AndroidX的Fragment和Activity已经对Lifecycle提供了默认支持。</p>
+<ol start="4">
+<li>ViewModel：当做MVVM的ViewModel层，并具有声明周期意识的处理和UI相关的数据。</li>
+<li>LiveData：同RxJava的作用一样，对数据进行监听，优点就是无需处理生命周期、无内存泄漏等。</li>
+<li>Room：强大的ORM数据库框架。</li>
+<li>Paging：易于使用的数据分页库，支持RecyclerView。</li>
+<li>WorkManager：灵活、简单、延迟和保证执行的后台任务处理库。</li>
+</ol>
+<h2 id="使用踩坑">使用踩坑</h2>
+<h3 id="Navigation：">Navigation：</h3>
+<p>1.当我们快速点击按钮会重复调用navigate()导致异常如下:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">java.lang.IllegalArgumentException: Navigation action / destination com.soushin.tinmvvm:id / action_homeFragment_to_categoryFragment cannot be found from the current destination Destination(</span><br><span class="line">    com.soushin.tinmvvm:id/ categoryFragment) label =</span><br><span class="line">    CategoryFragment <span class="class"><span class="keyword">class</span>=<span class="title">com</span>.<span class="title">soushin</span>.<span class="title">tinmvvm</span>.<span class="title">mvvm</span>.<span class="title">ui</span>.<span class="title">fragment</span>.<span class="title">CategoryFragment</span></span></span><br></pre></td></tr></table></figure>
+<p>这是因为第一次调用navigate()<br>
+后当前页面已经换了，而我们的action是明确了起点和终点的，所以当第二次调用的时候起点不再是HomeFragment就会报上述异常，这在页面跳转时添加转场动画会显得非常明显(<br>
+转场动画有duration)，只需要在跳转前判断currentDestination是否是当前页面的destination即可。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (Navigation.findNavController(v).currentDestination?.id != R.id.homeFragment) <span class="keyword">return</span></span><br></pre></td></tr></table></figure>
+<p>2.出现无法找到导航图的问题.检查在xml文件中，是否设置了navGraph的资源文件; 如果设置了还是无法找到，请点击右上角的扳手的图标;<br>
+使用组件自带fragmentNavigator跳转时候，出现重复新建fragment对象问题,解决方案：请自定义fragmentNavigator;</p>
+<p>3.传参数问题：<br>
+我是在重构项目中开始使用的，在别的页面开始进行navigation的使用的时候，需要把上一个页面的参数传进来，所以我会优先考虑使用FragmentManager的进行传递（因为这不是navigation的范围了），但是有个很重要的因素，就是他们使用的FragmentManager不是同一个，所以会导致数据传递失败了！！！<br>
+解决方法：</p>
+<ol>
+<li>把上一个页面的参数，传到承载navigation容器的Activity/Fragment中，然后然后通过以下方式，把数据传入到起始目的地</li>
+</ol>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">navController.setGraph(R.navigation.nav_setting, bundleOf(FRAGMENT_DATA_IS_SET to ISSETPASSWORD))</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>fragment之间传递参数</li>
+</ol>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">发送数据：</span><br><span class="line"><span class="keyword">val</span> bundle = bundleOf(<span class="string">"amount"</span> to amount)</span><br><span class="line">view.findNavController().navigate(R.id.confirmationAction, bundle)</span><br><span class="line">接受数据：</span><br><span class="line"><span class="keyword">val</span> tv = view.findViewById&lt;TextView&gt;(R.id.textViewAmount)</span><br><span class="line">tv.text = arguments?.getString(<span class="string">"amount"</span>)</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>fragment向activity传递参数</li>
+</ol>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">发送数据：</span><br><span class="line"><span class="keyword">val</span> bundle = bundleOf(<span class="string">"amount"</span> to amount)</span><br><span class="line">view.findNavController().navigate(R.id.confirmationAction, bundle)</span><br><span class="line">接受数据：</span><br><span class="line"><span class="keyword">val</span> tv = view.findViewById&lt;TextView&gt;(R.id.textViewAmount)</span><br><span class="line">tv.text = intent?.getString(<span class="string">"amount"</span>)</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>如果Fragment中的参数需要用到其他页面，但并是不导航图的下一个目的地，请使用FragmentManager进行数据传递 同级Fragment中：</li>
+</ol>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">发送数据：</span><br><span class="line"><span class="keyword">val</span> result = Bundle()</span><br><span class="line">result.putString(<span class="string">"account"</span>, editAccount.text.toString())</span><br><span class="line">result.putString(<span class="string">"password"</span>, editPasswordAgain.text.toString())</span><br><span class="line">setFragmentResult(<span class="string">"numberKey"</span>, result)</span><br><span class="line">接受数据：</span><br><span class="line">setFragmentResultListener(<span class="string">"numberKey"</span>) &#123; key, bundle -&gt;</span><br><span class="line">    registerAccount = bundle.getString(<span class="string">"account"</span>, <span class="string">""</span>)</span><br><span class="line">    registerPassWord = bundle.getString(<span class="string">"password"</span>, <span class="string">""</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>父Fragment与子Fragment之间：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">父Fragment:</span><br><span class="line">发送数据：</span><br><span class="line">parentFragment.setFragmentResult(<span class="string">"numberKey"</span>, result)</span><br><span class="line">接受数据：</span><br><span class="line">parentFragmentManager.setFragmentResultListener(<span class="string">"numberKey"</span>, <span class="keyword">this</span>,</span><br><span class="line">    FragmentResultListener &#123; requestKey, result -&gt;</span><br><span class="line">        registerAccount = result.getString(<span class="string">"account"</span>, <span class="string">""</span>)</span><br><span class="line">        registerPassWord = result.getString(<span class="string">"password"</span>, <span class="string">""</span>)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">子Fragment:</span><br><span class="line">发送数据：</span><br><span class="line">parentFragment.setFragmentResult(<span class="string">"numberKey"</span>, result)</span><br><span class="line">接受数据：</span><br><span class="line">childFragmentManager.setFragmentResultListener(<span class="string">"numberKey"</span>, <span class="keyword">this</span>,</span><br><span class="line">    FragmentResultListener &#123; requestKey, result -&gt;</span><br><span class="line">        registerAccount = result.getString(<span class="string">"account"</span>, <span class="string">""</span>)</span><br><span class="line">        registerPassWord = result.getString(<span class="string">"password"</span>, <span class="string">""</span>)</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+<p>Navigation的底层对Fragment的管理直接采取了替换的方式，虽然它可以配合BottomNavigationView使用，但每次都重新加载显然是不合理的,不推荐使用。</p>
+<h3 id="LiveData">LiveData</h3>
+<p>优点：对数据进行监听，拥有可观察、生命周期感知、、无内存泄漏等的特点。 缺点：</p>
+<ol>
+<li>只能在主线程中订阅和移除观察者</li>
+<li>数据丢失问题,在数据生产速度 &gt; 数据消费速度时，LiveData 无法观察者能够接收到全部数据。比如在子线程大量 postValue 数据但主线程消费跟不上时，中间就会有一部分数据被忽略。</li>
+<li>在 Fragment 中出现 LiveData 同样数据多次回调的问题,针对这个问题，Google 一位大神在 Stack Overflow 实现了一个复写类 SingleLiveEvent.</li>
+<li>observeForever 和 removeObserver 方法要配套使用,否则会导致内存泄漏问题</li>
+<li>LiveData天生就是粘性的,当我们重复订阅的时候,会返回最后一次结果. UnPeek-LiveData开源库可以解决这个问题。 LiveData 的替代者： RxJava： RxJava<br>
+是第三方组织 ReactiveX 开发的组件，Rx 是一个包括 Java、Go 等语言在内的多语言数据流框架。功能强大是它的优势，支持大量丰富的操作符，也支持线程切换和背压。然而 Rx<br>
+的学习门槛过高，对开发反而是一种新的负担，也会带来误用的风险。 Kotlin Flow： Kotlin Flow 是基于 Kotlin 协程基础能力搭建的一套数据流框架，从功能复杂性上看是介于<br>
+LiveData 和 RxJava 之间的解决方案。Kotlin Flow 拥有比 LiveData 更丰富的能力，但裁剪了 RxJava 大量复杂的操作符，做得更加精简。并且在 Kotlin<br>
+协程的加持下，Kotlin Flow 目前是 Google 主推的数据流框架。</li>
+</ol>
+<h3 id="Room">Room</h3>
+<ol>
+<li>数据库加密不友好，推荐使用saferoom开源库适配</li>
+<li>数据库版本升级迁移不友好，仅支持增删列字段，增删索引必须删除表重新创建; 新增字段必须添加默认值,建议项目创建时就添加默认值,索引一个字段单独使用普通索引,不建议使用联合索引即Index(<br>
+字段1,字段2);</li>
+</ol>
+<h3 id="Paging">Paging</h3>
+<ol>
+<li>仅适合加载查看数据的场景，不适合增删改的场景且无增删改方法。一旦增删改之后,Paging分页逻辑将失去作用。</li>
+<li>界面不可见后一段时间切回来时会重新加载数据。 解决方法： 1)对PagingFlow添加cacheIn(viewModelScope)。 2)不使用CoroutineLiveData，直接用<br>
+lifecycleScope.launchWhenCreated 和 flow 来接收 PagingData 数据。</li>
+</ol>
+<h3 id="WorkManager">WorkManager</h3>
+<ol>
+<li>适配android12，版本必须在2.7.1之上</li>
+<li>定时任务不一定准时执行，但一定会执行</li>
+</ol>
+<h2 id="总结">总结</h2>
+<p>1.Android Jetpack组件中的很多库都对其他库提供了支持，比如Room和Paging就对LiveData提供了支持。<br>
+2.向后兼容：基本上每个组件都对低版本提供了支持。支持RxJava：由于RxJava强大的生态环境，几乎和数据相关的组件都对RxJava提供了支持。<br>
+3.减少代码量：以Data Binding + ViewModel + LiveData或RxJava构建的MVVM模式能够显著减少代码量，比较平时使用的MVP模式也会更加方便，无需主动更新UI。<br>
+4.无需捆绑：Android Jetpack系列组件可以无需捆绑使用，你如果只想用里面的单个库，那么就可以仅仅依赖一个库。</p>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2024/01/22/springboot3-kotlin-learn/" data-toggle="tooltip" data-placement="top" title="[SpringBoot] SpringBoot3 + Kotlin 踩坑指南">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2022/09/25/how-to-customize-gradle-plugin/" data-toggle="tooltip" data-placement="top" title="[Android] How to customise gradle plugin">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#实现方式"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">实现方式</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#从零到一搭建"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">从零到一搭建</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#使用踩坑"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">使用踩坑</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Navigation："><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">Navigation：</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#LiveData"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">LiveData</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Room"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">Room</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Paging"><span class="toc-nav-number">3.4.</span> <span class="toc-nav-text">Paging</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#WorkManager"><span class="toc-nav-number">3.5.</span> <span class="toc-nav-text">WorkManager</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#总结"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">总结</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Android" title="Android">Android</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://us.pingpongx.com/external/inviteReg.htm?inviteCode=7nEFBj032" target="_blank">Overseas Collection</a></li>
+                    
+                        <li><a href="https://www.vultr.com/?ref=8600728-6G" target="_blank">VPS Vutlr</a></li>
+                    
+                        <li><a href="/vnews/index.html" target="_blank">Vnews Blog</a></li>
+                    
+                        <li><a href="http://blog.kaijun.rocks" target="_blank">Kaijun&#39;s Blog</a></li>
+                    
+                        <li><a href="http://huangxuan.me" target="_blank">Hux Blog</a></li>
+                    
+                        <li><a href="#" target="_blank">It Helps SEO</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'right',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+     <div class="row" style="margin-top:-50px;float:right;font-size:10px;margin-left:30px;padding-right:30px;">
+            
+            <!-- 不蒜子统计 -->
+            <span id="busuanzi_container_site_pv">
+            总访问量：<span id="busuanzi_value_site_pv">0</span>次
+            </span>
+            <span>|</span>
+            <span id="busuanzi_container_site_uv">
+            访客数：<span id="busuanzi_value_site_uv">0</span>人
+            </span>
+            
+             <!-- 不蒜子统计 -->
+             <span>|</span>
+              <span id="busuanzi_container_page_pv" style='display:none'">
+              <i class="icon-smile icon"></i>本文阅读数：<span id="busuanzi_value_page_pv">0</span>次
+              </span>
+            
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            
+     </div>
+        <div class="row">
+           <!-- horizontal_ad/bottom_ad -->
+           <ul class="list-inline text-center">
+            
+                <ins class="adsbygoogle"  style="display:block" data-ad-client="ca-pub-5651453694104340"  data-ad-slot="3310538124"  data-ad-format="auto" data-full-width-responsive="true"></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+            
+            </ul>
+        </div>
+        <br><br>
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/xiuyuantech">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://www.linkedin.com/in/xiuyuantech">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                </br>
+                <ul class="list-inline text-center">
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/geekvideo_release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Clear" src="/img/ic_geekvideo_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/clear_googleplay_1.5.0_0530-1704_release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Clear" src="/img/ic_clear_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/videoeditor-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="VideoEditor" src="/img/ic_videoclip_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/screenrecoder-playstoreDonate-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="ScreenRecoder" src="/img/ic_recoder_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/vault-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Vault" src="/img/ic_vault_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/accountbook-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="AccountBook" src="/img/ic_book_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/starwars-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Star Wars" src="/img/ic_plane_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/cardsolitaire-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Solitaire" src="/img/ic_card_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; xiuyuantech 2025 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Ported by <a href="https://xiuyuantech.github.io">XiuYuanTech</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;margin-right: -36px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="/star_xiuyuantech_on_github.html?user=xiuyuantech&repo=&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://xiuyuantech.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-165334855-1';
+    var _gaDomain = 'xiuyuantech.github.io';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- async load function -->
+
+<script>
+
+    function async(u, c) {
+
+      var d = document, t = 'script',
+
+          o = d.createElement(t),
+
+          s = d.getElementsByTagName(t)[0];
+
+      o.src = u;
+
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+
+      s.parentNode.insertBefore(o, s);
+
+    }
+
+</script>
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="https://xiuyuantech.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+
+<script type="text/javascript">
+  function adLoaded() {
+      var in_article_contaner = document.getElementById('in-article-ad');
+      if(in_article_contaner) {
+            // here you can make the height, I delete it first, then I make it again
+            console.log("in_article_contaner");
+            //in_article_contaner.innerHTML=``;
+      }
+      var square_contaner = document.getElementById('square-ad');
+      if(square_contaner){
+         console.log("square_contaner");
+         //square_contaner.innerHTML=``;
+      }
+  };
+
+  $(document).ready(function () {
+                try{
+                  //adLoaded();
+                }catch(err){
+                  onError();
+                }});
+
+</script>
+
+<script>
+function isSameDay(timeA,timeB) {
+   let dateA = new Date(timeA);
+   let dateB = new Date(timeB);
+   return (dateA.setHours(0, 0, 0, 0) == dateB.setHours(0, 0, 0, 0));
+   }
+   function CheckIsNotNullOrEmpty(value) {
+                //正则表达式用于判斷字符串是否全部由空格或换行符组成
+                 var reg = /^\s*$/
+                 //返回值为true表示不是空字符串
+                 return (value != null && value != undefined && !reg.test(value));
+   }
+   <!-- js 异常时不显示 -->
+   function onError(){
+        $("ins.adsbygoogle[data-ad-slot]").each(function(index,element){
+           $(element).remove();
+           });
+   }
+    <!-- 单个点击事件 -->
+    function bindClick(element,countKeyPre) {
+        $(element).click(function(){
+          console.log("dayKey：" + countKeyPre);
+          var count =  window.localStorage.countKeyPre;
+          console.log("count get： "+count);
+          if(CheckIsNotNullOrEmpty(count)){
+             count++;
+             console.log("count++： "+count);
+             window.localStorage.countKeyPre = count;
+             if(count >= 4){
+              console.log("count： "+count);
+              $(element).remove();
+              onError();
+              }
+          } else {
+            window.localStorage.countKeyPre = 0;
+          }
+          });
+
+        }
+        <!-- js 初始化 Ad  -->
+        function initAd(ip){
+        if(CheckIsNotNullOrEmpty(ip)){
+                //alert("not null ip:  "+ ip);
+                $("ins.adsbygoogle[data-ad-slot]").each(function(index,element){
+                            /*var data_ad_slot = $(element).attr("data-ad-slot");
+                            console.log("data_ad_slot：" + data_ad_slot);
+                            var hasAd = CheckIsNotNullOrEmpty(data_ad_slot);
+                            console.log("hasAd：" + hasAd);*/
+                            //if（hasAd){
+                               //console.log("not null data_ad_slot：" + data_ad_slot);
+                               var dayKeyPre = ip +"_day";
+                               var countKeyPre = ip +"_count";
+                               console.log("dayKey：" + dayKeyPre);
+                               console.log("dayKeyPre：" + window.localStorage.dayKeyPre);
+                               bindClick(element,countKeyPre);
+                               console.log("countKeyPre：" + countKeyPre);
+                               console.log("countKeyPre：" + window.localStorage.countKeyPre);
+                               var nowStr =  new Date().toLocaleDateString();
+                               var notSame = CheckIsNotNullOrEmpty(window.localStorage.dayKeyPre) && !isSameDay(window.localStorage.dayKeyPre,nowStr);
+                               console.log("同一天：" +  !notSame);
+                               if(notSame){
+                                window.localStorage.dayKeyPre = nowStr;
+                                window.localStorage.countKeyPre = 0;
+                                console.log("重置成功");
+                                }
+                                   if( CheckIsNotNullOrEmpty(window.localStorage.dayKeyPre)){
+                                      if(window.localStorage.countKeyPre >= 4){
+                                         $(element).remove();
+                                      }
+                                   } else {
+                                      window.localStorage.dayKeyPre = nowStr;
+                                    }
+                              //}
+                            });
+                        return;
+                    }
+                        onError();
+                 }
+
+                          $(document).ready(function () {
+                          try{
+                            //$.getJSON("https://api.ipify.org/?format=json", function(e) {
+                            // var ip = e.ip;
+                            //initAd(ip);
+                             //});
+                          }catch(err){
+                            onError();
+                          }});
+</script>
+
+
+
+</body>
+
+</html>
