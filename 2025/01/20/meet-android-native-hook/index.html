@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="xiuyuantech">
+    <meta name="keyword" content>
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          [Android] Meet Android Native Hook(了解安卓原生钩子技术) - xiuyuantech
+        
+    </title>
+
+    <link rel="canonical" href="https://xiuyuantech.github.io/2025/01/20/meet-android-native-hook/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+
+    <!-- Google Adsense -->
+
+    
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-5651453694104340",
+             enable_page_level_ads: true
+             });
+    </script>
+    <!-- 获取ip <script async src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>  -->
+
+
+
+    
+
+</head>
+
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('')
+            /*post*/
+        
+    }
+    
+    #signature{
+        background-image: url('/img/signature/BeanTechSign-white.png');
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Android" title="Android">Android</a>
+                            
+                        </div>
+                        <h1>[Android] Meet Android Native Hook(了解安卓原生钩子技术)</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by xiuyuantech on
+                            2025-01-20
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">XiuYuanTech</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/vnews/">vnews home</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <blockquote>
+<p>在目前的安卓APP开发、测试、APM中对于Native Hook的需求越来越大，越来越多的APP开始逐渐使用NDK来开发核心或者敏感代码逻辑。<br>
+安全的考虑：各大APP越来越注重安全性，NDK所编译出来的so库逆向难度明显高于java代码产生的dex文件。越是敏感的加密算法与数据就越是需要用NDK进行开发。<br>
+性能的追求：NDK对于一些高性能的功能需求是java层无法比拟的。<br>
+手游的兴起：Unity等引擎开发的手游中都有大量包含游戏逻辑的so库。<br>
+Android Native Hook工具目前有两大路线： 1、PLT Hook 2、Inline Hook</p>
+</blockquote>
+<h2 id="认识hook">认识hook</h2>
+<p>“Hook”（钩子）是计算机编程中的一种技术，它允许开发者拦截、修改或扩展软件或系统的行为。通过使用钩子，开发者可以在特定事件发生时注入自定义代码，以便修改程序的行为或响应程序的特定事件。</p>
+<p>钩子的使用场景大概有这些：</p>
+<pre><code>键盘和鼠标事件：拦截键盘和鼠标输入，用于实现自定义的快捷键、鼠标手势或输入法。
+窗口消息：拦截和处理窗口消息，用于实现窗口管理、界面定制等功能。
+函数调用：拦截特定函数的调用，用于实现调试、性能分析、代码注入等功能。
+文件操作和网络请求：拦截文件操作和网络请求，用于实现文件监控、安全检测等功能。
+</code></pre>
+<p><code>钩子技术可以提供很大的灵活性和功能扩展性，但也需要谨慎使用，因为不正确的使用钩子可能会导致程序崩溃、安全漏洞或不稳定的行为。</code></p>
+<h2 id="GOT-PLT-Hook">GOT/PLT Hook</h2>
+<p>Android 是基于Linux的操作系统，因此在Android开发平台上，ELF是原生支持的可执行文件格式；ELF文件格式除了作为可执行文件，还可以作为共享库格式，也就是我们常见的so文件, 以及 object文件 (.o)、core dumps文件等。</p>
+<p>GOT/PLT HOOK 是ELF 文件函数hook的一种实现机制，GOT/PLT Hook 主要用于实现替换某个SO的外部调用，它的优点是非常稳定，因此在生产环境通常使用这种实现方案。</p>
+<div id="in-article-ad">
+    <!--线上 in_article_ad -->
+  <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5651453694104340" data-ad-slot="6951497715">
+  </ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<p>GOT/PLT Hook的方案命名主要是因为该方案主要是通过修改 ELF 文件结构中的 GOT (The Global Offset Table) 和 PLT(The Procedure Linkage Table) 段的地址来实现将原始函数调用指向自定义的函数或者跳转到其他代码段，从而实现对函数行为的修改或拦截。</p>
+<ul>
+<li>
+<p>PLT（Procedure Linkage Table）在Android中的作用主要是实现函数的延迟绑定（lazy binding）。PLT存储了指向函数的指针，但这些指针并不是直接指向函数的实际实现，而是指向一个桩函数（如_dl_runtime_resolve）。当第一次调用一个动态链接的函数时，会执行这个桩函数，它负责将控制权转移给动态链接器，以解析函数地址并将其存储在.got.plt（或.got的一个特定部分）中。后续的调用将直接通过.got.plt中的地址访问函数，避免了再次调用桩函数的开销‌。</p>
+</li>
+<li>
+<p>.got (Global Offset Table)<br>
+got 位于数据段, 作用是用来记录代码中引用到的外部符号的地址映射。这里的符号包括，变量、函数等。</p>
+<p>这里存在一个问题，如果一个引用的函数是在共享库中，而共享库在加载的时候是没有固定地址的，所以在got表中无法直接保存该符号的地址，此时就需要引入 plt表</p>
+</li>
+<li>
+<p>.plt (Procedure Linkage Table）<br>
+PLT 位于代码段，动态库中的每一个外部函数都会在PLT 中有一条对应的记录，每一条PLT记录都是一小段可执行的代码。可以说，PLT是由代码片段组成的表，每个代码片段由会跳转到GOT表中的一个具体的函数调用</p>
+</li>
+<li>
+<p>-fPIC说明<br>
+使用 PIC 参数作用于编译阶段，是告诉编译生成与 位置无关(Position-Independent Code)的代码, 对于共享库来说，如果不加 -fPIC，则.so文件的代码段在被加载时，代码段引用的数据对象需要重新定位，重定位会修改代码段的内容，这就总爱称每个使用这个.so文件代码段的进程在内核中都需要生成这个.so文件代码段的副本，每个副本都不一样，具体取决于这个.so文件代码和数据段内存映射的位置。 当添加 PIC参数后，则产生的代码中，没有绝对地址，全部使用相对地址，故而代码可以被加载器加载到内存的任意位置，都可以正确的执行。 因此对于动态库来说，一般产生位置无关的代码。</p>
+</li>
+</ul>
+<h2 id="PLT-Hook步骤">PLT Hook步骤</h2>
+<ul>
+<li>总体
+<ul>
+<li>
+<p>定位目标函数：确定要 hook 的目标函数，通过读取<code>/proc/self/maps</code>文件找到其在动态链接库中的地址。</p>
+</li>
+<li>
+<p>修改 PLT 表：读取动态库，解析 ELF 文件，找到符号。通过计算<code>目标函数绝对地址(目标进程函数绝对地址 = 动态库基地址 + 函数地址)</code>修改 PLT 表中目标函数对应的条目，将其指向自定义的函数或者其他代码段。</p>
+</li>
+<li>
+<p>处理原始函数调用：在自定义函数中可以执行一些额外的操作，然后再调用原始的目标函数，或者完全替换原始函数的行为。</p>
+</li>
+<li>
+<p>恢复原始调用：有时候需要在自定义函数中调用原始的目标函数，以保持程序的正常行为。</p>
+</li>
+</ul>
+</li>
+<li>具体
+<ul>
+<li>获取动态库的基地。</li>
+<li>计算 so 文件中的 program header table 程序头地址。</li>
+<li>遍历程序头部表，获取动态段(.dynamic)地址。</li>
+<li>找到 GOT 表地址。</li>
+<li>修改内存属性为可写。</li>
+<li>遍历 got 表，修改要替换的函数。</li>
+<li>恢复内存属性为可读可执行。</li>
+</ul>
+</li>
+</ul>
+<h2 id="Inline-Hook">Inline Hook</h2>
+<p>Inline Hook基本原理是允许开发者在不修改原函数代码的情况下在代码段中插入跳转指令，从而把程序执行流程引向用户需要的功能代码中去，以此达到Hook的效果。</p>
+<ul>
+<li>完全不受函数是否在PLT表中的限制，直接在目标so中的任意代码位置都可进行Hook。这个Hook精准度是汇编指令级的。这对于逆向分析人员和安全测试人员来说是个非常好的特性！</li>
+<li>可以介入任意函数的操作。由于汇编指令级的Hook精度，以及不受PLT表的限制，Inline Hook技术可以去函数执行中的任意代码行间进行Hook功能操作，从而读取或修改任意寄存器，使得函数的操作流程完全可以被控制。</li>
+<li>对Hook功能函数的限制较小。由于在第二步调用Hook功能函数前已经把所有之前的寄存器状态都进行保存了，因此此时的Hook功能函数几乎就是个独立的函数，它无需受限于原本目标函数的参数形式，完全都由自己说了算。并且执行完后也完全是一个正常的函数退出形式释放栈空间。</li>
+<li>对于PLT Hook的强制批量Hook的特性，Native Hook要灵活许多。当想要进行批量Hook一些系统API时也可以直接去找内存里对应的如libc.so这些库，对它们中的API进行Hook，这样的话，所有对这个API的调用也就都被批量Hook了。</li>
+</ul>
+<p>inline hook 方案强大的同时可能带来以下的问题：</p>
+<ul>
+<li>由于需要直接解析和修改 ELF 中的机器指令（汇编码），对于不同架构的处理器、处理器指令集、编译器优化选项、操作系统版本可能存在不同的兼容性和稳定性问题。</li>
+<li>发生问题后可能难以分析和定位，一些知名的 inline hook 方案是闭源的。</li>
+<li>实现起来相对复杂，难度也较大。</li>
+<li>未知的坑相对较多，这个可以自行google。</li>
+</ul>
+<h2 id="Inline-Hook步骤">Inline Hook步骤</h2>
+<p>arm下最基本的hook流程图：<br>
+<img src="/img/android_arm_hook.png" alt="arm-hook"></p>
+<ul>
+<li>查找目标函数的地址‌：在想要Hook的目标代码处备份下面的几条指令，然后插入跳转指令，把程序流程转移到一个stub段上去。</li>
+<li>修改目标函数的开头‌：在stub代码段上先把所有寄存器的状态保存好，并调用用户自定义的Hook功能函数，然后把所有寄存器的状态恢复并跳转到备份代码处。</li>
+<li>保存原始指令‌：在备份代码处把当初备份的那几条指令都执行一下，然后跳转到当初备份代码位置的下面接着执行程序。</li>
+</ul>
+<h2 id="总结">总结</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th style="text-align: left">PLT Hook</th>
+      <th style="text-align: left">Inline Hook</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>精准度</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">中</code> 函数级</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">高</code>汇编级</td>
+    </tr>
+    <tr>
+      <td>范围</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">小</code> 出现在PLT表中的动态链接函数</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">大</code> 目标so内全部可执行代码</td>
+    </tr>
+    <tr>
+      <td>灵活性</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">差</code> 只能批量</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">好</code> 单次或批量都可以</td>
+    </tr>
+    <tr>
+      <td>技术难度</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">中</code> 涉及内存地址计算和修改等</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">高</code> 涉及寄存器计算、手写汇编、指令修复等</td>
+    </tr>
+  </tbody>
+</table>
+<p>PLT Hook和Inline Hook两种技术在原理和适用场景上的差别是相当大的。如果只对于系统调用有参数或者性能上的监控需求，那可以考虑采用PLT Hook技术路线。一般适合APP的开发。 而如果是希望应对各种各样APP自己独有的NDK函数或者代码段的话，目前只能选择Inline Hook。适合APP逆向人员，软件分析人员，CTF Android逆向解题等。其他参考三方库<a href="https://github.com/iqiyi/xHook/blob/master/docs/overview/android_plt_hook_overview.zh-CN.md" target="_blank" rel="noopener">xhook</a>、<a href="https://github.com/bytedance/bhook/blob/main/README.zh-CN.md" target="_blank" rel="noopener">bhook</a>详细介绍。<br>
+<code>建议如果 PLT hook 够用的话，就不必尝试 inline hook了。</code></p>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2025/02/09/android-tv-leanback/" data-toggle="tooltip" data-placement="top" title="[Android] Android TV - Study Leanback">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2024/12/23/life-interview-experience/" data-toggle="tooltip" data-placement="top" title="[日常] 2024年年末Android开发面经">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#认识hook"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">认识hook</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#GOT-PLT-Hook"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">GOT/PLT Hook</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#PLT-Hook步骤"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">PLT Hook步骤</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Inline-Hook"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">Inline Hook</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Inline-Hook步骤"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">Inline Hook步骤</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#总结"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">总结</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Android" title="Android">Android</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://us.pingpongx.com/external/inviteReg.htm?inviteCode=7nEFBj032" target="_blank">Overseas Collection</a></li>
+                    
+                        <li><a href="https://www.vultr.com/?ref=8600728-6G" target="_blank">VPS Vutlr</a></li>
+                    
+                        <li><a href="/vnews/index.html" target="_blank">Vnews Blog</a></li>
+                    
+                        <li><a href="http://blog.kaijun.rocks" target="_blank">Kaijun&#39;s Blog</a></li>
+                    
+                        <li><a href="http://huangxuan.me" target="_blank">Hux Blog</a></li>
+                    
+                        <li><a href="#" target="_blank">It Helps SEO</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'right',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+     <div class="row" style="margin-top:-50px;float:right;font-size:10px;margin-left:30px;padding-right:30px;">
+            
+            <!-- 不蒜子统计 -->
+            <span id="busuanzi_container_site_pv">
+            总访问量：<span id="busuanzi_value_site_pv">0</span>次
+            </span>
+            <span>|</span>
+            <span id="busuanzi_container_site_uv">
+            访客数：<span id="busuanzi_value_site_uv">0</span>人
+            </span>
+            
+             <!-- 不蒜子统计 -->
+             <span>|</span>
+              <span id="busuanzi_container_page_pv" style='display:none'">
+              <i class="icon-smile icon"></i>本文阅读数：<span id="busuanzi_value_page_pv">0</span>次
+              </span>
+            
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            
+     </div>
+        <div class="row">
+           <!-- horizontal_ad/bottom_ad -->
+           <ul class="list-inline text-center">
+            
+                <ins class="adsbygoogle"  style="display:block" data-ad-client="ca-pub-5651453694104340"  data-ad-slot="3310538124"  data-ad-format="auto" data-full-width-responsive="true"></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+            
+            </ul>
+        </div>
+        <br><br>
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/xiuyuantech">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://www.linkedin.com/in/xiuyuantech">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                </br>
+                <ul class="list-inline text-center">
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/geekvideo_release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Clear" src="/img/ic_geekvideo_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/clear_googleplay_1.5.0_0530-1704_release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Clear" src="/img/ic_clear_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/videoeditor-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="VideoEditor" src="/img/ic_videoclip_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/screenrecoder-playstoreDonate-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="ScreenRecoder" src="/img/ic_recoder_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/vault-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Vault" src="/img/ic_vault_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/accountbook-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="AccountBook" src="/img/ic_book_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/starwars-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Star Wars" src="/img/ic_plane_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/cardsolitaire-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Solitaire" src="/img/ic_card_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; xiuyuantech 2025 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Ported by <a href="https://xiuyuantech.github.io">XiuYuanTech</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;margin-right: -36px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="/star_xiuyuantech_on_github.html?user=xiuyuantech&repo=&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://xiuyuantech.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-165334855-1';
+    var _gaDomain = 'xiuyuantech.github.io';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- async load function -->
+
+<script>
+
+    function async(u, c) {
+
+      var d = document, t = 'script',
+
+          o = d.createElement(t),
+
+          s = d.getElementsByTagName(t)[0];
+
+      o.src = u;
+
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+
+      s.parentNode.insertBefore(o, s);
+
+    }
+
+</script>
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="https://xiuyuantech.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+
+<script type="text/javascript">
+  function adLoaded() {
+      var in_article_contaner = document.getElementById('in-article-ad');
+      if(in_article_contaner) {
+            // here you can make the height, I delete it first, then I make it again
+            console.log("in_article_contaner");
+            //in_article_contaner.innerHTML=``;
+      }
+      var square_contaner = document.getElementById('square-ad');
+      if(square_contaner){
+         console.log("square_contaner");
+         //square_contaner.innerHTML=``;
+      }
+  };
+
+  $(document).ready(function () {
+                try{
+                  //adLoaded();
+                }catch(err){
+                  onError();
+                }});
+
+</script>
+
+<script>
+function isSameDay(timeA,timeB) {
+   let dateA = new Date(timeA);
+   let dateB = new Date(timeB);
+   return (dateA.setHours(0, 0, 0, 0) == dateB.setHours(0, 0, 0, 0));
+   }
+   function CheckIsNotNullOrEmpty(value) {
+                //正则表达式用于判斷字符串是否全部由空格或换行符组成
+                 var reg = /^\s*$/
+                 //返回值为true表示不是空字符串
+                 return (value != null && value != undefined && !reg.test(value));
+   }
+   <!-- js 异常时不显示 -->
+   function onError(){
+        $("ins.adsbygoogle[data-ad-slot]").each(function(index,element){
+           $(element).remove();
+           });
+   }
+    <!-- 单个点击事件 -->
+    function bindClick(element,countKeyPre) {
+        $(element).click(function(){
+          console.log("dayKey：" + countKeyPre);
+          var count =  window.localStorage.countKeyPre;
+          console.log("count get： "+count);
+          if(CheckIsNotNullOrEmpty(count)){
+             count++;
+             console.log("count++： "+count);
+             window.localStorage.countKeyPre = count;
+             if(count >= 4){
+              console.log("count： "+count);
+              $(element).remove();
+              onError();
+              }
+          } else {
+            window.localStorage.countKeyPre = 0;
+          }
+          });
+
+        }
+        <!-- js 初始化 Ad  -->
+        function initAd(ip){
+        if(CheckIsNotNullOrEmpty(ip)){
+                //alert("not null ip:  "+ ip);
+                $("ins.adsbygoogle[data-ad-slot]").each(function(index,element){
+                            /*var data_ad_slot = $(element).attr("data-ad-slot");
+                            console.log("data_ad_slot：" + data_ad_slot);
+                            var hasAd = CheckIsNotNullOrEmpty(data_ad_slot);
+                            console.log("hasAd：" + hasAd);*/
+                            //if（hasAd){
+                               //console.log("not null data_ad_slot：" + data_ad_slot);
+                               var dayKeyPre = ip +"_day";
+                               var countKeyPre = ip +"_count";
+                               console.log("dayKey：" + dayKeyPre);
+                               console.log("dayKeyPre：" + window.localStorage.dayKeyPre);
+                               bindClick(element,countKeyPre);
+                               console.log("countKeyPre：" + countKeyPre);
+                               console.log("countKeyPre：" + window.localStorage.countKeyPre);
+                               var nowStr =  new Date().toLocaleDateString();
+                               var notSame = CheckIsNotNullOrEmpty(window.localStorage.dayKeyPre) && !isSameDay(window.localStorage.dayKeyPre,nowStr);
+                               console.log("同一天：" +  !notSame);
+                               if(notSame){
+                                window.localStorage.dayKeyPre = nowStr;
+                                window.localStorage.countKeyPre = 0;
+                                console.log("重置成功");
+                                }
+                                   if( CheckIsNotNullOrEmpty(window.localStorage.dayKeyPre)){
+                                      if(window.localStorage.countKeyPre >= 4){
+                                         $(element).remove();
+                                      }
+                                   } else {
+                                      window.localStorage.dayKeyPre = nowStr;
+                                    }
+                              //}
+                            });
+                        return;
+                    }
+                        onError();
+                 }
+
+                          $(document).ready(function () {
+                          try{
+                            //$.getJSON("https://api.ipify.org/?format=json", function(e) {
+                            // var ip = e.ip;
+                            //initAd(ip);
+                             //});
+                          }catch(err){
+                            onError();
+                          }});
+</script>
+
+
+
+</body>
+
+</html>

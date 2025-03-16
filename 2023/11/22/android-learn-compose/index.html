@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="xiuyuantech">
+    <meta name="keyword" content>
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          [Android] Study Jetpack Compose - xiuyuantech
+        
+    </title>
+
+    <link rel="canonical" href="https://xiuyuantech.github.io/2023/11/22/android-learn-compose/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+
+    <!-- Google Adsense -->
+
+    
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-5651453694104340",
+             enable_page_level_ads: true
+             });
+    </script>
+    <!-- 获取ip <script async src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>  -->
+
+
+
+    
+
+</head>
+
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('')
+            /*post*/
+        
+    }
+    
+    #signature{
+        background-image: url('/img/signature/BeanTechSign-white.png');
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Android" title="Android">Android</a>
+                            
+                        </div>
+                        <h1>[Android] Study Jetpack Compose</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by xiuyuantech on
+                            2023-11-22
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">XiuYuanTech</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/vnews/">vnews home</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <blockquote>
+<p>Jetpack Compose 是用于构建原生 Android 界面的新工具包。它使用更少的代码、强大的工具和直观的 Kotlin API，可以帮助您简化并加快 Android 界面开发，打造生动而精彩的应用。它可让您更快速、更轻松地构建 Android 界面。<br>
+Compose的优势：<br>
+声明式：直接描述 UI 应该呈现的样子，而不是一步步说明如何实现。<br>
+简洁性： 减少模板代码，使得代码更加简洁易读。<br>
+可组合性： 通过组合不同的组件来构建复杂的 UI。<br>
+工具支持： 完美集成至 Android Studio，提供实时预览和代码完成等功能。</p>
+</blockquote>
+<h1>使用</h1>
+<p>将 Compose 集成到现有项目中，或在新项目中使用它，只需在 Gradle 配置中添加依赖，并确保使用最新版本的 Android Studio，即可开始使用 Compose 构建 UI。相关其资源请参考<a href="https://developer.android.google.cn/jetpack/androidx/explorer?hl=zh-cn" target="_blank" rel="noopener">官方Compose库</a></p>
+<figure class="highlight puppet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">//gradle配置</span><br><span class="line"></span><br><span class="line"><span class="keyword">plugins</span> &#123;</span><br><span class="line">    <span class="built_in">id</span> <span class="string">'com.android.application'</span></span><br><span class="line">    <span class="built_in">id</span> <span class="string">'org.jetbrains.kotlin.android'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">android</span> &#123;</span><br><span class="line">    namespace <span class="string">'com.example.mycomposedemo'</span></span><br><span class="line">    compileSdk <span class="number">34</span></span><br><span class="line"></span><br><span class="line">    defaultConfig &#123;</span><br><span class="line">        applicationId <span class="string">"com.example.mycomposedemo"</span></span><br><span class="line">        minSdk <span class="number">21</span></span><br><span class="line">        targetSdk <span class="number">34</span></span><br><span class="line">        versionCode <span class="number">1</span></span><br><span class="line">        versionName <span class="string">"1.0"</span></span><br><span class="line"></span><br><span class="line">        testInstrumentationRunner <span class="string">"androidx.test.runner.AndroidJUnitRunner"</span></span><br><span class="line">        vectorDrawables &#123;</span><br><span class="line">            useSupportLibrary <span class="keyword">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">buildTypes</span> &#123;</span><br><span class="line">        release &#123;</span><br><span class="line">            minifyEnabled <span class="keyword">false</span></span><br><span class="line">            proguardFiles getDefaultProguardFile(<span class="string">'proguard-android-optimize.txt'</span>), <span class="string">'proguard-rules.pro'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">compileOptions</span> &#123;</span><br><span class="line">        sourceCompatibility JavaVersion.VERSION_1_8</span><br><span class="line">        targetCompatibility JavaVersion.VERSION_1_8</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">kotlinOptions</span> &#123;</span><br><span class="line">        jvmTarget = <span class="string">'1.8'</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">buildFeatures</span> &#123;</span><br><span class="line">        compose <span class="keyword">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">composeOptions</span> &#123;</span><br><span class="line">        //<span class="number">3</span>、Compose的版本更改为<span class="number">1.5</span>.<span class="number">0</span></span><br><span class="line">        kotlinCompilerExtensionVersion <span class="string">'1.5.0'</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">packagingOptions</span> &#123;</span><br><span class="line">        resources &#123;</span><br><span class="line">            excludes += <span class="string">'/META-INF/&#123;AL2.0,LGPL2.1&#125;'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">dependencies</span> &#123;</span><br><span class="line">    //compose 核心依赖</span><br><span class="line">    implementation <span class="string">"androidx.compose.ui:ui:<span class="variable">$compose_ui_version</span>"</span></span><br><span class="line">    implementation <span class="string">'androidx.activity:activity-compose:1.3.1'</span></span><br><span class="line">    implementation <span class="string">'androidx.compose.material:material:1.1.1'</span></span><br><span class="line">    implementation <span class="string">"androidx.compose.ui:ui-tooling-preview:<span class="variable">$compose_ui_version</span>"</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div id="in-article-ad">
+    <!--线上 in_article_ad -->
+  <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5651453694104340" data-ad-slot="6951497715">
+  </ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Activity主界面逻辑如下</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> : <span class="type">ComponentActivity</span></span>() &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState)</span><br><span class="line">        setContent &#123;</span><br><span class="line">            FormExampleTheme &#123;</span><br><span class="line">                <span class="comment">// A surface container using the 'background' color from the theme</span></span><br><span class="line">                Surface(</span><br><span class="line">                    modifier = Modifier.fillMaxSize(),</span><br><span class="line">                    color = MaterialTheme.colorScheme.background</span><br><span class="line">                ) &#123;</span><br><span class="line">                    ScreenMain()</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Composable</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">ScreenMain</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> navController = rememberNavController()</span><br><span class="line"></span><br><span class="line">    NavHost(navController = navController, startDestination = <span class="string">"main"</span>) &#123;</span><br><span class="line">        composable(<span class="string">"main"</span>) &#123; Greeting(<span class="string">"Android"</span>) &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Composable</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">Greeting</span><span class="params">(name:<span class="type">String</span>,modifier:<span class="type">Modifier</span> = Modifier)</span></span> &#123;</span><br><span class="line">    Text(text=<span class="string">"Hello <span class="variable">$name</span>"</span>,modifier)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Preview(showBackground = true)</span></span><br><span class="line"><span class="meta">@Composable</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">GreetingPreview</span><span class="params">()</span></span> &#123;</span><br><span class="line">    FormExampleTheme &#123;</span><br><span class="line">        ScreenMain()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1>组件</h1>
+<table><thead><tr><th>分类</th><th>Compose</th><th>原生</th></tr></thead><tbody><tr><td>文本</td><td>Text</td><td>TextView</td></tr><tr><td>文本</td><td>TextField</td><td>Edittext</td></tr><tr><td>图片</td><td>Icon</td><td>ImageView</td></tr><tr><td>图片</td><td>Image</td><td>ImageView</td></tr><tr><td>Button</td><td>Button</td><td>Button</td></tr><tr><td>Button</td><td>IconButton</td><td>Button</td></tr><tr><td>Button</td><td>IconToggleButton</td><td>CheckBox,Switch</td></tr><tr><td>Button</td><td>Switch</td><td>Switch</td></tr><tr><td>Button</td><td>RadioButton</td><td>RadioButton</td></tr><tr><td>Button</td><td>Checkbox</td><td>CheckBox</td></tr><tr><td>布局</td><td>Box</td><td>FrameLayout</td></tr><tr><td>布局</td><td>Column</td><td>LinearLayout</td></tr><tr><td>布局</td><td>Row</td><td>LinearLayout</td></tr><tr><td>布局</td><td>Scaffold</td><td>无</td></tr><tr><td>布局</td><td>Constraintlayout</td><td>Constraintlayout</td></tr><tr><td>列表</td><td>LazyColumn</td><td>RecyclerView,ListView</td></tr><tr><td>列表</td><td>LazyRow</td><td>RecyclerView,ListView</td></tr><tr><td>间距类</td><td>Spacer</td><td>Space(估计很多人都没用过)</td></tr></tbody></table>
+<h1>优化</h1>
+<ol>
+<li>
+<p>避免不必要的重绘<br>
+在 Compose 中，避免不必要的 UI 重绘是提升性能的关键策略。通过合理使用状态和记忆化技术，如 remember 和 derivedStateOf，它们用于优化状态管理和性能，可以显著减少组件的重组次数。</p>
+<p>如果你有一个需要从网络加载的数据列表，可以使用<code>LaunchedEffect</code>并且只在组件首次加载时触发，避免了因为父组件的重组而导致的不必要的网络请求。。</p>
+</li>
+<li>
+<p>列表优化<br>
+Compose 提供了 LazyColumn 和 LazyRow 等组件，这些组件只渲染可视区域内的元素，从而优化性能和响应速度。</p>
+</li>
+</ol>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//合理使用键值对（Keys）在 items 函数中使用 key 参数可以帮助 Compose 更有效地识别和重用元素。</span></span><br><span class="line"><span class="meta">@Composable</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">messageList</span><span class="params">(messages: <span class="type">List</span>&lt;<span class="type">Message</span>&gt;)</span></span> &#123;</span><br><span class="line">    LazyColumn &#123;</span><br><span class="line">        items(messages, key = &#123; message -&gt; message.id &#125;) &#123; message -&gt;</span><br><span class="line">            Text(text = message.content)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>避坑或者面试常问</li>
+</ol>
+<ul>
+<li>
+<p>ViewModel传递到子可组合项，这样的方式是错误的，同时也会带来内存泄漏的隐患。<br>
+<img src="/img/viewmodel_in_compose.webp" alt="google提示"></p>
+</li>
+<li>
+<p>滥用 remember { mutableStateOf() }，如下所示。</p>
+</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//错误使用，这会带来不必要的recomposition，从而导致写出来的 Compose UI 出现性能问题。</span></span><br><span class="line"><span class="meta">@Composable</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">Counter</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> count <span class="keyword">by</span> remember &#123; mutableStateOf(<span class="number">0</span>) &#125;</span><br><span class="line">    <span class="keyword">var</span> text <span class="keyword">by</span> remember &#123; mutableStateOf(<span class="string">""</span>) &#125;</span><br><span class="line"></span><br><span class="line">    Column &#123;</span><br><span class="line">        Button(</span><br><span class="line">            onClick = &#123;</span><br><span class="line">                count++</span><br><span class="line">            &#125;</span><br><span class="line">        ) &#123;</span><br><span class="line">            Text(<span class="string">"count <span class="variable">$count</span>"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        TextField(</span><br><span class="line">            value = text,</span><br><span class="line">            onValueChange = &#123;</span><br><span class="line">                text = it</span><br><span class="line">            &#125;</span><br><span class="line">        )</span><br><span class="line">        OtherCounter()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Composable</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">OtherCounter</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> text <span class="keyword">by</span> remember &#123; mutableStateOf(<span class="string">"Hello world!"</span>) &#125;</span><br><span class="line">    Column &#123;</span><br><span class="line">        Text(text)</span><br><span class="line">        TextField(</span><br><span class="line">            value = text,</span><br><span class="line">            onValueChange = &#123;</span><br><span class="line">                text = it</span><br><span class="line">            &#125;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>Compose UI 最核心的一个思想就是：状态向下，事件向上。</code></p>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">//正确使用</span><br><span class="line">@Composable</span><br><span class="line">fun CounterRoute(</span><br><span class="line">    viewModel: CounterViewModel = viewModel<span class="variable">&lt;CounterViewModel&gt;</span>()</span><br><span class="line">) &#123;</span><br><span class="line">    val <span class="keyword">state</span> by viewModel.<span class="keyword">state</span>.collectAsState()</span><br><span class="line">    Counter(</span><br><span class="line">        <span class="keyword">state</span> = <span class="keyword">state</span>,</span><br><span class="line">        <span class="keyword">on</span>Increment = &#123;</span><br><span class="line">            viewModel.<span class="keyword">on</span>Increment()</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="keyword">on</span>TextChange = &#123;</span><br><span class="line">            viewModel.<span class="keyword">on</span>TextChange(it)</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="keyword">on</span>OtherTextChange = &#123;</span><br><span class="line">            viewModel.<span class="keyword">on</span>OtherTextChange(it)</span><br><span class="line">        &#125;,</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Composable</span><br><span class="line">fun Counter(</span><br><span class="line">    <span class="keyword">state</span>: CounterState,</span><br><span class="line">    <span class="keyword">on</span>Increment: () -&gt; Unit,</span><br><span class="line">    <span class="keyword">on</span>TextChange: (String) -&gt; Unit,</span><br><span class="line">    <span class="keyword">on</span>OtherTextChange: (String) -&gt; Unit,</span><br><span class="line">) &#123;</span><br><span class="line">    Column &#123;</span><br><span class="line">        Button(</span><br><span class="line">            <span class="keyword">on</span>Click = &#123;</span><br><span class="line">                <span class="keyword">on</span>Increment.invoke()</span><br><span class="line">            &#125;</span><br><span class="line">        ) &#123;</span><br><span class="line">            Text(<span class="string">"count $&#123;state.count&#125;"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        TextField(</span><br><span class="line">            value = <span class="keyword">state</span>.text,</span><br><span class="line">            <span class="keyword">on</span>ValueChange = &#123;</span><br><span class="line">                <span class="keyword">on</span>TextChange.invoke(it)</span><br><span class="line">            &#125;</span><br><span class="line">        )</span><br><span class="line">        OtherCounter(</span><br><span class="line">            text = <span class="keyword">state</span>.otherText,</span><br><span class="line">            <span class="keyword">on</span>TextChange = <span class="keyword">on</span>OtherTextChange,</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Composable</span><br><span class="line">fun OtherCounter(</span><br><span class="line">    text: String,</span><br><span class="line">    <span class="keyword">on</span>TextChange: (String) -&gt; Unit,</span><br><span class="line">) &#123;</span><br><span class="line">    Column &#123;</span><br><span class="line">        Text(text)</span><br><span class="line">        TextField(</span><br><span class="line">            value = text,</span><br><span class="line">            <span class="keyword">on</span>ValueChange = &#123;</span><br><span class="line">                <span class="keyword">on</span>TextChange.invoke(it)</span><br><span class="line">            &#125;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>DisposableEffect、SideEffect、LaunchedEffect之间的区别?</p>
+<p>DisposableEffect：用于在Composable function的生命周期内执行副作用，并在其离开组合时清理这些副作用。适用于需要清理的副作用，例如注册和注销广播接收器。</p>
+<p>SideEffect：用于在组合完成后执行副作用，且这些副作用不会影响UI的重组。适用于不需要清理的副作用，例如记录日志。</p>
+<p>LaunchedEffect：用于在组合完成后启动协程，以执行异步操作。适用于需要异步执行的副作用，例如网络请求。</p>
+</li>
+<li>
+<p>pointer事件在各个Composable function之间是如何处理的?</p>
+<p>在Jetpack Compose中，pointer事件由Modifier.pointerInput处理。每个Composable function都可以使用这个修饰符来拦截和处理pointer事件。事件处理可以通过awaitPointerEventScope和其他相关函数来实现，允许开发者自定义事件的处理逻辑和传播方式。</p>
+</li>
+<li>
+<p>CompositionLocal起什么作用？staticCompositionLocalOf和compositionLocalOf有什么区别？</p>
+<p>CompositionLocal用于在Composable tree中共享数据，而无需显式地将数据作为参数传递。staticCompositionLocalOf和compositionLocalOf的区别在于：</p>
+<p>staticCompositionLocalOf：用于定义静态的CompositionLocal，生命周期与整个应用程序的生命周期一致。<br>
+compositionLocalOf：用于定义动态的CompositionLocal，生命周期与其所在的Composable tree一致。</p>
+</li>
+</ul>
+<div id="square-ad">
+ <!--线上 square_ad -->
+   <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5651453694104340" data-ad-slot="1870336081" data-ad-format="auto" data-full-width-responsive="true">
+   </ins>
+   <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<ul>
+<li>
+<p>Composable function的状态是如何持久化的?</p>
+<p>Composable function的状态通过remember和rememberSaveable来持久化。remember用于在Composable function重新组合时保持状态，而<code>rememberSaveable</code>在配置更改（如屏幕旋转）时也能保持状态。</p>
+</li>
+<li>
+<p>如何解决LazyColumn和其他Composable function的滑动冲突?</p>
+<p>可以使用Modifier.nestedScroll来解决LazyColumn和其他Composable function的滑动冲突。这个修饰符允许多个滑动容器协同工作，处理滑动事件的嵌套。</p>
+</li>
+<li>
+<p>Jetpack Compose多线程执行是如何实现的？</p>
+<p>Jetpack Compose通过Kotlin协程来实现多线程执行。LaunchedEffect和rememberCoroutineScope等工具允许在Composable function中启动和管理协程，以执行异步任务。</p>
+</li>
+<li>
+<p>当一个 Flow 被 collectAsState，应用转入后台时，如果这个 Flow 再进行更新，对应的 State 会不会更新？对应的 Composable 函数会不会更新？</p>
+<p>当应用转入后台时，如果Flow继续更新，collectAsState将继续接收这些更新并更新对应的State。由于Composable函数依赖于这个State，因此它们也会相应地更新。</p>
+</li>
+</ul>
+<ol start="4">
+<li>
+<p>建议开启R8<br>
+R8 对于 Compose 的提升是非常巨大的，如果是简单 UI 的话没有 R8 可能还可以用，复杂 UI 下非常推荐开启 R8，代码优化之后的性能的 Debug 的性能差距极大。</p>
+</li>
+<li>
+<p>及时关闭资源流<br>
+对于资源管理，例如打开和关闭连接或订阅，及时使用 DisposableEffect 监听onDispose事件，及时关闭资源。</p>
+</li>
+</ol>
+<h1>总结</h1>
+<p><code>总之，Jetpack Compose 提供了一种现代化、高效且直观的方式来构建 Android 应用的用户界面。但在跨平台上Compose版本仅支持5.0以上，与fultter相比，fultter最低版本支持4.1，可以根据业务选择使用。</code></p>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2023/12/12/android-learn-flutter/" data-toggle="tooltip" data-placement="top" title="[Flutter] Study Flutter Componentization‌‌">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2023/10/15/life_decoration_guide/" data-toggle="tooltip" data-placement="top" title="[日常] 新房装修指南">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">使用</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">组件</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">优化</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">总结</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Android" title="Android">Android</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://us.pingpongx.com/external/inviteReg.htm?inviteCode=7nEFBj032" target="_blank">Overseas Collection</a></li>
+                    
+                        <li><a href="https://www.vultr.com/?ref=8600728-6G" target="_blank">VPS Vutlr</a></li>
+                    
+                        <li><a href="/vnews/index.html" target="_blank">Vnews Blog</a></li>
+                    
+                        <li><a href="http://blog.kaijun.rocks" target="_blank">Kaijun&#39;s Blog</a></li>
+                    
+                        <li><a href="http://huangxuan.me" target="_blank">Hux Blog</a></li>
+                    
+                        <li><a href="#" target="_blank">It Helps SEO</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'right',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+     <div class="row" style="margin-top:-50px;float:right;font-size:10px;margin-left:30px;padding-right:30px;">
+            
+            <!-- 不蒜子统计 -->
+            <span id="busuanzi_container_site_pv">
+            总访问量：<span id="busuanzi_value_site_pv">0</span>次
+            </span>
+            <span>|</span>
+            <span id="busuanzi_container_site_uv">
+            访客数：<span id="busuanzi_value_site_uv">0</span>人
+            </span>
+            
+             <!-- 不蒜子统计 -->
+             <span>|</span>
+              <span id="busuanzi_container_page_pv" style='display:none'">
+              <i class="icon-smile icon"></i>本文阅读数：<span id="busuanzi_value_page_pv">0</span>次
+              </span>
+            
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            
+     </div>
+        <div class="row">
+           <!-- horizontal_ad/bottom_ad -->
+           <ul class="list-inline text-center">
+            
+                <ins class="adsbygoogle"  style="display:block" data-ad-client="ca-pub-5651453694104340"  data-ad-slot="3310538124"  data-ad-format="auto" data-full-width-responsive="true"></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+            
+            </ul>
+        </div>
+        <br><br>
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/xiuyuantech">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://www.linkedin.com/in/xiuyuantech">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                </br>
+                <ul class="list-inline text-center">
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/geekvideo_release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Clear" src="/img/ic_geekvideo_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/clear_googleplay_1.5.0_0530-1704_release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Clear" src="/img/ic_clear_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/videoeditor-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="VideoEditor" src="/img/ic_videoclip_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/screenrecoder-playstoreDonate-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="ScreenRecoder" src="/img/ic_recoder_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/vault-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Vault" src="/img/ic_vault_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/accountbook-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="AccountBook" src="/img/ic_book_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/starwars-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Star Wars" src="/img/ic_plane_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/cardsolitaire-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Solitaire" src="/img/ic_card_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; xiuyuantech 2025 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Ported by <a href="https://xiuyuantech.github.io">XiuYuanTech</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;margin-right: -36px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="/star_xiuyuantech_on_github.html?user=xiuyuantech&repo=&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://xiuyuantech.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-165334855-1';
+    var _gaDomain = 'xiuyuantech.github.io';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- async load function -->
+
+<script>
+
+    function async(u, c) {
+
+      var d = document, t = 'script',
+
+          o = d.createElement(t),
+
+          s = d.getElementsByTagName(t)[0];
+
+      o.src = u;
+
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+
+      s.parentNode.insertBefore(o, s);
+
+    }
+
+</script>
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="https://xiuyuantech.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+
+<script type="text/javascript">
+  function adLoaded() {
+      var in_article_contaner = document.getElementById('in-article-ad');
+      if(in_article_contaner) {
+            // here you can make the height, I delete it first, then I make it again
+            console.log("in_article_contaner");
+            //in_article_contaner.innerHTML=``;
+      }
+      var square_contaner = document.getElementById('square-ad');
+      if(square_contaner){
+         console.log("square_contaner");
+         //square_contaner.innerHTML=``;
+      }
+  };
+
+  $(document).ready(function () {
+                try{
+                  //adLoaded();
+                }catch(err){
+                  onError();
+                }});
+
+</script>
+
+<script>
+function isSameDay(timeA,timeB) {
+   let dateA = new Date(timeA);
+   let dateB = new Date(timeB);
+   return (dateA.setHours(0, 0, 0, 0) == dateB.setHours(0, 0, 0, 0));
+   }
+   function CheckIsNotNullOrEmpty(value) {
+                //正则表达式用于判斷字符串是否全部由空格或换行符组成
+                 var reg = /^\s*$/
+                 //返回值为true表示不是空字符串
+                 return (value != null && value != undefined && !reg.test(value));
+   }
+   <!-- js 异常时不显示 -->
+   function onError(){
+        $("ins.adsbygoogle[data-ad-slot]").each(function(index,element){
+           $(element).remove();
+           });
+   }
+    <!-- 单个点击事件 -->
+    function bindClick(element,countKeyPre) {
+        $(element).click(function(){
+          console.log("dayKey：" + countKeyPre);
+          var count =  window.localStorage.countKeyPre;
+          console.log("count get： "+count);
+          if(CheckIsNotNullOrEmpty(count)){
+             count++;
+             console.log("count++： "+count);
+             window.localStorage.countKeyPre = count;
+             if(count >= 4){
+              console.log("count： "+count);
+              $(element).remove();
+              onError();
+              }
+          } else {
+            window.localStorage.countKeyPre = 0;
+          }
+          });
+
+        }
+        <!-- js 初始化 Ad  -->
+        function initAd(ip){
+        if(CheckIsNotNullOrEmpty(ip)){
+                //alert("not null ip:  "+ ip);
+                $("ins.adsbygoogle[data-ad-slot]").each(function(index,element){
+                            /*var data_ad_slot = $(element).attr("data-ad-slot");
+                            console.log("data_ad_slot：" + data_ad_slot);
+                            var hasAd = CheckIsNotNullOrEmpty(data_ad_slot);
+                            console.log("hasAd：" + hasAd);*/
+                            //if（hasAd){
+                               //console.log("not null data_ad_slot：" + data_ad_slot);
+                               var dayKeyPre = ip +"_day";
+                               var countKeyPre = ip +"_count";
+                               console.log("dayKey：" + dayKeyPre);
+                               console.log("dayKeyPre：" + window.localStorage.dayKeyPre);
+                               bindClick(element,countKeyPre);
+                               console.log("countKeyPre：" + countKeyPre);
+                               console.log("countKeyPre：" + window.localStorage.countKeyPre);
+                               var nowStr =  new Date().toLocaleDateString();
+                               var notSame = CheckIsNotNullOrEmpty(window.localStorage.dayKeyPre) && !isSameDay(window.localStorage.dayKeyPre,nowStr);
+                               console.log("同一天：" +  !notSame);
+                               if(notSame){
+                                window.localStorage.dayKeyPre = nowStr;
+                                window.localStorage.countKeyPre = 0;
+                                console.log("重置成功");
+                                }
+                                   if( CheckIsNotNullOrEmpty(window.localStorage.dayKeyPre)){
+                                      if(window.localStorage.countKeyPre >= 4){
+                                         $(element).remove();
+                                      }
+                                   } else {
+                                      window.localStorage.dayKeyPre = nowStr;
+                                    }
+                              //}
+                            });
+                        return;
+                    }
+                        onError();
+                 }
+
+                          $(document).ready(function () {
+                          try{
+                            //$.getJSON("https://api.ipify.org/?format=json", function(e) {
+                            // var ip = e.ip;
+                            //initAd(ip);
+                             //});
+                          }catch(err){
+                            onError();
+                          }});
+</script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="xiuyuantech">
+    <meta name="keyword" content>
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          [Android] MVI Development Architecture - xiuyuantech
+        
+    </title>
+
+    <link rel="canonical" href="https://xiuyuantech.github.io/2023/05/12/android_mvi_architecture/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+
+    <!-- Google Adsense -->
+
+    
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-5651453694104340",
+             enable_page_level_ads: true
+             });
+    </script>
+    <!-- 获取ip <script async src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>  -->
+
+
+
+    
+
+</head>
+
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('')
+            /*post*/
+        
+    }
+    
+    #signature{
+        background-image: url('/img/signature/BeanTechSign-white.png');
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Android" title="Android">Android</a>
+                            
+                        </div>
+                        <h1>[Android] MVI Development Architecture</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by xiuyuantech on
+                            2023-05-12
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">XiuYuanTech</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/vnews/">vnews home</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <blockquote>
+<p>MVI（Model-View-Intent）‌：一种基于响应式编程的架构模式，通过分离数据模型（Model）、视图（View）和用户意图（Intent）提升代码可维护性和可测试性‌。</p>
+</blockquote>
+<h2 id="前言">前言</h2>
+<p>由于 MVVM 架构的状态与行为的管理混乱导致多人协同开发过程或者历史问题或架构问题导致直接操作 ViewModel 中的数据源导致可能的数据混乱。</p>
+<p>所以 MVI 架构本质就是在 MVVM 架构的基础上进行了行为和数据上的约束，把数据流变成了单向流动，把状态集中管理形成唯一可信数据源。</p>
+<div id="in-article-ad">
+    <!--线上 in_article_ad -->
+  <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5651453694104340" data-ad-slot="6951497715">
+  </ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<h2 id="架构思想">架构思想</h2>
+<p>MVI 用数据流来理解界面刷新：界面是数据流的起点（生产者）也是终点（消费者），界面发出的数据叫意图，意图会用函数式编程的方式被变换为状态，最终状态通过响应式编程的方式流向界面，界面消费状态完成刷新。在这个流动的过程中，若保证了唯一可信数据源，就能实现单向数据流。</p>
+<p>框架图如下：<br>
+<img src="/img/mvi_diagram.png" alt="Demo框架图"></p>
+<ul>
+<li>Intent：驱动model发生改变的意图，以UI中的事件最为常见；</li>
+<li>Model：业务模型，包含数据和逻辑，是对应 客观实体 的 程序建模；</li>
+<li>View：表现层的视图，以UI方式呈现Model的状态（以及事件），接受用户输入，转换为UI事件</li>
+</ul>
+<h2 id="特点">特点</h2>
+<p>MVI与MVVM的核心区别是它的两大特性：</p>
+<ol>
+<li>
+<p>唯一可信数据源</p>
+<p>唯一可信数据源，是为了解决MVVM中View层使用大量LiveData，导致各种LiveData数据并行更新或者互相交互时会偶尔出现不可控逻辑，导致偶现一些的奇奇怪怪的Bug。</p>
+<p>MVI使用唯一可信的数据源UI State来避免这种问题。</p>
+</li>
+<li>
+<p>数据单向流动。<br>
+<img src="/img/mvi_data_follow.webp" alt="数据流向图"></p>
+<p>从数据流向图中可以看到</p>
+<p>数据从Data Layer -&gt; ViewModel -&gt; UI，数据是单向流动的。ViewModel将数据封装成UI State传输到UI elements中，而UI elements是不会传输数据到ViewModel的。</p>
+<p>UI elements上的一些点击或者用户事件，都会封装成events事件，发送给ViewModel。</p>
+</li>
+</ol>
+<h2 id="Demo">Demo</h2>
+<ol>
+<li>定义UI State、events<br>
+用interface先定义一个抽象的UI State、events，event和intent是一个意思，都可以用来表示一次事件。</li>
+</ol>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Keep</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IUiState</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">@Keep</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IUiIntent</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">//通过MainState将页面的不同状态封装起来，从而实现唯一可信数据源</span></span><br><span class="line"><span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">MainState</span></span>(<span class="keyword">val</span> bannerUiState: BannerUiState, <span class="keyword">val</span> detailUiState: DetailUiState) : IUiState</span><br><span class="line"></span><br><span class="line"><span class="keyword">sealed</span> <span class="class"><span class="keyword">class</span> <span class="title">BannerUiState</span> </span>&#123;</span><br><span class="line">   <span class="keyword">object</span> INIT : BannerUiState()</span><br><span class="line">   <span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">SUCCESS</span></span>(<span class="keyword">val</span> models: List&lt;BannerModel&gt;) : BannerUiState()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">sealed</span> <span class="class"><span class="keyword">class</span> <span class="title">DetailUiState</span> </span>&#123;</span><br><span class="line">   <span class="keyword">object</span> INIT : DetailUiState()</span><br><span class="line">   <span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">SUCCESS</span></span>(<span class="keyword">val</span> articles: ArticleModel) : DetailUiState()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>构建事件流<br>
+在ViewModel中使用 Channel/Flow 构建事件流</li>
+</ol>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//基类</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseViewModel</span>&lt;<span class="type">UiState : IUiState, UiIntent : IUiIntent</span>&gt; : <span class="type">ViewModel</span></span>() &#123;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">val</span> _uiStateFlow = MutableStateFlow(initUiState())</span><br><span class="line">   <span class="keyword">val</span> uiStateFlow: StateFlow&lt;UiState&gt; = _uiStateFlow</span><br><span class="line"></span><br><span class="line">   <span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="function"><span class="keyword">fun</span> <span class="title">initUiState</span><span class="params">()</span></span>: UiState</span><br><span class="line"></span><br><span class="line">   <span class="keyword">protected</span> <span class="function"><span class="keyword">fun</span> <span class="title">sendUiState</span><span class="params">(copy: <span class="type">UiState</span>.() -&gt; <span class="type">UiState</span>)</span></span> &#123;</span><br><span class="line">      _uiStateFlow.update &#123; copy(_uiStateFlow.value) &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> _uiIntentFlow: Channel&lt;UiIntent&gt; = Channel()</span><br><span class="line">    <span class="keyword">val</span> uiIntentFlow: Flow&lt;UiIntent&gt; = _uiIntentFlow.receiveAsFlow()</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">sendUiIntent</span><span class="params">(uiIntent: <span class="type">UiIntent</span>)</span></span> &#123;</span><br><span class="line">        viewModelScope.launch &#123;</span><br><span class="line">            _uiIntentFlow.send(uiIntent)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">init</span> &#123;</span><br><span class="line">        viewModelScope.launch &#123;</span><br><span class="line">            uiIntentFlow.collect &#123;</span><br><span class="line">                handleIntent(it)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="function"><span class="keyword">fun</span> <span class="title">handleIntent</span><span class="params">(intent: <span class="type">IUiIntent</span>)</span></span></span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//具体实现类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainViewModel</span> : <span class="type">BaseViewModel</span>&lt;<span class="type">MainState, MainIntent</span>&gt;</span>() &#123;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">val</span> mWanRepo = WanRepository()</span><br><span class="line"></span><br><span class="line">   <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">initUiState</span><span class="params">()</span></span>: MainState &#123;</span><br><span class="line">      <span class="keyword">return</span> MainState(BannerUiState.INIT, DetailUiState.INIT)</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">handleIntent</span><span class="params">(intent: <span class="type">IUiIntent</span>)</span></span> &#123;</span><br><span class="line">      <span class="keyword">when</span> (intent) &#123;</span><br><span class="line">         MainIntent.GetBanner -&gt; &#123;</span><br><span class="line">            requestDataWithFlow(showLoading = <span class="literal">true</span>,</span><br><span class="line">               request = &#123; mWanRepo.requestWanData() &#125;,</span><br><span class="line">               successCallback = &#123; <span class="keyword">data</span> -&gt; sendUiState &#123; copy(bannerUiState = BannerUiState.SUCCESS(<span class="keyword">data</span>)) &#125; &#125;,</span><br><span class="line">               failCallback = &#123;&#125;)</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">is</span> MainIntent.GetDetail -&gt; &#123;</span><br><span class="line">            requestDataWithFlow(showLoading = <span class="literal">false</span>,</span><br><span class="line">               request = &#123; mWanRepo.requestRankData(intent.page) &#125;,</span><br><span class="line">               successCallback = &#123; <span class="keyword">data</span> -&gt; sendUiState &#123; copy(detailUiState = DetailUiState.SUCCESS(<span class="keyword">data</span>)) &#125; &#125;)</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">protected</span> <span class="function"><span class="keyword">fun</span> <span class="type">&lt;T : Any&gt;</span> <span class="title">requestDataWithFlow</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">      showLoading: <span class="type">Boolean</span> = <span class="literal">true</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">      request: <span class="type">suspend</span> () -&gt; <span class="type">BaseData</span>&lt;<span class="type">T</span>&gt;,</span></span></span><br><span class="line"><span class="function"><span class="params">      successCallback: (<span class="type">T</span>) -&gt; <span class="type">Unit</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">      failCallback: <span class="type">suspend</span> (<span class="type">String</span>) -&gt; <span class="type">Unit</span> = &#123; errMsg -&gt;</span></span></span><br><span class="line"><span class="function"><span class="params">         <span class="comment">//默认异常处理</span></span></span></span><br><span class="line"><span class="function"><span class="params">      &#125;,</span></span></span><br><span class="line"><span class="function"><span class="params">   )</span></span> &#123;</span><br><span class="line">      viewModelScope.launch &#123;</span><br><span class="line">         <span class="keyword">val</span> baseData: BaseData&lt;T&gt;</span><br><span class="line">         <span class="keyword">try</span> &#123;</span><br><span class="line">            baseData = request()</span><br><span class="line">            <span class="keyword">when</span> (baseData.state) &#123;</span><br><span class="line">               ReqState.Success -&gt; &#123;</span><br><span class="line">                  sendLoadUiState(LoadUiState.ShowMainView)</span><br><span class="line">                  baseData.<span class="keyword">data</span>?.let &#123; successCallback(it) &#125;</span><br><span class="line">               &#125;</span><br><span class="line">               ReqState.Error -&gt; baseData.msg?.let &#123; error(it) &#125;</span><br><span class="line">            &#125;</span><br><span class="line">         &#125; <span class="keyword">catch</span> (e: Exception) &#123;</span><br><span class="line">            e.message?.let &#123; failCallback(it) &#125;</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>
+<p>UI State的订阅和发送</p>
+<p>在Activity/Fragment中订阅UI state和发送Intent。</p>
+</li>
+</ol>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseMVIActivity</span>&lt;<span class="type">VM : ViewModel,VB : ViewBinding</span>&gt;</span>(<span class="keyword">val</span> block: (LayoutInflater) -&gt; VB): Activity() &#123;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">var</span> _binding: VB? = <span class="literal">null</span></span><br><span class="line">   <span class="keyword">protected</span> <span class="keyword">val</span> binding: VB</span><br><span class="line">      <span class="keyword">get</span>() = requireNotNull(_binding) &#123; <span class="string">"The property of binding has been destroyed."</span> &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">protected</span> <span class="keyword">lateinit</span> <span class="keyword">var</span> mViewModel: VM</span><br><span class="line"></span><br><span class="line">   </span><br><span class="line">   <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">      <span class="keyword">super</span>.onCreate(savedInstanceState)</span><br><span class="line"></span><br><span class="line">      initView(savedInstanceState)</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">initView</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">      _binding = block(layoutInflater)</span><br><span class="line">      setContentView(binding.root)</span><br><span class="line">      mViewModel = createViewModel()</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   /反射创建ViewModel</span><br><span class="line">   <span class="keyword">open</span> <span class="keyword">protected</span> <span class="function"><span class="keyword">fun</span> <span class="title">createViewModel</span><span class="params">()</span></span>: VM &#123;</span><br><span class="line">      <span class="keyword">return</span> ViewModelProvider(<span class="keyword">this</span>).<span class="keyword">get</span>(getVMCls(<span class="keyword">this</span>))</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onDestroy</span><span class="params">()</span></span> &#123;</span><br><span class="line">      <span class="keyword">super</span>.onDestroy()</span><br><span class="line">      _binding = <span class="literal">null</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> : <span class="type">BaseMVIActivity</span></span>() &#123;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/* 在lifecycleScope中开启协程，collect uiStateFlow。</span></span><br><span class="line"><span class="comment">    *  使用map 来做局部变量的更新</span></span><br><span class="line"><span class="comment">    *  使用distinctUntilChanged来做数据防抖</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">registerEvent</span><span class="params">()</span></span> &#123;</span><br><span class="line">        lifecycleScope.launchWhenStarted &#123;</span><br><span class="line">            mViewModel.uiStateFlow.map &#123; it.bannerUiState &#125;.distinctUntilChanged().collect &#123; bannerUiState -&gt;</span><br><span class="line">                <span class="keyword">when</span> (bannerUiState) &#123;</span><br><span class="line">                    <span class="keyword">is</span> BannerUiState.INIT -&gt; &#123;&#125;</span><br><span class="line">                    <span class="keyword">is</span> BannerUiState.SUCCESS -&gt; &#123;</span><br><span class="line">                        bannerAdapter.setList(bannerUiState.models)</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        lifecycleScope.launchWhenStarted &#123;</span><br><span class="line">            mViewModel.uiStateFlow.map &#123; it.detailUiState &#125;.distinctUntilChanged().collect &#123; detailUiState -&gt;</span><br><span class="line">                <span class="keyword">when</span> (detailUiState) &#123;</span><br><span class="line">                    <span class="keyword">is</span> DetailUiState.INIT -&gt; &#123;&#125;</span><br><span class="line">                    <span class="keyword">is</span> DetailUiState.SUCCESS -&gt; &#123;</span><br><span class="line">                        articleAdapter.setList(detailUiState.articles.datas)</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="comment">/* 调用sendUiIntent就可以发送Intent事件</span></span><br><span class="line"><span class="comment">    * mViewModel.sendUiIntent(MainIntent.GetBanner)</span></span><br><span class="line"><span class="comment">    * mViewModel.sendUiIntent(MainIntent.GetDetail(0))</span></span><br><span class="line"><span class="comment">    *  </span></span><br><span class="line"><span class="comment">    * 调用 sendUiState 更新Ui State</span></span><br><span class="line"><span class="comment">    * mViewModel.sendUiState(MainState.DetailUiState)</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>MVI开源库推荐：</p>
+<ul>
+<li>
+<p><a href="https://github.com/arkivanov/MVIKotlin" target="_blank" rel="noopener">MVIKotlin</a></p>
+</li>
+<li>
+<p><a href="https://github.com/badoo/MVICore" target="_blank" rel="noopener">MVICore</a></p>
+</li>
+<li>
+<p><a href="https://github.com/orbit-mvi/orbit-mvi" target="_blank" rel="noopener">orbit-mvi</a></p>
+</li>
+</ul>
+<h2 id="总结">总结</h2>
+<p>不管是MVVM还是MVI，主要就是View和Model之间的交互关系不同</p>
+<p>MVI的核心是 数据的单向流动<br>
+MVI使用kotlin flow可以很方便的实现 响应式编程<br>
+MV整个View只依赖一个State刷新，这个State就是 唯一可信数据源</p>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2023/10/15/life_decoration_guide/" data-toggle="tooltip" data-placement="top" title="[日常] 新房装修指南">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2023/03/18/android_jetpack_learn/" data-toggle="tooltip" data-placement="top" title="[Android] Learn And Use Jetpack">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#前言"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#架构思想"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">架构思想</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#特点"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">特点</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Demo"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">Demo</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#总结"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">总结</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Android" title="Android">Android</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://us.pingpongx.com/external/inviteReg.htm?inviteCode=7nEFBj032" target="_blank">Overseas Collection</a></li>
+                    
+                        <li><a href="https://www.vultr.com/?ref=8600728-6G" target="_blank">VPS Vutlr</a></li>
+                    
+                        <li><a href="/vnews/index.html" target="_blank">Vnews Blog</a></li>
+                    
+                        <li><a href="http://blog.kaijun.rocks" target="_blank">Kaijun&#39;s Blog</a></li>
+                    
+                        <li><a href="http://huangxuan.me" target="_blank">Hux Blog</a></li>
+                    
+                        <li><a href="#" target="_blank">It Helps SEO</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'right',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+     <div class="row" style="margin-top:-50px;float:right;font-size:10px;margin-left:30px;padding-right:30px;">
+            
+            <!-- 不蒜子统计 -->
+            <span id="busuanzi_container_site_pv">
+            总访问量：<span id="busuanzi_value_site_pv">0</span>次
+            </span>
+            <span>|</span>
+            <span id="busuanzi_container_site_uv">
+            访客数：<span id="busuanzi_value_site_uv">0</span>人
+            </span>
+            
+             <!-- 不蒜子统计 -->
+             <span>|</span>
+              <span id="busuanzi_container_page_pv" style='display:none'">
+              <i class="icon-smile icon"></i>本文阅读数：<span id="busuanzi_value_page_pv">0</span>次
+              </span>
+            
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            
+     </div>
+        <div class="row">
+           <!-- horizontal_ad/bottom_ad -->
+           <ul class="list-inline text-center">
+            
+                <ins class="adsbygoogle"  style="display:block" data-ad-client="ca-pub-5651453694104340"  data-ad-slot="3310538124"  data-ad-format="auto" data-full-width-responsive="true"></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+            
+            </ul>
+        </div>
+        <br><br>
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/xiuyuantech">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://www.linkedin.com/in/xiuyuantech">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                </br>
+                <ul class="list-inline text-center">
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/geekvideo_release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Clear" src="/img/ic_geekvideo_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/clear_googleplay_1.5.0_0530-1704_release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Clear" src="/img/ic_clear_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/videoeditor-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="VideoEditor" src="/img/ic_videoclip_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/screenrecoder-playstoreDonate-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="ScreenRecoder" src="/img/ic_recoder_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/vault-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Vault" src="/img/ic_vault_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/accountbook-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="AccountBook" src="/img/ic_book_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/starwars-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Star Wars" src="/img/ic_plane_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/cardsolitaire-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Solitaire" src="/img/ic_card_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; xiuyuantech 2025 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Ported by <a href="https://xiuyuantech.github.io">XiuYuanTech</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;margin-right: -36px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="/star_xiuyuantech_on_github.html?user=xiuyuantech&repo=&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://xiuyuantech.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-165334855-1';
+    var _gaDomain = 'xiuyuantech.github.io';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- async load function -->
+
+<script>
+
+    function async(u, c) {
+
+      var d = document, t = 'script',
+
+          o = d.createElement(t),
+
+          s = d.getElementsByTagName(t)[0];
+
+      o.src = u;
+
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+
+      s.parentNode.insertBefore(o, s);
+
+    }
+
+</script>
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="https://xiuyuantech.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+
+<script type="text/javascript">
+  function adLoaded() {
+      var in_article_contaner = document.getElementById('in-article-ad');
+      if(in_article_contaner) {
+            // here you can make the height, I delete it first, then I make it again
+            console.log("in_article_contaner");
+            //in_article_contaner.innerHTML=``;
+      }
+      var square_contaner = document.getElementById('square-ad');
+      if(square_contaner){
+         console.log("square_contaner");
+         //square_contaner.innerHTML=``;
+      }
+  };
+
+  $(document).ready(function () {
+                try{
+                  //adLoaded();
+                }catch(err){
+                  onError();
+                }});
+
+</script>
+
+<script>
+function isSameDay(timeA,timeB) {
+   let dateA = new Date(timeA);
+   let dateB = new Date(timeB);
+   return (dateA.setHours(0, 0, 0, 0) == dateB.setHours(0, 0, 0, 0));
+   }
+   function CheckIsNotNullOrEmpty(value) {
+                //正则表达式用于判斷字符串是否全部由空格或换行符组成
+                 var reg = /^\s*$/
+                 //返回值为true表示不是空字符串
+                 return (value != null && value != undefined && !reg.test(value));
+   }
+   <!-- js 异常时不显示 -->
+   function onError(){
+        $("ins.adsbygoogle[data-ad-slot]").each(function(index,element){
+           $(element).remove();
+           });
+   }
+    <!-- 单个点击事件 -->
+    function bindClick(element,countKeyPre) {
+        $(element).click(function(){
+          console.log("dayKey：" + countKeyPre);
+          var count =  window.localStorage.countKeyPre;
+          console.log("count get： "+count);
+          if(CheckIsNotNullOrEmpty(count)){
+             count++;
+             console.log("count++： "+count);
+             window.localStorage.countKeyPre = count;
+             if(count >= 4){
+              console.log("count： "+count);
+              $(element).remove();
+              onError();
+              }
+          } else {
+            window.localStorage.countKeyPre = 0;
+          }
+          });
+
+        }
+        <!-- js 初始化 Ad  -->
+        function initAd(ip){
+        if(CheckIsNotNullOrEmpty(ip)){
+                //alert("not null ip:  "+ ip);
+                $("ins.adsbygoogle[data-ad-slot]").each(function(index,element){
+                            /*var data_ad_slot = $(element).attr("data-ad-slot");
+                            console.log("data_ad_slot：" + data_ad_slot);
+                            var hasAd = CheckIsNotNullOrEmpty(data_ad_slot);
+                            console.log("hasAd：" + hasAd);*/
+                            //if（hasAd){
+                               //console.log("not null data_ad_slot：" + data_ad_slot);
+                               var dayKeyPre = ip +"_day";
+                               var countKeyPre = ip +"_count";
+                               console.log("dayKey：" + dayKeyPre);
+                               console.log("dayKeyPre：" + window.localStorage.dayKeyPre);
+                               bindClick(element,countKeyPre);
+                               console.log("countKeyPre：" + countKeyPre);
+                               console.log("countKeyPre：" + window.localStorage.countKeyPre);
+                               var nowStr =  new Date().toLocaleDateString();
+                               var notSame = CheckIsNotNullOrEmpty(window.localStorage.dayKeyPre) && !isSameDay(window.localStorage.dayKeyPre,nowStr);
+                               console.log("同一天：" +  !notSame);
+                               if(notSame){
+                                window.localStorage.dayKeyPre = nowStr;
+                                window.localStorage.countKeyPre = 0;
+                                console.log("重置成功");
+                                }
+                                   if( CheckIsNotNullOrEmpty(window.localStorage.dayKeyPre)){
+                                      if(window.localStorage.countKeyPre >= 4){
+                                         $(element).remove();
+                                      }
+                                   } else {
+                                      window.localStorage.dayKeyPre = nowStr;
+                                    }
+                              //}
+                            });
+                        return;
+                    }
+                        onError();
+                 }
+
+                          $(document).ready(function () {
+                          try{
+                            //$.getJSON("https://api.ipify.org/?format=json", function(e) {
+                            // var ip = e.ip;
+                            //initAd(ip);
+                             //});
+                          }catch(err){
+                            onError();
+                          }});
+</script>
+
+
+
+</body>
+
+</html>

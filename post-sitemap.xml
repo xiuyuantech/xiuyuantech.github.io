@@ -9,6 +9,150 @@
 
 
     <url>
+        <loc>https://xiuyuantech.github.io/2021/06/22/meet-overseas-mean/</loc>
+        <lastmod>2025-03-16T05:04:04.889Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://xiuyuantech.github.io/2024/11/28/life-retrenchments/</loc>
+        <lastmod>2025-03-16T05:04:04.887Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://xiuyuantech.github.io/2023/12/12/android-learn-flutter/</loc>
+        <lastmod>2025-03-16T05:04:04.885Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://xiuyuantech.github.io/2024/12/23/life-interview-experience/</loc>
+        <lastmod>2025-03-16T05:04:04.882Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://xiuyuantech.github.io/2024/11/24/meet-android-xr/</loc>
+        <lastmod>2025-03-16T05:04:04.880Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://xiuyuantech.github.io/2020/05/23/android-navigationbar/</loc>
+        <lastmod>2025-03-16T05:04:04.878Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://xiuyuantech.github.io/2021/10/12/overseas-upload-market/</loc>
+        <lastmod>2025-03-16T05:04:04.876Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://xiuyuantech.github.io/2024/01/22/springboot3-kotlin-learn/</loc>
+        <lastmod>2025-03-16T05:02:29.747Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://xiuyuantech.github.io/2023/05/12/android_mvi_architecture/</loc>
+        <lastmod>2025-03-16T05:01:20.240Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://xiuyuantech.github.io/2022/03/23/life_epidemic-COVID-19/</loc>
+        <lastmod>2025-03-16T05:01:20.237Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://xiuyuantech.github.io/2022/03/11/android_module_architecture/</loc>
+        <lastmod>2025-03-16T05:01:20.235Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://xiuyuantech.github.io/2024/10/06/android-meet-iot/</loc>
+        <lastmod>2025-03-16T05:01:20.231Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://xiuyuantech.github.io/2025/01/20/meet-android-native-hook/</loc>
+        <lastmod>2025-03-16T04:58:40.558Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://xiuyuantech.github.io/2025/03/16/android-tv-compose/</loc>
+        <lastmod>2025-03-16T04:58:40.554Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://xiuyuantech.github.io/2025/02/09/android-tv-leanback/</loc>
+        <lastmod>2025-03-16T04:58:40.551Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://xiuyuantech.github.io/2023/11/22/android-learn-compose/</loc>
+        <lastmod>2025-03-07T11:21:47.994Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://xiuyuantech.github.io/2023/10/15/life_decoration_guide/</loc>
+        <lastmod>2025-03-07T02:18:50.185Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://xiuyuantech.github.io/2023/03/18/android_jetpack_learn/</loc>
+        <lastmod>2025-03-04T06:23:37.972Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://xiuyuantech.github.io/2020/06/26/how-to-build-vps/</loc>
         <lastmod>2025-02-27T02:11:50.968Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -41,24 +185,8 @@
     </url>
 
     <url>
-        <loc>https://xiuyuantech.github.io/2024/11/24/meet-android-xr/</loc>
-        <lastmod>2025-02-25T01:51:58.654Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://xiuyuantech.github.io/2021/12/24/hexo_blog_migration/</loc>
         <lastmod>2025-02-25T01:50:02.258Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://xiuyuantech.github.io/2020/05/23/android-navigationbar/</loc>
-        <lastmod>2025-02-08T07:38:04.414Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -75,22 +203,6 @@
     <url>
         <loc>https://xiuyuantech.github.io/2020/06/20/how-to-learn-android/</loc>
         <lastmod>2024-06-19T05:32:16.715Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://xiuyuantech.github.io/2024/01/22/springboot3-kotlin-learn/</loc>
-        <lastmod>2024-01-23T09:00:14.863Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://xiuyuantech.github.io/2023/03/18/android_jetpack_learn/</loc>
-        <lastmod>2023-03-24T06:21:21.336Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

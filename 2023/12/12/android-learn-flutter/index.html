@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="xiuyuantech">
+    <meta name="keyword" content>
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          [Flutter] Study Flutter Componentization‌‌ - xiuyuantech
+        
+    </title>
+
+    <link rel="canonical" href="https://xiuyuantech.github.io/2023/12/12/android-learn-flutter/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+
+    <!-- Google Adsense -->
+
+    
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-5651453694104340",
+             enable_page_level_ads: true
+             });
+    </script>
+    <!-- 获取ip <script async src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>  -->
+
+
+
+    
+
+</head>
+
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('')
+            /*post*/
+        
+    }
+    
+    #signature{
+        background-image: url('/img/signature/BeanTechSign-white.png');
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Flutter" title="Flutter">Flutter</a>
+                            
+                        </div>
+                        <h1>[Flutter] Study Flutter Componentization‌‌</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by xiuyuantech on
+                            2023-12-12
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">XiuYuanTech</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/vnews/">vnews home</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <blockquote>
+<p>Flutter 是 Google 开源的应用开发框架，仅通过一套代码库，就能构建精美的、原生平台编译的多平台应用。<br>
+Flutter 只要一套代码兼顾Android、iOS、Web、Windows、macOS和Linux六个平台。<br>
+Flutter 由Dart语言强力驱动，助力高效构建全平台应用。</p>
+</blockquote>
+<h2 id="前言">前言</h2>
+<p>组件化一直是移动端比较流行的开发方式，有着编译运行快，业务逻辑分明，任务划分清晰等优点。大多数情况下，我们创建一个 Flutter 项目，默认是一个单包项目，该项目由一个pubspec.yaml、lib文件夹组成。所有的逻辑和功能都在这一个包中实现，但是也有一些复杂的 Flutter 项目会按功能，模块，组件等拆分为多个包。</p>
+<p>相对应的 Flutter 项目的组件化也是一样的道理，我们也能把各个功能独立的组件比如用户模块、支付模块等，这些模块在项目以单独项目的方式存在，通过本地 path 依赖或者 melos 的方案去组合起来，由于 Flutter 项目的特殊性，我们还能在单独模块项目中可以创建各自的 sample 模块去独立运行这个模块从而实现组件化。</p>
+<div id="in-article-ad">
+    <!--线上 in_article_ad -->
+  <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5651453694104340" data-ad-slot="6951497715">
+  </ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<h2 id="方案">方案</h2>
+<ol>
+<li>
+<p>组件化工具<br>
+Melos是一个专为Dart和Flutter项目设计的工具，旨在简化包含多个包的monorepo（单一代码库）的管理工作‌。Melos的主要功能包括多包管理、依赖同步、脚本执行、版本管理和开发环境一致性等‌。</p>
+</li>
+<li>
+<p>架构设计模式</p>
+<ul>
+<li><a href="/2023/05/12/android_mvi_architecture">MVI</a></li>
+<li><a href="https://github.com/felangel/bloc/tree/master/packages/flutter_bloc" target="_blank" rel="noopener">Bloc框架</a></li>
+</ul>
+</li>
+<li>
+<p>常用库选择<br>
+状态管理：<a href="https://github.com/rrousselGit/riverpod" target="_blank" rel="noopener">riverpod</a>，<a href="https://github.com/rrousselGit/flutter_hooks/tree/master/packages/flutter_hooks" target="_blank" rel="noopener">flutter_hooks</a>，<a href="https://riverpod.dev/zh-hans/" target="_blank" rel="noopener">hooks_riverpod</a><br>
+路由管理：<a href="https://github.com/Milad-Akarie/auto_route_library" target="_blank" rel="noopener">auto_route</a><br>
+网络请求：<a href="https://github.com/cfug/dio/blob/main/dio" target="_blank" rel="noopener">dio</a><br>
+进度条：<a href="https://github.com/diegoveloper/flutter_percent_indicator/" target="_blank" rel="noopener">percent_indicator</a><br>
+设备信息：<a href="https://github.com/fluttercommunity/plus_plugins/tree/main/packages/device_info_plus" target="_blank" rel="noopener">device_info_plus</a><br>
+图片库：<a href="https://github.com/Baseflow/flutter_cached_network_image" target="_blank" rel="noopener">cached_network_image</a><br>
+首次初始化：<a href="https://github.com/fluttercommunity/flutter_after_layout" target="_blank" rel="noopener">after_layout</a><br>
+跨组件通信：<a href="https://github.com/marcojakob/dart-event-bus" target="_blank" rel="noopener">event_bus</a><br>
+图片预览、缩放：<a href="https://github.com/renancaraujo/photo_view" target="_blank" rel="noopener">photo_view</a><br>
+动画库：<a href="https://github.com/flutter/packages/tree/main/packages/animations" target="_blank" rel="noopener">animations</a><br>
+轮播图：<a href="https://github.com/serenader2014/flutter_carousel_slider" target="_blank" rel="noopener">carousel_slider</a><br>
+图表：<a href="https://github.com/imaNNeo/fl_chart" target="_blank" rel="noopener">fl_chart</a><br>
+屏幕适配工具：<a href="https://github.com/OpenFlutter/flutter_screenutil" target="_blank" rel="noopener">flutter_screenutil</a><br>
+无线滚动：<a href="https://github.com/EdsonBueno/infinite_scroll_pagination" target="_blank" rel="noopener">infinite_scroll_pagination</a><br>
+权限申请：<a href="https://github.com/baseflow/flutter-permission-handler" target="_blank" rel="noopener">permission-handler</a><br>
+包信息：<a href="https://github.com/fluttercommunity/plus_plugins/tree/main/packages/package_info_plus/package_info_plus" target="_blank" rel="noopener">package_info_plus</a><br>
+文件选择：<a href="https://github.com/miguelpruivo/flutter_file_picker" target="_blank" rel="noopener">file_picker</a><br>
+返回键拦截器：<a href="https://github.com/marcglasberg/back_button_interceptor" target="_blank" rel="noopener">back_button_interceptor</a><br>
+可见性监听：<a href="https://github.com/google/flutter.widgets/tree/master/packages/visibility_detector" target="_blank" rel="noopener">visibility_detector</a><br>
+无障碍工具：<a href="https://github.com/rebelappstudio/accessibility_tools/" target="_blank" rel="noopener">accessibility_tools</a><br>
+解压缩文件：<a href="https://github.com/brendan-duncan/archive" target="_blank" rel="noopener">archive</a><br>
+路径处理：<a href="https://github.com/dart-lang/core/tree/main/pkgs/path" target="_blank" rel="noopener">path</a><br>
+deeplink：<a href="https://github.com/flutter/packages/tree/main/packages/url_launcher/url_launcher" target="_blank" rel="noopener">url_launcher</a><br>
+分享：<a href="https://github.com/fluttercommunity/plus_plugins/tree/main/packages/share_plus/share_plus" target="_blank" rel="noopener">share_plus</a><br>
+裁剪：<a href="https://github.com/kekland/croppy" target="_blank" rel="noopener">croppy</a><br>
+文字播报：<a href="https://github.com/dlutton/flutter_tts" target="_blank" rel="noopener">flutter_tts</a><br>
+图片选择：<a href="https://github.com/flutter/packages/tree/main/packages/image_picker/image_picker" target="_blank" rel="noopener">image_picker</a><br>
+网路监听：<a href="https://github.com/fluttercommunity/plus_plugins/tree/main/packages/connectivity_plus/connectivity_plus" target="_blank" rel="noopener">connectivity_plus</a><br>
+状态观察者库：<a href="https://github.com/ReactiveX/rxdart" target="_blank" rel="noopener">rxdart</a><br>
+HTML解析：<a href="https://github.com/dart-lang/tools/tree/main/pkgs/html" target="_blank" rel="noopener">html</a><br>
+评级：<a href="https://github.com/sarbagyastha/flutter_rating_bar" target="_blank" rel="noopener">flutter_rating_bar</a><br>
+打开文件：<a href="https://github.com/crazecoder/open_file" target="_blank" rel="noopener">open_file</a><br>
+网络信息：<a href="https://github.com/imaNNeo/fl_chart" target="_blank" rel="noopener">network_info_plus</a><br>
+上拉下拉：<a href="https://github.com/peng8350/flutter_pulltorefresh" target="_blank" rel="noopener">pull_to_refresh</a>，<a href="https://github.com/xuelongqy/flutter_easy_refresh" target="_blank" rel="noopener">easy_refresh</a><br>
+webview：<a href="https://github.com/moluopro/webview_all" target="_blank" rel="noopener">webview_all</a><br>
+查找文件：<a href="https://github.com/flutter/packages/tree/main/packages/path_provider/path_provider" target="_blank" rel="noopener">path_provider</a><br>
+文件保存：<a href="https://github.com/incrediblezayed/file_saver" target="_blank" rel="noopener">file_saver</a><br>
+保存到相册：<a href="https://github.com/hui-z/image_gallery_saver" target="_blank" rel="noopener">image_gallery_saver</a><br>
+唤醒：<a href="https://github.com/fluttercommunity/wakelock_plus/tree/main/wakelock_plus" target="_blank" rel="noopener">wakelock_plus</a><br>
+sharedpreferences：<a href="https://github.com/flutter/packages/tree/main/packages/shared_preferences/shared_preferences" target="_blank" rel="noopener">shared_preferences</a><br>
+数据库：<a href="https://github.com/tekartik/sqflite/tree/master/sqflite_common" target="_blank" rel="noopener">sqflite_common</a><br>
+骨架屏：<a href="https://github.com/Milad-Akarie/skeletonizer" target="_blank" rel="noopener">skeletonizer</a><br>
+基础工具类：<a href="https://github.com/Ephenodrom/Dart-Basic-Utils" target="_blank" rel="noopener">basic_utils</a><br>
+高级富文本：<a href="https://github.com/fluttercandies/extended_text_library" target="_blank" rel="noopener">extended_text_library</a><br>
+剪切板：<a href="https://github.com/samuelezedi/flutter_clipboard" target="_blank" rel="noopener">clipboard</a><br>
+键盘监听：<a href="https://github.com/MisterJimson/flutter_keyboard_visibility" target="_blank" rel="noopener">flutter_keyboard_visibility</a><br>
+自适应大小文本：<a href="https://github.com/simc/auto_size_text" target="_blank" rel="noopener">auto_size_text</a><br>
+自适应大小文本框：<a href="https://github.com/lzhuor/auto_size_text_field" target="_blank" rel="noopener">auto_size_text_field</a><br>
+二维码：<a href="https://github.com/kevmoo/qr.dart" target="_blank" rel="noopener">qr</a>，<a href="https://github.com/DavBfr/dart_barcode" target="_blank" rel="noopener">barcode</a>，<a href="https://github.com/shirne/zxing-dart" target="_blank" rel="noopener">zxing_lib</a><br>
+截图：<a href="https://github.com/SachinGanesh/screenshot" target="_blank" rel="noopener">screenshot</a>，<br>
+扩展组件：<a href="https://github.com/aryzhov/flutter-expandable" target="_blank" rel="noopener">expandable</a><br>
+toast：<a href="https://github.com/MMMzq/bot_toast" target="_blank" rel="noopener">bot_toast</a><br>
+文件缓存：<a href="https://github.com/Baseflow/flutter_cache_manager/tree/develop/flutter_cache_manager" target="_blank" rel="noopener">flutter_cache_manager</a><br>
+打开文件：<a href="https://github.com/crazecoder/open_file" target="_blank" rel="noopener">open_file</a><br>
+日志：<a href="https://github.com/SourceHorizon/logger" target="_blank" rel="noopener">logger</a><br>
+通知：<a href="https://github.com/rafaelsetragni/awesome_notifications" target="_blank" rel="noopener">awesome_notifications</a><br>
+步骤线：<a href="https://github.com/subhashDev11/stepper_list_view" target="_blank" rel="noopener">stepper_list_view</a><br>
+日历：<a href="https://github.com/aleksanderwozniak/table_calendar" target="_blank" rel="noopener">table_calendar</a>，<a href="https://github.com/theideasaler/calendar_date_picker2" target="_blank" rel="noopener">calendar_date_picker2</a><br>
+json解析：<a href="https://github.com/google/json_serializable.dart/tree/master/example" target="_blank" rel="noopener">json_serializable</a>，<a href="https://github.com/schultek/dart_mappable" target="_blank" rel="noopener">dart_mappable</a><br>
+地图：<a href="https://github.com/fleaflet/flutter_map" target="_blank" rel="noopener">flutter_map</a>，<a href="https://github.com/xclud/flutter_map" target="_blank" rel="noopener">map</a>，<a href="https://github.com/pikaju/flutter-maps-launcher" target="_blank" rel="noopener">maps_launcher</a>，<a href="https://github.com/kb0/maps_toolkit/" target="_blank" rel="noopener">maps_toolkit</a>，<a href="https://github.com/tlserver/flutter_map_location_marker" target="_blank" rel="noopener">flutter_map_location_marker</a><br>
+…</p>
+</li>
+<li>
+<p>项目结构</p>
+</li>
+</ol>
+<p><img src="/img/flutter_componentized_project.webp" alt="项目结构"></p>
+<h2 id="避坑-面试">避坑/面试</h2>
+<ul>
+<li>
+<p>dynamic，var，object三者的区别<br>
+dynamic 允许变量在运行时动态改变类型，编译器不进行类型检查。<br>
+var 是类型推断声明，变量类型在声明时确定，之后不能改变。<br>
+Object 是所有 Dart 对象的基类，允许任何类型的值，但需要进行类型转换才能使用具体类型的值。</p>
+</li>
+<li>
+<p>flutter里的key有什么用<br>
+GlobalKey 是一个全局唯一的键，用于标识整个应用中的特定 Widget。它可以跨越 Widget 树的多个层次来访问 Widget，并提供更强的控制和状态管理。<br>
+LocalKey 是 Key 的基类，分为两种：ValueKey 和 ObjectKey，用于在局部 Widget 树中唯一标识某个 Widget。<br>
+Key的作用：保持状态，优化性能，唯一标识。</p>
+</li>
+<li>
+<p>flutter中Widget的分类<br>
+组合类：StatelessWidget和StatefulWidget<br>
+生命周期对比</p>
+ <table><thead><tr><th><strong>生命周期方法</strong></th><th><strong>StatelessWidget</strong></th><th><strong>StatefulWidget</strong></th></tr></thead><tbody><tr><td><code>build</code></td><td>是</td><td>是</td></tr><tr><td><code>createState</code></td><td>否</td><td>是</td></tr><tr><td><code>initState</code></td><td>否</td><td>是</td></tr><tr><td><code>didChangeDependencies</code></td><td>否</td><td>是</td></tr><tr><td><code>didUpdateWidget</code></td><td>否</td><td>是</td></tr><tr><td><code>deactivate</code></td><td>否</td><td>是</td></tr><tr><td><code>dispose</code></td><td>否</td><td>是</td></tr></tbody></table>
+<p>代理类：inheritedwidget、ParentDataWidget<br>
+inheritedwidget一般用于在Widget树中传递共享数据，状态共享，如Theme 、Localizations 、 MediaQuery 等，都是通过它实现共享状态，这样我们可以通过 context 去获取共享的状态，比如 ThemeData theme = Theme.of(context);</p>
+<p>绘制类：RenderObjectWidget<br>
+RenderObject 的布局相关方法调用顺序是 ： layout -&gt; performResize -&gt; performLayout -&gt; markNeedsPaint</p>
+</li>
+<li>
+<p>mixin extends implement 之间的关系<br>
+继承（关键字 extends）、混入 mixins （关键字 with）、接口实现（关键字 implements）。<br>
+在Flutter中，Mixins是一种在多个类层次结构中复用类代码的方法。mixins的对象是类，mixins绝不是继承，也不是接口，而是一种全新的特性，可以mixins多个类，mixins的使用需要满足一定条件。</p>
+<p>使用mixins的条件：<br>
+mixins类只能继承自object<br>
+mixins类不能有构造函数<br>
+一个类可以mixins多个mixins类<br>
+可以mixins多个类，不破坏Flutter的单继承</p>
+<p><code>这三者可以同时存在，前后顺序是extends -&gt; mixins -&gt; implements。</code></p>
+</li>
+<li>
+<p>async、await、Future 和 Stream<br>
+async 和 await：用于简化异步操作的处理，使代码看起来像同步代码。<br>
+Future：表示一次性异步操作的结果，完成后返回单一结果。<br>
+Stream：表示多个异步数据序列，支持多次返回数据更新。</p>
+</li>
+<li>
+<p>flutter中的多线程<br>
+Isolate 是 Dart 中的一个并发模型，类似于线程，但每个 Isolate 有自己独立的内存空间。Isolate 之间不能直接共享内存，需要通过消息传递来通信。<br>
+Future 和 async/await 用于异步操作，常用于网络请求、文件读取等需要等待结果的任务。使用 await 等待 Future 的结果。<br>
+await for 用于异步地遍历 Stream，适合处理一系列异步数据的场景。</p>
+</li>
+<li>
+<p>Stream 有哪两种订阅模式<br>
+Stream 类提供了两种订阅模式：单订阅模式（single-subscription）和广播模式（broadcast）。单订阅就是只能有一个订阅者，而广播是可以有多个订阅者。<br>
+Stream 默认处于单订阅模式，所以同一个 stream 上的 listen 和其它大多数方法只能调用一次，调用第二次就会报错。但 Stream 可以通过 transform() 方法（返回另一个 Stream）进行连续调用。通过 Stream.asBroadcastStream() 可以将一个单订阅模式的 Stream 转换成一个多订阅模式的 Stream，isBroadcast 属性可以判断当前 Stream 所处的模式。</p>
+</li>
+</ul>
+<div id="square-ad">
+ <!--线上 square_ad -->
+   <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5651453694104340" data-ad-slot="1870336081" data-ad-format="auto" data-full-width-responsive="true">
+   </ins>
+   <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<ul>
+<li>
+<p>BuildContext 具体是什么东西<br>
+在 Flutter 中，BuildContext 表示了当前 Widget 在树中的位置和上下文信息。它提供了与当前 Widget 相关的信息，如父级 Widget、Theme、MediaQuery、Navigator 等，以便在构建 UI 时使用。BuildContext 实际上是一个指向当前 Widget 在 Widget 树中位置的引用。<br>
+BuildContext 的作用：<br>
+定位位置：BuildContext 可以告诉你当前 Widget 在 Widget 树中的位置，如父级 Widget 是什么、祖先 Widget 是什么等。<br>
+获取相关信息：通过 BuildContext 可以获取当前 Widget 上下文相关的信息，如主题、设备信息、国际化信息等。<br>
+构建 UI：在构建 Widget 时，通常需要使用 BuildContext 来访问上下文信息，例如使用 Theme.of(context) 获取当前主题。</p>
+</li>
+<li>
+<p>Dart异步编程中的Future关键字作用<br>
+Dart中，执行一个异步任务使用Future来处理。在 Dart 的每一个 Isolate 当中，执行的优先级为 ：Main &gt; MicroTask &gt; EventQueue。</p>
+</li>
+<li>
+<p>描述Flutter的核心渲染模块三棵树<br>
+WidgetTree:存放渲染内容、它只是一个配置数据结构，创建是非常轻量的，在页面刷新的过程中随时会重建</p>
+<p>Element 是分离 WidgetTree 和真正的渲染对象的中间层， WidgetTree 用来描述对应的Element 属性,同时持有Widget和RenderObject，存放上下文信息，通过它来遍历视图树，支撑UI结构。</p>
+<p>RenderObject (渲染树)用于应用界面的布局和绘制，负责真正的渲染，保存了元素的大小，布局等信息，实例化一个 RenderObject 是非常耗能的</p>
+<p>当应用启动时 Flutter 会遍历并创建所有的 Widget 形成 Widget Tree，通过调用 Widget 上的 createElement() 方法创建每个 Element 对象，形成 Element Tree。最后调用 Element 的 createRenderObject() 方法创建每个渲染对象，形成一个 Render Tree。</p>
+</li>
+<li>
+<p>Flutter三棵树设计的核心原因与优势‌<br>
+分层解耦：职责分离与性能优化。<br>
+高效更新‌：Element树的Diff机制与RenderObject复用‌。<br>
+状态持久化‌：Element维护动态数据‌。<br>
+‌跨平台一致性‌：RenderObject统一渲染管线‌。</p>
+</li>
+<li>
+<p>Flutter线程管理模型<br>
+Flutter Engine层会创建一个Isolate，并且Dart代码默认就运行在这个主Isolate上。必要时可以使用spawnUri和spawn两种方式来创建新的Isolate，在Flutter中，新创建的Isolate由Flutter进行统一的管理。<br>
+事实上，Flutter Engine自己不创建和管理线程，Flutter Engine线程的创建和管理是Embeder负责的，Embeder指的是将引擎移植到平台的中间层代码。</p>
+<p>Flutter 中存在的四大线程：分别为 UI Runner、GPU Runner、IO Runner， Platform Runner （原生主线程） ，</p>
+<p>在 Flutter 中可以通过 isolate 或者 compute 执行真正的跨线程异步操作。</p>
+</li>
+<li>
+<p>Future还是isolate使用场景分析<br>
+如果代码段可以独立运行而不会影响应用程序的流畅性，建议使用 Future （需要花费几毫秒时间）。<br>
+如果繁重的处理可能要花一些时间才能完成，而且会影响应用程序的流畅性，建议使用 isolate （需要几百毫秒）。</p>
+</li>
+<li>
+<p>Flutter是如何与原生Android、iOS进行通信的<br>
+Flutter 通过 PlatformChannel 与原生进行交互，其中 PlatformChannel 分为三种：<br>
+BasicMessageChannel ：用于传递字符串和半结构化的信息。<br>
+MethodChannel ：用于传递方法调用（method invocation）。<br>
+EventChannel : 用于数据流（event streams）的通信。</p>
+</li>
+<li>
+<p>性能优化</p>
+<ul>
+<li>
+<p>避免Widget无效的重建<br>
+使用const构造函数，对于不会改变的Widget，使用const构造函数创建常量Widget，可以避免不必要的重建。<br>
+合理使用Key，在ListView或GridView等可滚动列表中，为列表项指定Key可以帮助Flutter识别哪些项发生了变化，从而只重建发生变化的项。<br>
+避免在build方法中进行复杂操作，build方法应该只负责构建UI，避免在其中进行复杂的计算或数据处理。</p>
+</li>
+<li>
+<p>长列表滚动性能问题<br>
+使用 ListView.builder：对于长列表，使用 ListView.builder，它只在滚动时创建可见的项目。<br>
+禁用addRepaintBoundaries（默认开启）：对简单列表项关闭重绘边界，减少渲染管线开销‌。<br>
+禁用addAutomaticKeepAlives（默认开启）：减少内存占用，必要时手动实现AutomaticKeepAliveClientMixin保持状态‌。<br>
+使用KeepAlive组件配合SliverPersistentHeader，优化头部/尾部固定内容的性能‌。<br>
+使用 CacheExtent：设置 cacheExtent 提前加载部分项目，避免滚动时卡顿。<br>
+图片加载优化：使用 FadeInImage 或 cached_network_image 库优化图片加载。<br>
+设置ScrollAwareImageProvider：判断快速滑动, 下载和解码会停止。<br>
+使用懒加载与分页，避免一次性请求过多资源。<br>
+通过 evictCallback 和 dispose() 确保图片/纹理等敏感资源释放‌。</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CachedNetworkImage(  </span><br><span class="line">    imageUrl: url,  </span><br><span class="line">    evictCallback: <span class="function"><span class="params">(url)</span> =&gt;</span> <span class="literal">true</span>, <span class="regexp">//</span> 列表项销毁时触发缓存回收  </span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>使用异步操作<br>
+使用 compute 函数：将耗时操作移到后台 Isolate 执行，避免阻塞主线程。<br>
+异步编程：使用 Future、Stream 和 async/await 进行异步编程，避免阻塞UI。</p>
+</li>
+<li>
+<p>布局和绘制性能问题<br>
+避免不必要的层级：尽量减少 Widget 层级，避免过度嵌套。<br>
+使用 RepaintBoundary：将需要频繁重绘的部分包裹在 RepaintBoundary 中，减少重绘范围。<br>
+布局缓存：使用 AutomaticKeepAliveClientMixin 保持列表项的状态，避免重建。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h1>Flutter错误收集</h1>
+<p>布局溢出<br>
+1、使用DebugPaintSizeEnabled将DebugPaintSizeEnabled widget包裹在你的应用根widget上，来在屏幕上绘制出每个widget的边界和大小。这有助于你直观地看到哪些widget可能超出了其父widget的边界。<br>
+2、检测工具 Flutter Inspector (debug模式下)，使用DevTools<br>
+3、在你的widget树中，你可以编写自定义的溢出检测逻辑。这通常涉及到在widget的build方法或自定义RenderObject的performLayout方法中检查子widget的布局尺寸和父widget的约束。</p>
+<p>异常收集<br>
+1、Dart层异常捕获；可以通过try-catch机制直接捕获<br>
+2、Flutter框架错误捕获</p>
+<ul>
+<li>异步异常 Future.catchError适用于捕获异步操作中的异常</li>
+<li>全局异常捕获 FlutterError.onError全局异常捕获</li>
+<li>全局异步回调异常 PlatformDispatcher.instance.onError</li>
+<li>使用Zone.runZoned集中捕获：（过时）</li>
+</ul>
+<p>3、原生崩溃捕获：集成原生崩溃收集工具、接入firebase、bugly等</p>
+<h1>总结</h1>
+<p><code>总之，Flutter最大的优势在于其跨平台能力，社区成熟。使用Dart语言，可以同时为iOS、Android、PC端开发应用，减少了代码重复，提高了开发效率。但在跨平台上Jetpack Compose版本仅支持5.0以上，社区不如Flutter那样成熟，同时fultter最低版本支持4.1，可以根据业务选择使用。</code></p>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2024/01/22/springboot3-kotlin-learn/" data-toggle="tooltip" data-placement="top" title="[SpringBoot] SpringBoot3 + Kotlin 踩坑指南">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2023/11/22/android-learn-compose/" data-toggle="tooltip" data-placement="top" title="[Android] Study Jetpack Compose">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#前言"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#方案"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">方案</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#避坑-面试"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">避坑/面试</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#null"><span class="toc-nav-number"></span> <span class="toc-nav-text">Flutter错误收集</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#null"><span class="toc-nav-number"></span> <span class="toc-nav-text">总结</span></a>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Flutter" title="Flutter">Flutter</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://us.pingpongx.com/external/inviteReg.htm?inviteCode=7nEFBj032" target="_blank">Overseas Collection</a></li>
+                    
+                        <li><a href="https://www.vultr.com/?ref=8600728-6G" target="_blank">VPS Vutlr</a></li>
+                    
+                        <li><a href="/vnews/index.html" target="_blank">Vnews Blog</a></li>
+                    
+                        <li><a href="http://blog.kaijun.rocks" target="_blank">Kaijun&#39;s Blog</a></li>
+                    
+                        <li><a href="http://huangxuan.me" target="_blank">Hux Blog</a></li>
+                    
+                        <li><a href="#" target="_blank">It Helps SEO</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'right',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+     <div class="row" style="margin-top:-50px;float:right;font-size:10px;margin-left:30px;padding-right:30px;">
+            
+            <!-- 不蒜子统计 -->
+            <span id="busuanzi_container_site_pv">
+            总访问量：<span id="busuanzi_value_site_pv">0</span>次
+            </span>
+            <span>|</span>
+            <span id="busuanzi_container_site_uv">
+            访客数：<span id="busuanzi_value_site_uv">0</span>人
+            </span>
+            
+             <!-- 不蒜子统计 -->
+             <span>|</span>
+              <span id="busuanzi_container_page_pv" style='display:none'">
+              <i class="icon-smile icon"></i>本文阅读数：<span id="busuanzi_value_page_pv">0</span>次
+              </span>
+            
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            
+     </div>
+        <div class="row">
+           <!-- horizontal_ad/bottom_ad -->
+           <ul class="list-inline text-center">
+            
+                <ins class="adsbygoogle"  style="display:block" data-ad-client="ca-pub-5651453694104340"  data-ad-slot="3310538124"  data-ad-format="auto" data-full-width-responsive="true"></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+            
+            </ul>
+        </div>
+        <br><br>
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/xiuyuantech">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://www.linkedin.com/in/xiuyuantech">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                </br>
+                <ul class="list-inline text-center">
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/geekvideo_release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Clear" src="/img/ic_geekvideo_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/clear_googleplay_1.5.0_0530-1704_release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Clear" src="/img/ic_clear_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/videoeditor-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="VideoEditor" src="/img/ic_videoclip_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/screenrecoder-playstoreDonate-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="ScreenRecoder" src="/img/ic_recoder_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/vault-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Vault" src="/img/ic_vault_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/accountbook-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="AccountBook" src="/img/ic_book_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/starwars-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Star Wars" src="/img/ic_plane_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/cardsolitaire-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Solitaire" src="/img/ic_card_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; xiuyuantech 2025 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Ported by <a href="https://xiuyuantech.github.io">XiuYuanTech</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;margin-right: -36px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="/star_xiuyuantech_on_github.html?user=xiuyuantech&repo=&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://xiuyuantech.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-165334855-1';
+    var _gaDomain = 'xiuyuantech.github.io';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- async load function -->
+
+<script>
+
+    function async(u, c) {
+
+      var d = document, t = 'script',
+
+          o = d.createElement(t),
+
+          s = d.getElementsByTagName(t)[0];
+
+      o.src = u;
+
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+
+      s.parentNode.insertBefore(o, s);
+
+    }
+
+</script>
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="https://xiuyuantech.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+
+<script type="text/javascript">
+  function adLoaded() {
+      var in_article_contaner = document.getElementById('in-article-ad');
+      if(in_article_contaner) {
+            // here you can make the height, I delete it first, then I make it again
+            console.log("in_article_contaner");
+            //in_article_contaner.innerHTML=``;
+      }
+      var square_contaner = document.getElementById('square-ad');
+      if(square_contaner){
+         console.log("square_contaner");
+         //square_contaner.innerHTML=``;
+      }
+  };
+
+  $(document).ready(function () {
+                try{
+                  //adLoaded();
+                }catch(err){
+                  onError();
+                }});
+
+</script>
+
+<script>
+function isSameDay(timeA,timeB) {
+   let dateA = new Date(timeA);
+   let dateB = new Date(timeB);
+   return (dateA.setHours(0, 0, 0, 0) == dateB.setHours(0, 0, 0, 0));
+   }
+   function CheckIsNotNullOrEmpty(value) {
+                //正则表达式用于判斷字符串是否全部由空格或换行符组成
+                 var reg = /^\s*$/
+                 //返回值为true表示不是空字符串
+                 return (value != null && value != undefined && !reg.test(value));
+   }
+   <!-- js 异常时不显示 -->
+   function onError(){
+        $("ins.adsbygoogle[data-ad-slot]").each(function(index,element){
+           $(element).remove();
+           });
+   }
+    <!-- 单个点击事件 -->
+    function bindClick(element,countKeyPre) {
+        $(element).click(function(){
+          console.log("dayKey：" + countKeyPre);
+          var count =  window.localStorage.countKeyPre;
+          console.log("count get： "+count);
+          if(CheckIsNotNullOrEmpty(count)){
+             count++;
+             console.log("count++： "+count);
+             window.localStorage.countKeyPre = count;
+             if(count >= 4){
+              console.log("count： "+count);
+              $(element).remove();
+              onError();
+              }
+          } else {
+            window.localStorage.countKeyPre = 0;
+          }
+          });
+
+        }
+        <!-- js 初始化 Ad  -->
+        function initAd(ip){
+        if(CheckIsNotNullOrEmpty(ip)){
+                //alert("not null ip:  "+ ip);
+                $("ins.adsbygoogle[data-ad-slot]").each(function(index,element){
+                            /*var data_ad_slot = $(element).attr("data-ad-slot");
+                            console.log("data_ad_slot：" + data_ad_slot);
+                            var hasAd = CheckIsNotNullOrEmpty(data_ad_slot);
+                            console.log("hasAd：" + hasAd);*/
+                            //if（hasAd){
+                               //console.log("not null data_ad_slot：" + data_ad_slot);
+                               var dayKeyPre = ip +"_day";
+                               var countKeyPre = ip +"_count";
+                               console.log("dayKey：" + dayKeyPre);
+                               console.log("dayKeyPre：" + window.localStorage.dayKeyPre);
+                               bindClick(element,countKeyPre);
+                               console.log("countKeyPre：" + countKeyPre);
+                               console.log("countKeyPre：" + window.localStorage.countKeyPre);
+                               var nowStr =  new Date().toLocaleDateString();
+                               var notSame = CheckIsNotNullOrEmpty(window.localStorage.dayKeyPre) && !isSameDay(window.localStorage.dayKeyPre,nowStr);
+                               console.log("同一天：" +  !notSame);
+                               if(notSame){
+                                window.localStorage.dayKeyPre = nowStr;
+                                window.localStorage.countKeyPre = 0;
+                                console.log("重置成功");
+                                }
+                                   if( CheckIsNotNullOrEmpty(window.localStorage.dayKeyPre)){
+                                      if(window.localStorage.countKeyPre >= 4){
+                                         $(element).remove();
+                                      }
+                                   } else {
+                                      window.localStorage.dayKeyPre = nowStr;
+                                    }
+                              //}
+                            });
+                        return;
+                    }
+                        onError();
+                 }
+
+                          $(document).ready(function () {
+                          try{
+                            //$.getJSON("https://api.ipify.org/?format=json", function(e) {
+                            // var ip = e.ip;
+                            //initAd(ip);
+                             //});
+                          }catch(err){
+                            onError();
+                          }});
+</script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="xiuyuantech">
+    <meta name="keyword" content>
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          [Android] Meet IoT MQTT - xiuyuantech
+        
+    </title>
+
+    <link rel="canonical" href="https://xiuyuantech.github.io/2024/10/06/android-meet-iot/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+
+    <!-- Google Adsense -->
+
+    
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-5651453694104340",
+             enable_page_level_ads: true
+             });
+    </script>
+    <!-- 获取ip <script async src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>  -->
+
+
+
+    
+
+</head>
+
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('')
+            /*post*/
+        
+    }
+    
+    #signature{
+        background-image: url('/img/signature/BeanTechSign-white.png');
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Android" title="Android">Android</a>
+                            
+                        </div>
+                        <h1>[Android] Meet IoT MQTT</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by xiuyuantech on
+                            2024-10-06
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">XiuYuanTech</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/vnews/">vnews home</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <blockquote>
+<p>MQTT (Message Queuing Telemetry Transport，消息队列遥测传输) 是一种用于物联网 (IoT) 的 OASIS 标准消息传递的基于 TCP/IP 协议族的应用层协议。是用于物联网 (IoT) 的 OASIS 标准消息传递协议。它被设计为一种极其轻量级的发布/订阅消息传输，非常适合以较小的代码占用空间和最小的网络带宽连接远程设备。如今，MQTT 已广泛应用于各个行业，例如汽车、制造、电信、石油和天然气等。</p>
+</blockquote>
+<h2 id="物联网相关协议">物联网相关协议</h2>
+<p>‌物联网常用的通信协议包括MQTT、CoAP、HTTP、Zigbee、LoRaWAN、NB-IoT等‌。这些协议各有其特点和适用场景，下面将详细介绍每种协议的基本信息和应用场景。</p>
+<ul>
+<li>
+<p>MQTT：是一种轻量级的、基于发布/订阅模式的消息传输协议。它特别适用于低带宽、高延迟或不稳定网络环境中的设备通信。MQTT的特点包括消息推送及时且高效、支持QoS（服务质量）等级以保证消息可靠传输，并且通过MQTT服务器（Broker）简化了设备间的通信架构‌。</p>
+</li>
+<li>
+<p>CoAP：专为资源受限的物联网设备设计，基于UDP协议构建。它模仿HTTP的RESTful交互模型，但设计更为精简，适合低功耗、低内存的传感器网络。CoAP使用无状态请求响应机制，不维持长连接，但在需要实时数据推送时，可以通过观察者模式实现类似发布/订阅的效果‌。</p>
+</li>
+<li>
+<p>HTTP：在物联网场景中，传统的HTTP协议通过结合REST（Representational State Transfer）架构风格，提供了一种易于实施且广泛应用的服务调用方式。虽然HTTP在功耗和带宽效率上不如MQTT和CoAP，但它具有广泛的兼容性和成熟的生态系统，在云端接口和设备管理中扮演重要角色‌。</p>
+</li>
+<li>
+<p>Zigbee：是一种短距离、低功耗无线网络标准，主要应用于家庭自动化、工业控制等领域。它基于IEEE 802.15.4标准，支持自组网、多跳路由及安全性较高的无线通信。Zigbee联盟制定了统一的应用层规范，确保不同厂商设备间的互操作性‌。</p>
+</li>
+<li>
+<p>LoRaWAN：它并非严格意义上的物联网通信协议，而是低功耗广域网络（LPWAN）的标准之一。它采用Chirp Spread Spectrum调制技术，提供远距离、低功耗的无线通信服务，特别适用于大规模部署传感器网络，如智慧城市、农业监控等场景‌。</p>
+</li>
+<li>
+<p>NB-IoT：是3GPP标准化的蜂窝物联网技术，旨在利用现有LTE网络提供窄带物联网连接。它适用于对数据传输速率要求不高的场景，如智能水表、智能停车等‌。</p>
+</li>
+</ul>
+<p><code>本文是站在 Android 开发者角度主要介绍MQTT协议。</code></p>
+<div id="in-article-ad">
+    <!--线上 in_article_ad -->
+  <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5651453694104340" data-ad-slot="6951497715">
+  </ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<h2 id="MQTT特点">MQTT特点</h2>
+<ul>
+<li>使用发布/订阅消息模式，提供一对多的消息发布，解除应用程序耦合。</li>
+<li>对负载内容屏蔽的消息传输。</li>
+<li>使用 TCP/IP 提供网络连接。</li>
+<li>有三种消息发布服务质量：<br>
+qos为0：“至多一次”，消息发布完全依赖底层 TCP/IP 网络。会发生消息丢失或重复。这一级别可用于如下情况，环境传感器数据，丢失一次读记录无所谓，因为不久后还会有第二次发送。<br>
+qos为1：“至少一次”，确保消息到达，但消息重复可能会发生。这一级别可用于如下情况，你需要获得每一条消息，并且消息重复发送对你的使用场景无影响。<br>
+qos为2：“只有一次”，确保消息到达一次。这一级别可用于如下情况，在计费系统中，消息重复或丢失会导致不正确的结果。</li>
+<li>小型传输，开销很小（固定长度的头部是 2 字节），协议交换最小化，以降低网络流量。使用 Last Will 和 Testament 特性通知有关各方客户端异常中断的机制。</li>
+</ul>
+<h2 id="MQTT协议和HTTP协议区别">MQTT协议和HTTP协议区别</h2>
+<table><thead><tr><th align="left">特性</th><th align="left">MQTT 协议</th><th align="left">HTTP 协议</th></tr></thead><tbody><tr><td align="left">传输层</td><td align="left">TCP</td><td align="left">TCP 或 UDP</td></tr><tr><td align="left">分发模型</td><td align="left">发布 - 订阅模型</td><td align="left">请求 - 响应模型</td></tr><tr><td align="left">分发关系</td><td align="left">1 对 0/1/N</td><td align="left">1 对 1</td></tr><tr><td align="left">数据安全</td><td align="left">使用 SSL/TLS</td><td align="left">不一定采用 HTTPS</td></tr><tr><td align="left">加密</td><td align="left">应用层对有效载荷加密</td><td align="left">不在应用层加密</td></tr><tr><td align="left">消息头大小</td><td align="left">较小</td><td align="left">较大</td></tr></tbody></table>
+<h2 id="Android中MQTT的使用">Android中MQTT的使用</h2>
+<p>在module的build.gradle文件中添加依赖</p>
+<figure class="highlight roboconf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">repositories &#123;</span><br><span class="line">    <span class="attribute">maven &#123;</span></span><br><span class="line"><span class="attribute">        url "https</span>://repo<span class="variable">.eclipse</span><span class="variable">.org</span>/content/repositories/paho-snapshots/"</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">dependencies &#123;</span><br><span class="line">    implementation 'org<span class="variable">.eclipse</span><span class="variable">.paho</span>:org<span class="variable">.eclipse</span><span class="variable">.paho</span><span class="variable">.client</span><span class="variable">.mqttv</span>3:1.2.4'</span><br><span class="line">    implementation 'org<span class="variable">.eclipse</span><span class="variable">.paho</span>:org<span class="variable">.eclipse</span><span class="variable">.paho</span><span class="variable">.android</span><span class="variable">.service</span>:1.1.1'</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在 AndroidManifest.xml 添加所需限权、服务</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.INTERNET"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.ACCESS_NETWORK_STATE"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.WAKE_LOCK"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">service</span> <span class="attr">android:name</span>=<span class="string">"org.eclipse.paho.android.service.MqttService"</span> /&gt;</span> <span class="comment">&lt;!--MqttService--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">service</span> <span class="attr">android:name</span>=<span class="string">"com.dongyk.service.MyMqttService"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<p>MQTT服务——MyMqttService</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.demo.mqttandroidclient;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.app.Service;</span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.content.Intent;</span><br><span class="line"><span class="keyword">import</span> android.net.ConnectivityManager;</span><br><span class="line"><span class="keyword">import</span> android.net.NetworkInfo;</span><br><span class="line"><span class="keyword">import</span> android.os.Build;</span><br><span class="line"><span class="keyword">import</span> android.os.Handler;</span><br><span class="line"><span class="keyword">import</span> android.os.IBinder;</span><br><span class="line"><span class="keyword">import</span> android.support.annotation.Nullable;</span><br><span class="line"><span class="keyword">import</span> android.support.annotation.RequiresApi;</span><br><span class="line"><span class="keyword">import</span> android.util.Log;</span><br><span class="line"><span class="keyword">import</span> android.widget.Toast;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.eclipse.paho.android.service.MqttAndroidClient;</span><br><span class="line"><span class="keyword">import</span> org.eclipse.paho.client.mqttv3.IMqttActionListener;</span><br><span class="line"><span class="keyword">import</span> org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;</span><br><span class="line"><span class="keyword">import</span> org.eclipse.paho.client.mqttv3.IMqttToken;</span><br><span class="line"><span class="keyword">import</span> org.eclipse.paho.client.mqttv3.MqttCallback;</span><br><span class="line"><span class="keyword">import</span> org.eclipse.paho.client.mqttv3.MqttConnectOptions;</span><br><span class="line"><span class="keyword">import</span> org.eclipse.paho.client.mqttv3.MqttException;</span><br><span class="line"><span class="keyword">import</span> org.eclipse.paho.client.mqttv3.MqttMessage;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Desc $&#123;MQTT服务&#125;，Android中使用MQTT最主要的就是connect、publish、subscribe、disconnect这几个方法</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyMqttService</span> <span class="keyword">extends</span> <span class="title">Service</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> String TAG = MyMqttService<span class="class">.<span class="keyword">class</span>.<span class="title">getSimpleName</span>()</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> MqttAndroidClient  mqttAndroidClient;</span><br><span class="line">    <span class="keyword">private</span>        MqttConnectOptions mMqttConnectOptions;</span><br><span class="line">    <span class="keyword">public</span>        String HOST           = <span class="string">"tcp://192.168.0.102:61613"</span>;<span class="comment">//服务器地址（协议+地址+端口号）</span></span><br><span class="line">    <span class="keyword">public</span>        String USERNAME       = <span class="string">"admin"</span>;<span class="comment">//用户名</span></span><br><span class="line">    <span class="keyword">public</span>        String PASSWORD       = <span class="string">"password"</span>;<span class="comment">//密码</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String PUBLISH_TOPIC  = <span class="string">"tourist_enter"</span>;<span class="comment">//发布主题</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String RESPONSE_TOPIC = <span class="string">"message_arrived"</span>;<span class="comment">//响应主题</span></span><br><span class="line">    <span class="meta">@RequiresApi</span>(api = <span class="number">26</span>)</span><br><span class="line">    <span class="keyword">public</span>        String CLIENTID       = Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.O</span><br><span class="line">            ? Build.getSerial() : Build.SERIAL;<span class="comment">//客户端ID，一般以客户端唯一标识符表示，这里用设备序列号表示</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">onStartCommand</span><span class="params">(Intent intent, <span class="keyword">int</span> flags, <span class="keyword">int</span> startId)</span> </span>&#123;</span><br><span class="line">        init();</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.onStartCommand(intent, flags, startId);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Nullable</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> IBinder <span class="title">onBind</span><span class="params">(Intent intent)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 开启服务</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">startService</span><span class="params">(Context mContext)</span> </span>&#123;</span><br><span class="line">        mContext.startService(<span class="keyword">new</span> Intent(mContext, MyMqttService<span class="class">.<span class="keyword">class</span>))</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 发布 （模拟其他客户端发布消息）</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> message 消息</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">publish</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">        String topic = PUBLISH_TOPIC;</span><br><span class="line">        Integer qos = <span class="number">2</span>;</span><br><span class="line">        Boolean retained = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//参数分别为：主题、消息的字节数组、服务质量、是否在服务器保留断开连接后的最后一条消息</span></span><br><span class="line">            mqttAndroidClient.publish(topic, message.getBytes(), qos.intValue(), retained.booleanValue());</span><br><span class="line">        &#125; <span class="keyword">catch</span> (MqttException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 响应 （收到其他客户端的消息后，响应给对方告知消息已到达或者消息有问题等）</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> message 消息</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">response</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">        String topic = RESPONSE_TOPIC;</span><br><span class="line">        Integer qos = <span class="number">2</span>;</span><br><span class="line">        Boolean retained = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//参数分别为：主题、消息的字节数组、服务质量、是否在服务器保留断开连接后的最后一条消息</span></span><br><span class="line">            mqttAndroidClient.publish(topic, message.getBytes(), qos.intValue(), retained.booleanValue());</span><br><span class="line">        &#125; <span class="keyword">catch</span> (MqttException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 初始化</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        String serverURI = HOST; <span class="comment">//服务器地址（协议+地址+端口号）</span></span><br><span class="line">        mqttAndroidClient = <span class="keyword">new</span> MqttAndroidClient(<span class="keyword">this</span>, serverURI, CLIENTID);</span><br><span class="line">        mqttAndroidClient.setCallback(mqttCallback); <span class="comment">//设置监听订阅消息的回调</span></span><br><span class="line">        mMqttConnectOptions = <span class="keyword">new</span> MqttConnectOptions();</span><br><span class="line">        mMqttConnectOptions.setCleanSession(<span class="keyword">true</span>); <span class="comment">//设置是否清除缓存</span></span><br><span class="line">        mMqttConnectOptions.setConnectionTimeout(<span class="number">10</span>); <span class="comment">//设置超时时间，单位：秒</span></span><br><span class="line">        mMqttConnectOptions.setKeepAliveInterval(<span class="number">20</span>); <span class="comment">//设置心跳包发送间隔，单位：秒</span></span><br><span class="line">        mMqttConnectOptions.setUserName(USERNAME); <span class="comment">//设置用户名</span></span><br><span class="line">        mMqttConnectOptions.setPassword(PASSWORD.toCharArray()); <span class="comment">//设置密码</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// last will message</span></span><br><span class="line">        <span class="keyword">boolean</span> doConnect = <span class="keyword">true</span>;</span><br><span class="line">        String message = <span class="string">"&#123;\"terminal_uid\":\""</span> + CLIENTID + <span class="string">"\"&#125;"</span>;</span><br><span class="line">        String topic = PUBLISH_TOPIC;</span><br><span class="line">        Integer qos = <span class="number">2</span>;</span><br><span class="line">        Boolean retained = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">if</span> ((!message.equals(<span class="string">""</span>)) || (!topic.equals(<span class="string">""</span>))) &#123;</span><br><span class="line">            <span class="comment">// 最后的遗嘱</span></span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                mMqttConnectOptions.setWill(topic, message.getBytes(), qos.intValue(), retained.booleanValue());</span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                Log.i(TAG, <span class="string">"Exception Occured"</span>, e);</span><br><span class="line">                doConnect = <span class="keyword">false</span>;</span><br><span class="line">                iMqttActionListener.onFailure(<span class="keyword">null</span>, e);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (doConnect) &#123;</span><br><span class="line">            doClientConnection();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 连接MQTT服务器</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">doClientConnection</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!mqttAndroidClient.isConnected() &amp;&amp; isConnectIsNomarl()) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                mqttAndroidClient.connect(mMqttConnectOptions, <span class="keyword">null</span>, iMqttActionListener);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (MqttException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 判断网络是否连接</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isConnectIsNomarl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        ConnectivityManager connectivityManager = (ConnectivityManager) <span class="keyword">this</span>.getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);</span><br><span class="line">        NetworkInfo info = connectivityManager.getActiveNetworkInfo();</span><br><span class="line">        <span class="keyword">if</span> (info != <span class="keyword">null</span> &amp;&amp; info.isAvailable()) &#123;</span><br><span class="line">            String name = info.getTypeName();</span><br><span class="line">            Log.i(TAG, <span class="string">"当前网络名称："</span> + name);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            Log.i(TAG, <span class="string">"没有可用网络"</span>);</span><br><span class="line">            <span class="comment">/*没有可用网络的时候，延迟3秒再尝试重连*/</span></span><br><span class="line">            <span class="keyword">new</span> Handler().postDelayed(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                    doClientConnection();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;, <span class="number">3000</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//MQTT是否连接成功的监听</span></span><br><span class="line">    <span class="keyword">private</span> IMqttActionListener iMqttActionListener = <span class="keyword">new</span> IMqttActionListener() &#123;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSuccess</span><span class="params">(IMqttToken arg0)</span> </span>&#123;</span><br><span class="line">            Log.i(TAG, <span class="string">"连接成功 "</span>);</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                mqttAndroidClient.subscribe(PUBLISH_TOPIC, <span class="number">2</span>);<span class="comment">//订阅主题，参数：主题、服务质量</span></span><br><span class="line">            &#125; <span class="keyword">catch</span> (MqttException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(IMqttToken arg0, Throwable arg1)</span> </span>&#123;</span><br><span class="line">            arg1.printStackTrace();</span><br><span class="line">            Log.i(TAG, <span class="string">"连接失败 "</span>);</span><br><span class="line">            doClientConnection();<span class="comment">//连接失败，重连（可关闭服务器进行模拟）</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//订阅主题的回调</span></span><br><span class="line">    <span class="keyword">private</span> MqttCallback mqttCallback = <span class="keyword">new</span> MqttCallback() &#123;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">messageArrived</span><span class="params">(String topic, MqttMessage message)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">            Log.i(TAG, <span class="string">"收到消息： "</span> + <span class="keyword">new</span> String(message.getPayload()));</span><br><span class="line">            <span class="comment">//收到消息，这里弹出Toast表示。如果需要更新UI，可以使用广播或者EventBus进行发送</span></span><br><span class="line">            Toast.makeText(getApplicationContext(), <span class="string">"messageArrived: "</span> + <span class="keyword">new</span> String(message.getPayload()), Toast.LENGTH_LONG).show();</span><br><span class="line">            <span class="comment">//收到其他客户端的消息后，响应给对方告知消息已到达或者消息有问题等</span></span><br><span class="line">            response(<span class="string">"message arrived"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deliveryComplete</span><span class="params">(IMqttDeliveryToken arg0)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">connectionLost</span><span class="params">(Throwable arg0)</span> </span>&#123;</span><br><span class="line">            Log.i(TAG, <span class="string">"连接断开 "</span>);</span><br><span class="line">            doClientConnection();<span class="comment">//连接断开，重连</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            mqttAndroidClient.disconnect(); <span class="comment">//断开连接</span></span><br><span class="line">        &#125; <span class="keyword">catch</span> (MqttException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">super</span>.onDestroy();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在MainActivity中开启服务</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="keyword">protected</span> void onCreate(<span class="type">Bundle</span> savedInstanceState) &#123;</span><br><span class="line">       <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">       setContentView(<span class="type">R</span>.layout.activity_main);</span><br><span class="line">       <span class="type">MyMqttService</span>.startService(<span class="keyword">this</span>); <span class="comment">//开启服务</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>需要注意的是，如果你的项目是基于AndroidX开发，那么还需要额外添加下localbroadcastmanager的依赖，并且在gradle.properties文件中添加android.enableJetifier=true配置，这是因为org.eclipse.paho.android.service中引用了v4的localbroadcastmanager。</code></p>
+<h2 id="性能优化">性能优化</h2>
+<ul>
+<li>
+<p>网络传输优化‌<br>
+‌启用MQTT 5.0‌：支持 ‌会话恢复‌（Session Reconnection）和 ‌原因码‌（Reason Code），减少重复握手开销。<br>
+‌消息压缩‌：对JSON负载使用GZIP压缩（数据量降低50%~70%）。</p>
+</li>
+<li>
+<p>设备端资源优化‌<br>
+‌心跳间隔调优‌：根据网络稳定性设置Keep Alive时间（建议30~120秒）。<br>
+‌遗嘱消息精简‌：仅传递关键状态（如offline），避免大报文占用带宽。</p>
+</li>
+<li>
+<p>云端扩展性设计<br>
+‌共享订阅（Shared Subscription）‌：在MQTT 5.0中实现负载均衡，支持百万级设备并发。<br>
+‌水平扩展Broker‌：使用EMQX集群或AWS IoT Core自动扩缩容。</p>
+</li>
+</ul>
+<h2 id="安全实践">安全实践</h2>
+<ul>
+<li>
+<p>传输层安全‌<br>
+强制使用 TLS加密‌（端口8883），禁用明文通信（1883）。<br>
+设备端预置CA证书，防止中间人攻击。</p>
+</li>
+<li>
+<p>权限控制<br>
+ACL规则‌：限制设备只能发布/订阅特定主题（如device/${deviceId}/cmd）。<br>
+‌动态令牌‌：使用JWT令牌短期授权，定期刷新（如每小时更新）。</p>
+</li>
+<li>
+<p>固件安全<br>
+OTA升级签名校验‌：使用RSA/ECC签名验证固件合法性。<br>
+‌安全启动（Secure Boot）‌：ESP32等硬件支持防止未授权固件运行。</p>
+</li>
+</ul>
+<h2 id="典型问题与解决方案">典型问题与解决方案</h2>
+<table>
+<thead>
+<tr>
+<th><mark class="flexible-marker flexible-marker-default">‌<strong>问题场景</strong>‌</mark></th>
+<th><mark class="flexible-marker flexible-marker-default">‌<strong>解决方案</strong>‌</mark></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>设备频繁断线重连</td>
+<td>优化Keep Alive时间，检查网络丢包率</td>
+</tr>
+<tr>
+<td>高QoS导致消息堆积</td>
+<td>降级为QoS 0或1，增加Broker处理线程</td>
+</tr>
+<tr>
+<td>主题设计混乱导致性能下降</td>
+<td>按功能分层命名（如<code>region/device/type</code>）</td>
+</tr>
+<tr>
+<td>设备证书泄露</td>
+<td>启用证书吊销列表（CRL），实时拉取黑名单</td>
+</tr>
+</tbody>
+</table>
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2024/11/24/meet-android-xr/" data-toggle="tooltip" data-placement="top" title="[Android] Meet Android VR、AR、MR、XR">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2024/09/23/intelligent-hardware/" data-toggle="tooltip" data-placement="top" title="[Android] Intelligent Hardware Application Serial Port Development(智能硬件应用串口开发)">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#物联网相关协议"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">物联网相关协议</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#MQTT特点"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">MQTT特点</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#MQTT协议和HTTP协议区别"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">MQTT协议和HTTP协议区别</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Android中MQTT的使用"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">Android中MQTT的使用</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#性能优化"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">性能优化</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#安全实践"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">安全实践</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#典型问题与解决方案"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">典型问题与解决方案</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Android" title="Android">Android</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://us.pingpongx.com/external/inviteReg.htm?inviteCode=7nEFBj032" target="_blank">Overseas Collection</a></li>
+                    
+                        <li><a href="https://www.vultr.com/?ref=8600728-6G" target="_blank">VPS Vutlr</a></li>
+                    
+                        <li><a href="/vnews/index.html" target="_blank">Vnews Blog</a></li>
+                    
+                        <li><a href="http://blog.kaijun.rocks" target="_blank">Kaijun&#39;s Blog</a></li>
+                    
+                        <li><a href="http://huangxuan.me" target="_blank">Hux Blog</a></li>
+                    
+                        <li><a href="#" target="_blank">It Helps SEO</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'right',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+     <div class="row" style="margin-top:-50px;float:right;font-size:10px;margin-left:30px;padding-right:30px;">
+            
+            <!-- 不蒜子统计 -->
+            <span id="busuanzi_container_site_pv">
+            总访问量：<span id="busuanzi_value_site_pv">0</span>次
+            </span>
+            <span>|</span>
+            <span id="busuanzi_container_site_uv">
+            访客数：<span id="busuanzi_value_site_uv">0</span>人
+            </span>
+            
+             <!-- 不蒜子统计 -->
+             <span>|</span>
+              <span id="busuanzi_container_page_pv" style='display:none'">
+              <i class="icon-smile icon"></i>本文阅读数：<span id="busuanzi_value_page_pv">0</span>次
+              </span>
+            
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            
+     </div>
+        <div class="row">
+           <!-- horizontal_ad/bottom_ad -->
+           <ul class="list-inline text-center">
+            
+                <ins class="adsbygoogle"  style="display:block" data-ad-client="ca-pub-5651453694104340"  data-ad-slot="3310538124"  data-ad-format="auto" data-full-width-responsive="true"></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+            
+            </ul>
+        </div>
+        <br><br>
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/xiuyuantech">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://www.linkedin.com/in/xiuyuantech">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                </br>
+                <ul class="list-inline text-center">
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/geekvideo_release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Clear" src="/img/ic_geekvideo_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/clear_googleplay_1.5.0_0530-1704_release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Clear" src="/img/ic_clear_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/videoeditor-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="VideoEditor" src="/img/ic_videoclip_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/screenrecoder-playstoreDonate-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="ScreenRecoder" src="/img/ic_recoder_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/vault-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Vault" src="/img/ic_vault_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/accountbook-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="AccountBook" src="/img/ic_book_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/starwars-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Star Wars" src="/img/ic_plane_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/cardsolitaire-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Solitaire" src="/img/ic_card_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; xiuyuantech 2025 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Ported by <a href="https://xiuyuantech.github.io">XiuYuanTech</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;margin-right: -36px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="/star_xiuyuantech_on_github.html?user=xiuyuantech&repo=&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://xiuyuantech.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-165334855-1';
+    var _gaDomain = 'xiuyuantech.github.io';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- async load function -->
+
+<script>
+
+    function async(u, c) {
+
+      var d = document, t = 'script',
+
+          o = d.createElement(t),
+
+          s = d.getElementsByTagName(t)[0];
+
+      o.src = u;
+
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+
+      s.parentNode.insertBefore(o, s);
+
+    }
+
+</script>
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="https://xiuyuantech.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+
+<script type="text/javascript">
+  function adLoaded() {
+      var in_article_contaner = document.getElementById('in-article-ad');
+      if(in_article_contaner) {
+            // here you can make the height, I delete it first, then I make it again
+            console.log("in_article_contaner");
+            //in_article_contaner.innerHTML=``;
+      }
+      var square_contaner = document.getElementById('square-ad');
+      if(square_contaner){
+         console.log("square_contaner");
+         //square_contaner.innerHTML=``;
+      }
+  };
+
+  $(document).ready(function () {
+                try{
+                  //adLoaded();
+                }catch(err){
+                  onError();
+                }});
+
+</script>
+
+<script>
+function isSameDay(timeA,timeB) {
+   let dateA = new Date(timeA);
+   let dateB = new Date(timeB);
+   return (dateA.setHours(0, 0, 0, 0) == dateB.setHours(0, 0, 0, 0));
+   }
+   function CheckIsNotNullOrEmpty(value) {
+                //正则表达式用于判斷字符串是否全部由空格或换行符组成
+                 var reg = /^\s*$/
+                 //返回值为true表示不是空字符串
+                 return (value != null && value != undefined && !reg.test(value));
+   }
+   <!-- js 异常时不显示 -->
+   function onError(){
+        $("ins.adsbygoogle[data-ad-slot]").each(function(index,element){
+           $(element).remove();
+           });
+   }
+    <!-- 单个点击事件 -->
+    function bindClick(element,countKeyPre) {
+        $(element).click(function(){
+          console.log("dayKey：" + countKeyPre);
+          var count =  window.localStorage.countKeyPre;
+          console.log("count get： "+count);
+          if(CheckIsNotNullOrEmpty(count)){
+             count++;
+             console.log("count++： "+count);
+             window.localStorage.countKeyPre = count;
+             if(count >= 4){
+              console.log("count： "+count);
+              $(element).remove();
+              onError();
+              }
+          } else {
+            window.localStorage.countKeyPre = 0;
+          }
+          });
+
+        }
+        <!-- js 初始化 Ad  -->
+        function initAd(ip){
+        if(CheckIsNotNullOrEmpty(ip)){
+                //alert("not null ip:  "+ ip);
+                $("ins.adsbygoogle[data-ad-slot]").each(function(index,element){
+                            /*var data_ad_slot = $(element).attr("data-ad-slot");
+                            console.log("data_ad_slot：" + data_ad_slot);
+                            var hasAd = CheckIsNotNullOrEmpty(data_ad_slot);
+                            console.log("hasAd：" + hasAd);*/
+                            //if（hasAd){
+                               //console.log("not null data_ad_slot：" + data_ad_slot);
+                               var dayKeyPre = ip +"_day";
+                               var countKeyPre = ip +"_count";
+                               console.log("dayKey：" + dayKeyPre);
+                               console.log("dayKeyPre：" + window.localStorage.dayKeyPre);
+                               bindClick(element,countKeyPre);
+                               console.log("countKeyPre：" + countKeyPre);
+                               console.log("countKeyPre：" + window.localStorage.countKeyPre);
+                               var nowStr =  new Date().toLocaleDateString();
+                               var notSame = CheckIsNotNullOrEmpty(window.localStorage.dayKeyPre) && !isSameDay(window.localStorage.dayKeyPre,nowStr);
+                               console.log("同一天：" +  !notSame);
+                               if(notSame){
+                                window.localStorage.dayKeyPre = nowStr;
+                                window.localStorage.countKeyPre = 0;
+                                console.log("重置成功");
+                                }
+                                   if( CheckIsNotNullOrEmpty(window.localStorage.dayKeyPre)){
+                                      if(window.localStorage.countKeyPre >= 4){
+                                         $(element).remove();
+                                      }
+                                   } else {
+                                      window.localStorage.dayKeyPre = nowStr;
+                                    }
+                              //}
+                            });
+                        return;
+                    }
+                        onError();
+                 }
+
+                          $(document).ready(function () {
+                          try{
+                            //$.getJSON("https://api.ipify.org/?format=json", function(e) {
+                            // var ip = e.ip;
+                            //initAd(ip);
+                             //});
+                          }catch(err){
+                            onError();
+                          }});
+</script>
+
+
+
+</body>
+
+</html>

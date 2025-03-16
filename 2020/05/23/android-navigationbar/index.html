@@ -188,15 +188,12 @@
                     
 
                         
+                    
+
+                        
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/vnews/">vnews home</a>
                         </li>
-                        
-                    
-
-                        
-                    
-
                         
                     
 
@@ -211,8 +208,11 @@
                     
 
                         
+                    
+
+                        
                         <li>
-                            <a href="/vnews/">vnews home</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -283,7 +283,7 @@
 既然有，开发者就得去适配，我遇到比较麻烦的一个问题是获取屏幕（除了虚拟导航键以外的内容显示区域）高度（content）。<br>
 当时想着网上查找资料，判断是否有导航键。但是没有找到有效的方法。<br>
 最后只能转变思路，通过debug、看源码来获取高度来判断是否有导航键。</p>
-<h1>布局</h1>
+<h2 id="布局">布局</h2>
 <p>通过上面的图片大致可以知道 DecorView 里有三个子View分别是statusbar、content、navigationbar。<br>
 虽然每家厂商定制ui，navigationbar高度可能不同系统不同版本都会不一致。<br>
 但是整体框架上应该不会改动，总体布局上还是这个三个布局。<br>
@@ -357,7 +357,7 @@ navigationbar的高度 = window的高度 - content的bottom<br>
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">布局</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#状态栏"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">状态栏</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#虚拟导航栏"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">虚拟导航栏</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">总结</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#布局"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">布局</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#状态栏"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">状态栏</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#虚拟导航栏"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">虚拟导航栏</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#null"><span class="toc-nav-number"></span> <span class="toc-nav-text">总结</span></a>
         
         </div>
       </aside>
