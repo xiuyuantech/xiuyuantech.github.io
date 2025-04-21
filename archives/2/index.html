@@ -14,7 +14,7 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <meta name="robots" content="none">
     <meta name="author" content="xiuyuan">
-    <meta name="copyright" content="版权">
+    <meta name="copyright" content="@xiuyuan">
 	<meta data-n-head="ssr" data-hid="description" name="description" content="xiuyuantech是一个面向全球开发者的技术内容分享博客平台。我们通过技术文章和日常避坑经验记录，打造一个激发开发者思路灵感，帮助开发者沉淀减少踩坑，陪伴开发者成长的综合类技术博客。">
 
 	<meta property="og:site_name" content="xiuyuantech">
@@ -22,6 +22,7 @@
 	<meta property="og:description" content="xiuyuantech是一个面向全球开发者的技术内容分享博客平台。我们通过技术文章和日常避坑经验记录，打造一个激发开发者思路灵感，帮助开发者沉淀减少踩坑，陪伴开发者成长的综合类技术博客。">
 	<meta property="og:url" content="https://xiuyuantech.github.io/archives/2/">
 	<meta property="og:image" content="/img/xiuyuantech_blog.png">
+	<meta property="og:image:alt" content="xiuyuantech blog">
 
     
       <meta property="og:title" content="xiuyuantech是一个面向全球开发者的技术内容分享博客平台。在这个技术博客里你会发现一些文章涉及Flutter开发、Uniapp开发、Vue开发、安卓开发、IOS开发、后台开发和日常避坑指南等内容,这些文章可以激发阅读者的思路灵感,帮助阅读者沉淀减少踩坑,提高个人技能和工作效率。">
@@ -31,6 +32,7 @@
 	<meta name="twitter:site" content="https://xiuyuantech.github.io">
 	<meta name="twitter:description" content="xiuyuantech是一个面向全球开发者的技术内容分享博客平台。我们通过技术文章和日常避坑经验记录，打造一个激发开发者思路灵感，帮助开发者沉淀减少踩坑，陪伴开发者成长的综合类技术博客。">
 	<meta name="twitter:image" content="/img/xiuyuantech_blog.png">
+    <meta name="twitter:image:alt" content="xiuyuantech twitter">
 	<meta name="twitter:url" content="https://xiuyuantech.github.io/archives/2/">
 
     <title>
@@ -316,6 +318,12 @@
                     
 
                         
+                    
+
+                        
+                    
+
+                        
                         <li>
                             <a href="/archive/">Archives</a>
                         </li>
@@ -332,21 +340,15 @@
                     
 
                         
-                    
-
-                        
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/vnews/">vnews home</a>
                         </li>
                         
                     
 
                         
-                    
-
-                        
                         <li>
-                            <a href="/vnews/">vnews home</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -413,6 +415,60 @@
 
 <div class="post-preview">
 
+    <a href="/2024/06/19/android-jni-optimise/">
+        <h2 class="post-title">
+            [JNI] NDK SO Package Optimization
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            STL的使用
+对于C/C++的library，引用方式有2种：
+
+
+静态方式(static)
+
+
+动态方式(shared)
+
+
+其中，静态方式在编译时会将用到的相关代码直接复制到目的文件中；而动态方式则会将相关的代码打成so文件，以便多次引用。由于编译器在编译时并不能知道所有被引用的地方，所以同时会打入了很多不相关的代码。
+如果项目中引用library的函数较多时，用动态方式可以避免多次拷贝......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by xiuyuantech on
+            2024-06-19
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#JNI" title="JNI">JNI</a>
+            
+        </div>
+    
+
+</div>
+
+<div>
+  <hr>
+        <!--线上 feed_ad -->
+       <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-format="fluid"
+            data-ad-layout-key="-gw-3+1f-3d+2z"
+            data-ad-client="ca-pub-5651453694104340"
+            data-ad-slot="5039650242"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+ </div>
+
+<hr>
+
+<div class="post-preview">
+
     <a href="/2024/01/22/springboot3-kotlin-learn/">
         <h2 class="post-title">
             [SpringBoot] SpringBoot3 + Kotlin 踩坑指南
@@ -446,20 +502,6 @@ Spring Boot 3.0以上 需要Java 17，并且兼容 Java 20（包括 Java 20）�
     
 
 </div>
-
-<div>
-  <hr>
-        <!--线上 feed_ad -->
-       <ins class="adsbygoogle"
-            style="display:block"
-            data-ad-format="fluid"
-            data-ad-layout-key="-gw-3+1f-3d+2z"
-            data-ad-client="ca-pub-5651453694104340"
-            data-ad-slot="5039650242"></ins>
-        <script>
-             (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
- </div>
 
 <hr>
 
@@ -674,6 +716,20 @@ Gradle 插件： 本质上是可复用的 task，依赖于......
 
 </div>
 
+<div>
+  <hr>
+        <!--线上 feed_ad -->
+       <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-format="fluid"
+            data-ad-layout-key="-gw-3+1f-3d+2z"
+            data-ad-client="ca-pub-5651453694104340"
+            data-ad-slot="5039650242"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+ </div>
+
 <hr>
 
 <div class="post-preview">
@@ -712,20 +768,6 @@ Uri文件转存储输出流。
     
 
 </div>
-
-<div>
-  <hr>
-        <!--线上 feed_ad -->
-       <ins class="adsbygoogle"
-            style="display:block"
-            data-ad-format="fluid"
-            data-ad-layout-key="-gw-3+1f-3d+2z"
-            data-ad-client="ca-pub-5651453694104340"
-            data-ad-slot="5039650242"></ins>
-        <script>
-             (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
- </div>
 
 <hr>
 
@@ -777,41 +819,6 @@ Google官方Java代码风格参考规范链接， 中文翻译参考版链接。
         <div class="tags">
             
               <a href="/tags/#Android" title="Android">Android</a>
-            
-        </div>
-    
-
-</div>
-
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2022/03/23/life_epidemic-COVID-19/">
-        <h2 class="post-title">
-            [日常] 新冠疫情(COVID-19)感想
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            
-新冠疫情COVID-19全称为Corona Virus Disease 2019,是新型冠状病毒感染的缩写。
-
-疫情来源
-COVID-19（Corona Virus Disease 2019）是由‌SARS-CoV-2病毒‌（严重急性呼吸综合征冠状病毒2型）引发的急性呼吸道传染病‌。
-世界卫生组织（WHO）于2020年2月正式命名该疾病，病毒名称与SARS病毒同属冠状病毒科β属‌。
-起源：......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by xiuyuantech on
-            2022-03-23
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#日常" title="日常">日常</a>
             
         </div>
     
@@ -882,7 +889,7 @@ COVID-19（Corona Virus Disease 2019）是由‌SARS-CoV-2病毒‌（严重急�
             
         
             
-            <a href="/tags/#日常" title="日常" rel="5">日常</a>
+            <a href="/tags/#日常" title="日常" rel="6">日常</a>
             
         
             
@@ -957,7 +964,7 @@ COVID-19（Corona Virus Disease 2019）是由‌SARS-CoV-2病毒‌（严重急�
             
         </ul>
     </div>
-           <a href="https://www.vultr.com/?ref=8600728-6G">
+           <a href="https://www.vultr.com/?ref=9651306-9J">
             <img src="/img/vultr_banner_300x250.webp" width="300" height="250" style="cursor:pointer">
            </a >
 </section>
@@ -967,6 +974,10 @@ COVID-19（Corona Virus Disease 2019）是由‌SARS-CoV-2病毒‌（严重急�
   <h5>RECENT POSTS</h3>
   <div class="widget">
     <ul>
+      
+        <li>
+          <a href="/2025/04/12/life-robotcar/">[日常] 智能驾驶≠自动驾驶≠辅助驾驶</a>
+        </li>
       
         <li>
           <a href="/2025/03/26/life-jiakang-liveblog/">[日常] 直播网红甲亢哥</a>
@@ -982,10 +993,6 @@ COVID-19（Corona Virus Disease 2019）是由‌SARS-CoV-2病毒‌（严重急�
       
         <li>
           <a href="/2025/01/20/meet-android-native-hook/">[Android] Meet Android Native Hook(了解安卓原生钩子技术)</a>
-        </li>
-      
-        <li>
-          <a href="/2024/12/23/life-interview-experience/">[日常] 2024年年末Android开发面经</a>
         </li>
       
     </ul>
@@ -1009,7 +1016,7 @@ COVID-19（Corona Virus Disease 2019）是由‌SARS-CoV-2病毒‌（严重急�
     
         <li><a href="https://us.pingpongx.com/external/inviteReg.htm?inviteCode=7nEFBj032" target="_blank">Overseas Collection</a></li>
     
-        <li><a href="https://www.vultr.com/?ref=8600728-6G" target="_blank">VPS Vutlr</a></li>
+        <li><a href="https://www.vultr.com/?ref=9651306-9J" target="_blank">VPS Vutlr</a></li>
     
         <li><a href="/vnews/index.html" target="_blank">Vnews Blog</a></li>
     
@@ -1176,7 +1183,7 @@ COVID-19（Corona Virus Disease 2019）是由‌SARS-CoV-2病毒‌（严重急�
 
                 </ul>
                 <p class="copyright text-muted">
-                    Copyright &copy; xiuyuantech 2025 
+                    Copyright &copy; xiuyuantech 2020 - 2025
                     <br>
                     Theme by <a href="http://huangxuan.me">Hux</a> 
                     <span style="display: inline-block; margin: 0 5px;">
