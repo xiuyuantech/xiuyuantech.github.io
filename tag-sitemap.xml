@@ -3,6 +3,13 @@
 
 
     <url>
+        <loc>https://xiuyuantech.github.io/tags/VPS/</loc>
+        <lastmod>2025-09-10T13:57:27.625Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://xiuyuantech.github.io/tags/日常/</loc>
         <lastmod>2025-09-10T05:53:10.188Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -61,13 +68,6 @@
     <url>
         <loc>https://xiuyuantech.github.io/tags/SpringBoot/</loc>
         <lastmod>2025-03-16T05:02:29.747Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://xiuyuantech.github.io/tags/VPS/</loc>
-        <lastmod>2025-02-27T02:11:50.968Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
