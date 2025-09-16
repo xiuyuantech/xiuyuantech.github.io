@@ -319,6 +319,9 @@
                     
 
                         
+                    
+
+                        
                         <li>
                             <a href="/about/">About</a>
                         </li>
@@ -355,9 +358,6 @@
                         <li>
                             <a href="/vnews/">vnews home</a>
                         </li>
-                        
-                    
-
                         
                     
 
@@ -446,8 +446,8 @@
 <tbody>
 <tr>
 <td>官方pull_to_refresh</td>
-<td>仅支持手动刷新，不支持代码设置自动刷新</td>
-<td>仅支持手动加载更多，不支持代码设置触底时自动加载更多</td>
+<td>仅支持手动刷新，不支持自动刷新</td>
+<td>仅支持手动加载更多，不支持触底时自动加载更多</td>
 <td>支持</td>
 <td>不支持</td>
 <td>不支持</td>
@@ -458,7 +458,7 @@
 <tr>
 <td>@abner/refresh</td>
 <td>支持手动刷新/自动刷新</td>
-<td>支持手动加载更多，不支持代码设置触底时自动加载更多</td>
+<td>支持手动加载更多，不支持触底时自动加载更多</td>
 <td>支持</td>
 <td>支持</td>
 <td>支持</td>
@@ -488,7 +488,7 @@
 <h2 id="如何使用">如何使用</h2>
 <ul>
 <li>
-<p>优化过的pull_to_refresh下载地址：<a href="/apps/ohos_pull_to_refresh">ohos_pull_to_refresh</a></p>
+<p>优化过的pull_to_refresh下载地址：<a href="/apps/ohos_pull_to_refresh">ohos_pull_to_refresh</a>。</p>
 </li>
 <li>
 <p>将下载好的包解压后重命名为pulltorefresh，然后直接作为moudle引入项目根目录中<br>
@@ -496,6 +496,9 @@
 </li>
 <li>
 <p>在使用的地方导入需要的包，如<code>import { PullToRefreshV2 } from '@ohos/pulltorefresh</code>。</p>
+</li>
+<li>
+<p>设置自动刷新和自动加载更多，<code>PullToRefreshV2({ refreshConfigurator: new PullToRefreshConfigurator().setAutoRefresh(true).setAutoLoadMore() })</code>, 触底自动加载需要在List组件<code>onReachEnd</code>方法中调用<code>this.getUIContext().getHostContext()?.eventHub.emit(''autoLoadMore')</code>,其他使用方法参考<a href="https://gitcode.com/openharmony-sig/ohos_pull_to_refresh" target="_blank" rel="noopener">官方Demo</a>。</p>
 </li>
 <li>
 <p>引入<a href="https://ohpm.openharmony.cn/#/cn/detail/@ohmos%2Fjson-bigint" target="_blank" rel="noopener">json-bigint</a>，解决bigint/number精度缺失问题。</p>
