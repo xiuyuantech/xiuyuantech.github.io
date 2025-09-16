@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="xiuyuantech是一个面向全球开发者的技术内容分享博客平台。我们通过技术文章和日常避坑经验记录，打造一个激发开发者思路灵感，帮助开发者沉淀减少踩坑，陪伴开发者成长的综合类技术博客。">
+    <meta name="keyword" content="xiuyuan,xiuyuantech,blog,android,develop,vue,js,flutter,java,kotlin,compose,jetpack,uniapp,python,shell,bug记录,springboot,vps,jni,ndk,博客,安卓,开发,前端,面试,脚本,避坑,生活,日常,出海,开发者指南,安卓开发,后台开发,前端开发,技术博客,高级开发,中文技术,框架教程,学习资源,职业发展,开源项目">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <meta name="robots" content="none">
+    <meta name="author" content="xiuyuan">
+    <meta name="copyright" content="@xiuyuan">
+	<meta data-n-head="ssr" data-hid="description" name="description" content="xiuyuantech是一个面向全球开发者的技术内容分享博客平台。我们通过技术文章和日常避坑经验记录，打造一个激发开发者思路灵感，帮助开发者沉淀减少踩坑，陪伴开发者成长的综合类技术博客。">
+
+	<meta property="og:site_name" content="xiuyuantech">
+	<meta property="og:type" content="article">
+	<meta property="og:description" content="xiuyuantech是一个面向全球开发者的技术内容分享博客平台。我们通过技术文章和日常避坑经验记录，打造一个激发开发者思路灵感，帮助开发者沉淀减少踩坑，陪伴开发者成长的综合类技术博客。">
+	<meta property="og:url" content="https://xiuyuantech.github.io/2025/09/14/harmony-refresh-optimise/">
+	<meta property="og:image" content="https://xiuyuantech.github.io/img/xiuyuantech_blog.png">
+	<meta property="og:image:alt" content="xiuyuantech blog">
+
+    
+    <meta property="og:title" content="[Harmony] 鸿蒙开源组件pulltorefresh优化 - xiuyuantech是一个面向全球开发者的技术内容分享博客平台。在这个技术博客里你会发现一些文章涉及Flutter开发、Uniapp开发、Vue开发、安卓开发、IOS开发、后台开发和日常避坑指南等内容,这些文章可以激发阅读者的思路灵感,帮助阅读者沉淀减少踩坑,提高个人技能和工作效率。">
+    <meta name="twitter:title" content="[Harmony] 鸿蒙开源组件pulltorefresh优化 - xiuyuantech是一个面向全球开发者的技术内容分享博客平台。在这个技术博客里你会发现一些文章涉及Flutter开发、Uniapp开发、Vue开发、安卓开发、IOS开发、后台开发和日常避坑指南等内容,这些文章可以激发阅读者的思路灵感,帮助阅读者沉淀减少踩坑,提高个人技能和工作效率。">
+    
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="https://xiuyuantech.github.io">
+	<meta name="twitter:description" content="xiuyuantech是一个面向全球开发者的技术内容分享博客平台。我们通过技术文章和日常避坑经验记录，打造一个激发开发者思路灵感，帮助开发者沉淀减少踩坑，陪伴开发者成长的综合类技术博客。">
+	<meta name="twitter:image" content="https://xiuyuantech.github.io/img/xiuyuantech_blog.png">
+    <meta name="twitter:image:alt" content="xiuyuantech twitter">
+	<meta name="twitter:url" content="https://xiuyuantech.github.io/2025/09/14/harmony-refresh-optimise/">
+
+    <title>
+        
+          [Harmony] 鸿蒙开源组件pulltorefresh优化 - xiuyuantech是一个面向全球开发者的技术内容分享博客平台。在这个技术博客里你会发现一些文章涉及Flutter开发、Uniapp开发、Vue开发、安卓开发、IOS开发、后台开发和日常避坑指南等内容,这些文章可以激发阅读者的思路灵感,帮助阅读者沉淀减少踩坑,提高个人技能和工作效率。
+        
+    </title>
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "xiuyuantech blog",
+            "url": "https://xiuyuantech.github.io"
+        }
+    </script>
+
+    <script type="application/ld+json">
+	    {
+	      "@context": "https://schema.org",
+	      "@type": "Article",
+	      "headline": "[Harmony] 鸿蒙开源组件pulltorefresh优化",
+	      "image": [
+	        "https://xiuyuantech.github.io/img/xiuyuantech_blog.png",
+	        "https://xiuyuantech.github.io/img/xiuyuantech_blog.png",
+	        "https://xiuyuantech.github.io/img/xiuyuantech_blog.png"
+
+	       ],
+	      "datePublished": "2020-03-18T19:30:00+08:00",
+	      "dateModified": "2020-03-18T19:30:00+08:00",
+	      "author": [{
+	          "@type": "Person",
+	          "name": "xiuyuan",
+	          "url": "https://xiuyuantech.github.io/about"
+	        }],
+          "publisher": {
+              "@type": "Person",
+              "name": "xiuyuantech blog",
+              "url": "https://xiuyuantech.github.io"
+            }
+	    }
+	</script>
+
+	<script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "item": {
+                "@type": "Course",
+                "url":"https://xiuyuantech.github.io",
+                "name": "Home",
+                "description": "This is the xiuyuantech blog homepage where you will find the list of articles",
+                "provider": {
+                  "@type": "Person",
+                  "name": "Home Page",
+                  "sameAs": "https://xiuyuantech.github.io"
+               }
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "item": {
+                "@type": "Course",
+                "url":"https://xiuyuantech.github.io/about",
+                "name": "About",
+                "description": "This is information about the blogger",
+                "provider": {
+                    "@type": "Person",
+                    "name": "About Page",
+                    "sameAs": "https://xiuyuantech.github.io/about"
+               }
+             }
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "item": {
+                "@type": "Course",
+                "url":"https://xiuyuantech.github.io/archive",
+                "name": "Archive",
+                "description": "Technical articles and daily life history archive",
+                "provider": {
+                  "@type": "Person",
+                  "name": "Archive Page",
+                  "sameAs": "https://xiuyuantech.github.io/archive"
+               }
+              }
+            },
+             {
+               "@type": "ListItem",
+               "position": 4,
+               "item": {
+                 "@type": "Course",
+                 "url":"https://xiuyuantech.github.io/tags",
+                 "name": "Tags",
+                 "description": "Tagging various article categories",
+                 "provider": {
+                   "@type": "Person",
+                   "name": "Tags Page",
+                   "sameAs": "https://xiuyuantech.github.io/tags"
+                }
+               }
+             }
+          ]
+        }
+    </script>
+
+    <link rel="canonical" href="https://xiuyuantech.github.io/2025/09/14/harmony-refresh-optimise/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+
+    <!-- Google Adsense -->
+
+    
+
+    <!--
+     <style>
+           @media (min-width: 350px) {
+             .infeed {
+               height: 180px;
+             }
+          @media (min-width: 500px) {
+             .infeed {
+               height: 130px;
+             }
+           }
+          @media (min-width: 800px) {
+             .infeed {
+               height: 200px;
+             }
+           }
+
+         </style>
+     -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-5651453694104340",
+             enable_page_level_ads: true
+             });
+    </script>
+    <!-- 获取ip <script async src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>  -->
+
+    
+
+</head>
+
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('')
+            /*post*/
+        
+    }
+    
+    #signature{
+        background-image: url('/img/signature/BeanTechSign-white.png');
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Harmony" title="Harmony">Harmony</a>
+                            
+                        </div>
+                        <h1>[Harmony] 鸿蒙开源组件pulltorefresh优化</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by xiuyuantech on
+                            2025-09-14
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">XiuYuanTech</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/vnews/">vnews home</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <blockquote>
+<p>PullToRefresh是一款OpenHarmony环境下可用的下拉刷新、上拉加载组件。<br>
+支持设置内置动画的各种属性，支持设置自定义动画，支持lazyForEarch的数据作为数据源。<br>
+官方代码仓库：<a href="https://gitcode.com/openharmony-sig/ohos_pull_to_refresh" target="_blank" rel="noopener">https://gitcode.com/openharmony-sig/ohos_pull_to_refresh</a></p>
+</blockquote>
+<h2 id="背景摘要">背景摘要</h2>
+<p>产品需求需要一个长列表，支持下拉刷新和加载更多。经过多方搜索找到两个目前使用最广的开源库，一个是官方提供的案例<a href="https://gitcode.com/openharmony-sig/ohos_pull_to_refresh" target="_blank" rel="noopener"><code>PullToRefresh</code></a>, 一个是第三方开源库<a href="https://ohpm.openharmony.cn/#/cn/detail/@abner%2Frefresh" target="_blank" rel="noopener"><code>@abner/refresh</code></a>。<br>
+经过我多次调研Demo发现有不少坑，目前这两个都满足不了我们的需求，重新自定义又太耗时间，所以直接在官方库上作修改优化。<code>至于目前这两个库的优缺点后面会作介绍，优化后支持自动刷新和自动加载更多</code>。<br>
+视频动画如下：</p>
+<div style="display: flex; justify-content: center;">
+  <video src="/img/ohos_refresh.mp4" width="640" height="360" controls autoplay muted loop></video>
+</div>
+<h2 id="功能对比">功能对比</h2>
+<table>
+<thead>
+<tr>
+<th>库名</th>
+<th>下拉刷新</th>
+<th>加载更多</th>
+<th>自定义头尾部</th>
+<th>下滑进入二楼/半楼功能</th>
+<th>缺省页设置（空布局/错误布局</th>
+<th>分组吸顶效果</th>
+<th>侧滑效果</th>
+<th>字段如bigint/number</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>官方pull_to_refresh</td>
+<td>仅支持手动刷新，不支持代码设置自动刷新</td>
+<td>仅支持手动加载更多，不支持代码设置触底时自动加载更多</td>
+<td>支持</td>
+<td>不支持</td>
+<td>不支持</td>
+<td>不支持</td>
+<td>不支持，需要根据List组件来自己实现</td>
+<td>不支持，会缺失精度需要根据<a href="https://ohpm.openharmony.cn/#/cn/detail/@ohmos%2Fjson-bigint" target="_blank" rel="noopener">json-bigint</a>来实现</td>
+</tr>
+<tr>
+<td>@abner/refresh</td>
+<td>支持手动刷新/自动刷新</td>
+<td>支持手动加载更多，不支持代码设置触底时自动加载更多</td>
+<td>支持</td>
+<td>支持</td>
+<td>支持</td>
+<td>ListView支持</td>
+<td>ListView支持</td>
+<td>不支持，会缺失精度需要根据<a href="https://ohpm.openharmony.cn/#/cn/detail/@ohmos%2Fjson-bigint" target="_blank" rel="noopener">json-bigint</a>来实现</td>
+</tr>
+<tr>
+<td>优化pull_to_refresh</td>
+<td>支持手动刷新/自动刷新</td>
+<td>支持手动加载更多/触底时自动加载更多</td>
+<td>支持</td>
+<td>不支持</td>
+<td>不支持</td>
+<td>不支持</td>
+<td>不支持，需要根据List组件来实现</td>
+<td>不支持，会缺失精度需要根据<a href="https://ohpm.openharmony.cn/#/cn/detail/@ohmos%2Fjson-bigint" target="_blank" rel="noopener">json-bigint</a>来实现</td>
+</tr>
+</tbody>
+</table>
+<div id="in-article-ad">
+    <!--线上 in_article_ad -->
+  <ins class="adsbygoogle infeed" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5651453694104340" data-ad-slot="6951497715">
+  </ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<h2 id="如何使用">如何使用</h2>
+<ul>
+<li>
+<p>优化过的pull_to_refresh下载地址：<a href="/apps/ohos_pull_to_refresh">ohos_pull_to_refresh</a></p>
+</li>
+<li>
+<p>将下载好的包解压后重命名为pulltorefresh，然后直接作为moudle引入项目根目录中<br>
+在<code>build-profile.json5</code>中的<code>moudles</code>字段添加<code>{ 'name':'pulltorefresh', 'srcPath':'./pulltorefresh' }</code>,然后在<code>oh-package.json5</code>中的<code>dependencies</code>字段添加<code>@ohos/pulltorefresh:'file:./pulltorefresh'</code>。</p>
+</li>
+<li>
+<p>在使用的地方导入需要的包，如<code>import { PullToRefreshV2 } from '@ohos/pulltorefresh</code>。</p>
+</li>
+<li>
+<p>引入<a href="https://ohpm.openharmony.cn/#/cn/detail/@ohmos%2Fjson-bigint" target="_blank" rel="noopener">json-bigint</a>，解决bigint/number精度缺失问题。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//关键代码</span><br><span class="line">axios.create(&#123;</span><br><span class="line">  ...</span><br><span class="line">  transformRespose:[&#123;</span><br><span class="line">    (data:ESObject): ESObject =&gt; &#123;</span><br><span class="line">      try&#123;</span><br><span class="line">          return JSONbig.parse(data)</span><br><span class="line">        &#125;catch(err)&#123;</span><br><span class="line">         return data</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;],</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><code>如果包解压后重命名为xxx，则build-profile.json5中的moudles字段和oh-package.json5中的dependencies字段需要作对应的修改xxx。</code></p>
+<h2 id="官方链接">官方链接</h2>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>地址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>开源代码仓库</td>
+<td><a href="https://gitee.com/openharmony" target="_blank" rel="noopener">https://gitee.com/openharmony</a></td>
+</tr>
+<tr>
+<td>项目官网</td>
+<td><a href="https://www.openharmony.cn" target="_blank" rel="noopener">https://www.openharmony.cn</a></td>
+</tr>
+<tr>
+<td>开发者平台</td>
+<td><a href="https://developer.harmonyos.com" target="_blank" rel="noopener">https://developer.harmonyos.com</a></td>
+</tr>
+<tr>
+<td>三方库中心仓</td>
+<td><a href="https://ohpm.openharmony.cn/#/cn/home" target="_blank" rel="noopener">https://ohpm.openharmony.cn</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="总结建议">总结建议</h2>
+<ul>
+<li>
+<p>简单场景‌：优先选择原生Refresh组件，减少第三方依赖。</p>
+</li>
+<li>
+<p>复杂需求‌：若需上拉加载或特殊动效，可根据需要评估本站优化过的 <a href="/apps/ohos_pull_to_refresh">ohos_pull_to_refresh</a> 和 <a href="https://ohpm.openharmony.cn/#/cn/detail/@abner%2Frefresh" target="_blank" rel="noopener">@abner/refresh</a>。</p>
+</li>
+</ul>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2025/09/06/harmony-custom-ui/" data-toggle="tooltip" data-placement="top" title="[Harmony] 鸿蒙自定义组件">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#背景摘要"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">背景摘要</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#功能对比"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">功能对比</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#如何使用"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">如何使用</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#官方链接"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">官方链接</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#总结建议"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">总结建议</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Harmony" title="Harmony">Harmony</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://us.pingpongx.com/external/inviteReg.htm?inviteCode=7nEFBj032" target="_blank">Overseas Collection</a></li>
+                    
+                        <li><a href="https://www.vultr.com/?ref=9651306-9J" target="_blank">VPS Vutlr</a></li>
+                    
+                        <li><a href="/vnews/index.html" target="_blank">Vnews Blog</a></li>
+                    
+                        <li><a href="http://blog.kaijun.rocks" target="_blank">Kaijun&#39;s Blog</a></li>
+                    
+                        <li><a href="http://huangxuan.me" target="_blank">Hux Blog</a></li>
+                    
+                        <li><a href="#" target="_blank">It Helps SEO</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'right',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+     <div class="row" style="margin-top:-50px;float:right;font-size:10px;margin-left:30px;padding-right:30px;">
+            
+            <!-- 不蒜子统计 -->
+            <span id="busuanzi_container_site_pv">
+            总访问量：<span id="busuanzi_value_site_pv">0</span>次
+            </span>
+            <span>|</span>
+            <span id="busuanzi_container_site_uv">
+            访客数：<span id="busuanzi_value_site_uv">0</span>人
+            </span>
+            
+             <!-- 不蒜子统计 -->
+             <span>|</span>
+              <span id="busuanzi_container_page_pv" style='display:none'">
+              <i class="icon-smile icon"></i>本文阅读数：<span id="busuanzi_value_page_pv">0</span>次
+              </span>
+            
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            
+     </div>
+        <div class="row">
+           <!-- horizontal_ad/bottom_ad -->
+           <ul class="list-inline text-center">
+            
+                <ins class="adsbygoogle"  style="display:block" data-ad-client="ca-pub-5651453694104340"  data-ad-slot="3310538124"  data-ad-format="auto" data-full-width-responsive="true"></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+            
+            </ul>
+        </div>
+        <br><br>
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/xiuyuantech">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://www.linkedin.com/in/xiuyuantech">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                </br>
+                <ul class="list-inline text-center">
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/geekvideo_release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Clear" src="/img/ic_geekvideo_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/clear_googleplay_1.5.0_0530-1704_release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Clear" src="/img/ic_clear_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/videoeditor-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="VideoEditor" src="/img/ic_videoclip_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/screenrecoder-playstoreDonate-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="ScreenRecoder" src="/img/ic_recoder_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/vault-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Vault" src="/img/ic_vault_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/accountbook-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="AccountBook" src="/img/ic_book_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/starwars-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Star Wars" src="/img/ic_plane_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/cardsolitaire-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Solitaire" src="/img/ic_card_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; xiuyuantech 2020 - 2025
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Ported by <a href="https://xiuyuantech.github.io">XiuYuanTech</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;margin-right: -36px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="/star_xiuyuantech_on_github.html?user=xiuyuantech&repo=&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://xiuyuantech.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-165334855-1';
+    var _gaDomain = 'xiuyuantech.github.io';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- async load function -->
+
+<script>
+
+    function async(u, c) {
+
+      var d = document, t = 'script',
+
+          o = d.createElement(t),
+
+          s = d.getElementsByTagName(t)[0];
+
+      o.src = u;
+
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+
+      s.parentNode.insertBefore(o, s);
+
+    }
+
+</script>
+
+<script>
+    //监听ad是否填充
+    var ads = document.querySelectorAll('.adsbygoogle');
+    ads.forEach(ad => {
+        const observer = new MutationObserver(mutatuins => {
+            mutatuins.forEach(record => {
+                if(record.type === 'attributes'){
+                    const attrName = record.attributeName;
+                    const attrValue = record.target.getAttribute(attrName);
+                    if('data-ad-status'===attrName && 'unfilled'===attrValue){
+                          // 获取子元素
+                          var child = record.target;
+                          // 获取父元素
+                          var parent = child.parentElement;
+                          if('DIV' ===parent.nodeName || 'div' ===parent.nodeName ){
+                            // 修改父元素的样式
+                            parent.style.display = 'none';
+                          }
+                    } else if('data-ad-status'===attrName && 'filled'===attrValue){
+                          // 获取子元素
+                          var child = record.target;
+                          // 获取父元素
+                          var parent = child.parentElement;
+                          if('DIV' ===parent.nodeName || 'div' ===parent.nodeName ){
+                            // 修改父元素的样式
+                            parent.style.display = 'block';
+                          }
+                    }
+                }
+            });
+        });
+        observer.observe(ad,{
+           attributes: true,
+           attributeFilter: ['data-ad-status']
+        });
+    })
+</script>
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="https://xiuyuantech.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+
+<script type="text/javascript">
+  function adLoaded() {
+      var in_article_contaner = document.getElementById('in-article-ad');
+      if(in_article_contaner) {
+            // here you can make the height, I delete it first, then I make it again
+            console.log("in_article_contaner");
+            //in_article_contaner.innerHTML=``;
+      }
+      var square_contaner = document.getElementById('square-ad');
+      if(square_contaner){
+         console.log("square_contaner");
+         //square_contaner.innerHTML=``;
+      }
+  };
+
+  $(document).ready(function () {
+                try{
+                  //adLoaded();
+                }catch(err){
+                  onError();
+                }});
+
+</script>
+
+<script>
+function isSameDay(timeA,timeB) {
+   let dateA = new Date(timeA);
+   let dateB = new Date(timeB);
+   return (dateA.setHours(0, 0, 0, 0) == dateB.setHours(0, 0, 0, 0));
+   }
+   function CheckIsNotNullOrEmpty(value) {
+                //正则表达式用于判斷字符串是否全部由空格或换行符组成
+                 var reg = /^\s*$/
+                 //返回值为true表示不是空字符串
+                 return (value != null && value != undefined && !reg.test(value));
+   }
+   <!-- js 异常时不显示 -->
+   function onError(){
+        $("ins.adsbygoogle[data-ad-slot]").each(function(index,element){
+           $(element).remove();
+           });
+   }
+    <!-- 单个点击事件 -->
+    function bindClick(element,countKeyPre) {
+        $(element).click(function(){
+          console.log("dayKey：" + countKeyPre);
+          var count =  window.localStorage.countKeyPre;
+          console.log("count get： "+count);
+          if(CheckIsNotNullOrEmpty(count)){
+             count++;
+             console.log("count++： "+count);
+             window.localStorage.countKeyPre = count;
+             if(count >= 4){
+              console.log("count： "+count);
+              $(element).remove();
+              onError();
+              }
+          } else {
+            window.localStorage.countKeyPre = 0;
+          }
+          });
+
+        }
+        <!-- js 初始化 Ad  -->
+        function initAd(ip){
+        if(CheckIsNotNullOrEmpty(ip)){
+                //alert("not null ip:  "+ ip);
+                $("ins.adsbygoogle[data-ad-slot]").each(function(index,element){
+                            /*var data_ad_slot = $(element).attr("data-ad-slot");
+                            console.log("data_ad_slot：" + data_ad_slot);
+                            var hasAd = CheckIsNotNullOrEmpty(data_ad_slot);
+                            console.log("hasAd：" + hasAd);*/
+                            //if（hasAd){
+                               //console.log("not null data_ad_slot：" + data_ad_slot);
+                               var dayKeyPre = ip +"_day";
+                               var countKeyPre = ip +"_count";
+                               console.log("dayKey：" + dayKeyPre);
+                               console.log("dayKeyPre：" + window.localStorage.dayKeyPre);
+                               bindClick(element,countKeyPre);
+                               console.log("countKeyPre：" + countKeyPre);
+                               console.log("countKeyPre：" + window.localStorage.countKeyPre);
+                               var nowStr =  new Date().toLocaleDateString();
+                               var notSame = CheckIsNotNullOrEmpty(window.localStorage.dayKeyPre) && !isSameDay(window.localStorage.dayKeyPre,nowStr);
+                               console.log("同一天：" +  !notSame);
+                               if(notSame){
+                                window.localStorage.dayKeyPre = nowStr;
+                                window.localStorage.countKeyPre = 0;
+                                console.log("重置成功");
+                                }
+                                   if( CheckIsNotNullOrEmpty(window.localStorage.dayKeyPre)){
+                                      if(window.localStorage.countKeyPre >= 4){
+                                         $(element).remove();
+                                      }
+                                   } else {
+                                      window.localStorage.dayKeyPre = nowStr;
+                                    }
+                              //}
+                            });
+                        return;
+                    }
+                        onError();
+                 }
+
+                          $(document).ready(function () {
+                          try{
+                            //$.getJSON("https://api.ipify.org/?format=json", function(e) {
+                            // var ip = e.ip;
+                            //initAd(ip);
+                             //});
+                          }catch(err){
+                            onError();
+                          }});
+</script>
+
+
+
+</body>
+
+</html>

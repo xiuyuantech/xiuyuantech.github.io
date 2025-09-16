@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="xiuyuantech是一个面向全球开发者的技术内容分享博客平台。我们通过技术文章和日常避坑经验记录，打造一个激发开发者思路灵感，帮助开发者沉淀减少踩坑，陪伴开发者成长的综合类技术博客。">
+    <meta name="keyword" content="xiuyuan,xiuyuantech,blog,android,develop,vue,js,flutter,java,kotlin,compose,jetpack,uniapp,python,shell,bug记录,springboot,vps,jni,ndk,博客,安卓,开发,前端,面试,脚本,避坑,生活,日常,出海,开发者指南,安卓开发,后台开发,前端开发,技术博客,高级开发,中文技术,框架教程,学习资源,职业发展,开源项目">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <meta name="robots" content="none">
+    <meta name="author" content="xiuyuan">
+    <meta name="copyright" content="@xiuyuan">
+	<meta data-n-head="ssr" data-hid="description" name="description" content="xiuyuantech是一个面向全球开发者的技术内容分享博客平台。我们通过技术文章和日常避坑经验记录，打造一个激发开发者思路灵感，帮助开发者沉淀减少踩坑，陪伴开发者成长的综合类技术博客。">
+
+	<meta property="og:site_name" content="xiuyuantech">
+	<meta property="og:type" content="article">
+	<meta property="og:description" content="xiuyuantech是一个面向全球开发者的技术内容分享博客平台。我们通过技术文章和日常避坑经验记录，打造一个激发开发者思路灵感，帮助开发者沉淀减少踩坑，陪伴开发者成长的综合类技术博客。">
+	<meta property="og:url" content="https://xiuyuantech.github.io/2025/09/06/harmony-custom-ui/">
+	<meta property="og:image" content="https://xiuyuantech.github.io/img/xiuyuantech_blog.png">
+	<meta property="og:image:alt" content="xiuyuantech blog">
+
+    
+    <meta property="og:title" content="[Harmony] 鸿蒙自定义组件 - xiuyuantech是一个面向全球开发者的技术内容分享博客平台。在这个技术博客里你会发现一些文章涉及Flutter开发、Uniapp开发、Vue开发、安卓开发、IOS开发、后台开发和日常避坑指南等内容,这些文章可以激发阅读者的思路灵感,帮助阅读者沉淀减少踩坑,提高个人技能和工作效率。">
+    <meta name="twitter:title" content="[Harmony] 鸿蒙自定义组件 - xiuyuantech是一个面向全球开发者的技术内容分享博客平台。在这个技术博客里你会发现一些文章涉及Flutter开发、Uniapp开发、Vue开发、安卓开发、IOS开发、后台开发和日常避坑指南等内容,这些文章可以激发阅读者的思路灵感,帮助阅读者沉淀减少踩坑,提高个人技能和工作效率。">
+    
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="https://xiuyuantech.github.io">
+	<meta name="twitter:description" content="xiuyuantech是一个面向全球开发者的技术内容分享博客平台。我们通过技术文章和日常避坑经验记录，打造一个激发开发者思路灵感，帮助开发者沉淀减少踩坑，陪伴开发者成长的综合类技术博客。">
+	<meta name="twitter:image" content="https://xiuyuantech.github.io/img/xiuyuantech_blog.png">
+    <meta name="twitter:image:alt" content="xiuyuantech twitter">
+	<meta name="twitter:url" content="https://xiuyuantech.github.io/2025/09/06/harmony-custom-ui/">
+
+    <title>
+        
+          [Harmony] 鸿蒙自定义组件 - xiuyuantech是一个面向全球开发者的技术内容分享博客平台。在这个技术博客里你会发现一些文章涉及Flutter开发、Uniapp开发、Vue开发、安卓开发、IOS开发、后台开发和日常避坑指南等内容,这些文章可以激发阅读者的思路灵感,帮助阅读者沉淀减少踩坑,提高个人技能和工作效率。
+        
+    </title>
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "xiuyuantech blog",
+            "url": "https://xiuyuantech.github.io"
+        }
+    </script>
+
+    <script type="application/ld+json">
+	    {
+	      "@context": "https://schema.org",
+	      "@type": "Article",
+	      "headline": "[Harmony] 鸿蒙自定义组件",
+	      "image": [
+	        "https://xiuyuantech.github.io/img/xiuyuantech_blog.png",
+	        "https://xiuyuantech.github.io/img/xiuyuantech_blog.png",
+	        "https://xiuyuantech.github.io/img/xiuyuantech_blog.png"
+
+	       ],
+	      "datePublished": "2020-03-18T19:30:00+08:00",
+	      "dateModified": "2020-03-18T19:30:00+08:00",
+	      "author": [{
+	          "@type": "Person",
+	          "name": "xiuyuan",
+	          "url": "https://xiuyuantech.github.io/about"
+	        }],
+          "publisher": {
+              "@type": "Person",
+              "name": "xiuyuantech blog",
+              "url": "https://xiuyuantech.github.io"
+            }
+	    }
+	</script>
+
+	<script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "item": {
+                "@type": "Course",
+                "url":"https://xiuyuantech.github.io",
+                "name": "Home",
+                "description": "This is the xiuyuantech blog homepage where you will find the list of articles",
+                "provider": {
+                  "@type": "Person",
+                  "name": "Home Page",
+                  "sameAs": "https://xiuyuantech.github.io"
+               }
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "item": {
+                "@type": "Course",
+                "url":"https://xiuyuantech.github.io/about",
+                "name": "About",
+                "description": "This is information about the blogger",
+                "provider": {
+                    "@type": "Person",
+                    "name": "About Page",
+                    "sameAs": "https://xiuyuantech.github.io/about"
+               }
+             }
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "item": {
+                "@type": "Course",
+                "url":"https://xiuyuantech.github.io/archive",
+                "name": "Archive",
+                "description": "Technical articles and daily life history archive",
+                "provider": {
+                  "@type": "Person",
+                  "name": "Archive Page",
+                  "sameAs": "https://xiuyuantech.github.io/archive"
+               }
+              }
+            },
+             {
+               "@type": "ListItem",
+               "position": 4,
+               "item": {
+                 "@type": "Course",
+                 "url":"https://xiuyuantech.github.io/tags",
+                 "name": "Tags",
+                 "description": "Tagging various article categories",
+                 "provider": {
+                   "@type": "Person",
+                   "name": "Tags Page",
+                   "sameAs": "https://xiuyuantech.github.io/tags"
+                }
+               }
+             }
+          ]
+        }
+    </script>
+
+    <link rel="canonical" href="https://xiuyuantech.github.io/2025/09/06/harmony-custom-ui/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+
+    <!-- Google Adsense -->
+
+    
+
+    <!--
+     <style>
+           @media (min-width: 350px) {
+             .infeed {
+               height: 180px;
+             }
+          @media (min-width: 500px) {
+             .infeed {
+               height: 130px;
+             }
+           }
+          @media (min-width: 800px) {
+             .infeed {
+               height: 200px;
+             }
+           }
+
+         </style>
+     -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-5651453694104340",
+             enable_page_level_ads: true
+             });
+    </script>
+    <!-- 获取ip <script async src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>  -->
+
+    
+
+</head>
+
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('')
+            /*post*/
+        
+    }
+    
+    #signature{
+        background-image: url('/img/signature/BeanTechSign-white.png');
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Harmony" title="Harmony">Harmony</a>
+                            
+                        </div>
+                        <h1>[Harmony] 鸿蒙自定义组件</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by xiuyuantech on
+                            2025-09-06
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">XiuYuanTech</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/vnews/">vnews home</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <blockquote>
+<p>在ArkUI中，UI显示的内容均为组件，由框架直接提供的称为系统组件，由开发者定义的称为自定义组件。</p>
+<p>在进行 UI 界面开发时，通常不是简单的将系统组件进行组合使用，而是需要考虑代码可复用性、业务逻辑与UI分离，后续版本演进等因素。</p>
+<p>因此，将UI和部分业务逻辑封装成自定义组件是不可或缺的能力。</p>
+<p>自定义组件具有以下特点：</p>
+<p>可组合：允许开发者组合使用系统组件、及其属性和方法。</p>
+<p>可重用：自定义组件可以被其他组件重用，并作为不同的实例在不同的父组件或容器中使用。</p>
+<p>数据驱动UI更新：通过状态变量的改变，来驱动UI的刷新。</p>
+<p>模块化：让代码结构更清晰，便于团队协作。</p>
+</blockquote>
+<h2 id="实现方式">实现方式</h2>
+<ul>
+<li>
+<p>系统组件组合</p>
+<p>当系统提供的标准组件（如Column、Row、Flex、Button、Text、Image等）能够满足我们的需求时，就需要使用系统组件组合自定义组件。</p>
+</li>
+<li>
+<p>自定义控件</p>
+<p>当系统提供的标准组件（如Button、Text、Image、Radio、Checkbox等）无法满足我们的需求时，就需要使用自定义组件。</p>
+</li>
+<li>
+<p>自定义布局</p>
+<p>当系统提供的标准布局（如Column、Row、Flex等）无法满足我们的需求时，就需要使用自定义布局。</p>
+<p>这就像是建筑师需要设计特殊形状的房间时，不能只用标准的长方形，而需要自己测量和安排每个部件的位置。</p>
+</li>
+</ul>
+<div id="in-article-ad">
+    <!--线上 in_article_ad -->
+  <ins class="adsbygoogle infeed" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5651453694104340" data-ad-slot="6951497715">
+  </ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<h2 id="基本结构">基本结构</h2>
+<p>1、 struct<br>
+struct：自定义组件基于struct实现，struct + 自定义组件名 + {…}的组合构成自定义组件，不能有继承关系。对于struct的实例化，可以省略new。</p>
+<p>注意：自定义组件名、类名、函数名不能和系统组件名相同。</p>
+<p>2、 @Component<br>
+@Component装饰器仅能装饰struct关键字声明的数据结构。struct被@Component装饰后具备组件化的能力，需要实现build方法描述UI，一个struct只能被一个@Component装饰。</p>
+<p>3、 build()函数<br>
+build()函数用于定义自定义组件的声明式UI描述，自定义组件必须定义build()函数。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">@Entry装饰的自定义组件，其build()函数下的根节点唯一且必要，且必须为容器组件，其中ForEach禁止作为根节点。</span><br><span class="line"></span><br><span class="line">@Component装饰的自定义组件，其build()函数下的根节点唯一且必要，可以为非容器组件，其中ForEach禁止作为根节点。</span><br><span class="line"></span><br><span class="line">在build函数中：</span><br><span class="line"></span><br><span class="line">不允许声明本地变量</span><br><span class="line"></span><br><span class="line">不允许在UI描述里直接使用console.info，但允许在方法或者函数里使用</span><br><span class="line"></span><br><span class="line">不允许创建本地的作用域</span><br><span class="line"></span><br><span class="line">不允许调用没有用@Builder装饰的方法，允许系统组件的参数是TS方法的返回值</span><br><span class="line"></span><br><span class="line">不允许switch语法，如果需要使用条件判断，请使用if</span><br><span class="line"></span><br><span class="line">不允许使用表达式</span><br><span class="line"></span><br><span class="line">不允许直接改变状态变量</span><br></pre></td></tr></table></figure>
+<h2 id="系统组件组合">系统组件组合</h2>
+<p>下面是一个用户卡片组件的例子，它接收用户名、头像和在线状态等信息：</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"> @Component</span><br><span class="line">struct UserCard &#123;</span><br><span class="line">  @Prop userName: string</span><br><span class="line">  @Prop avatarUrl: string</span><br><span class="line">  @Prop isOnline: boolean = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">  build() &#123;</span><br><span class="line">    Row() &#123;</span><br><span class="line">      Image(<span class="keyword">this</span>.avatarUrl)</span><br><span class="line">        .width(<span class="number">50</span>)</span><br><span class="line">        .height(<span class="number">50</span>)</span><br><span class="line">        .borderRadius(<span class="number">25</span>)</span><br><span class="line">      </span><br><span class="line">      Column() &#123;</span><br><span class="line">        Text(<span class="keyword">this</span>.userName)</span><br><span class="line">          .fontSize(<span class="number">16</span>)</span><br><span class="line">          .fontWeight(FontWeight.Bold)</span><br><span class="line">        </span><br><span class="line">        Text(<span class="keyword">this</span>.isOnline ? <span class="string">'在线'</span> : <span class="string">'离线'</span>)</span><br><span class="line">          .fontSize(<span class="number">12</span>)</span><br><span class="line">          .fontColor(<span class="keyword">this</span>.isOnline ? <span class="string">'#10B981'</span> : <span class="string">'#6B7280'</span>)</span><br><span class="line">      &#125;</span><br><span class="line">      .alignItems(HorizontalAlign.Start)</span><br><span class="line">      .margin(&#123; <span class="attr">left</span>: <span class="number">12</span> &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    .padding(<span class="number">16</span>)</span><br><span class="line">    .backgroundColor(<span class="string">'#FFFFFF'</span>)</span><br><span class="line">    .borderRadius(<span class="number">12</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="自定义控件">自定义控件</h2>
+<p>当系统提供的标准布局组件（如Column、Row、Flex、Button、Text、Image、Radio、Checkbox等）无法满足我们的需求时，就需要使用Canvas自定义组件。<br>
+视频动画如下：</p>
+  <div style="display: flex; justify-content: center;">
+    <video src="/img/ohos_air.mp4" width="640" height="360" controls autoplay muted loop></video>
+  </div>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; ArrayList &#125; <span class="keyword">from</span> <span class="string">'@kit.ArkTS'</span></span><br><span class="line"><span class="keyword">import</span> &#123; Rect &#125; <span class="keyword">from</span> <span class="string">'@ohos.UiTest'</span></span><br><span class="line"></span><br><span class="line">@Preview</span><br><span class="line">@ComponentV2</span><br><span class="line"><span class="keyword">export</span> struct AirVelocity &#123;</span><br><span class="line">  @Param @Once minLevel: number = <span class="number">0</span></span><br><span class="line">  @Param @Once maxLevel: number = <span class="number">6</span></span><br><span class="line">  @Param @Once currentLevel: number = <span class="number">3</span></span><br><span class="line">  @Param normalColor: string | number = <span class="string">'#f5f5f5'</span></span><br><span class="line">  @Param selectedColor: string | number = <span class="string">'#005eff'</span></span><br><span class="line">  @Param backGroundColor: string | number = Color.White</span><br><span class="line">  @Local private itemHeightRate: number = <span class="number">0.150</span></span><br><span class="line">  @Local private itemHeight: number = <span class="number">22</span></span><br><span class="line">  @Local private itemWidth: number = <span class="number">0</span></span><br><span class="line">  @Local private blankHeightRate: number = <span class="number">0.019</span></span><br><span class="line">  @Local private blankHeight: number = <span class="number">3</span></span><br><span class="line">  @Param paddingAll: number = <span class="number">5</span></span><br><span class="line">  @Param radiusAll: number = <span class="number">5</span></span><br><span class="line">  @Local private settings: RenderingContextSettings = <span class="keyword">new</span> RenderingContextSettings(<span class="literal">true</span>)</span><br><span class="line">  @Local private canvasContext: CanvasRenderingContext2D = <span class="keyword">new</span> CanvasRenderingContext2D(<span class="keyword">this</span>.settings)</span><br><span class="line">  @Local private path: Path2D = <span class="keyword">new</span> Path2D()</span><br><span class="line">  @Local private edgeRects: ArrayList&lt;Rect&gt; = <span class="keyword">new</span> ArrayList()</span><br><span class="line">  @Event onChange: <span class="function">(<span class="params">oldValue: number, newValue: number</span>) =&gt;</span> <span class="keyword">void</span> = <span class="function">(<span class="params">oldValue, newValue</span>) =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  aboutToAppear(): <span class="keyword">void</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.minLevel &lt; <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">this</span>.minLevel = <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.maxLevel &lt; <span class="keyword">this</span>.minLevel) &#123;</span><br><span class="line">      <span class="keyword">this</span>.maxLevel = <span class="keyword">this</span>.minLevel</span><br><span class="line">      <span class="keyword">this</span>.currentLevel = <span class="keyword">this</span>.maxLevel</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  build() &#123;</span><br><span class="line">    Column() &#123;</span><br><span class="line">      Canvas(<span class="keyword">this</span>.canvasContext)</span><br><span class="line">        .width(<span class="string">'100%'</span>)</span><br><span class="line">        .height(<span class="string">'100%'</span>)</span><br><span class="line">        .onReady(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">this</span>.drawRects()</span><br><span class="line">        &#125;)</span><br><span class="line">        .gesture(GestureGroup(GestureMode.Exclusive,</span><br><span class="line">          TapGesture()</span><br><span class="line">            .onAction(<span class="function">(<span class="params">event: GestureEvent</span>) =&gt;</span> &#123;</span><br><span class="line">              <span class="keyword">if</span> (event.fingerList?.length) &#123;</span><br><span class="line">                <span class="built_in">console</span>.debug(<span class="string">'AirVelocity TapGesture'</span>, <span class="built_in">JSON</span>.stringify(event))</span><br><span class="line">                <span class="keyword">let</span> x = event.fingerList[<span class="number">0</span>].localX</span><br><span class="line">                <span class="keyword">let</span> y = event.fingerList[<span class="number">0</span>].localY</span><br><span class="line">                <span class="keyword">this</span>.drawRoundRectByTouch(x, y)</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;),</span><br><span class="line">          PanGesture()</span><br><span class="line">            .onActionUpdate(<span class="function">(<span class="params">event: GestureEvent</span>) =&gt;</span> &#123;</span><br><span class="line">              <span class="keyword">if</span> (event.fingerList?.length) &#123;</span><br><span class="line">                <span class="built_in">console</span>.debug(<span class="string">'AirVelocity PanGesture onActionUpdate'</span>, <span class="built_in">JSON</span>.stringify(event))</span><br><span class="line">                <span class="keyword">let</span> x = event.fingerList[<span class="number">0</span>].localX</span><br><span class="line">                <span class="keyword">let</span> y = event.fingerList[<span class="number">0</span>].localY</span><br><span class="line">                <span class="keyword">this</span>.drawRoundRectByTouch(x, y)</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">            .onActionEnd(<span class="function">(<span class="params">event: GestureEvent</span>) =&gt;</span> &#123;</span><br><span class="line">              <span class="built_in">console</span>.debug(<span class="string">'AirVelocity PanGesture onActionEnd'</span>, <span class="built_in">JSON</span>.stringify(event))</span><br><span class="line">            &#125;)</span><br><span class="line">          ,</span><br><span class="line">        ))</span><br><span class="line">    &#125;</span><br><span class="line">    .width(<span class="string">'100%'</span>)</span><br><span class="line">    .height(<span class="string">'100%'</span>)</span><br><span class="line">    .padding(<span class="keyword">this</span>.paddingAll)</span><br><span class="line">    .borderRadius(<span class="keyword">this</span>.radiusAll)</span><br><span class="line">    .backgroundColor(<span class="keyword">this</span>.backGroundColor)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  drawRoundRectByTouch(touchX: number, <span class="attr">touchY</span>: number) &#123;</span><br><span class="line">    <span class="keyword">if</span> (touchY &gt; <span class="keyword">this</span>.canvasContext.height) &#123;</span><br><span class="line">      <span class="keyword">this</span>.onRedrawRects(<span class="keyword">this</span>.maxLevel)</span><br><span class="line">      <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> rect: Rect</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.edgeRects.length; i++) &#123;</span><br><span class="line">      rect = <span class="keyword">this</span>.edgeRects[i]</span><br><span class="line">      <span class="keyword">if</span> (rect &amp;&amp; touchX &gt;= rect.left &amp;&amp; touchX &lt;= rect.right</span><br><span class="line">        &amp;&amp; touchY &gt;= rect.top &amp;&amp; touchY &lt;= rect.bottom) &#123;</span><br><span class="line">        <span class="keyword">this</span>.onRedrawRects(i)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  private onRedrawRects(destIndex: number) &#123;</span><br><span class="line">    <span class="keyword">let</span> old = <span class="keyword">this</span>.currentLevel</span><br><span class="line">    <span class="keyword">this</span>.currentLevel = <span class="keyword">this</span>.maxLevel - destIndex</span><br><span class="line">    <span class="keyword">this</span>.drawRects()</span><br><span class="line">    <span class="keyword">this</span>.onChange(old, <span class="keyword">this</span>.currentLevel)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  private drawRects() &#123;</span><br><span class="line">    <span class="keyword">this</span>.itemWidth = <span class="keyword">this</span>.canvasContext.width</span><br><span class="line">    <span class="keyword">let</span> height = <span class="keyword">this</span>.canvasContext.height * <span class="number">6</span> / <span class="keyword">this</span>.maxLevel</span><br><span class="line">    <span class="keyword">this</span>.itemHeight = height * <span class="keyword">this</span>.itemHeightRate</span><br><span class="line">    <span class="keyword">this</span>.blankHeight = height * <span class="keyword">this</span>.blankHeightRate</span><br><span class="line">    <span class="keyword">this</span>.edgeRects.clear()</span><br><span class="line">    <span class="keyword">this</span>.canvasContext.reset()</span><br><span class="line">    <span class="keyword">let</span> itemX: number = <span class="number">0</span>, <span class="attr">itemY</span>: number</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> index = <span class="number">0</span>; index &lt; <span class="keyword">this</span>.maxLevel; index++) &#123;</span><br><span class="line">      itemY = (<span class="keyword">this</span>.itemHeight + <span class="keyword">this</span>.blankHeight) * index</span><br><span class="line">      <span class="keyword">this</span>.drawRoundRect(index, itemX, itemY, <span class="keyword">this</span>.itemWidth, <span class="keyword">this</span>.itemHeight)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  private drawRoundRect(index: number, <span class="attr">x</span>: number, <span class="attr">y</span>: number, <span class="attr">width</span>: number, <span class="attr">height</span>: number) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.maxLevel - index &gt; <span class="keyword">this</span>.currentLevel) &#123;</span><br><span class="line">      <span class="keyword">this</span>.canvasContext.strokeStyle = <span class="keyword">this</span>.normalColor</span><br><span class="line">      <span class="keyword">this</span>.canvasContext.fillStyle = <span class="keyword">this</span>.normalColor</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">this</span>.canvasContext.strokeStyle = <span class="keyword">this</span>.selectedColor</span><br><span class="line">      <span class="keyword">this</span>.canvasContext.fillStyle = <span class="keyword">this</span>.selectedColor</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.path = <span class="keyword">new</span> Path2D()</span><br><span class="line">    <span class="comment">//topLeft</span></span><br><span class="line">    <span class="keyword">this</span>.path.moveTo(x + <span class="keyword">this</span>.radiusAll, y)</span><br><span class="line">    <span class="keyword">this</span>.path.quadraticCurveTo(x, y, x, y + <span class="keyword">this</span>.radiusAll)</span><br><span class="line"></span><br><span class="line">    <span class="comment">//bottomLeft</span></span><br><span class="line">    <span class="keyword">let</span> bottomLeftStartY = y + height - <span class="keyword">this</span>.radiusAll</span><br><span class="line">    <span class="keyword">this</span>.path.lineTo(x, bottomLeftStartY)</span><br><span class="line">    <span class="keyword">this</span>.path.quadraticCurveTo(x, bottomLeftStartY + <span class="keyword">this</span>.radiusAll, x + <span class="keyword">this</span>.radiusAll, y + height)</span><br><span class="line"></span><br><span class="line">    <span class="comment">//bottomRight</span></span><br><span class="line">    <span class="keyword">let</span> bottomRightStartX = x + width - <span class="keyword">this</span>.radiusAll</span><br><span class="line">    <span class="keyword">this</span>.path.lineTo(bottomRightStartX, y + height)</span><br><span class="line">    <span class="keyword">this</span>.path.quadraticCurveTo(x + width, y + height, x + width, y + height - <span class="keyword">this</span>.radiusAll)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//topRight</span></span><br><span class="line">    <span class="keyword">this</span>.path.lineTo(x + width, y + <span class="keyword">this</span>.radiusAll)</span><br><span class="line">    <span class="keyword">this</span>.path.quadraticCurveTo(x + width, y, x + width - <span class="keyword">this</span>.radiusAll, y)</span><br><span class="line">    <span class="keyword">this</span>.path.lineTo(x + <span class="keyword">this</span>.radiusAll, y)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.path.closePath()</span><br><span class="line">    <span class="keyword">this</span>.canvasContext.fill(<span class="keyword">this</span>.path)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> rect: Rect = &#123;</span><br><span class="line">      left: x,</span><br><span class="line">      top: y,</span><br><span class="line">      right: x + width,</span><br><span class="line">      bottom: y + height</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>.edgeRects.has(rect)) &#123;</span><br><span class="line">      <span class="keyword">this</span>.edgeRects.add(rect)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="自定义布局">自定义布局</h2>
+<p>自定义布局的两个核心方法：</p>
+<ul>
+<li>
+<p>onMeasureSize：测量阶段，确定组件和子组件的尺寸</p>
+</li>
+<li>
+<p>onPlaceChildren：布局阶段，确定每个子组件的具体位置</p>
+</li>
+</ul>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">  @Component</span><br><span class="line"> struct FlowLayout &#123;</span><br><span class="line">  @Builder</span><br><span class="line">  doNothingBuilder() &#123;&#125;</span><br><span class="line">  </span><br><span class="line">  @BuilderParam builder: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">void</span> = <span class="keyword">this</span>.doNothingBuilder</span><br><span class="line">  @State itemSpacing: number = <span class="number">8</span></span><br><span class="line">  @State lineSpacing: number = <span class="number">8</span></span><br><span class="line">  </span><br><span class="line">  onMeasureSize(selfLayoutInfo: GeometryInfo, <span class="attr">children</span>: <span class="built_in">Array</span>&lt;Measurable&gt;, <span class="attr">constraint</span>: ConstraintSizeOptions) &#123;</span><br><span class="line">    <span class="keyword">let</span> maxWidth = constraint.maxWidth <span class="keyword">as</span> number</span><br><span class="line">    <span class="keyword">let</span> currentLineWidth = <span class="number">0</span></span><br><span class="line">    <span class="keyword">let</span> totalHeight = <span class="number">0</span></span><br><span class="line">    <span class="keyword">let</span> lineHeight = <span class="number">0</span></span><br><span class="line">    </span><br><span class="line">        children.forEach(<span class="function">(<span class="params">child</span>) =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">let</span> childResult: MeasureResult = child.measure(&#123;</span><br><span class="line">            minHeight: <span class="number">0</span>,</span><br><span class="line">            minWidth: <span class="number">0</span>,</span><br><span class="line">            maxWidth: maxWidth,</span><br><span class="line">            maxHeight: constraint.maxHeight</span><br><span class="line">          &#125;)</span><br><span class="line">    </span><br><span class="line">          <span class="keyword">if</span> (currentLineWidth + childResult.width &gt; maxWidth) &#123;</span><br><span class="line">            <span class="comment">// 换行</span></span><br><span class="line">            totalHeight += lineHeight + <span class="keyword">this</span>.lineSpacing</span><br><span class="line">            currentLineWidth = childResult.width + <span class="keyword">this</span>.itemSpacing</span><br><span class="line">            lineHeight = childResult.height</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            currentLineWidth += childResult.width + <span class="keyword">this</span>.itemSpacing</span><br><span class="line">            lineHeight = <span class="built_in">Math</span>.max(lineHeight, childResult.height)</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    </span><br><span class="line">        totalHeight += lineHeight</span><br><span class="line">    </span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">          width: maxWidth,</span><br><span class="line">          height: totalHeight</span><br><span class="line">        &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  onPlaceChildren(selfLayoutInfo: GeometryInfo, <span class="attr">children</span>: <span class="built_in">Array</span>&lt;Layoutable&gt;, <span class="attr">constraint</span>: ConstraintSizeOptions) &#123;</span><br><span class="line">    <span class="keyword">let</span> maxWidth = constraint.maxWidth <span class="keyword">as</span> number</span><br><span class="line">    <span class="keyword">let</span> currentX = <span class="number">0</span></span><br><span class="line">    <span class="keyword">let</span> currentY = <span class="number">0</span></span><br><span class="line">    <span class="keyword">let</span> lineHeight = <span class="number">0</span></span><br><span class="line">    </span><br><span class="line">        children.forEach(<span class="function">(<span class="params">child</span>) =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">if</span> (currentX + child.measureResult.width &gt; maxWidth) &#123;</span><br><span class="line">            <span class="comment">// 换行</span></span><br><span class="line">            currentX = <span class="number">0</span></span><br><span class="line">            currentY += lineHeight + <span class="keyword">this</span>.lineSpacing</span><br><span class="line">            lineHeight = <span class="number">0</span></span><br><span class="line">          &#125;</span><br><span class="line">    </span><br><span class="line">          child.layout(&#123; <span class="attr">x</span>: currentX, <span class="attr">y</span>: currentY &#125;)</span><br><span class="line">          currentX += child.measureResult.width + <span class="keyword">this</span>.itemSpacing</span><br><span class="line">          lineHeight = <span class="built_in">Math</span>.max(lineHeight, child.measureResult.height)</span><br><span class="line">        &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  build() &#123;</span><br><span class="line">    <span class="keyword">this</span>.builder()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="页面和自定义组件的生命周期">页面和自定义组件的生命周期</h2>
+<blockquote>
+<p>自定义组件：@Component装饰的UI单元，可以组合多个系统组件实现UI的复用，可以调用组件的生命周期。</p>
+<p>页面：即应用的UI页面。可以由一个或者多个自定义组件组成，@Entry装饰的自定义组件为页面的入口组件，即页面的根节点，一个页面有且仅能有一个@Entry。只有被@Entry装饰的组件才可以调用页面的生命周期。</p>
+</blockquote>
+<p>页面生命周期，即被<code>@Entry装饰的组件生命周期</code>，提供以下生命周期接口：</p>
+<ul>
+<li>
+<p><code>onPageShow</code>：页面每次显示时触发一次，包括路由过程、应用进入前台等场景。</p>
+</li>
+<li>
+<p><code>onPageHide</code>：页面每次隐藏时触发一次，包括路由过程、应用进入后台等场景。</p>
+</li>
+<li>
+<p><code>onBackPress</code>：当用户点击返回按钮时触发。</p>
+</li>
+</ul>
+<p>组件生命周期，即一般用<code>@Component装饰的自定义组件的生命周期</code>，提供以下生命周期接口：</p>
+<ul>
+<li>
+<p><code>aboutToAppear</code>：组件即将出现时回调该接口，具体时机为在创建自定义组件的新实例后，在执行其build()函数之前执行。</p>
+</li>
+<li>
+<p><code>aboutToDisappear</code>：aboutToDisappear函数在自定义组件析构销毁之前执行。不允许在aboutToDisappear函数中改变状态变量，特别是@Link变量的修改可能会导致应用程序行为不稳定。</p>
+</li>
+</ul>
+<h2 id="屏幕适配">屏幕适配</h2>
+<p>在多设备时代，我们的应用需要在手机、平板、电脑等不同尺寸的屏幕上都能良好显示。响应式设计就像是一件能够自动调整大小的衣服，让我们的组件能够适应各种屏幕尺寸。</p>
+<p>鸿蒙系统的响应式设计断点规范：</p>
+<ul>
+<li>sm（小屏）：0-600vp，主要是手机竖屏</li>
+<li>md（中屏）：600-840vp，主要是手机横屏、小平板</li>
+<li>lg（大屏）：840vp以上，主要是大平板、电脑</li>
+</ul>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2025/09/14/harmony-refresh-optimise/" data-toggle="tooltip" data-placement="top" title="[Harmony] 鸿蒙开源组件pulltorefresh优化">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2025/08/21/springboot-cracked-IntelliJ-IDEA/" data-toggle="tooltip" data-placement="top" title="[SpringBoot] IntelliJ IDEA Cracked(破解版)">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#实现方式"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">实现方式</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#基本结构"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">基本结构</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#系统组件组合"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">系统组件组合</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#自定义控件"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">自定义控件</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#自定义布局"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">自定义布局</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#页面和自定义组件的生命周期"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">页面和自定义组件的生命周期</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#屏幕适配"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">屏幕适配</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Harmony" title="Harmony">Harmony</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://us.pingpongx.com/external/inviteReg.htm?inviteCode=7nEFBj032" target="_blank">Overseas Collection</a></li>
+                    
+                        <li><a href="https://www.vultr.com/?ref=9651306-9J" target="_blank">VPS Vutlr</a></li>
+                    
+                        <li><a href="/vnews/index.html" target="_blank">Vnews Blog</a></li>
+                    
+                        <li><a href="http://blog.kaijun.rocks" target="_blank">Kaijun&#39;s Blog</a></li>
+                    
+                        <li><a href="http://huangxuan.me" target="_blank">Hux Blog</a></li>
+                    
+                        <li><a href="#" target="_blank">It Helps SEO</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'right',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+     <div class="row" style="margin-top:-50px;float:right;font-size:10px;margin-left:30px;padding-right:30px;">
+            
+            <!-- 不蒜子统计 -->
+            <span id="busuanzi_container_site_pv">
+            总访问量：<span id="busuanzi_value_site_pv">0</span>次
+            </span>
+            <span>|</span>
+            <span id="busuanzi_container_site_uv">
+            访客数：<span id="busuanzi_value_site_uv">0</span>人
+            </span>
+            
+             <!-- 不蒜子统计 -->
+             <span>|</span>
+              <span id="busuanzi_container_page_pv" style='display:none'">
+              <i class="icon-smile icon"></i>本文阅读数：<span id="busuanzi_value_page_pv">0</span>次
+              </span>
+            
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            
+     </div>
+        <div class="row">
+           <!-- horizontal_ad/bottom_ad -->
+           <ul class="list-inline text-center">
+            
+                <ins class="adsbygoogle"  style="display:block" data-ad-client="ca-pub-5651453694104340"  data-ad-slot="3310538124"  data-ad-format="auto" data-full-width-responsive="true"></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+            
+            </ul>
+        </div>
+        <br><br>
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/xiuyuantech">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://www.linkedin.com/in/xiuyuantech">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                </br>
+                <ul class="list-inline text-center">
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/geekvideo_release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Clear" src="/img/ic_geekvideo_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/clear_googleplay_1.5.0_0530-1704_release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Clear" src="/img/ic_clear_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/videoeditor-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="VideoEditor" src="/img/ic_videoclip_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/screenrecoder-playstoreDonate-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="ScreenRecoder" src="/img/ic_recoder_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/vault-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Vault" src="/img/ic_vault_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/accountbook-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="AccountBook" src="/img/ic_book_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/starwars-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Star Wars" src="/img/ic_plane_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/cardsolitaire-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Solitaire" src="/img/ic_card_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; xiuyuantech 2020 - 2025
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Ported by <a href="https://xiuyuantech.github.io">XiuYuanTech</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;margin-right: -36px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="/star_xiuyuantech_on_github.html?user=xiuyuantech&repo=&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://xiuyuantech.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-165334855-1';
+    var _gaDomain = 'xiuyuantech.github.io';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- async load function -->
+
+<script>
+
+    function async(u, c) {
+
+      var d = document, t = 'script',
+
+          o = d.createElement(t),
+
+          s = d.getElementsByTagName(t)[0];
+
+      o.src = u;
+
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+
+      s.parentNode.insertBefore(o, s);
+
+    }
+
+</script>
+
+<script>
+    //监听ad是否填充
+    var ads = document.querySelectorAll('.adsbygoogle');
+    ads.forEach(ad => {
+        const observer = new MutationObserver(mutatuins => {
+            mutatuins.forEach(record => {
+                if(record.type === 'attributes'){
+                    const attrName = record.attributeName;
+                    const attrValue = record.target.getAttribute(attrName);
+                    if('data-ad-status'===attrName && 'unfilled'===attrValue){
+                          // 获取子元素
+                          var child = record.target;
+                          // 获取父元素
+                          var parent = child.parentElement;
+                          if('DIV' ===parent.nodeName || 'div' ===parent.nodeName ){
+                            // 修改父元素的样式
+                            parent.style.display = 'none';
+                          }
+                    } else if('data-ad-status'===attrName && 'filled'===attrValue){
+                          // 获取子元素
+                          var child = record.target;
+                          // 获取父元素
+                          var parent = child.parentElement;
+                          if('DIV' ===parent.nodeName || 'div' ===parent.nodeName ){
+                            // 修改父元素的样式
+                            parent.style.display = 'block';
+                          }
+                    }
+                }
+            });
+        });
+        observer.observe(ad,{
+           attributes: true,
+           attributeFilter: ['data-ad-status']
+        });
+    })
+</script>
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="https://xiuyuantech.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+
+<script type="text/javascript">
+  function adLoaded() {
+      var in_article_contaner = document.getElementById('in-article-ad');
+      if(in_article_contaner) {
+            // here you can make the height, I delete it first, then I make it again
+            console.log("in_article_contaner");
+            //in_article_contaner.innerHTML=``;
+      }
+      var square_contaner = document.getElementById('square-ad');
+      if(square_contaner){
+         console.log("square_contaner");
+         //square_contaner.innerHTML=``;
+      }
+  };
+
+  $(document).ready(function () {
+                try{
+                  //adLoaded();
+                }catch(err){
+                  onError();
+                }});
+
+</script>
+
+<script>
+function isSameDay(timeA,timeB) {
+   let dateA = new Date(timeA);
+   let dateB = new Date(timeB);
+   return (dateA.setHours(0, 0, 0, 0) == dateB.setHours(0, 0, 0, 0));
+   }
+   function CheckIsNotNullOrEmpty(value) {
+                //正则表达式用于判斷字符串是否全部由空格或换行符组成
+                 var reg = /^\s*$/
+                 //返回值为true表示不是空字符串
+                 return (value != null && value != undefined && !reg.test(value));
+   }
+   <!-- js 异常时不显示 -->
+   function onError(){
+        $("ins.adsbygoogle[data-ad-slot]").each(function(index,element){
+           $(element).remove();
+           });
+   }
+    <!-- 单个点击事件 -->
+    function bindClick(element,countKeyPre) {
+        $(element).click(function(){
+          console.log("dayKey：" + countKeyPre);
+          var count =  window.localStorage.countKeyPre;
+          console.log("count get： "+count);
+          if(CheckIsNotNullOrEmpty(count)){
+             count++;
+             console.log("count++： "+count);
+             window.localStorage.countKeyPre = count;
+             if(count >= 4){
+              console.log("count： "+count);
+              $(element).remove();
+              onError();
+              }
+          } else {
+            window.localStorage.countKeyPre = 0;
+          }
+          });
+
+        }
+        <!-- js 初始化 Ad  -->
+        function initAd(ip){
+        if(CheckIsNotNullOrEmpty(ip)){
+                //alert("not null ip:  "+ ip);
+                $("ins.adsbygoogle[data-ad-slot]").each(function(index,element){
+                            /*var data_ad_slot = $(element).attr("data-ad-slot");
+                            console.log("data_ad_slot：" + data_ad_slot);
+                            var hasAd = CheckIsNotNullOrEmpty(data_ad_slot);
+                            console.log("hasAd：" + hasAd);*/
+                            //if（hasAd){
+                               //console.log("not null data_ad_slot：" + data_ad_slot);
+                               var dayKeyPre = ip +"_day";
+                               var countKeyPre = ip +"_count";
+                               console.log("dayKey：" + dayKeyPre);
+                               console.log("dayKeyPre：" + window.localStorage.dayKeyPre);
+                               bindClick(element,countKeyPre);
+                               console.log("countKeyPre：" + countKeyPre);
+                               console.log("countKeyPre：" + window.localStorage.countKeyPre);
+                               var nowStr =  new Date().toLocaleDateString();
+                               var notSame = CheckIsNotNullOrEmpty(window.localStorage.dayKeyPre) && !isSameDay(window.localStorage.dayKeyPre,nowStr);
+                               console.log("同一天：" +  !notSame);
+                               if(notSame){
+                                window.localStorage.dayKeyPre = nowStr;
+                                window.localStorage.countKeyPre = 0;
+                                console.log("重置成功");
+                                }
+                                   if( CheckIsNotNullOrEmpty(window.localStorage.dayKeyPre)){
+                                      if(window.localStorage.countKeyPre >= 4){
+                                         $(element).remove();
+                                      }
+                                   } else {
+                                      window.localStorage.dayKeyPre = nowStr;
+                                    }
+                              //}
+                            });
+                        return;
+                    }
+                        onError();
+                 }
+
+                          $(document).ready(function () {
+                          try{
+                            //$.getJSON("https://api.ipify.org/?format=json", function(e) {
+                            // var ip = e.ip;
+                            //initAd(ip);
+                             //});
+                          }catch(err){
+                            onError();
+                          }});
+</script>
+
+
+
+</body>
+
+</html>
