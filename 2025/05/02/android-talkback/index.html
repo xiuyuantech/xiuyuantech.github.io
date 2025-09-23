@@ -326,12 +326,6 @@
                     
 
                         
-                    
-
-                        
-                    
-
-                        
                         <li>
                             <a href="/archive/">Archives</a>
                         </li>
@@ -345,12 +339,18 @@
                     
 
                         
-                        <li>
-                            <a href="/tags/">Tags</a>
-                        </li>
+                    
+
                         
                     
 
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
                         
                     
 
@@ -470,7 +470,7 @@ Android产品的无障碍主要是针对视觉障碍人士，在设备的辅助�
 <p>如需指定窗格的标题，请使用<code>android:accessibilityPaneTitle</code>属性，如以下代码段所示:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;MyShoppingCartView</span><br><span class="line">     android:id=<span class="string">"@+id/shoppingCartContainer"</span></span><br><span class="line">             android:accessibilityPaneTitle=<span class="string">"@string/shoppingCart"</span> ... /&gt;</span><br><span class="line"></span><br><span class="line">&lt;MyShoppingBrowseView</span><br><span class="line">     android:id=<span class="string">"@+id/browseItemsContainer"</span></span><br><span class="line">             android:accessibilityPaneTitle=<span class="string">"@string/browseProducts"</span> ... /&gt;</span><br></pre></td></tr></table></figure>
 <p>自定义View：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">View.setAccessibilityDelegate(<span class="keyword">new</span> View.AccessibilityDelegate() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onInitializeAccessibilityNodeInfo</span><span class="params">(View host, AccessibilityNodeInfo info)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onInitializeAccessibilityNodeInfo(host, info);</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">View.setAccessibilityDelegate(<span class="keyword">new</span> View.AccessibilityDelegate() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onInitializeAccessibilityNodeInfo</span><span class="params">(View host, AccessibilityNodeInfo info)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onInitializeAccessibilityNodeInfo(host, info);</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>如果界面中某个元素的存在只是为了让内容看起来间距合理或布局美观，请将其 <code>android:contentDescription</code> 属性设为 <code>&quot;null&quot;</code>.<br>
 如果应用仅支持搭载 Android 4.1 (API 级别 16) 或更高版本的设备，您可以将这些纯装饰性元素的 <code>android:importantForAccessibility</code> 属性设为 <code>&quot;no&quot;</code>。</p>
 <h2 id="避坑">避坑</h2>
