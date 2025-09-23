@@ -20,24 +20,24 @@
 	<meta property="og:site_name" content="xiuyuantech">
 	<meta property="og:type" content="article">
 	<meta property="og:description" content="xiuyuantech是一个面向全球开发者的技术内容分享博客平台。我们通过技术文章和日常避坑经验记录，打造一个激发开发者思路灵感，帮助开发者沉淀减少踩坑，陪伴开发者成长的综合类技术博客。">
-	<meta property="og:url" content="https://xiuyuantech.github.io/about/">
+	<meta property="og:url" content="https://xiuyuantech.github.io/2025/09/20/springboot-docker-compose-redis/">
 	<meta property="og:image" content="https://xiuyuantech.github.io/img/xiuyuantech_blog.png">
 	<meta property="og:image:alt" content="xiuyuantech blog">
 
     
-    <meta property="og:title" content="About - xiuyuantech是一个面向全球开发者的技术内容分享博客平台。在这个技术博客里你会发现一些文章涉及Flutter开发、Uniapp开发、Vue开发、安卓开发、IOS开发、后台开发和日常避坑指南等内容,这些文章可以激发阅读者的思路灵感,帮助阅读者沉淀减少踩坑,提高个人技能和工作效率。">
-    <meta name="twitter:title" content="About - xiuyuantech是一个面向全球开发者的技术内容分享博客平台。在这个技术博客里你会发现一些文章涉及Flutter开发、Uniapp开发、Vue开发、安卓开发、IOS开发、后台开发和日常避坑指南等内容,这些文章可以激发阅读者的思路灵感,帮助阅读者沉淀减少踩坑,提高个人技能和工作效率。">
+    <meta property="og:title" content="[SpringBoot] Docker compose 部署 Redis 避坑 - xiuyuantech是一个面向全球开发者的技术内容分享博客平台。在这个技术博客里你会发现一些文章涉及Flutter开发、Uniapp开发、Vue开发、安卓开发、IOS开发、后台开发和日常避坑指南等内容,这些文章可以激发阅读者的思路灵感,帮助阅读者沉淀减少踩坑,提高个人技能和工作效率。">
+    <meta name="twitter:title" content="[SpringBoot] Docker compose 部署 Redis 避坑 - xiuyuantech是一个面向全球开发者的技术内容分享博客平台。在这个技术博客里你会发现一些文章涉及Flutter开发、Uniapp开发、Vue开发、安卓开发、IOS开发、后台开发和日常避坑指南等内容,这些文章可以激发阅读者的思路灵感,帮助阅读者沉淀减少踩坑,提高个人技能和工作效率。">
     
 	<meta name="twitter:card" content="summary_large_image">
 	<meta name="twitter:site" content="https://xiuyuantech.github.io">
 	<meta name="twitter:description" content="xiuyuantech是一个面向全球开发者的技术内容分享博客平台。我们通过技术文章和日常避坑经验记录，打造一个激发开发者思路灵感，帮助开发者沉淀减少踩坑，陪伴开发者成长的综合类技术博客。">
 	<meta name="twitter:image" content="https://xiuyuantech.github.io/img/xiuyuantech_blog.png">
     <meta name="twitter:image:alt" content="xiuyuantech twitter">
-	<meta name="twitter:url" content="https://xiuyuantech.github.io/about/">
+	<meta name="twitter:url" content="https://xiuyuantech.github.io/2025/09/20/springboot-docker-compose-redis/">
 
     <title>
         
-          About - xiuyuantech是一个面向全球开发者的技术内容分享博客平台。在这个技术博客里你会发现一些文章涉及Flutter开发、Uniapp开发、Vue开发、安卓开发、IOS开发、后台开发和日常避坑指南等内容,这些文章可以激发阅读者的思路灵感,帮助阅读者沉淀减少踩坑,提高个人技能和工作效率。
+          [SpringBoot] Docker compose 部署 Redis 避坑 - xiuyuantech是一个面向全球开发者的技术内容分享博客平台。在这个技术博客里你会发现一些文章涉及Flutter开发、Uniapp开发、Vue开发、安卓开发、IOS开发、后台开发和日常避坑指南等内容,这些文章可以激发阅读者的思路灵感,帮助阅读者沉淀减少踩坑,提高个人技能和工作效率。
         
     </title>
 
@@ -54,7 +54,7 @@
 	    {
 	      "@context": "https://schema.org",
 	      "@type": "Article",
-	      "headline": "About",
+	      "headline": "[SpringBoot] Docker compose 部署 Redis 避坑",
 	      "image": [
 	        "https://xiuyuantech.github.io/img/xiuyuantech_blog.png",
 	        "https://xiuyuantech.github.io/img/xiuyuantech_blog.png",
@@ -145,7 +145,7 @@
         }
     </script>
 
-    <link rel="canonical" href="https://xiuyuantech.github.io/about/">
+    <link rel="canonical" href="https://xiuyuantech.github.io/2025/09/20/springboot-docker-compose-redis/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -233,8 +233,8 @@
 <style type="text/css">
     header.intro-header{
         
-            background-image: url('/img/header_img/Iron-Man-3.jpg')
-            /*page*/
+            background-image: url('')
+            /*post*/
         
     }
     
@@ -251,10 +251,18 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 
-                    <div class="site-heading">
-                        <h1>About</h1>
-                        <!--<hr class="small">-->
-                        <span class="subheading">Wish for the Best, Prepare for the Worst</span>
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#SpringBoot" title="SpringBoot">SpringBoot</a>
+                            
+                        </div>
+                        <h1>[SpringBoot] Docker compose 部署 Redis 避坑</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by xiuyuantech on
+                            2025-09-20
+                        </span>
                     </div>
                 
 
@@ -395,494 +403,226 @@
 
 
     <!-- Main Content -->
-    <!-- Main Content -->
-<div class="container">
-    <div class="row">
-        
+    <!-- Modify by Yu-Hsuan Yen -->
 
-<!-- USE SIDEBAR -->
-    <!-- Post Container -->
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
             <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
-            
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
                 <blockquote>
-<p>光有好奇心而不去实践，等于自愿放弃成功机会<br>
-别为自己画地为牢，Just Do It！！</p>
+<p>Docker 和 Docker Compose 是 容器化 相关的工具，Docker Compose 是 Docker 的一个补充工具，用于管理 多容器应用。<br>
+可以简单理解：<br>
+Docker → 运行 单个容器（比如 docker run 命令）。<br>
+Docker Compose → 运行 多个容器（比如 docker-compose up 命令）。</p>
 </blockquote>
-<h2 id="简介">简介</h2>
-<p>Hi，我是 <strong>xiuyuan</strong> ，大家以后可以叫我 <strong>xiuyuan</strong> ，<a href="https://xiuyuantech.github.io">xiuyuantech</a> 是我的博客。<br>
-我是一名Android程序员，由于好多程序员起艺名还带些和程序员相关的或者有类似谐音的名字，所以我就起了 <strong>xiuyuan</strong> 这个名字。<br><br>
-曾就职于中油瑞飞、度小满金融(原百度金融)、清华同方等，之前主要经历从事Android手机系统软件和后台SpringbBoot服务开发、优化、稳定、架构建设等工作。<br><br>
-希望通过这个博客记录一些在工作中遇到的坑和一些不错的资源，在自己研究过程中的同时也和大家一起分享共同学习提升，也希望能够提高自己的能力和机遇。</p>
-<div style="display: flex;display: -webkit-flex;display: -moz-flex;display: -ms-flex;">
-<div id="left">
-联系方式
+<h2 id="Docker-Compose-介绍">Docker Compose 介绍</h2>
+<p>Docker Compose 通过 docker-compose.yml 文件可以定义多个容器的配置，并可以一键启动或管理多个容器。</p>
 <ul>
-&emsp;电子邮件: 362685126@qq.com
+<li>
+<p>使用场景</p>
+<p>微服务架构：如 Web 服务 + 数据库 + Redis，Compose 可以一键启动所有容器。<br>
+开发环境：团队成员可以通过 docker-compose up 快速启动完整的开发环境。<br>
+自动化部署：用于本地测试、CI/CD 管道（如 GitHub Actions、Jenkins）。</p>
+</li>
+<li>
+<p>下载地址</p>
+<p><a href="https://github.com/docker/compose" target="_blank" rel="noopener">github地址</a>，<a href="https://docs.docker.com/compose/install/standalone/" target="_blank" rel="noopener">官网地址</a></p>
+</li>
 </ul>
+<div id="in-article-ad">
+    <!--线上 in_article_ad -->
+  <ins class="adsbygoogle infeed" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5651453694104340" data-ad-slot="6951497715">
+  </ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<h2 id="部署示例">部署示例</h2>
+<p>运行一个 缓存服务（Redis6.2）+ 数据库（MySQL8.0） 的环境，可以使用 docker-compose.yml 轻松管理多个容器。</p>
 <ul>
-<div style="margin-top:-32px;">
-&emsp;微信: <br>
-&emsp;<img width="72" height="72" alt="xiuyuan" src="/img/xiuyuan_wechat.jpg" style="cursor:pointer;float:left;margin-left:56px;margin-top:-18px;">
-</div>
+<li>
+<p>编写 docker-compose.yml</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">"3.4"</span></span><br><span class="line"></span><br><span class="line"><span class="attr">name:</span> <span class="string">demo-system</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">mysql:</span></span><br><span class="line">  <span class="attr">container_name:</span> <span class="string">demo-mysql</span></span><br><span class="line">  <span class="attr">image:</span> <span class="string">mysql:8</span></span><br><span class="line">  <span class="attr">restart:</span> <span class="string">unless-stopped</span></span><br><span class="line">  <span class="attr">tty:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">ports:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">"3306:3306"</span></span><br><span class="line">  <span class="attr">environment:</span></span><br><span class="line">    <span class="attr">MYSQL_DATABASE:</span> <span class="string">$&#123;MYSQL_DATABASE:-demo&#125;</span></span><br><span class="line">    <span class="attr">MYSQL_ROOT_PASSWORD:</span> <span class="string">$&#123;MYSQL_ROOT_PASSWORD:-demo&#125;</span></span><br><span class="line">    <span class="attr">TZ:</span> <span class="string">Asia/Shanghai</span></span><br><span class="line">    <span class="comment"># 设置字符集和校对集</span></span><br><span class="line">    <span class="attr">MYSQL_CHARACTER_SET_SERVER:</span> <span class="string">utf8mb4</span></span><br><span class="line">    <span class="attr">MYSQL_COLLATION_SERVER:</span> <span class="string">utf8mb4_unicode_ci</span></span><br><span class="line">  <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/home/docker/mysql8/data:/var/lib/mysql/</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/home/docker/mysql8/conf:/etc/mysql/conf.d</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/home/docker/mysql8/logs:/var/log/mysql</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/home/docker/quartz.sql:/docker-entrypoint-initdb.d/quartz.sql:ro</span></span><br><span class="line"></span><br><span class="line"><span class="attr">redis:</span></span><br><span class="line">  <span class="attr">container_name:</span> <span class="string">demo-redis</span></span><br><span class="line">  <span class="attr">image:</span> <span class="string">redis:6-alpine</span></span><br><span class="line">  <span class="attr">restart:</span> <span class="string">unless-stopped</span></span><br><span class="line">  <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">"6379:6379"</span></span><br><span class="line">  <span class="attr">environment:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">TZ=Asia/Shanghai</span></span><br><span class="line">  <span class="attr">volumes:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">/home/docker/redis6/data:/data</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">/home/docker/redis6/conf:/usr/local/etc/redis</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">/home/docker/redis6/conf/users.acl:/etc/redis/users.acl</span></span><br><span class="line">  <span class="attr">command:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">redis-server</span> <span class="string">/usr/local/etc/redis/redis.conf</span></span><br></pre></td></tr></table></figure>
+<p><code>容器目录/docker-entrypoint-initdb.d用来加载初始化脚本。</code> 如果redis.conf 中 <code>logfile</code> 配置的路径报错Can’t open the log file: No such file or directory 或者 Permission denied，<code>可能是没有创建目录或者没有权限，最好将logfile路径配置到data目录下并检查目录是否创建以及是否有权限。</code><br>
+在使用Docker部署Redis时，确实有一些限制和最佳实践需要考虑，特别是关于配置文件中的某些参数，如daemonize参数。在传统的 Linux 系统中，Redis 的 daemonize 选项用于指定 Redis 是否应该在后台运行。在 Docker 容器中，通常不推荐使用 daemonize yes，因为 Docker 容器设计之初就是为了运行单个进程。如果你在 Docker 容器中设置 daemonize yes，那么 Redis 将尝试在后台运行，这可能会导致一些问题，比如容器无法正确退出或者在容器重启时出现问题。<br>
+<code>注意Docker部署Redis时推荐使用daemonize no，生产环境没有使用docker部署而是直接部署的推荐使用 daemonize yes。</code></p>
+</li>
+<li>
+<p>相关文章<br>
+<a href="https://blog.csdn.net/CNBDZGL/article/details/134680671" target="_blank" rel="noopener">CSDN避坑指南</a> <a href="https://www.jb51.net/database/3034336mk.htm" target="_blank" rel="noopener">脚本之家避坑指南</a> <a href="https://zhuanlan.zhihu.com/p/268389375" target="_blank" rel="noopener">知乎避坑指南</a> <a href="https://www.cnblogs.com/7920284109q/p/15040695.html" target="_blank" rel="noopener">acl详解</a></p>
+</li>
+<li>
+<p>启动服务</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker compose --env-file docker.env -f docker-compose.yml up -d</span><br></pre></td></tr></table></figure>
+<p><code>--env-file：可以指定docker环境变量文件，-f：可以指定yml文件，多个文件可以追加 -f a.yml -f b.yml 。</code></p>
+</li>
 </ul>
-</div>
-<div id="right" style="margin-left:0px;margin-top:32px;">
-</div>
-</div>
-<p><code>加好友,请备注来自xiuyuan博客</code></p>
-<h2 id="内容">内容</h2>
-<p>根据目前Android发展和自己所学所见的内容将在本博客中不定期进行更新，主要涉猎如下：</p>
-<ul>
-<li>前端<br>
-Android、IOS、Harmony(鸿蒙)、Mini-program(小程序)、Uniapp、Web(Vue/Js/Ts)、Nginx部署等</li>
-<li>后端<br>
-SpringBoot、Redis、Es、Mq、Mysql、Docker等</li>
-<li>开发语言<br>
-Java、Kotlin、JNI(C/C++)、Flutter(dart)、Js/Ts/arkTs等</li>
-</ul>
-<div id="square-ad">
- <!--线上 square_ad -->
-   <ins class="adsbygoogle infeed" style="display:block" data-ad-client="ca-pub-5651453694104340" data-ad-slot="1870336081" data-ad-format="auto" data-full-width-responsive="true">
-   </ins>
-   <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
-<p>资源 (随机排序)</p>
+<h2 id="总结对比">总结对比</h2>
+<p>在使用Docker部署服务是一般都要配置数据目录、日志目录、配置文件等，很多文档都是使用默认配置埋下很多坑要踩。</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">网站</th>
-<th style="text-align:center">博主</th>
-</tr>
-</thead>
-<tbody>
+<th><strong>对比项</strong></th>
+<th><strong>Docker</strong></th>
+<th><strong>Docker Compose</strong>
+</th></tr></thead><tbody>
 <tr>
-<td style="text-align:center"><a href="https://android.googlesource.com" target="_blank" rel="noopener">googlesource</a></td>
-<td style="text-align:center"><a href="https://p.codekk.com" target="_blank" rel="noopener">CodeKK</a></td>
-</tr>
-<tr>
-<td style="text-align:center"><a href="http://androidxref.com" target="_blank" rel="noopener">androidxref</a></td>
-<td style="text-align:center"><a href="https://blog.csdn.net/luoshengyang" target="_blank" rel="noopener">罗升阳</a></td>
+<td><strong>管理单个容器</strong></td>
+<td>✅ 适合</td>
+<td>❌ 不适合</td>
 </tr>
 <tr>
-<td style="text-align:center"><a href="https://www.androidos.net.cn/sourcecode" target="_blank" rel="noopener">androidos 源码站</a></td>
-<td style="text-align:center"><a href="https://blog.csdn.net/guolin_blog" target="_blank" rel="noopener">郭霖</a></td>
+<td><strong>管理多个容器</strong></td>
+<td>❌ 不适合</td>
+<td>✅ 适合</td>
+</tr><tr>
+<td><strong>适用于微服务架构</strong></td>
+<td>❌ 较难管理</td>
+<td>✅ 适合</td>
 </tr>
 <tr>
-<td style="text-align:center"><a href="http://aosp.opersys.com" target="_blank" rel="noopener">aosp.opersys</a></td>
-<td style="text-align:center"><a href="https://blog.csdn.net/lmj623565791" target="_blank" rel="noopener">鸿洋</a></td>
+<td><strong>配置方式</strong></td>
+<td>命令行参数</td>
+<td><code>docker-compose.yml</code> 文件</td>
 </tr>
 <tr>
-<td style="text-align:center"><a href="https://source.android.com" target="_blank" rel="noopener">source.android.com</a></td>
-<td style="text-align:center"><a href="http://gityuan.com" target="_blank" rel="noopener">gityuan</a></td>
-</tr>
-<tr>
-<td style="text-align:center"><a href="http://developer.android.com" target="_blank" rel="noopener">Android开发官网</a></td>
-<td style="text-align:center"><a href="https://blog.csdn.net/singwhatiwanna" target="_blank" rel="noopener">任玉刚</a></td>
-</tr>
-<tr>
-<td style="text-align:center"><a href="https://www.wanandroid.com" target="_blank" rel="noopener">wanAndroid</a></td>
-<td style="text-align:center"><a href="https://liuwangshu.blog.csdn.net" target="_blank" rel="noopener">刘望舒</a></td>
-</tr>
-<tr>
-<td style="text-align:center"><a href="https://www.androiddevtools.cn" target="_blank" rel="noopener">AndroidDevTools</a></td>
-<td style="text-align:center"><a href="https://blog.csdn.net/eclipsexys" target="_blank" rel="noopener">徐宜生</a></td>
-</tr>
-<tr>
-<td style="text-align:center"><a href="http://www.androidchina.net" target="_blank" rel="noopener">AndroidChina</a></td>
-<td style="text-align:center"><a href="https://kymjs.com" target="_blank" rel="noopener">张涛</a></td>
-</tr>
-<tr>
-<td style="text-align:center"><a href="https://www.android-doc.com/develop/index.html" target="_blank" rel="noopener">Android-Doc-中文版</a></td>
-<td style="text-align:center"><a href="https://github.com/android-cn/android-dev-com" target="_blank" rel="noopener">国外大牛</a></td>
-</tr>
-<tr>
-<td style="text-align:center"><a href="https://cs.android.com" target="_blank" rel="noopener">Android-Code-Search</a> <code>需翻墙</code></td>
-<td style="text-align:center"><a href="https://blog.csdn.net/qibin0506" target="_blank" rel="noopener">亓斌</a></td>
-</tr>
-<tr>
-<td style="text-align:center"><a href="https://toutiao.io" target="_blank" rel="noopener">开发者头条</a></td>
-<td style="text-align:center"><a href="https://cnblogs.com/innost" target="_blank" rel="noopener">邓凡平</a></td>
-</tr>
-<tr>
-<td style="text-align:center"><a href="https://flutter.cn" target="_blank" rel="noopener">Flutter中文社区</a></td>
-<td style="text-align:center"><a href="https://rengwuxian.com" target="_blank" rel="noopener">hencoder</a></td>
-</tr>
-<tr>
-<td style="text-align:center"><a href="https://guoshuyu.cn/home/wx" target="_blank" rel="noopener">Flutter实战教程</a></td>
-<td style="text-align:center"><a href="https://blog.kyleduo.com" target="_blank" rel="noopener">Kyleduo’s blog</a></td>
+<td><strong>适用场景</strong></td>
+<td>运行单个应用</td>
+<td>运行多个服务（如 Web + 数据库）</td>
 </tr>
 </tbody>
 </table>
-<h2 id="Apps-应用">Apps(应用)</h2>
- <div align="center">
-<table border="0" cellspacing="0" cellpadding="0">
-    <tr><th width="800"> <div align="center">
-            <u>
-                <i>
-                    <img width="200" height="200" alt="Clear" src="/img/qrcode_clear_download.png" style="cursor:pointer">
-                </i>
-                <i>
-                    <a href="/apps/clear_googleplay_1.5.0_0530-1704_release_7zip_aligned_signed.apk"> Download Now(立即下载)</a><br><br>
-                    <a href="https://play.google.com/store/apps/details?id=com.antivirus.security.virusmanager" target="_blank" rel="noopener"> GP Download(GooglePlay下载)</a>
-                </i>
-            </u>
-         </div>
-        </th>
-       <th width="800"> <div align="center">
-            <u>
-                    <i><img width="200" height="200" alt="VideoEditor" style="cursor:pointer" src="/img/qrcode_videoeditor_download.png">
-                    </i>
-                     <i>
-                    <a href="/apps/videoeditor-release_7zip_aligned_signed.apk"> Download Now(立即下载)</a><br><br>
-                    <a href="https://play.google.com/store/apps/details?id=com.freevideo.iclip.editor" target="_blank" rel="noopener"> GP Download(GooglePlay下载)</a>
-                    </i>
-            </u>
-            </div>
-       </th>
-        <th width="800"><div align="center">
-              <u>
-                    <i>
-                       <img width="200" height="200" alt="ScreenRecoder" src="/img/qrcode_screenrecord_download.png" style="cursor:pointer">
-                    </i>
-                   <i>
-                    <a href="/apps/screenrecoder-playstoreDonate-release_7zip_aligned_signed.apk"> Download Now(立即下载)</a><br><br>
-                    <a href="https://play.google.com/store/apps/details?id=com.free.call.international.phone" target="_blank" rel="noopener"> GP Download(GooglePlay下载)</a>
-                   </i>
-            </u>
-          </div>
-       </th>
-  </tr>
-   <tr><th width="800"> <div align="center">
-            <u>
-                <i>
-                    <img width="200" height="200" alt="Vault" src="/img/qrcode_vault_download.png" style="cursor:pointer">
-                </i>
-                 <i>
-                    <a href="/apps/vault-release_7zip_aligned_signed.apk"> Download Now(立即下载)</a><br><br>
-                    <a href="https://play.google.com/store/apps/details?id=com.free.filemanger.private" target="_blank" rel="noopener"> GP Download(GooglePlay下载)</a>
-                </i>
-            </u>
-         </div>
-        </th>
-       <th width="800"> <div align="center">
-            <u>
-                    <i><img width="200" height="200" alt="AccountBook" style="cursor:pointer" src="/img/qrcode_accountbook_download.png">
-                    </i>
-                    <i>
-                    <a href="/apps/accountbook-release_7zip_aligned_signed.apk"> Download Now(立即下载)</a><br><br>
-                    <a href="https://play.google.com/store/apps/details?id=com.accountbook.coinsaver" target="_blank" rel="noopener"> GP Download(GooglePlay下载)</a>
-                    </i>
-            </u>
-            </div>
-       </th>
-        <th width="800"><div align="center">
-              <u>
-                    <i>
-                       <img width="200" height="200" alt="Star Wars" src="/img/qrcode_starwars_download.png" style="cursor:pointer">
-                    </i>
-                    <i>
-                    <a href="/apps/starwars-release_7zip_aligned_signed.apk"> Download Now(立即下载)</a><br><br>
-                    <a href="https://play.google.com/store/apps/details?id=com.plane.single" target="_blank" rel="noopener"> GP Download(GooglePlay下载)</a>
-                  </i>
-            </u>
-          </div>
-       </th>
-  </tr>
-   <tr><th width="800"> <div align="center">
-            <u>
-                <i>
-                    <img width="200" height="200" alt="Solitaire" src="/img/qrcode_solitaire_download.png" style="cursor:pointer">
-                </i>
-                 <i>
-                    <a href="/apps/cardsolitaire-release_7zip_aligned_signed.apk"> Download Now(立即下载)</a><br><br>
-                    <a href="https://play.google.com/store/apps/details?id=com.finger.guessgame" target="_blank" rel="noopener"> GP Download(GooglePlay下载)</a>
-                </i>
-            </u>
-         </div>
-        </th>
-        <th width="800"> <div align="center">
-            <u>
-                <i>
-                    <img width="200" height="200" alt="GeekVideo" src="/img/qrcode_geekvideo_download.png" style="cursor:pointer">
-                </i>
-                 <i>
-                    <a href="/apps/geekvideo_release_7zip_aligned_signed.apk"> Download Now(立即下载)</a><br><br>
-                    <a href="https://play.google.com/store/apps/details?id=com.xygit.free.geekvideo" target="_blank" rel="noopener"> GP Download(GooglePlay下载)</a>
-                </i>
-            </u>
-         </div>
-        </th>
-  </tr>
-</table>
- </div>
-<h2 id="Sponsors-赞赏">Sponsors(赞赏)</h2>
-<p>Method of Payments(支付方式)：</p>
- <div align="center">
-<table>
-    <tr><th width="800" onclick="javascript:window.open('https://qr.alipay.com/tsx16182cwu9ioz44qmoa9e');"> <div align="center">
-            <a href="https://qr.alipay.com/tsx16182cwu9ioz44qmoa9e" target="_blank" rel="noopener">
-            <u>
-                <i>
-                    <img width="200" height="200" alt="Alipay" src="/img/zhifubao_20210415233746.jpg" style="cursor:pointer">
-                </i>
-                <i>Ali Pay(支付宝支付)</i>
-            </u>
-            </a>
-         </div>
-        </th>
-       <th width="800" onclick="javascript:window.open('https://paypal.me/xiuyuantech/5USD');"> <div align="center"><br><br><br><br>
-            <a href="https://paypal.me/xiuyuantech/5USD" target="_blank" rel="noopener">
-            <u>
-                    <i><img width="200" height="200" alt="Paypal" style="cursor:pointer" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fsc01.alicdn.com%2Fkf%2FUTB8MyC8uo_4iuJk43Fq762.FpXaG%2F130529554%2FUTB8MyC8uo_4iuJk43Fq762.FpXaG.png&refer=http%3A%2F%2Fsc01.alicdn.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1621095191&t=be6da21fd15a4ead723dd8f6a5b4fdb1">
-                    </i>
-                    <i>Paypal Pay(贝宝支付)</i>
-            </u>
-            </a>
-            </div>
-       </th>
-        <th width="800" onclick="javascript:window.open('wxp://f2f0uagU493_tn3LRfb2oFg7iRntvVAcz-yM');"><div align="center"><br>
-               <a href="wxp://f2f0uagU493_tn3LRfb2oFg7iRntvVAcz-yM" target="_blank" rel="noopener">
-                <u>
-                    <i>
-                       <img width="200" height="200" alt="WeChat Pay" src="/img/wechat_20210415233740.jpg" style="cursor:pointer">
-                    </i>
-                   <i>WeChat Pay(微信支付)</i>
-            </u></a>
-          </div>
-       </th>
-  </tr>
-</table>
- </div>
-<h2 id="声明">声明</h2>
-<p>本站所有博文均原创，转载请务必注明作者以及原文出处链接，且不得篡改原文内容另外，本站博文未经授权不得用于任何商业目的</p>
-
-
-                <!-- 如果开启评论功能 -->
                 
-                    <hr>
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2025/09/14/harmony-refresh-optimise/" data-toggle="tooltip" data-placement="top" title="[Harmony] 鸿蒙开源组件pulltorefresh优化">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Docker-Compose-介绍"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Docker Compose 介绍</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#部署示例"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">部署示例</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#总结对比"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">总结对比</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#SpringBoot" title="SpringBoot">SpringBoot</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
 
                     
-
+                        <li><a href="https://us.pingpongx.com/external/inviteReg.htm?inviteCode=7nEFBj032" target="_blank">Overseas Collection</a></li>
                     
-
-
+                        <li><a href="https://www.vultr.com/?ref=9651306-9J" target="_blank">VPS Vutlr</a></li>
                     
-
+                        <li><a href="/vnews/index.html" target="_blank">Vnews Blog</a></li>
                     
+                        <li><a href="http://blog.kaijun.rocks" target="_blank">Kaijun&#39;s Blog</a></li>
+                    
+                        <li><a href="http://huangxuan.me" target="_blank">Hux Blog</a></li>
+                    
+                        <li><a href="#" target="_blank">It Helps SEO</a></li>
+                    
+                </ul>
                 
             </div>
-
-          <!-- Sidebar Container -->
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
-    
-        <!-- Featured Tags -->
-
-<section>
-    <!-- no hr -->
-    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-    <div class="tags">
-        
-            
-            <a href="/tags/#Android" title="Android" rel="21">Android</a>
-            
-        
-            
-            <a href="/tags/#JNI" title="JNI" rel="2">JNI</a>
-            
-        
-            
-            <a href="/tags/#Flutter" title="Flutter" rel="1">Flutter</a>
-            
-        
-            
-            <a href="/tags/#Harmony" title="Harmony" rel="3">Harmony</a>
-            
-        
-            
-            <a href="/tags/#Hexo" title="Hexo" rel="2">Hexo</a>
-            
-        
-            
-            <a href="/tags/#VPS" title="VPS" rel="2">VPS</a>
-            
-        
-            
-            <a href="/tags/#Blog" title="Blog" rel="1">Blog</a>
-            
-        
-            
-            <a href="/tags/#日常" title="日常" rel="7">日常</a>
-            
-        
-            
-            <a href="/tags/#Overseas" title="Overseas" rel="2">Overseas</a>
-            
-        
-            
-            <a href="/tags/#出海" title="出海" rel="2">出海</a>
-            
-        
-            
-            <a href="/tags/#SpringBoot" title="SpringBoot" rel="3">SpringBoot</a>
-            
-        
+        </div>
     </div>
-</section>
-<div>
-     <!-- square_ad -->
-<!--      <span style="text-align:left;display:block;">    <ins class="adsbygoogle"     style="display:block"     data-ad-client="ca-pub-5651453694104340"     data-ad-slot="3688692014"     data-ad-format="auto"     data-full-width-responsive="true"></ins> -->
-<!--         <script> -->
-<!--           (adsbygoogle = window.adsbygoogle || []).push({}); -->
-<!--         </script> -->
-<!--      </span> -->
-  </div>
+</article>
 
-        <hr>
-    
-        <!-- Short About -->
-<section class="visible-md visible-lg">
-    <h5><a href="/about/">ABOUT ME</a></h5>
-    <div class="short-about">
 
-        
-            <img id = "avatar_pic" src="/img/ironman-draw.png" />
-        
 
-        
-            <p>Welcome To My Blog</p>
-        
 
-        <!-- SNS Link -->
-        <ul class="list-inline">
-            
-            
-            
 
-            
 
-            
 
-            
-                <li>
-                    <a target="_blank"  href="https://github.com/xiuyuantech">
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </a>
-                </li>
-            
-            
-            
-            
-                <li>
-                    <a target="_blank"  href="https://www.linkedin.com/in/xiuyuantech">
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </a>
-                </li>
-            
-        </ul>
-    </div>
-           <a href="https://www.vultr.com/?ref=9651306-9J">
-            <img src="/img/vultr_banner_300x250.webp" width="300" height="250" style="cursor:pointer">
-           </a >
-</section>
-        <hr>
-    
-        
-  <h5>RECENT POSTS</h3>
-  <div class="widget">
-    <ul>
-      
-        <li>
-          <a href="/2025/09/20/springboot-docker-compose-redis/">[SpringBoot] Docker compose 部署 Redis 避坑</a>
-        </li>
-      
-        <li>
-          <a href="/2025/09/14/harmony-refresh-optimise/">[Harmony] 鸿蒙开源组件pulltorefresh优化</a>
-        </li>
-      
-        <li>
-          <a href="/2025/09/06/harmony-custom-ui/">[Harmony] 鸿蒙自定义组件</a>
-        </li>
-      
-        <li>
-          <a href="/2025/08/21/springboot-cracked-IntelliJ-IDEA/">[SpringBoot] IntelliJ IDEA Cracked(破解版)</a>
-        </li>
-      
-        <li>
-          <a href="/2025/08/16/how-to-buy-vpn/">[VPS] How to build VPN</a>
-        </li>
-      
-    </ul>
-  </div>
-  <div>
-     <!-- vertical_ad -->
-<!--      <span style="text-align:left;display:block;">    <ins class="adsbygoogle"     style="display:block"     data-ad-client="ca-pub-5651453694104340"     data-ad-slot="8036304591"     data-ad-format="auto"     data-full-width-responsive="true"></ins> -->
-<!--         <script> -->
-<!--           (adsbygoogle = window.adsbygoogle || []).push({}); -->
-<!--         </script> -->
-<!--      </span> -->
-  </div>
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'right',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
 
-        <hr>
-    
-        <!-- Friends Blog -->
-
-<h5>FRIENDS</h5>
-<ul class="list-inline">
-
-    
-        <li><a href="https://us.pingpongx.com/external/inviteReg.htm?inviteCode=7nEFBj032" target="_blank">Overseas Collection</a></li>
-    
-        <li><a href="https://www.vultr.com/?ref=9651306-9J" target="_blank">VPS Vutlr</a></li>
-    
-        <li><a href="/vnews/index.html" target="_blank">Vnews Blog</a></li>
-    
-        <li><a href="http://blog.kaijun.rocks" target="_blank">Kaijun&#39;s Blog</a></li>
-    
-        <li><a href="http://huangxuan.me" target="_blank">Hux Blog</a></li>
-    
-        <li><a href="#" target="_blank">It Helps SEO</a></li>
-    
-</ul>
-<div class="row">
-   <div>
-   <!-- right_ad -->
-   <ul class="list-inline text-center">
-    
-        <ins class="adsbygoogle"  style="display:block" data-ad-client="ca-pub-5651453694104340"  data-ad-slot="3226777645"  data-ad-format="auto" data-full-width-responsive="true"></ins>
-            <script>
-              (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-    
-    </ul>
-    </div>
-</div
-
-        <hr>
-    
-
-</div>
-
-        
-    </div>
-</div>
 
 
 
