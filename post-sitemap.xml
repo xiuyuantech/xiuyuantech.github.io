@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://xiuyuantech.github.io/2025/09/27/harmony-some-optimize/</loc>
+        <lastmod>2025-10-29T12:17:34.667Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://xiuyuantech.github.io/2025/09/20/springboot-docker-compose-redis/</loc>
         <lastmod>2025-09-23T10:46:54.291Z</lastmod>
         <changefreq>weekly</changefreq>
