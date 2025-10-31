@@ -326,21 +326,6 @@
                     
 
                         
-                    
-
-                        
-                    
-
-                        
-                    
-
-                        
-                    
-
-                        
-                    
-
-                        
                         <li>
                             <a href="/archive/">Archives</a>
                         </li>
@@ -348,9 +333,24 @@
                     
 
                         
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
                         <li>
                             <a href="/tags/">Tags</a>
                         </li>
+                        
+                    
+
                         
                     
 
@@ -463,6 +463,10 @@
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> formData = <span class="keyword">new</span> FormData();</span><br><span class="line"><span class="keyword">let</span> selectedFile = fs.openSync(path,fs.OpenMode.READ_ONLY)</span><br><span class="line"><span class="comment">//文件相关api尽量是文件描述符，使用文件对象可能发生异常</span></span><br><span class="line"><span class="keyword">let</span> stat = fs.lstatSync(selectedFile.path)</span><br><span class="line"><span class="keyword">let</span> buffer = <span class="keyword">new</span> <span class="built_in">ArrayBuffer</span>(stat.size)</span><br><span class="line">fs.readSync(selectedFile.fd,buffer)</span><br><span class="line">fs.fsyncSync(selectedFile.fd)</span><br><span class="line">formData.append(<span class="string">'files'</span>, buffer,&#123;</span><br><span class="line">  filename:selectedFile.name,</span><br><span class="line">  <span class="keyword">type</span>: <span class="string">'image/png'</span> <span class="comment">//必须加类型，否则后台打不开文件</span></span><br><span class="line">&#125;)</span><br><span class="line">fs.closeSync(selectedFile.fd)</span><br><span class="line">axios.post(<span class="string">'YOUR_UPLOAD_URL'</span>, formData, &#123;</span><br><span class="line">  headers: &#123;</span><br><span class="line">    <span class="string">'Content-Type'</span>: <span class="string">'multipart/form-data'</span></span><br><span class="line">    <span class="comment">// 注意：通常不需要手动设置Content-Type，因为浏览器会自动设置</span></span><br><span class="line">    <span class="comment">// 如果后端有特殊需求，请根据实际情况调整</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">.then(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">this</span>.uploadStatus = <span class="string">'文件上传成功'</span>;</span><br><span class="line">  <span class="comment">// 处理上传成功后的逻辑，如更新UI、发送通知等</span></span><br><span class="line">&#125;)</span><br><span class="line">.catch(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">this</span>.uploadStatus = <span class="string">'文件上传失败: '</span> + error.message;</span><br><span class="line">  <span class="comment">// 处理上传失败的情况</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p><code>文件相关api尽量是文件描述符，使用文件对象可能发生异常。添加文件时必须传文件类型，否则无法查看文件。</code></p>
 <h2 id="其他避坑指南">其他避坑指南</h2>
+<p><code>嵌套类数据更新UI不更新怎么办？</code><br>
+正常按照官网来的话使用v1和v2状态管理基本上没啥问题，涉及到复杂逻辑带有嵌套类的话可能会遇到UI不更新的问题，原因是通过服务端返回json解析而来的实体类会无效。<br>
+解决办法如下：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 鸿蒙还提供了UIUtils.makeObserved()等方法来实现数据观察更新</span></span><br><span class="line">axios.create(&#123;</span><br><span class="line">  ...</span><br><span class="line">  transformResponse:[(data:object):object = &gt;&#123;</span><br><span class="line">     <span class="keyword">try</span>&#123;</span><br><span class="line">       UIUtils.makeObserved(<span class="built_in">JSON</span>.parse(data))  <span class="comment">//关键代码</span></span><br><span class="line">     &#125;<span class="keyword">catch</span>(err)&#123;</span><br><span class="line">      <span class="keyword">return</span> UIUtils.makeObserved(data)</span><br><span class="line">     &#125;</span><br><span class="line">  &#125;]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p>鸿蒙打包hvigorw clean报错No npmrc file is matched in the current user folder解决？</p>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">registry=https:<span class="comment">//repo.huaweicloud.com/repository/npm/</span></span><br><span class="line"><span class="meta">@ohos</span>:registry=https:<span class="comment">//repo.harmonyos.com/npm/</span></span><br></pre></td></tr></table></figure>
 <p>Image组件无法响应长按事件？</p>
