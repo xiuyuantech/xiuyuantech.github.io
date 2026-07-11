@@ -1,0 +1,304 @@
+<hr>
+<p>title: “[Harmony] 纯血鸿蒙Web组件避坑”<br>
+catalog: true<br>
+date: 2026-6-19 15:51:24<br>
+subtitle: “”<br>
+header-img:<br>
+tags:</p>
+<ul>
+<li>Harmony<br>
+catagories:</li>
+<li>Harmony</li>
+</ul>
+<hr>
+<blockquote>
+<p>纯血鸿蒙 Web 组件是 HarmonyOS NEXT 系统中用于在原生应用中加载和展示网页内容的核心组件，<br>
+基于 ArkUI 框架和 ArkTS 语言构建，不再依赖 Android 的 AOSP 代码，完全运行在鸿蒙自研内核之上。<br>
+相比传统 WebView，它在渲染性能、内存占用和交互流畅度上都有显著提升，尤其在处理复杂 H5 页面时，滚动流畅度比传统方案提升了约 30%。<br>
+官网Web组件链接：<a href="https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/arkweb%E3%80%82">https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/arkweb。</a></p>
+</blockquote>
+<h2 id="使用场景">使用场景</h2>
+<p>ArkWeb（方舟Web）提供了Web组件，用于在应用中显示Web页面内容。常见使用场景包括：</p>
+<ul>
+<li>
+<p>应用集成Web页面：应用可以在界面中使用Web组件，嵌入Web页面内容，以降低开发成本，提升开发、运维效率。</p>
+</li>
+<li>
+<p>浏览器网页浏览场景：浏览器类应用可以使用Web组件，打开三方Web网页，使用无痕浏览模式浏览Web页面，设置广告拦截等。</p>
+</li>
+<li>
+<p>小程序：小程序类宿主应用可以使用Web组件，渲染小程序的页面，实现同层渲染，视频托管等小程序的功能。</p>
+</li>
+</ul>
+<p><code>Web组件访问在线Web网页时需添加网络权限：ohos.permission.INTERNET</code></p>
+<div id='in-article-ad'>
+    <!--线上 in_article_ad -->
+  <ins class="adsbygoogle infeed" 
+        style="display:block; text-align:center;"
+        data-ad-layout="in-article"
+        data-ad-format="fluid"
+        data-ad-client="ca-pub-5651453694104340"
+        data-ad-slot="6951497715">
+  </ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<h2 id="约束与限制">约束与限制</h2>
+<ul>
+<li>
+<p>可依据ArkWeb内核版本在相关网站查询W3C标准的支持情况。<br>
+例如：<a href="https://developer.mozilla.org/en-US/">https://developer.mozilla.org/en-US/</a> 和 <a href="https://webassembly.org/features/">https://webassembly.org/features/</a> 。</p>
+</li>
+<li>
+<p>ArkWeb内核版本：ArkWeb基于谷歌Chromium内核开发，系统版本与Chromium版本的对应关系如表格所示。</p>
+<table class="docs-auto layoutFixed idpTab">         <thead>          <tr>           <th align="left" class="cellrowborder" id="mcps1.3.4.2.2.2.1.3.1.1" valign="top" width="50%">系统版本</th>           <th align="left" class="cellrowborder" id="mcps1.3.4.2.2.2.1.3.1.2" valign="top" width="50%">Chromium版本</th>          </tr>         </thead>                   <tbody><tr>           <td class="cellrowborder" valign="top" width="50%">HarmonyOS 4.0及之前</td>           <td class="cellrowborder" valign="top" width="50%">M99</td>          </tr>          <tr>           <td class="cellrowborder" valign="top" width="50%">HarmonyOS 4.1-5.1</td>           <td class="cellrowborder" valign="top" width="50%">M114</td>          </tr>          <tr>           <td class="cellrowborder" valign="top" width="50%">HarmonyOS 6.0</td>           <td class="cellrowborder" valign="top" width="50%">            <p>M132（默认，推荐使用，请参考<a href="https://gitcode.com/openharmony-tpc/chromium_src/blob/master/web/ReleaseNote/ArkWeb_114_132.md" target="_blank">M114-&gt;M132差异适配指南</a>）</p>            <p>M114（可选，若应用需切换为此内核，请参考<a href="https://gitcode.com/openharmony-tpc/chromium_src/blob/master/web/ReleaseNote/CompatibleWithLegacyWebEngine_6.0.md" target="_blank">M114内核在HarmonyOS 6.0系统上的适配指导</a>）</p></td>          </tr>          <tr>           <td class="cellrowborder" valign="top" width="50%">HarmonyOS 6.1</td>           <td class="cellrowborder" valign="top" width="50%">M132</td>          </tr>          <tr>           <td class="cellrowborder" valign="top" width="50%">HarmonyOS 7.0</td>           <td class="cellrowborder" valign="top" width="50%">            <p>M144（默认，推荐使用，请参考<a href="https://gitcode.com/openharmony-tpc/chromium_src/blob/master/web/ReleaseNote/ArkWeb_132_144.md" target="_blank">M132-&gt;M144差异适配指南</a>）</p>            <p>M132（可选，若应用需切换为此内核，请参考<a href="https://gitcode.com/openharmony-tpc/chromium_src/blob/master/web/ReleaseNote/CompatibleWithLegacyWebEngine_7.0.md" target="_blank">M132内核在HarmonyOS 7.0系统上的适配指导</a>）</p></td>          </tr>                 </tbody></table>
+</li>
+<li>
+<p>为保障用户隐私安全，HarmonyOS内置了ArkWeb组件，旨在为全场景设备提供安全、可靠且一致的网页浏览体验。应用渲染网页需调用ArkWeb组件；元服务内嵌网页渲染则需使用官方提供的Webview组件。开发者可根据其元服务开发框架，选择使用ASCF Webview或AtomicServiceEnhancedWeb组件。元服务内嵌页面内容需遵循元服务内嵌页面管理规范。</p>
+</li>
+</ul>
+<h2 id="Web组件避坑">Web组件避坑</h2>
+<ul>
+<li>
+<p>WebviewController绑定后在<code>onControllerAttached</code>方法中才能使用<br>
+一个WebviewController对象只能控制一个Web组件，且必须在Web组件和WebviewController绑定后，才能调用WebviewController上的方法（静态方法除外）。</p>
+</li>
+<li>
+<p>默认不支持新窗口跳转<br>
+Web组件提供了在新窗口打开页面的能力，开发者可以通过multiWindowAccess()接口来设置是否允许网页在新窗口打开。当有新窗口打开时，应用侧会在onWindowNew()接口或onWindowNewExt()接口中收到Web组件新窗口事件。</p>
+<pre><code class="language-ts"> Web({ src: 'xx'})
+      .multiWindowAccess(true)
+      .onWindowNew(() =&gt; {
+        //todo somethings
+      })
+
+</code></pre>
+</li>
+<li>
+<p>默认不支持js,需要手动开启</p>
+<pre><code class="language-ts"> Web({ src: 'xx'})
+      .javaScriptAccess(true)
+      .javaScriptProxy({})
+ // js 对象也可以通过webviewController.registerJavaScriptProxy,但销毁时需要调用deleteJavaScriptRegister移除对象
+</code></pre>
+</li>
+<li>
+<p>默认不支持位置、摄像、麦克风等权限,需要app适配</p>
+<pre><code class="language-ts"> aboutToAppear(): void {
+   // todo 提前申请相关权限
+ }
+ Web({ src: 'xx'})
+      .onPermissionRequest((event) =&gt; {
+         if (event) {
+          this.uiContext.showAlertDialog({
+            title: 'title',
+            message: 'text',
+            primaryButton: {
+              value: 'deny',
+              action: () =&gt; {
+                event.request.deny();
+              }
+            },
+            secondaryButton: {
+              value: 'onConfirm',
+              action: () =&gt; {
+                event.request.grant(event.request.getAccessibleResource());
+              }
+            },
+            cancel: () =&gt; {
+              event.request.deny();
+            }
+          })
+        }
+      })
+      .geolocationAccess(true)
+      .onGeolocationShow((event) =&gt; {
+        // 位置权限申请通知仅对当前Web组件生效，应用内的其他Web组件不受影响
+        this.uiContext.showAlertDialog({
+          title: '位置权限请求',
+          message: '是否允许获取位置信息',
+          primaryButton: {
+            value: 'cancel',
+            action: () =&gt; {
+              if (event) {
+                // 不允许此站点位置权限请求
+                // 注意invoke的第3个参数表示是否记住当前选择，如果传true，则下次不再弹框
+                event.geolocation.invoke(event.origin, false, false);
+              }
+            }
+          },
+          secondaryButton: {
+            value: 'ok',
+            action: () =&gt; {
+              if (event) {
+                // 允许此站点位置权限请求
+                // 注意invoke的第3个参数表示是否记住当前选择，如果传true，则下次不再弹框
+                event.geolocation.invoke(event.origin, true, false);
+              }
+            }
+          },
+          cancel: () =&gt; {
+            if (event) {
+              // 不允许此站点位置权限请求
+              // 注意invoke的第3个参数表示是否记住当前选择，如果传true，则下次不再弹框
+              event.geolocation.invoke(event.origin, false, false);
+            }
+          }
+        })
+      })
+
+</code></pre>
+</li>
+</ul>
+<p><code>Web很多基础配置默认都是关闭的，需要手动设置开启</code></p>
+<p><a href="https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-ux-design">常见问题</a>, <a href="https://developer.huawei.com/consumer/cn/doc/architecture-guides/appendix-0000001954471681">行业实践与常见问题</a></p>
+<h2 id="鸿蒙、Android、IOS三端对比">鸿蒙、Android、IOS三端对比</h2>
+<table>
+<thead>
+<tr>
+<th>对比维度</th>
+<th>鸿蒙 Web 组件（ArkWeb）</th>
+<th>Android WebView</th>
+<th>iOS WKWebView</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>‌渲染内核‌</td>
+<td>基于 Chromium 深度定制</td>
+<td>Chromium Blink 引擎</td>
+<td>WebKit 引擎</td>
+</tr>
+<tr>
+<td>‌架构模式‌</td>
+<td>多进程隔离（应用进程、渲染进程、GPU 进程、孵化进程、Foundation 进程分离）</td>
+<td>单进程或多进程（取决于版本和配置）</td>
+<td>多进程（应用进程与渲染进程分离）</td>
+</tr>
+<tr>
+<td>‌崩溃隔离‌</td>
+<td>✅ 单个网页崩溃不影响应用进程</td>
+<td>⚠️ 部分版本支持，稳定性一般</td>
+<td>✅ 单个网页崩溃不影响应用进程</td>
+</tr>
+<tr>
+<td>‌内核更新‌</td>
+<td>随系统 OTA 统一推送</td>
+<td>通过 Google Play 独立更新</td>
+<td>随 iOS 系统版本更新</td>
+</tr>
+<tr>
+<td>‌开发语言‌</td>
+<td>ArkTS（ArkUI 声明式框架）</td>
+<td>Java/Kotlin</td>
+<td>Swift/Objective-C</td>
+</tr>
+<tr>
+<td>‌控制器‌</td>
+<td>WebviewController</td>
+<td>WebViewClient + WebChromeClient</td>
+<td>WKNavigationDelegate + WKUIDelegate</td>
+</tr>
+<tr>
+<td>‌首屏渲染速度‌</td>
+<td>提升约 40%（相比传统方案）</td>
+<td>基准水平</td>
+<td>基准水平</td>
+</tr>
+<tr>
+<td>‌内存占用‌</td>
+<td>降低约 30%（相比传统方案）</td>
+<td>较高</td>
+<td>中等</td>
+</tr>
+<tr>
+<td>‌滚动流畅度‌</td>
+<td>提升约 30%（复杂 H5 页面）</td>
+<td>一般</td>
+<td>较好</td>
+</tr>
+<tr>
+<td>‌预加载能力‌</td>
+<td>✅ prepareForPageLoad（预连接）✅ prefetchPage（预加载）</td>
+<td>⚠️ 需自行实现</td>
+<td>⚠️ 需自行实现</td>
+</tr>
+<tr>
+<td>‌跨平台框架适配‌</td>
+<td>使用 uni.createWebviewContext无 plus 环境</td>
+<td>使用 plus.webview</td>
+<td>使用 plus.webview</td>
+</tr>
+<tr>
+<td>‌消息传递格式‌</td>
+<td>e.detail.data.data（多一层包装）</td>
+<td>e.detail.data</td>
+<td>e.detail.data</td>
+</tr>
+<tr>
+<td>‌URL 安全管控‌</td>
+<td>✅ 系统级白名单 setUrlTrustList自动校验所有加载及跳转 URL</td>
+<td>⚠️ 需开发者手动拦截</td>
+<td>⚠️ 需开发者手动拦截</td>
+</tr>
+<tr>
+<td>‌深色模式‌</td>
+<td>✅ 支持强制深色模式可设置 backgroundColor 适配</td>
+<td>⚠️ 需自行适配</td>
+<td>✅ 支持</td>
+</tr>
+<tr>
+<td>‌文件预览‌</td>
+<td>✅ 支持在线/本地 PDF需开启 domStorageAccess</td>
+<td>✅ 支持</td>
+<td>✅ 支持</td>
+</tr>
+<tr>
+<td>‌分布式能力‌</td>
+<td>✅ 深度适配鸿蒙全场景分布式能力</td>
+<td>❌ 不支持</td>
+<td>❌ 不支持</td>
+</tr>
+<tr>
+<td>‌权限模型‌</td>
+<td>鸿蒙权限体系（ohos.permission.INTERNET）</td>
+<td>Android 权限体系</td>
+<td>iOS 权限体系</td>
+</tr>
+<tr>
+<td>‌内核版本选择‌</td>
+<td>支持 M132（常青）和 M114（兼容）双版本</td>
+<td>跟随系统或独立更新</td>
+<td>跟随系统版本</td>
+</tr>
+<tr>
+<td>‌离线包方案‌</td>
+<td>✅ 支持通过 resource 协议加载本地资源</td>
+<td>✅ 支持</td>
+<td>✅ 支持</td>
+</tr>
+<tr>
+<td>‌DOM Storage‌</td>
+<td>✅ 支持，需配置 domStorageAccess</td>
+<td>✅ 支持</td>
+<td>✅ 支持</td>
+</tr>
+<tr>
+<td>‌混合内容加载‌</td>
+<td>✅ 支持，需配置 mixedMode</td>
+<td>✅ 支持</td>
+<td>✅ 支持</td>
+</tr>
+<tr>
+<td>‌长按菜单自定义‌</td>
+<td>✅ 支持自定义</td>
+<td>✅ 支持</td>
+<td>✅ 支持</td>
+</tr>
+<tr>
+<td>‌适用场景‌</td>
+<td>鸿蒙原生应用开发</td>
+<td>Android 原生应用开发</td>
+<td>iOS 原生应用开发</td>
+</tr>
+</tbody>
+</table>

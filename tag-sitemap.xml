@@ -3,6 +3,13 @@
 
 
     <url>
+        <loc>https://xiuyuantech.github.io/tags/Harmony/</loc>
+        <lastmod>2026-07-11T13:08:56.889Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://xiuyuantech.github.io/tags/出海/</loc>
         <lastmod>2026-05-01T07:35:00.308Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -12,13 +19,6 @@
     <url>
         <loc>https://xiuyuantech.github.io/tags/Android/</loc>
         <lastmod>2026-03-19T13:23:19.463Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://xiuyuantech.github.io/tags/Harmony/</loc>
-        <lastmod>2025-10-31T10:44:57.199Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
