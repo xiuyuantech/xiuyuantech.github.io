@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="xiuyuantech是一个面向全球开发者的技术内容分享博客平台。我们通过技术文章和日常避坑经验记录，打造一个激发开发者思路灵感，帮助开发者沉淀减少踩坑，陪伴开发者成长的综合类技术博客。">
+    <meta name="keyword" content="xiuyuan,xiuyuantech,blog,android,develop,vue,js,flutter,java,kotlin,compose,jetpack,uniapp,python,shell,bug记录,springboot,vps,jni,ndk,博客,安卓,开发,前端,面试,脚本,避坑,生活,日常,出海,开发者指南,安卓开发,后台开发,前端开发,技术博客,高级开发,中文技术,框架教程,学习资源,职业发展,开源项目">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <meta name="robots" content="none">
+    <meta name="author" content="xiuyuan">
+    <meta name="copyright" content="@xiuyuan">
+	<meta data-n-head="ssr" data-hid="description" name="description" content="xiuyuantech是一个面向全球开发者的技术内容分享博客平台。我们通过技术文章和日常避坑经验记录，打造一个激发开发者思路灵感，帮助开发者沉淀减少踩坑，陪伴开发者成长的综合类技术博客。">
+
+	<meta property="og:site_name" content="xiuyuantech">
+	<meta property="og:type" content="article">
+	<meta property="og:description" content="xiuyuantech是一个面向全球开发者的技术内容分享博客平台。我们通过技术文章和日常避坑经验记录，打造一个激发开发者思路灵感，帮助开发者沉淀减少踩坑，陪伴开发者成长的综合类技术博客。">
+	<meta property="og:url" content="https://xiuyuantech.github.io/2026/10/05/life-classic-taptopzone/">
+	<meta property="og:image" content="https://xiuyuantech.github.io/img/xiuyuantech_blog.png">
+	<meta property="og:image:alt" content="xiuyuantech blog">
+
+    
+    <meta property="og:title" content="[出海] Classic Taptopzone · 经典游戏 - xiuyuantech是一个面向全球开发者的技术内容分享博客平台。在这个技术博客里你会发现一些文章涉及Flutter开发、Uniapp开发、Vue开发、安卓开发、IOS开发、后台开发和日常避坑指南等内容,这些文章可以激发阅读者的思路灵感,帮助阅读者沉淀减少踩坑,提高个人技能和工作效率。">
+    <meta name="twitter:title" content="[出海] Classic Taptopzone · 经典游戏 - xiuyuantech是一个面向全球开发者的技术内容分享博客平台。在这个技术博客里你会发现一些文章涉及Flutter开发、Uniapp开发、Vue开发、安卓开发、IOS开发、后台开发和日常避坑指南等内容,这些文章可以激发阅读者的思路灵感,帮助阅读者沉淀减少踩坑,提高个人技能和工作效率。">
+    
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="https://xiuyuantech.github.io">
+	<meta name="twitter:description" content="xiuyuantech是一个面向全球开发者的技术内容分享博客平台。我们通过技术文章和日常避坑经验记录，打造一个激发开发者思路灵感，帮助开发者沉淀减少踩坑，陪伴开发者成长的综合类技术博客。">
+	<meta name="twitter:image" content="https://xiuyuantech.github.io/img/xiuyuantech_blog.png">
+    <meta name="twitter:image:alt" content="xiuyuantech twitter">
+	<meta name="twitter:url" content="https://xiuyuantech.github.io/2026/10/05/life-classic-taptopzone/">
+
+    <title>
+        
+          [出海] Classic Taptopzone · 经典游戏 - xiuyuantech是一个面向全球开发者的技术内容分享博客平台。在这个技术博客里你会发现一些文章涉及Flutter开发、Uniapp开发、Vue开发、安卓开发、IOS开发、后台开发和日常避坑指南等内容,这些文章可以激发阅读者的思路灵感,帮助阅读者沉淀减少踩坑,提高个人技能和工作效率。
+        
+    </title>
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "xiuyuantech blog",
+            "url": "https://xiuyuantech.github.io"
+        }
+    </script>
+
+    <script type="application/ld+json">
+	    {
+	      "@context": "https://schema.org",
+	      "@type": "Article",
+	      "headline": "[出海] Classic Taptopzone · 经典游戏",
+	      "image": [
+	        "https://xiuyuantech.github.io/img/xiuyuantech_blog.png",
+	        "https://xiuyuantech.github.io/img/xiuyuantech_blog.png",
+	        "https://xiuyuantech.github.io/img/xiuyuantech_blog.png"
+
+	       ],
+	      "datePublished": "2020-03-18T19:30:00+08:00",
+	      "dateModified": "2020-03-18T19:30:00+08:00",
+	      "author": [{
+	          "@type": "Person",
+	          "name": "xiuyuan",
+	          "url": "https://xiuyuantech.github.io/about"
+	        }],
+          "publisher": {
+              "@type": "Person",
+              "name": "xiuyuantech blog",
+              "url": "https://xiuyuantech.github.io"
+            }
+	    }
+	</script>
+
+	<script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "item": {
+                "@type": "Course",
+                "url":"https://xiuyuantech.github.io",
+                "name": "Home",
+                "description": "This is the xiuyuantech blog homepage where you will find the list of articles",
+                "provider": {
+                  "@type": "Person",
+                  "name": "Home Page",
+                  "sameAs": "https://xiuyuantech.github.io"
+               }
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "item": {
+                "@type": "Course",
+                "url":"https://xiuyuantech.github.io/about",
+                "name": "About",
+                "description": "This is information about the blogger",
+                "provider": {
+                    "@type": "Person",
+                    "name": "About Page",
+                    "sameAs": "https://xiuyuantech.github.io/about"
+               }
+             }
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "item": {
+                "@type": "Course",
+                "url":"https://xiuyuantech.github.io/archive",
+                "name": "Archive",
+                "description": "Technical articles and daily life history archive",
+                "provider": {
+                  "@type": "Person",
+                  "name": "Archive Page",
+                  "sameAs": "https://xiuyuantech.github.io/archive"
+               }
+              }
+            },
+             {
+               "@type": "ListItem",
+               "position": 4,
+               "item": {
+                 "@type": "Course",
+                 "url":"https://xiuyuantech.github.io/tags",
+                 "name": "Tags",
+                 "description": "Tagging various article categories",
+                 "provider": {
+                   "@type": "Person",
+                   "name": "Tags Page",
+                   "sameAs": "https://xiuyuantech.github.io/tags"
+                }
+               }
+             }
+          ]
+        }
+    </script>
+
+    <link rel="canonical" href="https://xiuyuantech.github.io/2026/10/05/life-classic-taptopzone/">
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+
+    <!-- Google Adsense -->
+
+    
+
+
+    <!-- <script src="https://quge5.com/88/tag.min.js" data-zone="258527" async data-cfasync="false"></script>  -->
+    <script src="https://5gvci.com/act/files/tag.min.js?z=11272884" data-cfasync="false" async defer></script>
+    <script async defer>(function(s){s.dataset.zone='11272885',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+    
+      <script async defer>(function(s){s.dataset.zone='11272887',s.src='https://n6wxm.com/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+    
+
+</head>
+
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('')
+            /*post*/
+        
+    }
+    
+    #signature{
+        background-image: url('/img/signature/BeanTechSign-white.png');
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#出海" title="出海">出海</a>
+                            
+                        </div>
+                        <h1>[出海] Classic Taptopzone · 经典游戏</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by xiuyuantech on
+                            2026-10-05
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">XiuYuanTech</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/vnews/">vnews home</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <blockquote>
+<p>你是否还记小时候攥着零钱守在街边游戏厅、客厅里攥着按键按到指尖冒汗的时光？那些刻在无数80、90后青春记忆里的经典像素游戏，如今不用翻找旧卡带、不用淘复古掌机，打开<a href="https://classic.taptopzone.com" target="_blank" rel="noopener">Classic TapTapZone｜经典游戏空间</a> 经典游戏站就能一键重启你的情怀记忆库。</p>
+</blockquote>
+<h2 id="Classic-TapTapZone">Classic TapTapZone</h2>
+<p><a href="https://classic.taptopzone.com" target="_blank" rel="noopener">Classic TapTopZone｜经典游戏空间</a> 是一个免费的免安装的在线游戏平台, 汇集了经久不衰的经典游戏、热门作品以及最新发布的游戏,并不定期更新内容。内容涵盖了多种类型，满足了各类玩家的喜好，确保每个人都能找到心仪之作享受游戏乐趣。</p>
+<h2 id="情怀清单">情怀清单</h2>
+<p>这些刻进DNA的经典，每一款都是满溢的回忆杀<br>
+这里集齐了当年霸占游戏厅半壁江山的情怀神作，款款都是当年和伙伴挤在屏幕前闯关的快乐源泉：</p>
+<ul>
+<li>超级玛丽‌：踩着蘑菇顶碎砖块，为了救公主在像素世界里蹦跳无数个日夜，藏在关卡里的隐藏跳关小路，至今闭着眼都能精准找到位置。</li>
+<li>拳皇‌：摇摇杆搓出八神庵的八稚女、草薙京的大蛇薙，当年和同桌为了抢一个摇杆争得面红耳赤，赢了之后得意的欢呼还仿佛就在耳边。</li>
+<li>魂斗罗‌：和兄弟双人组队，调上30条命的秘籍一路突突突闯关卡，水下八关的传说，曾是全班男生凑在一起讨论半节课的热门话题。</li>
+<li>雪人兄弟‌：滚着雪球清掉全场小怪，为了抢最后关卡的药水和队友互相把对方撞下平台，傻乐的笑声填满了一整个放学的午后。</li>
+<li>忍者神龟‌：四只神龟各自的专属连招背得滚瓜烂熟，扛着武器一路劈碎挡路的机械兵，打完最终BOSS时的成就感，比拿到满分成绩单还开心。</li>
+<li>双截龙‌：双人并肩闯关拳拳到肉，甩起旋风腿把迎面冲来的敌人全部撂倒，是当年和发小培养“过命交情”的专属默契游戏。</li>
+<li>旋风小子‌：拿着小锤子一路蹦跳冒险，藏在场景里的秘密彩蛋，时隔多年再次看到熟悉的像素画面，瞬间就能把你拉回蹲在电视机前攥着手柄的童年。</li>
+</ul>
+<p><img src="/img/classic_game_welcome_dark.webp" alt="Classic TapTopZone｜经典游戏空间"></p>
+<div id="in-article-ad">
+    <!--线上 in_article_ad -->
+  <ins class="adsbygoogle infeed" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5651453694104340" data-ad-slot="6951497715">
+  </ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<p><img src="/img/classic-game-list-compress.png" alt="经典游戏列表"></p>
+<h2 id="隐藏彩蛋">隐藏彩蛋</h2>
+<p>那些被我们错过的隐藏彩蛋，现在才懂当年的小心思<br>
+很多老游戏里藏着当年开发者的小心机，时隔多年回头重温，才发现原来我们当年被“骗”了那么多游戏币：</p>
+<ul>
+<li>《暴力刑警》的国内美版版本因为开发失误，删掉了必杀技和部分音效，难度陡增到几乎没人能通关，就算好不容易打败最终BOSS，没及时阻止博士投下核弹，结局也只能眼睁睁看着城市被毁灭，博士还会留一句“我还会回来的”，摆明了是想骗你下次再来投币挑战。</li>
+<li>当年CAPCOM推出《街头霸王2》时，打出的宣传语是“你必须足够快才能坚持到最后”，直接把2D格斗游戏带进了连招时代，影响了后续《拳皇》《真人快打》等一整个系列的格斗作品，当年为了练出一套丝滑连招，不知道磨掉了多少摇杆的胶皮。</li>
+<li>很多人当年在街机厅里见过的《忍者蛙》，是公认的FC硬核难度天花板，能打通所有关卡的玩家，在当年的小伙伴圈子里绝对是被封神的存在，骑摩托闯关的高难度关卡，劝退了90%以上的普通玩家。<br>
+…</li>
+</ul>
+<h2 id="总结">总结</h2>
+<p>打开<a href="https://classic.taptopzone.com" target="_blank" rel="noopener">Classic TapTopZone｜经典游戏空间</a> 就能看到熟悉的“插入卡带”交互界面，和当年捧着游戏主机挑卡带的感觉一模一样，不用下载任何多余的客户端，不用翻找落灰的旧卡带，不用淘复古摇杆，点一下就能立刻回到那个像素颗粒跳动的夏天，点选你记忆里的那款游戏，立刻就能拿起虚拟按键开启闯关。把当年没通关的关卡重新闯一遍，把当年没赢回来的对局，痛痛快快打个尽兴。无论是想独自一人回味当年没通关的遗憾，还是约上许久未见的老伙计来上一局拳皇对决，在这里都能一键找回十几年前最简单纯粹的游戏快乐。</p>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2026/06/19/hexo-theme-beantech/harmony-web/" data-toggle="tooltip" data-placement="top" title="[Harmony] 纯血鸿蒙Web组件避坑">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Classic-TapTapZone"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Classic TapTapZone</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#情怀清单"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">情怀清单</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#隐藏彩蛋"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">隐藏彩蛋</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#总结"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">总结</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#出海" title="出海">出海</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://us.pingpongx.com/external/inviteReg.htm?inviteCode=7nEFBj032" target="_blank">Overseas Collection</a></li>
+                    
+                        <li><a href="https://www.vultr.com/?ref=9651306-9J" target="_blank">VPS Vutlr</a></li>
+                    
+                        <li><a href="/vnews/index.html" target="_blank">Vnews Blog</a></li>
+                    
+                        <li><a href="http://blog.kaijun.rocks" target="_blank">Kaijun&#39;s Blog</a></li>
+                    
+                        <li><a href="http://huangxuan.me" target="_blank">Hux Blog</a></li>
+                    
+                        <li><a href="#" target="_blank">It Helps SEO</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'right',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+     <div class="row" style="margin-top:-50px;float:right;font-size:10px;margin-left:30px;padding-right:30px;">
+            
+            <!-- 不蒜子统计 -->
+            <span id="busuanzi_container_site_pv">
+            总访问量：<span id="busuanzi_site_pv">0</span>次
+            </span>
+            <span>|</span>
+            <span id="busuanzi_container_site_uv">
+            访客数：<span id="busuanzi_site_uv">0</span>人
+            </span>
+            
+             <!-- 不蒜子统计 -->
+             <span>|</span>
+              <span id="busuanzi_container_page_pv">
+              <i class="icon-smile icon"></i>本文阅读数：<span id="busuanzi_page_pv">0</span>次
+              </span>
+            
+            <script async src="//cdn.busuanzi.cc/busuanzi/3.6.9/busuanzi.abbr.min.js"></script>
+            
+     </div>
+        <div class="row">
+           <!-- horizontal_ad/bottom_ad -->
+           <ul class="list-inline text-center">
+            
+                 <a target="_blank" href="https://www.vultr.com/?ref=9651306-9J"><img src="/img/vultr_banner_728x90.webp" width="728" height="90" style="cursor:pointer"></a >
+            
+            </ul>
+        </div>
+        <br><br>
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/xiuyuantech">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://www.linkedin.com/in/xiuyuantech">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                </br>
+                <ul class="list-inline text-center">
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/geekvideo_release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Clear" src="/img/ic_geekvideo_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/clear_googleplay_1.5.0_0530-1704_release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Clear" src="/img/ic_clear_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/videoeditor-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="VideoEditor" src="/img/ic_videoclip_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/screenrecoder-playstoreDonate-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="ScreenRecoder" src="/img/ic_recoder_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/vault-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Vault" src="/img/ic_vault_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/accountbook-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="AccountBook" src="/img/ic_book_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/starwars-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Star Wars" src="/img/ic_plane_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                    <li>
+                        <u>
+                            <a target="_blank" href="/apps/cardsolitaire-release_7zip_aligned_signed.apk">
+                                <img width="60" height="60" alt="Solitaire" src="/img/ic_card_app.png" style="cursor:pointer">
+                            </a>
+                        </u>
+                    </li>
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; xiuyuantech 2020 - 2026
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Ported by <a href="https://xiuyuantech.github.io">XiuYuanTech</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;margin-right: -36px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="/star_xiuyuantech_on_github.html?user=xiuyuantech&repo=&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://xiuyuantech.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-165334855-1';
+    var _gaDomain = 'xiuyuantech.github.io';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+<script>
+
+var observer = new MutationObserver(function(mutations) {
+    var article = document.querySelector('.post-container');
+    if (article) {
+        observer.disconnect(); // 找到后立即停止监听，避免重复执行
+
+       // 设定在第几个段落之后插入广告，例如第3个段落之后
+       var insertAfterIndex = 0
+       var paragraphs = article.querySelectorAll('h2') || article.querySelectorAll('h3');
+       console.log("article",paragraphs);
+       if(paragraphs.length < 1){
+          return;
+       }
+       // 确保有足够的H2元素才执行插入逻辑
+       var adDiv = document.createElement('div');
+       adDiv.style.cssText = 'margin: 20px 0; text-align: center;';
+
+       // 手动创建script元素，避免innerHTML注入脚本不执行的问题
+       var adScript = document.createElement('script');
+       adScript.async = true;
+       adScript.defer = true;
+       adScript.setAttribute('data-cfasync', 'false');
+       adScript.src = 'https://pl30450493.effectivecpmnetwork.com/79ecbcb796c7ed068eafc52471746ade/invoke.js';
+
+       // 添加广告容器
+       var adContainer = document.createElement('div');
+       adContainer.id = 'container-79ecbcb796c7ed068eafc52471746ade';
+
+       // 依次将容器和脚本加入广告父容器
+       adDiv.appendChild(adContainer);
+       adDiv.appendChild(adScript);
+
+       // 修正API调用：使用目标H2元素的nextSibling，而非NodeList的属性
+       var targetElement = paragraphs[insertAfterIndex];
+       targetElement.parentNode.insertBefore(adDiv, targetElement.nextSibling);
+
+        if(paragraphs.length >= 5){
+        insertAfterIndex = 4
+         var adDiv = document.createElement('div');
+         adDiv.style.cssText = 'margin: 20px 0; text-align: center;';
+
+         // 添加广告容器
+         var atOptionsContainer = document.createElement('script');
+         atOptionsContainer.textContent = `atOptions = {
+                                        'key' : 'edf6d0ab30c20fd2c4c5ce0f526d3ea2',
+                                        'format' : 'iframe',
+                                        'height' : 250,
+                                        'width' : 300,
+                                        'params' : {}
+                                      };`
+
+         // 手动创建script元素，避免innerHTML注入脚本不执行的问题
+         var adScript = document.createElement('script');
+         adScript.async = true;
+         adScript.defer = true;
+         adScript.setAttribute('data-cfasync', 'false');
+         adScript.src = 'https://www.highperformanceformat.com/edf6d0ab30c20fd2c4c5ce0f526d3ea2/invoke.js';
+
+         // 依次将容器和脚本加入广告父容器
+         adDiv.appendChild(atOptionsContainer);
+         adDiv.appendChild(adScript);
+
+         // 修正API调用：使用目标H2元素的nextSibling，而非NodeList的属性
+         var targetElement = paragraphs[insertAfterIndex];
+         targetElement.parentNode.insertBefore(adDiv, targetElement.nextSibling);
+
+        }
+    }
+});
+
+// 监听整个 body 的子节点变化
+observer.observe(document.body, {
+    childList: true,
+    subtree: true
+});
+
+ </script>
+
+
+<!-- async load function -->
+
+<script>
+
+    function async(u, c) {
+
+      var d = document, t = 'script',
+
+          o = d.createElement(t),
+
+          s = d.getElementsByTagName(t)[0];
+
+      o.src = u;
+
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+
+      s.parentNode.insertBefore(o, s);
+
+    }
+
+</script>
+
+<script>
+    //监听ad是否填充
+    var ads = document.querySelectorAll('.adsbygoogle');
+    ads.forEach(ad => {
+        const observer = new MutationObserver(mutatuins => {
+            mutatuins.forEach(record => {
+                if(record.type === 'attributes'){
+                    const attrName = record.attributeName;
+                    const attrValue = record.target.getAttribute(attrName);
+                    if('data-ad-status'===attrName && 'unfilled'===attrValue){
+                          // 获取子元素
+                          var child = record.target;
+                          // 获取父元素
+                          var parent = child.parentElement;
+                          if('DIV' ===parent.nodeName || 'div' ===parent.nodeName ){
+                            // 修改父元素的样式
+                            parent.style.display = 'none';
+                          }
+                    } else if('data-ad-status'===attrName && 'filled'===attrValue){
+                          // 获取子元素
+                          var child = record.target;
+                          // 获取父元素
+                          var parent = child.parentElement;
+                          if('DIV' ===parent.nodeName || 'div' ===parent.nodeName ){
+                            // 修改父元素的样式
+                            parent.style.display = 'block';
+                          }
+                    }
+                }
+            });
+        });
+        observer.observe(ad,{
+           attributes: true,
+           attributeFilter: ['data-ad-status']
+        });
+    })
+</script>
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="https://xiuyuantech.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+
+
+<script async src="https://pl30450492.effectivecpmnetwork.com/a4/c2/77/a4c27776bf0b1ae523ab7105c69e09fd.js"></script>
+
+
+</body>
+
+</html>
